@@ -63,7 +63,6 @@ async function get_categories_home() {
 /*  function for fetching Home Services */
 async function get_categories_laundry() {
 
-
     var requestOptions = {
         method: 'POST',
         body: LaundryService,
@@ -80,7 +79,6 @@ async function get_categories_laundry() {
 /*  function for fetching Home Services */
 async function get_categories_plumbing() {
 
-
     var requestOptions = {
         method: 'POST',
         body: PlumbingService,
@@ -96,7 +94,6 @@ async function get_categories_plumbing() {
 
 /*  function for fetching Home Services */
 async function get_categories_car() {
-
 
     var requestOptions = {
         method: 'POST',
