@@ -3,6 +3,7 @@ import api from './API/Fetch_data_Api';
 import './App.css';
 
 function App() {
+  /*Just For check it working or not...*/
   useEffect(()=>{
     api.get_Api_Category()
     .then(console.log("default"))
