@@ -25,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <h2>Hello</h2>
     </div>
   );
 }
