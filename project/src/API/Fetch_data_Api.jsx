@@ -1,4 +1,6 @@
-/*Default Api calling */
+/*Default Api calling
+Default location Bhuj  */
+
 var formdata = new FormData();
 formdata.append("latitude", "23.2507356");
 formdata.append("longitude", "69.6689201");
@@ -60,7 +62,7 @@ async function get_categories_home() {
 }
 
 
-/*  function for fetching Home Services */
+/*  function for fetching laundry Services */
 async function get_categories_laundry() {
 
     var requestOptions = {
@@ -76,7 +78,7 @@ async function get_categories_laundry() {
 }
 
 
-/*  function for fetching Home Services */
+/*  function for fetching plumbing Services */
 async function get_categories_plumbing() {
 
     var requestOptions = {
@@ -92,7 +94,7 @@ async function get_categories_plumbing() {
 }
 
 
-/*  function for fetching Home Services */
+/*  function for fetching car Services */
 async function get_categories_car() {
 
     var requestOptions = {

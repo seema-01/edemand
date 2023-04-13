@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import api from './API/Fetch_data_Api';
 import './App.css';
+import Navigation from './Components/Navigation';
 
 function App() {
-  useEffect(()=>{
+// just test Api working or not
+ 
+/*  useEffect(()=>{
     api.get_Api_Category()
     .then(console.log("default"))
 
@@ -19,10 +22,10 @@ function App() {
     api.get_categories_plumbing()
     .then(console.log("Plumnig Section"))
   },[])
-  
+*/  
   return (
     <div className="App">
-      
+      <Navigation />
     </div>
   );
 }
