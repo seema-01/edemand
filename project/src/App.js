@@ -4,7 +4,6 @@ import './App.css';
 import Navigation from './Components/Navigation';
 
 function App() {
-// just test Api working or not
  
 /*  useEffect(()=>{
     api.get_Api_Category()
