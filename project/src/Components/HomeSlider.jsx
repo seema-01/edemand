@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from "swiper";
 
-const Home = () => {
+const HomeSlider = () => {
     return (
         <div>
             <div className="home-image-slider">
@@ -35,4 +35,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default HomeSlider

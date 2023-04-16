@@ -30,8 +30,9 @@ PlumbingService.append("longitude", "69.6689201");
 PlumbingService.append("category_id", "240");
 
 
+
 /* function for fetching Category  */
-async function get_Api_Category() {
+export const get_Api_Category = async () => {
 
     var requestOptions = {
         method: 'POST',
@@ -39,15 +40,14 @@ async function get_Api_Category() {
         redirect: 'follow'
     };
 
-    fetch("https://edemand.wrteam.me/api/v1/get_categories", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
+   const response = await fetch("https://edemand.wrteam.me/api/v1/get_categories", requestOptions)
+   const result = await response.json();
+   console.log(result)
+   return result;
 }
 
 /*  function for fetching Home Services */
-async function get_categories_home() {
+export const get_categories_home = async () => {
 
     var requestOptions = {
         method: 'POST',
@@ -55,10 +55,10 @@ async function get_categories_home() {
         redirect: 'follow'
     };
 
-    fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    const response = await fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
+    const result = await response.json();
+    console.log(result)
+    return result;
 }
 
 
@@ -71,10 +71,10 @@ async function get_categories_laundry() {
         redirect: 'follow'
     };
 
-    fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    const response = await fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
+    const result = await response.json();
+    console.log(result)
+    return result;
 }
 
 
@@ -87,10 +87,10 @@ async function get_categories_plumbing() {
         redirect: 'follow'
     };
 
-    fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    const response = await fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
+    const result = await response.json();
+    console.log(result)
+    return result;
 }
 
 
@@ -103,21 +103,18 @@ async function get_categories_car() {
         redirect: 'follow'
     };
 
-    fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    const response = await fetch("https://edemand.wrteam.me/api/v1/get_sub_categories", requestOptions)
+    const result = await response.json();
+    console.log(result)
+    return result;
 }
 
+
+
+
 /*Exporting all Functions for reuseing in differnt components*/
-export default { get_Api_Category, 
-            get_categories_home,
-            get_categories_laundry,
-            get_categories_plumbing, 
-            get_categories_car
-        }
+export default { get_categories_home, get_Api_Category }
 
 /** This code is for fetchig datas from api
  * api: https://edemand.wrteam.me/api/v1/
- * Code created br Dhruv
  */

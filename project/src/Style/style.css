@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 /* Home Style */
 /*Image Slider on Home Page*/
 .home-image-slider {
@@ -115,3 +118,170 @@ input {
 } */
   
 /* -----------------------------------------------------------------  */
+/*All - Categorys*/
+.category{
+  top: 30px;
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+  height: 440px;
+  background-color: white;
+  padding: 10px 100px;
+}
+
+.heading{
+  font-size: 24pt;
+  justify-content: flex-start;
+  display: flex;
+}
+
+.data-column{
+  width: 250px;
+  overflow: hidden;
+}
+.data-row{
+  width: 250px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.api-data{
+  overflow: hidden;
+  display: flex;
+  margin-top: 2%;
+}
+
+.data-column img{
+  height: 200px;
+  width: 200px;
+  position: relative;
+  /* left: 2%; left: 8% if you want to update wid
+  background-color: blue;
+  margin-top: 10px;
+  margin-left: 10px; */
+  color: white;
+  border-radius: 10px;
+}
+.data-row h3{
+  margin-top: 10px;
+  color: #2560fc;
+  font-weight: 700;
+}
+.slide-button{
+  margin-left: 50%;
+  margin-top: 3%;
+  position: static;
+}
+
+
+/* Category Slider
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+
+/* Home - Services */
+.mysection2{
+  top: 50px;
+  left: 0;
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-color: white;
+  padding: 10px 100px;
+  /* padding-bottom: 50px; */
+}
+
+.heading{
+  font-size: 24pt;
+}
+.left{
+  top: -130px;
+  left: -20px;
+  position: relative;
+  width: fit-content;
+}
+
+.right{
+  left: 100%;
+  top: -156px;
+  position: relative;
+  width: fit-content;
+}
+
+.home-row{
+  /* width: 60%; */
+  margin: -9px 11px;
+      text-align: center;
+  padding-bottom: 10px;
+}
+
+.home-column img{
+  height: 100%;
+  width: 96%;
+  left: 8%;
+  position: relative;
+  /* background-color: blue; */
+  color: white;
+  margin-top: 10px;
+  filter: brightness(0.7);
+  border-radius: 10px;
+  margin: 10px 30px;
+  border: 2px solid black;
+}
+
+.home-column{
+  height: 300px;
+  width: 323px;
+}
+.allimageshome{
+  margin-left: -61px;
+  overflow: hidden;
+  display: flex;
+  margin-top: 3%;
+}
+.text-img{
+  margin-top: -40px;
+  left: 50px;
+  color: white;
+  position: relative;
+  font-weight: 600;
+}
