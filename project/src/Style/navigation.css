@@ -55,8 +55,8 @@ nav{
 }
 
 #sing-in{
-    right: 100px;
-    top: 10px;
+    right: 5%;
+        top: 10px;
     position: absolute;
     align-items: middle;
     justify-items: center;
@@ -65,7 +65,7 @@ nav{
 #logo{
     /* background-color: white; */
     font-size: 16pt;
-    left: 5%;
+    left: 3%;
     top: 10px;
     position: absolute;
     margin: 0;

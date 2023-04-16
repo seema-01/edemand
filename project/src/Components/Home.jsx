@@ -25,11 +25,11 @@ const Home = () => {
             </div>
 
 
-            <div className="myinp">
+            <div className="home-location">
                 <span className="input-group-text" id=""><GrLocation /></span>
                 <input type="text" id='myinp1' className="form-control" placeholder='Enter Zip code' />
                 <input type="text" className="form-control" placeholder='Enter Location name,Area name etc...' />
-                <button className='mybtn'> <FaSearch className='pr-2' />Search</button>
+                <button className='mybtn'> <FaSearch />Search</button> 
             </div>
         </div>
     )
