@@ -1,0 +1,143 @@
+/* Home Style */
+/*Image Slider on Home Page*/
+.home-image-slider {
+    height: 600px;
+    width: 90%;
+    position: relative;
+    top: 80px;
+    left: 5%;
+    border-radius: 10px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-image-slider img {
+    width: 100%;
+    height: auto;
+}
+
+/*Input Group*/
+
+input {
+    width: 600px;
+    height: 40px;}
+
+.input-group {
+    width: 70%;
+    height: 40px;
+    left: 15%;
+    top: -5%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
+/* 
+.myinp #myinp1{
+    border-right: 1px solid black;
+}
+
+.input-group-text {
+
+    height: 40px;
+    display: flex;
+   
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 16pt;
+    font-weight: 400;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem
+}
+
+form-control {
+    width: 100%;
+    font-size: 24pt;
+    line-height: 1.5;
+
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+
+.location {
+    z-index: 1000;
+    position: absolute;
+}
+
+.mybtn{
+    left: 734px;
+}
+
+.myinp{
+    margin-top: -140px;
+    z-index: 1000;
+    margin-left: 50px;
+    margin-bottom: 40px;
+}
+
+.myinp button{
+    background-color: #2560Fc;
+    color: #ffffff;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+     top: 1px; 
+} */
+
+/* --------------------------------------------------------------- */
+
+/* Style for Image Swiper from swiper.js*/
+#app {
+    height: 100%;
+  }
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+  
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+/* -----------------------------------------------------------------  */

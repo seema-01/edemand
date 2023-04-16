@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
-import api from './API/Fetch_data_Api';
+// import api from './API/Fetch_data_Api';
 import './App.css';
+import Home from './Components/Home';
 import Navigation from './Components/Navigation';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
  
@@ -24,8 +25,12 @@ function App() {
 */  
   return (
     <div className="App">
-      <Navigation />
-      <h2>Hello</h2>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
