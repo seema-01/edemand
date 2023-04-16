@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React from 'react'
 import '../Style/navigation.css'
 import {FaUserCircle} from 'react-icons/fa';
-{/* <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">   */}
+import Box from '@mui/material/Box';
 
 
 const Navigation = () => {
@@ -12,6 +12,10 @@ const Navigation = () => {
   // })
 
   return (
+    <Box 
+    sx={{
+      // backgroundColor: 'primary.dark'
+    }}>
     <div>
       <div className="nav">
           <ul id="logo"><a className='logo-edemand-link absolute' href="/profile">eDemand</a></ul>
@@ -25,6 +29,7 @@ const Navigation = () => {
         </nav>
       </div>
     </div>
+    </Box>
   )
 }
 
