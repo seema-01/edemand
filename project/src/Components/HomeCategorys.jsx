@@ -38,21 +38,32 @@ const HomeCategorys = () => {
                 <div>
                     <h1 className='heading'>Creative Category</h1>
                     <hr />
-                    <div className="api-data">
-                        {
-                            image.map((response) => {
-                                return (
-                                    <div className="data-row" key={response.id}>
-                                        <div className="data-column">
-                                            <img src={response.category_image} height={"300px"} width={"100%"} alt="" />
+                    <Swiper
+                        slidesPerView={5}
+                        spaceBetween={10}
+                        freeMode={true}
+                        navigation={true} 
+                        modules={[FreeMode]}
+                        className="mySwiper"
+                    >
+                        <div className="api-data">
+                            {
+                                image.map((response) => {
+                                    return (
+                                            <SwiperSlide>
+                                        <div className="data-row" key={response.id}>
+                                            <div className="data-column">
+                                                <img src={response.category_image} height={"300px"} width={"100%"} alt="" />
+                                            </div>
+                                            <NavLink to='' >{response.name}</NavLink>
+                                            <p>({response.admin_commission}+) provider</p>
                                         </div>
-                                        <NavLink to='' >{response.name}</NavLink>
-                                        <p>({response.admin_commission}+) provider</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                                            </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </div>
+                        </Swiper>
                 </div>
             </div>
 
@@ -61,18 +72,14 @@ const HomeCategorys = () => {
             <div className="category">
                 <div>
                     <h1 className='heading'>Home Servies</h1>
+                    <hr />
+                    <br />
                     <Swiper
                         slidesPerView={4}
-                        spaceBetween={100}
+                        // spaceBetween={100}
                         freeMode={true}
-                        pagination={{
-                            type: "progressbar",
-                            clickable: true,                            
-                        }}
-                        modules={[FreeMode, Pagination]}
-                        className="mySwiper"
+                        navigation={true} modules={[Navigation]} className="mySwiper"
                     >
-
                         <div className="api-data">
                             {
                                 homeService.map((response) => {
