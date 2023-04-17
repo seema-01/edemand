@@ -220,12 +220,14 @@ input {
   text-decoration: none;
   position: relative;
 }
-.text-img a{
+.text-img > a{
   font-weight: 600;
   color: white;
   text-decoration: none;
 }
-
+/* .category a{
+  color: #000;
+} */
 .right-btn{
   left: 96%;
   top: -195px;

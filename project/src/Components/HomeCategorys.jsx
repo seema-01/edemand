@@ -55,6 +55,10 @@ const HomeCategorys = () => {
     }, [])
 
 
+    const anchorestyle = {
+        color: "black"
+    }
+
     return (
         <div >
             <div className='category'>
@@ -77,7 +81,7 @@ const HomeCategorys = () => {
                                                 <div className="data-column">
                                                     <img src={response.category_image} height={"300px"} width={"100%"} alt="" />
                                                 </div>
-                                                <NavLink to='' >{response.name}</NavLink>
+                                                <NavLink to='' style={anchorestyle} >{response.name}</NavLink>
                                                 <p>({response.admin_commission}+) provider</p>
                                             </div>
                                         </SwiperSlide>
