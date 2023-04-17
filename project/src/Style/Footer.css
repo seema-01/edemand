@@ -1,0 +1,188 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+.footer{
+    background-color: #343F53;
+    width: 100%;
+    height: 500px;
+    padding: 10px 100px;
+    color: white;
+    bottom: 0;
+    display: flex;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+hr{
+    margin-top: 1.5rem;
+}
+h2{
+    margin-top: 1.75rem;
+    color: white;
+
+}
+
+.leftsection{
+    margin-top: 1.75rem;
+}
+
+.useful-cat{
+    width: 40%;
+    text-align: start;
+}
+
+.middle-sect{
+    left: 240px;
+    top: -413px;
+    position: relative;
+    height: 90%;
+    margin-top: 8.75rem;
+}
+
+.last-sect{
+    left: 500px;
+    top: -870px;
+    position: relative;
+    height: 90%;
+    /* margin-top: .75rem; 
+}
+
+.quicklinkes{
+    width: 20%;
+    position: relative;
+    height: 90%;
+    margin-left: 50%;
+    margin-top: -34%;
+    text-align: start;
+
+}
+
+.qlinks{
+    position: relative;
+    height: 90%;
+    margin-top: 1.75rem;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+.footer {
+    background-color: #343F53;
+    width: 100%;
+    height: 600px;
+    padding: 10px 100px;
+    color: white;
+    bottom: 0;
+    display: flex;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.useful-cat {
+    width: 40%;
+    height: 90%;
+    text-align: start;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.leftsection {
+    margin-top: 2.5rem;
+}
+
+.middle-sect {
+    margin-left: 36%;
+    height: 90%;
+    /* margin-top: -8.5rem; */
+    margin-top: -44%;
+}
+
+.last-sect {
+    margin-left: 70%;
+    height: 90%;
+    width: max-content;
+    margin-top: -80%;
+}
+
+
+.quicklinkes {
+    width: 20%;
+    position: relative;
+    height: 90%;
+    margin-left: 1rem;
+}
+
+.qlinks {
+    position: relative;
+    height: 90%;
+    margin-top: 10%;
+    text-align: start;
+}
+
+.keepup {
+    width: 25%;
+    height: 90%;
+    position: relative;
+    margin-left: 1rem;
+}
+
+.extra input {
+    width: 400px;
+    background-color: #343F53;
+    border: 1px solid #f2f1f6;
+    border-radius: 8px;
+}
+
+.btns button {
+    padding: 30 10;
+}
+
+/* .footer hr{
+    padding: 10 100;
+} */
+
+#sendbtn {
+    background-color: #2560Fc;
+    height: 35px;
+    width: 40px;
+    padding-left: 10px;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+.heading,
+.about {
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 1.50rem;
+    width: max-content;
+}
+
+hr {
+    margin-top: 1.50rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#sendbtn {
+    margin-left: 10px;
+    top: -24px;
+    left: 190px;
+    position: relative;
+    margin-top: -4rem;
+}
+
+.social-icons {
+    height: 30px;
+    width: 30px;
+    float: left;
+}
+.keepup > h2{
+    font-style: normal;
+}

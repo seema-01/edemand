@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Pages/Home'
 import Navigation from './Components/Navigation';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './Components/Footer';
 
 function App() {
  
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home /> }></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
