@@ -1,7 +1,6 @@
 // import api from './API/Fetch_data_Api';
 import './App.css';
-import HomeCategorys from './Components/HomeCategorys';
-import Home from './Components/HomeSlider';
+import Home from './Pages/Home'
 import Navigation from './Components/Navigation';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -29,7 +28,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path='/' element={<><Home /> <HomeCategorys /></>}></Route>
+          <Route path='/' element={<Home /> }></Route>
         </Routes>
       </BrowserRouter>
     </div>

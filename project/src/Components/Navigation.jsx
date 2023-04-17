@@ -18,7 +18,7 @@ const Navigation = () => {
     }}>
     <div>
       <div className="nav">
-          <ul id="logo"><a className='logo-edemand-link absolute' href="/profile">eDemand</a></ul>
+          <ul id="logo"><a className='logo-edemand-link absolute' href="/">eDemand</a></ul>
         <nav>
             <ul className='my-4 active' ><NavLink  to="/"  style={({isActive}) => ({color : isActive ? "blue" : "black"})}>HOME</NavLink></ul>
             <ul className='my-4' ><NavLink  to="/about" style={({isActive}) => ({color : isActive ? "blue" : "black"})}>ABOUT US</NavLink></ul>

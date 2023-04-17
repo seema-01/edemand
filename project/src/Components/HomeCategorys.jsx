@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import '../Style/style.css'
 // Import Swiper styles
 import { FreeMode } from "swiper";
+import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -38,19 +39,19 @@ const HomeCategorys = () => {
                 <div>
                     <h1 className='heading'>Creative Category</h1>
                     <hr />
+                    <br />
                     <Swiper
                         slidesPerView={5}
-                        spaceBetween={10}
+                        // spaceBetween={100}
                         freeMode={true}
-                        navigation={true} 
-                        modules={[FreeMode]}
-                        className="mySwiper"
+                        // navigation={true} modules={[Navigation]} className="mySwiper"
                     >
+
                         <div className="api-data">
                             {
                                 image.map((response) => {
                                     return (
-                                            <SwiperSlide>
+                                        <SwiperSlide>
                                         <div className="data-row" key={response.id}>
                                             <div className="data-column">
                                                 <img src={response.category_image} height={"300px"} width={"100%"} alt="" />
@@ -58,15 +59,15 @@ const HomeCategorys = () => {
                                             <NavLink to='' >{response.name}</NavLink>
                                             <p>({response.admin_commission}+) provider</p>
                                         </div>
-                                            </SwiperSlide>
+                                        </SwiperSlide>
                                     )
                                 })
                             }
                         </div>
-                        </Swiper>
+                    </Swiper>
                 </div>
             </div>
-
+/*--------------------------------------------------------------------------------------------------- */
             <br />
 
             <div className="category">
@@ -74,17 +75,12 @@ const HomeCategorys = () => {
                     <h1 className='heading'>Home Servies</h1>
                     <hr />
                     <br />
-                    <Swiper
-                        slidesPerView={4}
-                        // spaceBetween={100}
-                        freeMode={true}
-                        navigation={true} modules={[Navigation]} className="mySwiper"
-                    >
+                   
                         <div className="api-data">
                             {
                                 homeService.map((response) => {
                                     return (
-                                        <SwiperSlide>
+                                        
                                             <div className="home-row" key={response.id}>
                                                 <div className="home-column">
                                                     <img src={response.category_image} height={"300px"} width={"100%"} alt="" />
@@ -93,12 +89,12 @@ const HomeCategorys = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </SwiperSlide>
+                                        
                                     )
                                 })
                             }
                         </div>
-                    </Swiper>
+                    
                 </div>
             </div>
 
