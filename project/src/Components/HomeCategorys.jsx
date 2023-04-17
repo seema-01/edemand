@@ -18,9 +18,10 @@ import { Pagination, Navigation } from "swiper";
 
 const HomeCategorys = () => {
     const [image, setImage] = useState([])
+    const [carService,setCarService] = useState([])
     const [homeService, setHomeService] = useState([])
     const [laundryService, setLaundryService] = useState([])
-    const [carService,setCarService] = useState([])
+    const [plumbingService,setPlumbingService] = useState([])
 
     useEffect(() => {
         api.get_Api_Category()
@@ -46,6 +47,13 @@ const HomeCategorys = () => {
             .then((response) => setCarService(response.data))
             .catch(error => console.log(error));
     }, [])
+
+    useEffect(() => {
+        api.get_categories_plumbing()
+            .then((response) => setPlumbingService(response.data))
+            .catch(error => console.log(error));
+    }, [])
+
 
     return (
         <div >
@@ -184,6 +192,45 @@ const HomeCategorys = () => {
                         }
                     </div>
                         <div className="right-btn">
+                            <button id='category-btn'><BiChevronRight  className='category-icon-style'/></button>
+                        </div>
+                        <div className="left-btn">
+                            <button id='category-btn'>< BiChevronLeft className='category-icon-style' /></button>
+                        </div>
+                </div>
+            </div>
+
+            <br />
+              {/* ---------------------------------------------------------------------------------------  */}
+
+              <div className="category">
+                <div>
+                    <h1 className='heading'>Plumbing Servies</h1>
+                    <hr />
+
+                    <div className="api-data">
+                        {
+                            plumbingService.map((response) => {
+                                return (
+                                    <div className="home-row" key={response.id}>
+                                        <div className="home-column">
+                                            <img src={response.category_image} height={"200px"} width={"100%"} alt="" />
+                                            <div className="text-img">
+                                                <NavLink to=''>{response.name}</NavLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="right-btn">
+                            <button id='bt1' className='mt-4'><BiChevronRight className='mt-5' /></button>
+                        </div>
+                        <div className="left-btn">
+                            <button id='bt2' className='mt-4'>< BiChevronLeft className='mt-5' /></button>
+                        </div>
+                    </div>
+                    <div className="right-btn">
                             <button id='category-btn'><BiChevronRight  className='category-icon-style'/></button>
                         </div>
                         <div className="left-btn">
