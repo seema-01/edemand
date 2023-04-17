@@ -4,6 +4,9 @@ import Home from './Pages/Home'
 import Navigation from './Components/Navigation';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer';
+import './Responsive/responsive.css'
+import './Style/style.css'
+import Category from './Pages/Category';
 
 function App() {
  
@@ -30,6 +33,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path='/' element={<Home /> }></Route>
+          <Route path='/category' element={<Category /> }></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -266,3 +266,21 @@ input {
 .category-icon-style{
   margin-top: 1.25rem;
 }
+
+
+
+/*===============================================*/
+/*About*/
+
+.heading-address{
+  text-align: start;
+  margin-left: 100px;
+  margin-top: 15px;
+  margin-bottom: -20px;
+}
+
+.heading-name{
+  font-size: 24pt;
+  margin-top: 12px;
+  padding: 0;
+}

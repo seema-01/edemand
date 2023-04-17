@@ -3,7 +3,7 @@ import demo1 from '../Images/demo1.jpg'
 import demo2 from '../Images/demo2.jpg'
 import { FaSearch } from 'react-icons/fa';
 import { GrLocation } from 'react-icons/gr'
-import '../Style/style.css'
+// import '../Style/style.css'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles

@@ -1,0 +1,61 @@
+/*Tablet screen*/
+@media screen and (min-width:1000px) and (max-width:1400px) {
+    body{
+        background-color: aqua;
+        max-width: max-content;
+    }
+    .footer{
+        width: 80%;
+        height: max-content;
+    }
+    .middle-sect{
+        margin-top: -60%;
+    }
+    .lase-sect{
+        margin-top: -62%;
+    }
+    .data-row{
+        width: 200px;
+    }
+    .home-column{
+        width: 200px;
+    }
+    #myinp1{
+        width: 200px;
+    }
+    .form-control{
+        width: 200px;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:1000px){
+    body{
+        background-color: red;
+        max-width: max-content;
+    }
+    nav{
+        display: hidden;
+    }
+    .nav{
+         display: hidden;
+    }
+    .footer{
+        width: 70%;
+        overflow: hidden;
+    }
+    #myinp1{
+        width: auto;
+    }
+    .form-control{
+        width: auto;
+    }
+    #myinp1{
+        width: auto;
+    }
+    .form-control{
+        width: auto;
+    }
+    .home-image-slider{
+        height: 340px;
+    }
+}

@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-// import '../Style/style.css'
-// Import Swiper styles
+
 import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
