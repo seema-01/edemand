@@ -58,7 +58,7 @@ input {
     background-color: #2560Fc;
     color: #ffffff;
     border-radius: 10px;
-    height: 34px;
+    height: 35px;
     margin-left: -5%;
     width: 120px;
 } 
@@ -128,7 +128,7 @@ input {
   top: 30px;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 440px;
   padding-left: 5%;
   padding-right: 5%;
@@ -183,16 +183,12 @@ input {
 
 /* Home - Services */
 
-.heading{
-  font-size: 24pt;
-}
-
 .home-row{
   /* width: 60%; */
   margin: -9px 11px;
-  text-align: center;
-  padding-bottom: 10px;
-}
+      text-align: center;
+      padding-bottom: 27px;
+    }
 
 .home-column img{
   height: 100%;
@@ -210,10 +206,10 @@ input {
 
 .home-column{
   height: 300px;
-  width: 323px;
+  width: 255px;
 }
-.allimageshome{
-  /* margin-left: -61px; */
+.api-data{
+  margin-left: -61px;
   overflow: hidden;
   display: flex;
   margin-top: 3%;
@@ -221,7 +217,50 @@ input {
 .text-img{
   margin-top: -40px;
   left: 50px;
-  color: white;
+  text-decoration: none;
   position: relative;
+}
+.text-img a{
   font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.right-btn{
+  left: 96%;
+  top: -195px;
+  z-index: 1000;
+  position: relative;
+  width: max-content;
+  color: white;
+  font-size: 30px;
+  background-color: #e9ecef;
+  color: black;
+  border-radius: 6px;
+  margin-left: 32px;
+  height: 100px;
+}
+.right-btn:hover,.left-btn:hover{
+  cursor: pointer;
+}
+.left-btn{
+  left: 1.2%;
+  z-index: 1000;
+  position: relative;
+  width: max-content;
+  color: white;
+  font-size: 30px;
+  background-color: #e9ecef;
+  color: black;
+  border-radius: 6px;
+  margin-left: -26px;
+  height: 100px;
+   margin-top: -21%;
+}
+#category-btn{
+  margin-top: 1rem;
+  border: none;
+}
+.category-icon-style{
+  margin-top: 1.25rem;
 }

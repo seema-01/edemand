@@ -113,7 +113,7 @@ async function get_categories_car() {
 
 
 /*Exporting all Functions for reuseing in differnt components*/
-export default { get_categories_home, get_Api_Category }
+export default { get_categories_home, get_Api_Category,get_categories_laundry,get_categories_car }
 
 /** This code is for fetchig datas from api
  * api: https://edemand.wrteam.me/api/v1/
