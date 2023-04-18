@@ -1,61 +1,225 @@
+/*========================== Home Page =====================================*/
 /*Tablet screen*/
 @media screen and (min-width:1000px) and (max-width:1400px) {
-    body{
+    /* body - tablet - screen*/
+    
+    body {
+        max-width: 82vh;
+        overflow-x: hidden;
         background-color: aqua;
         max-width: max-content;
     }
-    .footer{
-        width: 80%;
-        height: max-content;
+
+    /*Navigation - tablet - screen*/
+    .slide-navigation .burger-menu {
+        display: block;
+        visibility: visible;
+        position: static;
     }
-    .middle-sect{
-        margin-top: -60%;
+
+    .nav nav ul a {
+        display: none;
     }
-    .lase-sect{
+
+    .nav {
+        height: 50px;
+        display: block;
+        visibility: visible;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    #logo{
+        margin-left: 10px;
+    }
+    /*Footer - tablet - screen*/
+
+    .footer {
+        /* width: 60vh; */
+        display: block;
+        width: auto;
+        height: 700px;
+        overflow: hidden;
+    }
+
+    #myinp1 {
+        width: 200px;
+    }
+
+    .middle-sect {
+        margin-top: -50%;
+    }
+
+    .lase-sect {
         margin-top: -62%;
     }
-    .data-row{
+
+    .home-image-slider {
+        height: 300px;
+    }
+
+    .useful-cat {
+        width: auto;
+        height: auto;
+        /* position: absolute; */
+        /* margin-bottom: auto; */
+    }
+
+    .middle-sect {
+        margin-top: -26%;
+        margin-left: 30%; 
+        position: absolute;
+    }
+
+    .last-sect {
+        margin-top: -26%;
+        margin-left: 68%;
+        position: absolute;
+    }
+
+    .quicklinkes {
+        display: none;
+    }
+
+    .keepup {
+        width: 80%;
+        margin: 0;
+    }
+    .follow-us{
+        padding-top: 50px;
+    }
+    #sendbtn{
+        display: none;
+    }
+    .extra .pc-heading{
+        display: none;
+    }
+    
+    .extra .mobile-heading{
+        display: block;
+    }
+
+    .extra input{
+       left: 0;
+       position: absolute;
+       width: 100%;
+    }
+    /* page - section - tablet - screen */
+
+    .data-row {
+        width: 170px;
+    }
+
+    .data-column img{
+        width: auto;
+    }
+
+    /* .data-column{
+        width: auto;
+    } */
+
+    .home-column {
+        height: 222px;
         width: 200px;
     }
-    .home-column{
+
+    .home-column img{
+        height: 40%;
+        width: 40%;
+    }
+
+    .home-row{
+        width: 200px;
+        margin: -9px 6px;
+    }
+    
+    .home-column img{
+        height: 50%;
+        width: 50%;
+    }
+
+    .form-control {
         width: 200px;
     }
-    #myinp1{
-        width: 200px;
+
+    .home-location input{
+        width: 360px;
     }
-    .form-control{
-        width: 200px;
+    
+    .api-data{
+        display: block;
+        margin-left: -48px;
     }
+
+    .left-btn,.right-btn{
+        visibility: hidden;
+    }
+    .burger-menu {
+        display: block;
+    }
+    
 }
 
-@media screen and (min-width:600px) and (max-width:1000px){
-    body{
-        background-color: red;
-        max-width: max-content;
+/* ----------------------------------------------------------------- */
+/*Mobile - Screen*/
+@media screen and (min-width:600px) and (max-width:1000px) {
+    * {
+        max-width: 60vh;
     }
-    nav{
+
+    body {
+        background-color: red;
+        max-width: 60vh;
+        overflow-x: hidden;
+    }
+
+    nav {
+        max-width: 20vh;
         display: hidden;
     }
-    .nav{
-         display: hidden;
+
+    .nav {
+        display: hidden;
     }
-    .footer{
+
+    .footer {
         width: 70%;
         overflow: hidden;
     }
-    #myinp1{
+
+    #myinp1 {
         width: auto;
     }
-    .form-control{
+
+    .form-control {
         width: auto;
     }
-    #myinp1{
+
+    #myinp1 {
         width: auto;
     }
-    .form-control{
+
+    .form-control {
         width: auto;
     }
-    .home-image-slider{
+
+    .home-image-slider {
         height: 340px;
+    }
+
+    .slide-navigation .burger-menu {
+        display: block;
+        visibility: visible;
+        position: absolute;
+    }
+
+    .nav nav ul a {
+        display: none;
+    }
+
+    .nav {
+        height: 50px;
     }
 }

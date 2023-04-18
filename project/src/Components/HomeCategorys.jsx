@@ -66,7 +66,7 @@ const HomeCategorys = () => {
                     <hr />
                     <br />
                     <Swiper
-                        slidesPerView={5}
+                        slidesPerView={4}
                         freeMode={true}
                     // navigation={true} modules={[Navigation]} className="mySwiper"
                     >
@@ -93,34 +93,33 @@ const HomeCategorys = () => {
             </div>
 /*--------------------------------------------------------------------------------------------------- */
             <br />
-
             <div className="category">
                 <div>
                     <h1 className='heading'>Home Servies</h1>
                     <hr />
-                    <Swiper
-                        slidesPerView={4}
-                        freeMode={true}
-                    >
 
-                        <div className="api-data">
-                            {
-                                homeService.map((response) => {
-                                    return (
-                                        <div className="home-row" key={response.id}>
-                                            <div className="home-column">
-                                                <img src={response.category_image} height={"200px"} width={"100%"} alt="" />
-                                                <div className="text-img">
-                                                    <NavLink to=''>{response.name}</NavLink>
-                                                </div>
+                    <div className="api-data">
+                        {
+                            homeService.map((response) => {
+                                return (
+                                    <div className="home-row" key={response.id}>
+                                        <div className="home-column">
+                                            <img src={response.category_image} height={"200px"} width={"100%"} alt="" />
+                                            <div className="text-img">
+                                                <NavLink to=''>{response.name}</NavLink>
                                             </div>
                                         </div>
-                                    )
-                                })
-                            }
-                            <br />
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="right-btn">
+                            <button id='bt1' className='mt-4'><BiChevronRight className='mt-5' /></button>
                         </div>
-                    </Swiper>
+                        <div className="left-btn">
+                            <button id='bt2' className='mt-4'>< BiChevronLeft className='mt-5' /></button>
+                        </div>
+                    </div>
                     <div className="right-btn">
                             <button id='category-btn'><BiChevronRight  className='category-icon-style'/></button>
                         </div>
@@ -140,7 +139,6 @@ const HomeCategorys = () => {
 
                     <div className="api-data">
                         {
-
                             laundryService.map((response) => {
                                 return (
                                     <div className="home-row" key={response.id}>
@@ -172,7 +170,6 @@ const HomeCategorys = () => {
 
             <br />
               {/* ---------------------------------------------------------------------------------------  */}
-
               <div className="category">
                 <div>
                     <h1 className='heading'>Car Servies</h1>
@@ -193,8 +190,14 @@ const HomeCategorys = () => {
                                 )
                             })
                         }
-                    </div>
                         <div className="right-btn">
+                            <button id='bt1' className='mt-4'><BiChevronRight className='mt-5' /></button>
+                        </div>
+                        <div className="left-btn">
+                            <button id='bt2' className='mt-4'>< BiChevronLeft className='mt-5' /></button>
+                        </div>
+                    </div>
+                    <div className="right-btn">
                             <button id='category-btn'><BiChevronRight  className='category-icon-style'/></button>
                         </div>
                         <div className="left-btn">

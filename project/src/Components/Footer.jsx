@@ -72,12 +72,13 @@ const Footer = () => {
           <hr className='mt-5' />
 
           <div className="extra">
-            <h2 className='mt-10'>Get the Latest Subscription Offers & <br /> news from  eDemand</h2>
+            <h2 className='pc-heading'>Get the Latest Subscription Offers & <br /> news from  eDemand</h2>
+            <h2 className='mobile-heading'>Get the Latest Subscription Offers & news from  eDemand</h2>
            
-            <input type="text" name="" id="" className='mt-6 pl-2' placeholder='Enter Email Address' />
-            <button id='sendbtn' className='ml-9 left-[320px] absolute mt-7'><BsSend className='h-5 w-5'/></button>
+            <input type="text" name="" id="" className='' placeholder='Enter Email Address' />
+            <button id='sendbtn'><BsSend className='h-5 w-5'/></button>
             
-            <h2 className='mt-10'>Follow Us</h2>
+            <h2 className='follow-us'>Follow Us</h2>
             <hr className='mt-5' />
             <div className="btns mt-10 flex items-center justify-start space-x-2">
 
@@ -86,12 +87,11 @@ const Footer = () => {
               <a href="https://www.facebook.com/"><FaFacebookF className='social-icons'/></a>
               <a href="https://www.twitter.com/"><FaTwitter className='social-icons'/></a>
               <a href="https://www.linkedin.com/"><FaLinkedin className='social-icons'/></a>
-
             </div>
           </div>
+          <br />
+          <br />
         </div>
-       <hr />
-       
       </div>
     </div>
   )
