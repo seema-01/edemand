@@ -305,7 +305,7 @@
         max-height: 120px;
         max-height: 200px;
     }
-    
+
     .home-column {
         height: 222px;
         width: 200px;
@@ -354,5 +354,10 @@
 
     .text-img{
         margin-top: -54px;
+    }
+
+    /* Category Page*/
+    .heading-name{
+        margin-left: -58px;
     }
 }
