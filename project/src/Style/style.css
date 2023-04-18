@@ -143,8 +143,18 @@ input {
 
 .data-column{
   width: 250px;
+  background-size: cover;
   overflow: hidden;
+  height: auto;
+  margin-left: 5%;
+  box-sizing: border-box; /* include padding and border in the height */
+  
 }
+
+.data-row a{
+  text-decoration: none;
+}
+
 .data-row{
   width: 250px;
   border: 2px solid black;
@@ -162,6 +172,7 @@ input {
 .data-column img{
   height: 200px;
   width: 200px;
+  background-size: cover;
   position: relative;
   /* left: 2%; left: 8% if you want to update wid
   background-color: blue;
@@ -267,8 +278,6 @@ input {
 .category-icon-style{
   margin-top: 1.25rem;
 }
-
-
 
 /*===============================================*/
 /*About*/

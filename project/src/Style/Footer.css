@@ -59,7 +59,7 @@ body {
 }
 
 .extra input {
-    width: 400px;
+    width: 380px;
     background-color: #343F53;
     border: 1px solid #f2f1f6;
     border-radius: 8px;
@@ -103,8 +103,9 @@ body {
 
 #sendbtn {
     margin-left: 10px;
-    top: -24px;
-    left: 190px;
+    top: 228px;
+    left: 336px;
+    position: absolute;
     margin-top: -4rem;
 }
 

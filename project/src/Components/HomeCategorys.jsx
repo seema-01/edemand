@@ -66,7 +66,7 @@ const HomeCategorys = () => {
                     <hr />
                     <br />
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={5}
                         freeMode={true}
                     // navigation={true} modules={[Navigation]} className="mySwiper"
                     >

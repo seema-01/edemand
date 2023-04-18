@@ -2,7 +2,7 @@
 /*Tablet screen*/
 @media screen and (min-width:1000px) and (max-width:1400px) {
     /* body - tablet - screen*/
-    
+
     body {
         max-width: 82vh;
         overflow-x: hidden;
@@ -31,9 +31,10 @@
         z-index: 100;
     }
 
-    #logo{
+    #logo {
         margin-left: 10px;
     }
+
     /*Footer - tablet - screen*/
 
     .footer {
@@ -69,7 +70,7 @@
 
     .middle-sect {
         margin-top: -26%;
-        margin-left: 30%; 
+        margin-left: 30%;
         position: absolute;
     }
 
@@ -87,33 +88,37 @@
         width: 80%;
         margin: 0;
     }
-    .follow-us{
+
+    .follow-us {
         padding-top: 50px;
     }
-    #sendbtn{
+
+    #sendbtn {
         display: none;
     }
-    .extra .pc-heading{
+
+    .extra .pc-heading {
         display: none;
     }
-    
-    .extra .mobile-heading{
+
+    .extra .mobile-heading {
         display: block;
     }
 
-    .extra input{
-       left: 0;
-       position: absolute;
-       width: 100%;
+    .extra input {
+        left: 0;
+        position: absolute;
+        width: 100%;
     }
+
     /* page - section - tablet - screen */
 
     .data-row {
-        width: 170px;
+        max-width: 170px;
     }
 
-    .data-column img{
-        width: auto;
+    .data-column img {
+        max-width: 140px;
     }
 
     /* .data-column{
@@ -125,17 +130,17 @@
         width: 200px;
     }
 
-    .home-column img{
+    .home-column img {
         height: 40%;
         width: 40%;
     }
 
-    .home-row{
+    .home-row {
         width: 200px;
         margin: -9px 6px;
     }
-    
-    .home-column img{
+
+    .home-column img {
         height: 50%;
         width: 50%;
     }
@@ -144,82 +149,210 @@
         width: 200px;
     }
 
-    .home-location input{
+    .home-location input {
         width: 360px;
     }
-    
-    .api-data{
+
+    .api-data {
         display: block;
         margin-left: -48px;
     }
 
-    .left-btn,.right-btn{
+    .left-btn,
+    .right-btn {
         visibility: hidden;
     }
+
     .burger-menu {
         display: block;
     }
-    
+
 }
 
 /* ----------------------------------------------------------------- */
 /*Mobile - Screen*/
 @media screen and (min-width:600px) and (max-width:1000px) {
-    * {
-        max-width: 60vh;
-    }
+    /* body - tablet - screen*/
 
     body {
-        background-color: red;
-        max-width: 60vh;
+        max-width: 40vh;
         overflow-x: hidden;
+        max-width: max-content;
     }
 
-    nav {
-        max-width: 20vh;
-        display: hidden;
-    }
-
-    .nav {
-        display: hidden;
-    }
-
-    .footer {
-        width: 70%;
-        overflow: hidden;
-    }
-
-    #myinp1 {
-        width: auto;
-    }
-
-    .form-control {
-        width: auto;
-    }
-
-    #myinp1 {
-        width: auto;
-    }
-
-    .form-control {
-        width: auto;
-    }
-
-    .home-image-slider {
-        height: 340px;
-    }
-
-    .slide-navigation .burger-menu {
-        display: block;
-        visibility: visible;
-        position: absolute;
-    }
-
+    /*Navigation - tablet - screen*/
     .nav nav ul a {
         display: none;
     }
 
     .nav {
         height: 50px;
+        display: block;
+        visibility: visible;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    #logo {
+        margin-left: 10px;
+    }
+
+    /*Footer - tablet - screen*/
+
+    .footer {
+        /* width: 60vh; */
+        display: block;
+        width: auto;
+        height: 700px;
+        overflow: hidden;
+    }
+
+    #myinp1 {
+        width: 240px;
+    }
+
+    .home-location input {
+        width: 30%;
+    }
+
+    /* Footer - section - mobile */
+
+    .footer {
+        height: 800px;
+    }
+
+    .middle-sect {
+        margin-top: -50%;
+    }
+
+    .lase-sect {
+        margin-top: -62%;
+    }
+
+    .footer .useful-cat {
+        width: auto;
+        height: auto;
+        display: block;
+        /* position: absolute; */
+        /* margin-bottom: auto; */
+    }
+
+    .middle-sect {
+        margin-top: -39%;
+        margin-left: 48%;
+        position: absolute;
+    }
+
+    .last-sect {
+        margin-top: 42%;
+        margin-left: 1%;
+        position: absolute;
+        display: none;
+    }
+
+    .quicklinkes {
+        display: none;
+    }
+
+    .keepup {
+        width: 80%;
+        margin: 0;
+        margin-top: 10%;
+    }
+
+    .follow-us {
+        padding-top: 50px;
+    }
+
+    #sendbtn {
+        display: none;
+    }
+
+    .extra .pc-heading {
+        display: block;
+    }
+
+    .extra .mobile-heading {
+        display: none;
+    }
+
+    .extra input {
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    /* page - section - tablet - screen */
+
+    .home-location input {
+        width: auto;
+    }
+
+    .data-row {
+        max-width: 100px;
+        max-height: 174px;
+    }
+
+    .data-column img {
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .data-column {
+        width: auto;
+        max-height: 120px;
+        max-height: 200px;
+    }
+    
+    .home-column {
+        height: 222px;
+        width: 200px;
+    }
+
+    .home-column img {
+        height: 40%;
+        width: 40%;
+    }
+
+    .home-row {
+        width: 200px;
+        margin: -9px 6px;
+    }
+
+    .home-column img {
+        height: 50%;
+        width: 50%;
+    }
+
+    .api-data {
+        display: block;
+        margin-left: -48px;
+    }
+
+    .left-btn,
+    .right-btn {
+        visibility: hidden;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .category {
+        max-height: 320px;
+    }
+
+    .home-column {
+        max-height: 165px;
+    }
+
+    .home-column img {
+        height: 85%;
+    }
+
+    .text-img{
+        margin-top: -54px;
     }
 }
