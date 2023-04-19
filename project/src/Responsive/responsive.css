@@ -360,4 +360,383 @@
     .heading-name{
         margin-left: -58px;
     }
+    .heading-name{
+        margin-top: 20px;
+    }
+    .heading-address{
+        padding-top: 37px;
+        padding-bottom: 20px;
+    }
+    .heading-address a{
+        display: none;
+    }
+}
+
+
+/*Responsive - About PAge*/
+
+/* responsive for mobile device */
+@media only screen and (min-width:320px)and (max-width:480px){
+    .about-header{
+        width:100%;
+        height: 50px;
+        background: #F2F1F6;
+        padding:10px 10px;
+        margin-top: 0px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+       display:block;
+    }
+    .nav nav ul a{
+        display: none;
+    }
+    .about-header  a{
+        font-size: 12pt;
+    }
+    .about-section{
+        background-color: white;
+        display: block;
+        margin-top: -24px;
+    }
+    .about{
+        margin-left: 10px;
+        margin-top: -20px;
+        font-size: 12px;
+    }
+    .about-us-body h2{
+        display:block;
+        font-size: 12pt;
+    }
+    .about-us-body .about-img img{
+        height: 200px;
+        width:94%;
+        margin-left:12px;
+        border-radius: 20px;
+        display:block;
+     }
+     .about-img{
+         margin-top:20px;
+         display:block;
+     }
+     .about-details{
+        margin-top:10px;
+        margin-left: 20px;
+        width: 94%;
+        display: block;
+    }
+    .about-details h1{
+        font-size: 16pt;
+        font-weight: bold;
+        display: block;
+        font-family:  'Plus Jakarta Sans', sans-serif;
+    }
+    .about-details p{
+        margin-top: -20px;
+        font-size: 12pt;
+    }
+    .about-details .about-list{
+        font-size: 14pt;
+        width: 100%;
+        display:block;
+    }
+    .footer{
+        display: none;
+    }
+    
+}
+/* responsive for ipad and Tablet */
+@media only screen and (min-width:481px) and (max-width:768px){
+    .about-header{
+        width:100%;
+        height: 120px;
+        background: #F2F1F6;
+        padding:10px 10px;
+        margin-top:0px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding-left: 30px;
+        display:block;
+    }
+    
+    .about-header  a{
+        font-size: 12pt;
+    }
+    .about{
+        /* margin-top: -70px; */
+        /* margin-left: 100px; */
+        margin-left: 30px;
+        margin-top: -30px;
+        font-size: 12px;
+    }
+    .about-section{
+        background-color: white;
+        display: block;
+        margin-top: -62px;
+    }
+    .about-us-body h2{
+        display:block;
+        font-size: 16pt;
+    }
+    .about-us-body .about-img img{
+        height: 400px;
+        width:92%;
+        margin-left:12px;
+        border-radius: 20px;
+    }
+    .about-img{
+        margin-top:60px;
+        display:block;
+        padding-top: 30px;
+    }
+    .about-details{
+        margin-top:50px;
+        margin-left: 20px;
+        display: block;
+        max-width: 90%;
+    }
+    .about-details h1{
+        font-size: 16pt;
+        font-weight: bold;
+        display: block;
+        font-family:  'Plus Jakarta Sans', sans-serif;
+    }
+    .about-details p{
+        margin-top: 10px;
+        font-size: 12pt;
+    }
+    .about-details .about-list{
+        font-size: 14pt;
+        width: 100%;
+        display:block;
+        font-weight: bold;
+    }
+    .footer{
+        display: none;
+    } .heading-address{
+        padding-top: 37px;
+        padding-bottom: 20px;
+    }
+    .heading-address a{
+        display: none;
+    }
+}
+
+
+/* responsive for small screen and laptops */
+@media only screen and (min-width:769px) and (max-width:1024px){
+    .about-header{
+        width:100%;
+        height: 50px;
+        background: #F2F1F6;
+        padding:10px 10px;
+        margin-top:0px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding-left: 50px;
+        display:block;
+    }
+    .about-header  a{
+        font-size: 12pt;
+    }
+    .about{
+        /* margin-top: -70px; */
+        /* margin-left: 100px; */
+        margin-left: 50px;
+        margin-top: -30px;
+        font-size: 12px;
+    }
+    .about-section{
+        background-color: white;
+        display: block;
+        margin-top: -58px;
+    }
+    .about-us-body h2{
+        display:block;
+        font-size: 14pt;
+    }
+    /* .about-us-body .about-img img{
+        height: auto;
+        width:90%;
+        margin-left:40px;
+        border-radius: 20px;
+        display:block;
+        margin-top: 30px;
+    } */
+    .about-img{
+        margin-top:60px;
+        display:block;
+    }
+    .about-details{
+        margin-top:50px;
+        margin-left: 50px;
+        width: 94%;
+        display: block;
+    }
+    .about-details h1{
+        font-size: 16pt;
+        font-weight: bold;
+        display: block;
+        font-family:  'Plus Jakarta Sans', sans-serif;
+    }
+    .about-details p{
+        margin-top: 10px;
+        font-size: 12pt;
+    }
+    .about-details .about-list{
+        font-size: 14pt;
+        width: 100%;
+        display:block;
+        font-weight: bold;
+    }
+    .about-us-body{
+        margin-top: auto;
+    } .heading-address{
+        padding-top: 37px;
+        padding-bottom: 20px;
+    }
+    .heading-address a{
+        display: none;
+    }
+}
+
+/* responsive for Desktop and Large Screen */
+@media only screen and (min-width:1025px) and (max-width:1200px){
+    .about-header{
+        width:100%;
+        height: 80px;
+        background: #F2F1F6;
+        padding:10px 50px;
+        margin-top:10px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding-left: 50px;
+        display:block;
+    }
+    .about-header  a{
+        font-size: 12pt;
+    }
+    .about-section{
+        background-color: white;
+        display: block;
+    }
+    .about{
+        /* margin-top: -70px; */
+        /* margin-left: 100px; */
+        margin-left: 50px;
+        margin-top: -40px;
+        font-size: 12px;
+    }
+    .about-us-body h2{
+        display:block;
+        font-size: 14pt;
+    }
+    .about-img{
+        margin-top:60px;
+        display:block;
+    }
+    .about-details{
+        margin-top:50px;
+        margin-left: 50px;
+        width: 94%;
+        display: block;
+    }
+    .about-details h1{
+        font-size: 16pt;
+        font-weight: bold;
+        display: block;
+        font-family:  'Plus Jakarta Sans', sans-serif;
+    }
+    .about-details p{
+        margin-top: 10px;
+        font-size: 12pt;
+    }
+    .about-details .about-list{
+        font-size: 14pt;
+        width: 100%;
+        display:block;
+        font-weight: bold;
+    } .heading-address{
+        padding-top: 37px;
+        padding-bottom: 20px;
+    }
+    .heading-name{
+        margin-bottom: -19px;
+
+    }
+    .heading-address a{
+        display: none;
+    }
+}
+
+/* responsive for Extra large screen.TV */
+@media only screen and (min-width:1201px) and (max-width:1400px){
+    .about-header{
+        width:100%;
+        height: 112px;
+        background: #F2F1F6;
+        padding:10px 50px;
+        margin-top:10px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding-left: 80px;
+        display:block;
+    }
+
+    
+
+    .about-header  a{
+        font-size: 12pt;
+    }
+    .about{
+        /* margin-top: -70px; */
+        /* margin-left: 100px; */
+        margin-left: 80px;
+        margin-top: -40px;
+        font-size: 12px;
+    }
+    .about-us-body h2{
+        display:block;
+        font-size: 20pt;
+        margin-top: -81px;
+    }
+    .about-section{
+        background-color: white;
+        display: block;
+    }
+    
+    .about-img{
+        margin-top:60px;
+        display:block;
+    }
+    .about-details{
+        margin-top:50px;
+        margin-left: 100px;
+        width: 94%;
+        display: block;
+    }
+    .about-details h1{
+        font-size: 22pt;
+        font-weight: bold;
+        display: block;
+        font-family:  'Plus Jakarta Sans', sans-serif;
+    }
+    .about-details p{
+        margin-top: 10px;
+        font-size: 16pt;
+        width: 100%;
+    }
+    .about-details .about-list{
+        font-size: 18pt;
+        width: 100%;
+        display:block;
+        font-weight: bold;
+        margin-top: 80px;
+    }
+    .heading-name{
+        max-height: max-content;
+        top: 20px;
+        position: absolute;
+    }
+    .heading-address{
+        padding-top: 37px;
+        padding-bottom: 20px;
+    }
+    .heading-address a{
+        display: none;
+    }
 }

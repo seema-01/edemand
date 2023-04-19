@@ -7,8 +7,8 @@ import Footer from './Components/Footer';
 import './Responsive/responsive.css'
 import './Style/style.css'
 import Category from './Pages/Category';
+import About from './Pages/About';
 import MobileNavigation from './Components/MobileNavigation';
-import Contactus from './Components/Contactus';
 
 function App() {
  
@@ -36,8 +36,9 @@ function App() {
         <MobileNavigation />
         <Routes>
           <Route path='/' element={<Home /> }></Route>
+          <Route path='/about' element={<About /> }></Route>
           <Route path='/category' element={<Category /> }></Route>
-          <Route path='/contact' element={<Contactus /> }></Route>
+          {/* <Route path='/contact' element={<Contactus /> }></Route> */}
         </Routes>
         <Footer />
       </BrowserRouter>

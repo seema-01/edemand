@@ -1,5 +1,5 @@
 /* Import Fonts */ 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
 
 body{
     background-color: #f2f1f6;
@@ -10,6 +10,8 @@ body{
     font-family: 'Nunito', sans-serif;
     text-decoration: none;
    font-size: 12pt;
+   font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
 }
 
 .nav nav ul{

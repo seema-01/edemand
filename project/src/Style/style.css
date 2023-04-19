@@ -1,130 +1,134 @@
 
-
-body{
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
+body {
   overflow-x: hidden;
 }
+
 /* Home Style */
 /*Image Slider on Home Page*/
 .home-image-slider {
-    height: auto;
-    width: 90%;
-    position: relative;
-    margin-top: 60px;
-    margin-left: 5%;
-    border-radius: 10px;
-    overflow: hidden;
+  height: auto;
+  width: 90%;
+  position: relative;
+  margin-top: 60px;
+  margin-left: 5%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .home-image-slider img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 /*Input Group*/
 
 input {
-    width: 500px;
-    height: 30px;
+  width: 500px;
+  height: 30px;
 }
 
 .input-group-text {
-    height: 20px;
-    display: flex;
-    align-items: center;
-    padding: .375rem .75rem;
-    margin-bottom: 0;
-    font-size: 16pt;
-    font-weight: 400;
-    color: #495057;
-    text-align: center;
-    white-space: nowrap;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    width: 1%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: .375rem .75rem;
+  margin-bottom: 0;
+  font-size: 16pt;
+  font-weight: 400;
+  color: #495057;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  width: 1%;
 }
 
-.home-location{
-    margin-top: -16px;
-    position: relative;
-    z-index: 1;
-    margin-left: 50px;
-    margin-bottom: 40px;
-    display: flex;
-    margin-left: 13%;
+.home-location {
+  margin-top: -16px;
+  position: relative;
+  z-index: 1;
+  margin-left: 50px;
+  margin-bottom: 40px;
+  display: flex;
+  margin-left: 13%;
 }
 
-.home-location button{
-    background-color: #2560Fc;
-    color: #ffffff;
-    border-radius: 10px;
-    height: 35px;
-    margin-left: -5%;
-    width: 120px;
-} 
-.mybtn{
-    left: 10px;
-    position: relative;
+.home-location button {
+  background-color: #2560Fc;
+  color: #ffffff;
+  border-radius: 10px;
+  height: 35px;
+  margin-left: -5%;
+  width: 120px;
+}
+
+.mybtn {
+  left: 10px;
+  position: relative;
 }
 
 /* --------------------------------------------------------------- */
 
 /* Style for Image Swiper from swiper.js*/
 #app {
-    height: 100%;
-  }
-  html,
-  body {
-    position: relative;
-    height: 100%;
-  }
-  
-  body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  height: 100%;
+}
 
-  
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 /* .swiper-button-prev, .swiper-button-next{
     color: #000;
     background-color: aliceblue;
     height: 100px;
     border-radius: 10px;
 } */
-  
+
 /* -----------------------------------------------------------------  */
 /*All - Categorys*/
-.creative-category{
+.creative-category {
   background-color: #fff;
 }
-.category{
+
+.category {
   top: 30px;
   overflow: hidden;
   position: relative;
@@ -135,27 +139,30 @@ input {
   background-color: white;
 }
 
-.heading{
+.heading {
   font-size: 24pt;
   justify-content: flex-start;
   display: flex;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
 }
 
-.data-column{
+.data-column {
   width: 250px;
   background-size: cover;
   overflow: hidden;
   height: auto;
   margin-left: 5%;
-  box-sizing: border-box; /* include padding and border in the height */
-  
+  box-sizing: border-box;
+  /* include padding and border in the height */
+
 }
 
-.data-row a{
+.data-row a {
   text-decoration: none;
 }
 
-.data-row{
+.data-row {
   width: 250px;
   border: 2px solid black;
   border-radius: 10px;
@@ -163,13 +170,14 @@ input {
   text-align: center;
   padding-bottom: 10px;
 }
-.api-data{
+
+.api-data {
   overflow: hidden;
   display: flex;
   margin-top: 1%;
 }
 
-.data-column img{
+.data-column img {
   height: 200px;
   width: 200px;
   background-size: cover;
@@ -181,12 +189,14 @@ input {
   color: white;
   border-radius: 10px;
 }
-.data-row h3{
+
+.data-row h3 {
   margin-top: 10px;
   color: #2560fc;
   font-weight: 700;
 }
-.slide-button{
+
+.slide-button {
   margin-left: 50%;
   margin-top: 3%;
   position: static;
@@ -194,14 +204,14 @@ input {
 
 /* Home - Services */
 
-.home-row{
+.home-row {
   width: 60%;
   margin: -9px 11px;
-      text-align: center;
-      padding-bottom: 27px;
-    }
+  text-align: center;
+  padding-bottom: 27px;
+}
 
-.home-column img{
+.home-column img {
   height: 100%;
   width: 96%;
   left: 8%;
@@ -215,32 +225,36 @@ input {
   border: 2px solid black;
 }
 
-.home-column{
+.home-column {
   height: 300px;
   width: auto;
 }
-.api-data{
+
+.api-data {
   margin-left: -35px;
   overflow: hidden;
   display: flex;
   margin-top: 3%;
   /* display: none; */
 }
-.text-img{
+
+.text-img {
   margin-top: -40px;
   left: 50px;
   text-decoration: none;
   position: relative;
 }
-.text-img > a{
+
+.text-img>a {
   font-weight: 600;
   color: white;
   text-decoration: none;
 }
+
 /* .category a{
   color: #000;
 } */
-.right-btn{
+.right-btn {
   left: 96%;
   top: -195px;
   z-index: 1000;
@@ -254,10 +268,13 @@ input {
   margin-left: 32px;
   height: 100px;
 }
-.right-btn:hover,.left-btn:hover{
+
+.right-btn:hover,
+.left-btn:hover {
   cursor: pointer;
 }
-.left-btn{
+
+.left-btn {
   left: 1.2%;
   z-index: 1000;
   position: relative;
@@ -269,32 +286,18 @@ input {
   border-radius: 6px;
   margin-left: -26px;
   height: 100px;
-   margin-top: -22%;
+  margin-top: -22%;
 }
-#category-btn{
+
+#category-btn {
   margin-top: 1rem;
   border: none;
 }
-.category-icon-style{
+
+.category-icon-style {
   margin-top: 1.25rem;
 }
 
-/*===============================================*/
-/*About*/
-
-.heading-address{
-  text-align: start;
-  margin-left: 100px;
-  margin-top: 15px;
-  margin-bottom: -20px;
-}
-
-.heading-name{
-  font-size: 24pt;
-  margin-top: 12px;
-  padding: 0;
-}
- 
 
 /*Mobile-Navigation*/
 .slide-navigation {
@@ -340,6 +343,22 @@ input {
   /* transform: ${isOpen ? 'rotate(45deg) translate(7px, 7px)' : 'none'}; */
 }
 
+.slide-navigation ul{
+  margin: 0;
+    top: 14%;
+    position: absolute;
+    left: 6%;
+    height: auto;
+    display: block;
+}
+
+.slide-navigation ul a{
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 30px 10px;
+}
+
 .slide-navigation .burger-menu span:nth-child(2) {
   top: 50%;
   left: 0;
@@ -353,4 +372,86 @@ input {
   /* transform: ${isOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none'}; */
 }
 
+/*===============================================*/
+/*About*/
 
+.heading-address {
+  text-align: start;
+  margin-left: 100px;
+  margin-top: 15px;
+  margin-bottom: -20px;
+}
+
+.heading-name {
+  font-size: 24pt;
+  margin-top: 12px;
+  padding: 0;
+}
+
+.about-header {
+  width: 88%;
+  height: 20px;
+  padding: 30px 110px;
+  margin-top: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-align: start;
+  background: none;
+}
+
+.about-header .second a {
+  font-size: 24pt;
+}
+
+.about {
+  margin-top: -70px;
+  margin-left: 100px;
+}
+
+.about-us-body h2 {
+  font-size: 24pt;
+}
+
+.about-us-body .about-img img {
+  height: auto;
+  width: 90%;
+  margin-left: auto;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.about-img {
+  margin-top: 50px;
+}
+
+.about-section {
+  background-color: white;
+}
+
+.about-details {
+  margin-top: 30px;
+  width: 90%;
+  margin-left: 5%;
+    text-anchor: start;
+  text-align: start;
+  background: white;
+}
+
+.about-details p{
+  font-size: 14pt;
+}
+
+.about-details h1 {
+  font-size: 24pt;
+  word-spacing: 10px;
+  font-weight: bold;
+  /* display: none; */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.about-details .about-list {
+  font-size: 12pt;
+  width: 80%;
+  margin: 0;
+  /* display:none; */
+}

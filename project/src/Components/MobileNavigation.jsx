@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from "react-router-dom";
 
 const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +21,11 @@ const MobileNavigation = () => {
         <span></span>
       </div>
       <ul>
-        <li><a href="/" onClick={handleNavigation}>Home</a></li>
-        <li><a href="/about" onClick={handleNavigation}>About us</a></li>
-        <li><a href="/contact" onClick={handleNavigation}>Category</a></li>
-        <li><a href="/contact" onClick={handleNavigation}>Provider</a></li>
-        <li><a href="/contact" onClick={handleNavigation}>Contact us</a></li>
+        <NavLink  to="/" onClick={handleNavigation}>Home</NavLink >
+        <NavLink  to="/about"  onClick={handleNavigation}>About us</NavLink >
+        <NavLink  to="/category"  onClick={handleNavigation}>Category</NavLink >
+        <NavLink  to="/provider"  onClick={handleNavigation}>Provider</NavLink >
+        <NavLink  to="/contactus" onClick={handleNavigation}>Contact us</NavLink >
       </ul>
     </nav>
   );
