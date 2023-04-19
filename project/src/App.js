@@ -9,6 +9,7 @@ import './Style/style.css'
 import Category from './Pages/Category';
 import About from './Pages/About';
 import MobileNavigation from './Components/MobileNavigation';
+import Contact from './Pages/Contact';
 
 function App() {
  
@@ -38,7 +39,7 @@ function App() {
           <Route path='/' element={<Home /> }></Route>
           <Route path='/about' element={<About /> }></Route>
           <Route path='/category' element={<Category /> }></Route>
-          {/* <Route path='/contact' element={<Contactus /> }></Route> */}
+          <Route path='/contact' element={<Contact /> }></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
