@@ -1,39 +1,70 @@
+
+import { Box, Card, CardContent, Container, ImageList, ImageListItem, Typography, styled } from '@mui/material'
 import React from 'react'
-import '../Style/style.css'
+import { Aboutparagraph, AboutList } from './Aboutparagraph'
 
-const AboutPage = () => {
-    return (
-        <div>
+const Aboutpage = () => {
+  return (
+    <div>
 
-            <div className="heading-address">
-                <a href="">Home |&nbsp;</a>
-                <a href=""><b>About </b></a>
-                <h2 className='heading-name'>About-us</h2>
-            </div>
+      <Box
+        bgcolor={"#f2f1f6"}
+        pt={2}
+        pb={2}
+        position={"responsive"}
+      >
 
-            <div className='about-us-body'>
-                <div className="about-section">
-                    <div className="about-img">
-                        <img src={require('../Images/demo1.jpg')} alt="" />
-                    </div>
-                    <div className="about-details">
-                        <h1>Know About Us</h1><br />
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus deleniti nostrum molestiae modi cumque illo iusto dolores laudantium fuga? Molestias ipsam veritatis similique voluptate expedita, tempore mollitia alias at conseqtur, aperiam velit ullam neque?</p><br />
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius maiores amet, aperiam beatae soluta sint delectus totam deserunt fugit mollitia dignissimos labore necessitatibus repellat nihil  expedita? Optio, at possimus perspiciatis hic in voluptatum.</p><br />
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima cumque accusamus ullam aperiam expedita? Eveniet suscipit totam tempore dolores quisquam rerum consectetur tempora incidunt vitae neque provident nobis libero exercitationem ducimus, ipsam distinctio illum? Perspiciatis praesentium nobis laudantium enim illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quasi. </p><br />
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut delectus, temporibus vitae ratione, nesciunt officia reiciendis neque ullam a veritatis quasi molestias accusantium velit, illum cupiditate est corrupti nihil consequuntur? Suscipit quasi odit veniam. Rem consequatur perferendis facilis sequi impedit exercitationem distinctio. Ipsa assumenda cupiditate debitis sapiente facilis exercitationem quaerat voluptatem a necessitatibus pariatur, voluptatibus beatae expedita minima reiciendis optio.</p><br /><br />
+      <Typography
+        sx={{ paddingLeft: { xs: 8, md: 13}}}
+        variant='a'
+        href="#">
+        Home | About
+      </Typography>
+      
+      <Typography
+        sx={{ paddingLeft: { xs: 8, md: 13}}}
+        variant='h4'>
+        About us
+      </Typography>
 
-                        <div className="about-list">
-                            <li >Complete Sanitization and cleaning of bathroom</li><br />
-                            <li>Biodegradable chemical are used </li><br />
-                            <li>Cleaning Tools will be used to remove deep stains</li><br />
-                            <li>Complets Sanitization and cleaning of bathroom</li><br />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+      </Box>
+
+      <Container maxWidth="xl">
+        <Box
+          maxWidth={"100%"}
+          bgcolor={"white"}
+          pt={4}
+          marginLeft={10}
+          marginRight={10}
+          >
+
+          <Card marginLeft="20px">
+            <img
+              src="./demo1.jpg"
+              alt="" height="100%" width="100%"
+              style={{ borderRadius: "5px",
+            maxWidth: "100%",
+            maxHeight: "100%" }}
+            />
+            <CardContent>
+
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                pl={1}>
+                Know About Us
+              </Typography>
+              
+              <Aboutparagraph />
+              <AboutList />
+            
+            </CardContent>
+          </Card>
+        </Box>
+      </Container>
+    </div>
+  )
 }
 
-export default AboutPage
+export default Aboutpage
