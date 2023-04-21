@@ -25,15 +25,15 @@ export const Aboutparagraph = () => {
 export const AboutList = () => {
     return (
         <Box m={2}>
-            <Typography variant="body2" color="text.secondary" pt={1}>
+            <Typography variant="body1" color="text.secondary" pt={1}>
                 <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. </li>
             </Typography>
             
-            <Typography variant="body2" color="text.secondary" pt={1}>
+            <Typography variant="body1" color="text.secondary" pt={1}>
                 <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. </li>
             </Typography> 
             
-            <Typography variant="body2" color="text.secondary" pt={1}>
+            <Typography variant="body1" color="text.secondary" pt={1}>
                 <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. </li>
             </Typography>
         </Box>

@@ -1,70 +1,52 @@
+import React from 'react';
+import { Breadcrumbs, Container, Grid, Typography } from '@mui/material';
+import Link from '@mui/material/Link';
+import { AboutList } from './Aboutparagraph';
 
-import { Box, Card, CardContent, Container, ImageList, ImageListItem, Typography, styled } from '@mui/material'
-import React from 'react'
-import { Aboutparagraph, AboutList } from './Aboutparagraph'
-
-const Aboutpage = () => {
+function About() {
   return (
-    <div>
-
-      <Box
-        bgcolor={"#f2f1f6"}
-        pt={2}
-        pb={2}
-        position={"responsive"}
-      >
-
-      <Typography
-        sx={{ paddingLeft: { xs: 8, md: 13}}}
-        variant='a'
-        href="#">
-        Home | About
+    <Container maxWidth="lg">
+      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1 }}>
+        <Link underline="hover" color="inherit" href="/home">
+          Home
+        </Link>
+        <Typography color="text.primary">About</Typography>
+      </Breadcrumbs>
+      <Typography variant="h4" gutterBottom>
+        About Us
       </Typography>
-      
-      <Typography
-        sx={{ paddingLeft: { xs: 8, md: 13}}}
-        variant='h4'>
-        About us
-      </Typography>
-
-      </Box>
-
-      <Container maxWidth="xl">
-        <Box
-          maxWidth={"100%"}
-          bgcolor={"white"}
-          pt={4}
-          marginLeft={10}
-          marginRight={10}
-          >
-
-          <Card marginLeft="20px">
-            <img
-              src="./demo1.jpg"
-              alt="" height="100%" width="100%"
-              style={{ borderRadius: "5px",
-            maxWidth: "100%",
-            maxHeight: "100%" }}
-            />
-            <CardContent>
-
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                pl={1}>
-                Know About Us
-              </Typography>
-              
-              <Aboutparagraph />
-              <AboutList />
-            
-            </CardContent>
-          </Card>
-        </Box>
-      </Container>
-    </div>
-  )
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <img src="https://placeimg.com/640/480/tech" alt="technology" style={{ width: '100%',maxHeight: "500px", objectFit: "cover", borderRadius: "10px"}} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h4" gutterBottom>
+            About Us
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada, massa eu aliquet convallis,
+            lectus orci accumsan felis, eu lacinia enim arcu non mi. Etiam aliquam, massa vel hendrerit vulputate,
+            enim nibh tincidunt nunc, a pharetra ipsum turpis a lectus. Sed sit amet felis euismod, egestas leo eget,
+            malesuada enim. Integer tempor, nulla at ornare elementum, urna sapien dictum mi, eget fringilla elit
+            elit eu metus.
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Vestibulum luctus, massa ac suscipit consequat, sapien neque porta dui, at faucibus nisi dolor non ante.
+            Nulla quis libero ac lectus accumsan vestibulum. Quisque lobortis eget est quis luctus. Proin bibendum
+            euismod sapien, eget sagittis quam commodo sit amet. Ut euismod tristique dui in eleifend. Praesent
+            aliquet elit elit, eu viverra dui rutrum sed.
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Nulla faucibus ligula vel enim tincidunt mollis. Duis commodo est eros, eget tristique tellus auctor ac.
+            Fusce aliquet turpis eu libero lacinia, at iaculis sapien facilisis. Donec fermentum, velit id interdum
+            gravida, lorem felis tincidunt erat, eu suscipit felis est non nisi. Sed non quam non purus consequat
+            egestas ac vitae lorem. Suspendisse potenti. In at neque odio. Suspendisse potenti.
+          </Typography>
+          <AboutList />
+        </Grid>
+      </Grid>
+    </Container>
+  );
 }
 
-export default Aboutpage
+export default About;

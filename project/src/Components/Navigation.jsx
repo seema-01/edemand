@@ -33,6 +33,7 @@ const Navigation = () => {
                             <a href="" style={{paddingLeft:"5%",textDecoration:"none",color:"black"}}>Contact</a>
                         </Box>
                     <Button variant='contained'>Sign in</Button>
+                    
                 </StyledToolBar>
                 </Box>
             </AppBar>
