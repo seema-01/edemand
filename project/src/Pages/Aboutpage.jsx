@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
-import { AboutList } from './Aboutparagraph';
+import { AboutList } from '../Components/Aboutparagraph';
 
 function About() {
   return (
@@ -13,7 +13,7 @@ function About() {
         <Typography color="text.primary">About</Typography>
       </Breadcrumbs>
       <Typography variant="h4" gutterBottom>
-        About Us
+        <strong>About Us</strong>
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -21,7 +21,7 @@ function About() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h4" gutterBottom>
-            About Us
+           Know About Us
           </Typography>
           <Typography variant="body1" gutterBottom>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada, massa eu aliquet convallis,

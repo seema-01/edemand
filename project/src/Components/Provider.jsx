@@ -11,7 +11,7 @@ import { ArrowRight, ArrowRightAltOutlined, Done } from '@mui/icons-material';
 export default function Provider() {
   return (
 
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, display: "inline-block"}}>
       <CardMedia
         sx={{ height: 240 }}
         image="./demo1.jpg"
@@ -36,11 +36,11 @@ export default function Provider() {
         <Rating name="read-only" value={3} readOnly sx={{alignContent:"center"}}/>
         <Button variant='contained' startIcon={<Done />}>45 Order Completed</Button>
         
-        <div className="lines" style={{paddingTop: "15px"}}>
+        <div className="lines" style={{paddingTop: "30px"}}>
             <hr />
         </div>
 
-        <Button variant='a' href="" endIcon={<ArrowRightAltOutlined />}>View All Services</Button>
+        <Button variant='a' href="" sx={{marginTop: 3}} endIcon={<ArrowRightAltOutlined />}>View All Services</Button>
       </CardContent>
      
       </Box>

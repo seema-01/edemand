@@ -1,5 +1,5 @@
 import React from 'react'
-import Provider from "./Provider";
+import Provider from "../Components/Provider";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { Container, Grid } from "@mui/material";
@@ -11,6 +11,11 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    marginTop:10,
+    // marginLeft:10,
+    // marginRight: 10,
+    border:0,
+    boxShadow: "none"
 }));
 
 
@@ -18,7 +23,7 @@ const Providers = () => {
     return (
         <div>
             <Container maxWidth={"lg"}>
-                <Grid container marginTop={"6%"} textAlign={"center"}>
+                <Grid container marginTop={"6%"} boxShadow={"none"}>
                     <Grid item xs={12} sm={6} lg={4}>
                         <Item><Provider /></Item>
                     </Grid>
