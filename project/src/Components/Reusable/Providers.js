@@ -1,5 +1,5 @@
 import React from 'react'
-import Provider from "../Components/Provider";
+import Provider from "./Provider";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { Container, Grid } from "@mui/material";

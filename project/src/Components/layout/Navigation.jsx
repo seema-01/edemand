@@ -1,14 +1,10 @@
-import { Mail, Notifications, Pets, Search } from '@mui/icons-material'
-import { AppBar, Avatar, Badge, Box, Button, InputBase, Menu, MenuItem, Toolbar, Typography, styled } from '@mui/material'
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
-import React, { useState } from 'react'
-import Grid from '@mui/material/Grid'; // Grid version 1
+import { AppBar, Box, Button, Toolbar, Typography, styled } from '@mui/material'
+import React, {  } from 'react'
 import { NavLink } from 'react-router-dom';
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
     display: "flex",
-    justifyContent: "start",
     backgroundColor: "white",
     color: "blue",
     maxWidth: "lg",

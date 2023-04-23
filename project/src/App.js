@@ -1,28 +1,27 @@
-import Aboutpage from "./Pages/Aboutpage";
-import Contact from "./Pages/Contact";
-import ContactForm from "./Components/ContactForm";
-import DrawerComponent from "./Components/DrawerComponent";
-import Navigation1 from "./Components/Navigation1";
-import Providers from "./Pages/Providers";
-import Header from "./Components/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PageNotFound from "./Components/PageNotFound";
+
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Provider from "./Pages/Provider";
+import PageNotFound from "./Pages/PageNotFound";
+import Home from "./Pages/Home";
+import Category from "./Pages/Category";
 
 function App() {
   return (
     <div className="App">
+
       <BrowserRouter>
-      {/* <Header /> */}
-      <Routes>
-        <Route path="/about" element={<Aboutpage />}></Route>
-        <Route path="/provider" element={<Providers />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/*" element={<PageNotFound />}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/provider" element={<Provider />}></Route>
+          <Route path="/category" element={<Category />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/*" element={<PageNotFound />}></Route>
+        </Routes>
       </BrowserRouter>
-      {/* <Aboutpage /> */}
-      {/* <ContactForm /> */}
-      
+
     </div>
   );
 }
