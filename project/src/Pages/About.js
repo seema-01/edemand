@@ -7,6 +7,7 @@ const About = () => {
     <div>
       <Layout>
         <AboutPage />
+        Hello
       </Layout>
     </div>
   )
