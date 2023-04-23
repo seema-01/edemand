@@ -2,7 +2,6 @@ import Aboutpage from "./Pages/Aboutpage";
 import Contact from "./Pages/Contact";
 import ContactForm from "./Components/ContactForm";
 import DrawerComponent from "./Components/DrawerComponent";
-import Navigation from "./Components/Navigation";
 import Navigation1 from "./Components/Navigation1";
 import Providers from "./Pages/Providers";
 import Header from "./Components/Header"
@@ -13,7 +12,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navigation />
       {/* <Header /> */}
       <Routes>
         <Route path="/about" element={<Aboutpage />}></Route>

@@ -2,9 +2,12 @@ import React from 'react';
 import { Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { AboutList } from '../Components/Aboutparagraph';
+import Layout from '../Components/layout/Layout';
 
 function About() {
   return (
+    <Layout>
+
     <Container maxWidth="lg">
       <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1 }}>
         <Link underline="hover" color="inherit" href="/home">
@@ -13,7 +16,7 @@ function About() {
         <Typography color="text.primary">About</Typography>
       </Breadcrumbs>
       <Typography variant="h4" gutterBottom>
-        <strong>About Us</strong>
+        {/* <strong>About Us</strong> */}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -46,7 +49,9 @@ function About() {
         </Grid>
       </Grid>
     </Container>
+    </Layout>
   );
 }
 
 export default About;
+
