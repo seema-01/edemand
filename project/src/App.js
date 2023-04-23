@@ -7,6 +7,7 @@ import Navigation1 from "./Components/Navigation1";
 import Providers from "./Pages/Providers";
 import Header from "./Components/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<Aboutpage />}></Route>
         <Route path="/provider" element={<Providers />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/*" element={<PageNotFound />}></Route>
       </Routes>
       </BrowserRouter>
       {/* <Aboutpage /> */}
