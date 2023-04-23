@@ -7,7 +7,7 @@ import Layout from '../layout/Layout';
 function AboutPage() {
   return (
     <Container maxWidth="lg">
-      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1 }}>
+      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1, marginTop: 1}}>
         <Link underline="hover" color="inherit" href="/home">
           Home
         </Link>
