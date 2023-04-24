@@ -23,7 +23,7 @@ const Providers = () => {
     return (
         <div>
             <Container maxWidth={"lg"}>
-                <Grid container marginTop={"6%"} boxShadow={"none"}>
+                <Grid container sx={{backgroundColor:"white", borderRadius: "10px"}} marginTop={"6%"} boxShadow={"none"}>
                     <Grid item xs={12} sm={6} lg={4}>
                         <Item><Provider /></Item>
                     </Grid>

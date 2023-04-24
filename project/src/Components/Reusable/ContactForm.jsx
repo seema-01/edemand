@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 const ContactForm = () => {
   return (
     <>
-      <Container maxWidth={"lg"}>
+      <Container maxWidth="lg">
         <Breadcrumbs
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}
@@ -190,44 +190,81 @@ const ContactForm = () => {
               }}
               marginTop={10}
             >
-              <Box sx={{ display: { xs: "block", md: "flex" } }}>
+              <Box display={{ xs: "none", md: "flex" }}>
+                <Typography justifyContent={"start"} variant="h6" fontSize={16}>
+                  Name
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  marginLeft={{ xs: 10, md: 39 }}
+                  variant="h6"
+                  fontSize={16}
+                >
+                  Email
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{ display: { xs: "block", md: "flex" }, marginBottom: 6 }}
+              >
                 <TextField
                   fullWidth
                   size="small"
                   id="name"
-                  label="Name"
+                  placeholder="Enter Name"
                   variant="outlined"
-                  sx={{ backgroundColor: "#f2f1f6" }}
+                  sx={{
+                    backgroundColor: "#f2f1f6",
+                    marginBottom: { xs: 4, md: 0 },
+                  }}
                 />
                 <TextField
                   fullWidth
                   size="small"
                   id="email"
-                  label="Email"
+                  placeholder="Enter Email"
                   variant="outlined"
-                  sx={{ marginLeft: 1, backgroundColor: "#f2f1f6" }}
+                  sx={{
+                    marginLeft: { xs: 0, md: 1 },
+                    backgroundColor: "#f2f1f6",
+                  }}
                 />
               </Box>
 
+              <Typography
+                justifyContent={"start"}
+                variant="h6"
+                display={{ xs: "none", md: "block" }}
+                fontSize={16}
+              >
+                Subject
+              </Typography>
               <TextField
                 fullWidth
                 size="small"
                 id="email"
-                label="Subject"
+                placeholder="Enter Subject"
                 variant="outlined"
-                sx={{ marginTop: 6, backgroundColor: "#f2f1f6" }}
+                sx={{ marginBottom: 6, backgroundColor: "#f2f1f6" }}
               />
 
+              <Typography
+                justifyContent={"start"}
+                variant="h6"
+                display={{ xs: "none", md: "block" }}
+                fontSize={16}
+              >
+                Message
+              </Typography>
               <TextField
                 fullWidth
-                label="Message"
                 multiline
                 rows={6}
+                placeholder="Enter Message"
                 variant="outlined"
                 sx={{
                   marginBottom: "16px",
                   backgroundColor: "#f2f1f6",
-                  marginTop: 6,
                 }}
               />
               <Button
@@ -236,7 +273,7 @@ const ContactForm = () => {
                 type="submit"
                 sx={{
                   marginTop: "16px",
-                  marginLeft: "78%",
+                  marginLeft: { xs: "60%", md: "78%" },
                   backgroundColor: "#343f53",
                 }}
               >

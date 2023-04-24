@@ -6,7 +6,6 @@ import Provider from "./Pages/Provider";
 import PageNotFound from "./Pages/PageNotFound";
 import Home from "./Pages/Home";
 import Category from "./Pages/Category";
-
 function App() {
   return (
     <div className="App">
