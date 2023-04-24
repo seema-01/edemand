@@ -29,14 +29,14 @@ const Navigation = () => {
 
   return (
     <Box>
-      <AppBar position="sticky" style={{ background: "none" }}>
-        <Box marginLeft={"5%"} marginRight={"5%"}>
+      <AppBar position="sticky" style={{ background: "white" }}>
+        <Box sx={{marginLeft:{xs:"5%",md:"10%"}, paddingRight:{xs:"5%", lg:"10%"}}}>
           <StyledToolBar>
-            <IconButton
+            <IconButton 
               color="inherit"
               aria-label="open-drawer"
               edge="start"
-              sx={{ mr: 2, display: { md: "none" } }}
+              sx={{ mr: 2, display: { lg: "none" } }}
               onClick={() => setOpen(true)}
             >
               <MenuIcon />

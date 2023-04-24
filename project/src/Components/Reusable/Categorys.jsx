@@ -6,6 +6,7 @@ import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Navigation } from "swiper";
 import { NavLink } from 'react-router-dom';
 
 const Categorys = () => {
@@ -22,75 +23,74 @@ const Categorys = () => {
     }
 
     return (
-        <div>
-            <Container maxWidth="lg">
+    <div>
+        <Container maxWidth="lg">
 
-                <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1, marginTop: 1 }}>
-                    <Link underline="hover" color="inherit" href="/home">
-                        Home
-                    </Link>
-                    <Typography color="text.primary">category</Typography>
-                </Breadcrumbs>
-                <Typography variant="h4" gutterBottom>
-                    <strong>Categorys</strong>
-                </Typography>
+            <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1, marginTop: 1 }}>
+                <Link underline="hover" color="inherit" href="/home">
+                    Home
+                </Link>
+                <Typography color="text.primary">category</Typography>
+            </Breadcrumbs>
+            <Typography variant="h4" gutterBottom>
+                <strong>Categorys</strong>
+            </Typography>
 
-                <Box>
-                    <Swiper
-                        slidesPerView={5}
-                        freeMode={true}
+            <Box>
+                <Swiper
+                    slidesPerView={5}
+                    freeMode={true}
+                    navigation={true}
+                    modules={[Navigation]}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                            spaceBetween: 50,
+                        },
+                    }}>
 
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 1,
-                            },
-                            640: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            768: {
-                                slidesPerView: 4,
-                                spaceBetween: 40,
-                            },
-                            1024: {
-                                slidesPerView: 5,
-                                spaceBetween: 50,
-                            },
-                        }}>
+                    <Box>
+                        {
+                            image.map((response) => {
+                                return (
+                                    <SwiperSlide>
+                                        <Card sx={{width: 200, height: "auto" }}>
+                                            <img
+                                                src={response.category_image}
+                                                title="Services"
+                                                style={{ height: "100%", width: "100%" }}
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom variant="a" href="#" component="div">
+                                                    {response.name}
+                                                </Typography>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {response.admin_commission}+ Provider
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </SwiperSlide>
 
-                        <Box>
-                            {
-                                image.map((response) => {
-                                    return (
-                                        <SwiperSlide>
-                                            <Card sx={{ marginLeft: 4, width: 200 }}>
-                                                <img
-                                                    src={response.category_image}
-                                                    title="Services"
-                                                    style={{height:"100%" , width:"100%"}}
-                                                />
-                                                <CardContent>
-                                                    <Typography gutterBottom variant="a" href="#" component="div">
-                                                        {response.name}
-                                                    </Typography>
-                                                    <Typography variant="body2" color="text.secondary">
-                                                        {response.admin_commission}+ Provider
-                                                    </Typography>
-                                                </CardContent>
-                                            </Card>
-                                        </SwiperSlide>
-
-                                    )
-                                })
-                            }
-                        </Box>
-                    </Swiper>
-                </Box>
-
-
-            </Container>
-        </div >
-    )
+                                )
+                            })
+                        }
+                    </Box>
+                </Swiper>
+            </Box>
+        </Container>
+    </div >
+)
 }
 
 export default Categorys
