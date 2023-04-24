@@ -179,17 +179,18 @@ const ContactForm = () => {
             md={8}
             lg={8}
             xl={8}
-            sx={{ borderLeft: "2px solid lightgray" }}
+            sx={{ borderLeft: "2px solid lightgray" , backgroundColor: {xs:"blueviolet" , md:"white"}}}
           >
             <Box
               component="form"
-              sx={{ padding: { xs: "16px", md: "32px" } }}
-              height={"500px"}
+              sx={{ padding: { xs: "16px", md: "32px" },marginTop: 1,marginLeft:{xs:0}}}
+              height={"600px"}
               onSubmit={(e) => {
                 e.preventDefault();
               }}
               marginTop={10}
             >
+              <Typography variant="h3" display={{xs:"block",md:"none"}}>Contact us </Typography>
               <Box display={{ xs: "none", md: "flex" }}>
                 <Typography justifyContent={"start"} variant="h6" fontSize={16}>
                   Name
@@ -273,7 +274,7 @@ const ContactForm = () => {
                 type="submit"
                 sx={{
                   marginTop: "16px",
-                  marginLeft: { xs: "60%", md: "78%" },
+                  marginLeft: { xs: "auto%", md: "78%" },
                   backgroundColor: "#343f53",
                 }}
               >
