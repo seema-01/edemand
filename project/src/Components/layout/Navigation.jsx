@@ -41,6 +41,9 @@ const Navigation = () => {
             >
               <MenuIcon />
             </IconButton>
+          
+          {/* Set logo and burger menu in one side */}
+            <div>
             <Drawer open={open} onClose={() => setOpen(false)}>
               <List>
                 <ListItemButton href="/home">HOME</ListItemButton>
@@ -51,6 +54,8 @@ const Navigation = () => {
               </List>
             </Drawer>
             <Typography variant="h6">eDemand</Typography>
+            </div>
+
             <Box sx={{ display: { xs: "none", lg: "block" } }}>
               <NavLink
                 to="/"
