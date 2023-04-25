@@ -8,6 +8,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { NavLink } from 'react-router-dom';
+import FetchingCategorys from './FetchingCategorys';
+
 
 const Categorys = () => {
 
@@ -36,58 +38,7 @@ const Categorys = () => {
                 <strong>Categorys</strong>
             </Typography>
 
-            <Box>
-                <Swiper
-                    slidesPerView={5}
-                    freeMode={true}
-                    navigation={true}
-                    modules={[Navigation]}
-                    breakpoints={{
-                        0: {
-                            slidesPerView: 1,
-                        },
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 4,
-                            spaceBetween: 40,
-                        },
-                        1024: {
-                            slidesPerView: 5,
-                            spaceBetween: 50,
-                        },
-                    }}>
-
-                    <Box>
-                        {
-                            image.map((response) => {
-                                return (
-                                    <SwiperSlide>
-                                        <Card sx={{width: 200, height: "auto" }}>
-                                            <img
-                                                src={response.category_image}
-                                                title="Services"
-                                                style={{ height: "100%", width: "100%" }}
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="a" href="#" component="div">
-                                                    {response.name}
-                                                </Typography>
-                                                <Typography variant="body2" color="text.secondary">
-                                                    {response.admin_commission}+ Provider
-                                                </Typography>
-                                            </CardContent>
-                                        </Card>
-                                    </SwiperSlide>
-
-                                )
-                            })
-                        }
-                    </Box>
-                </Swiper>
-            </Box>
+            <FetchingCategorys />
         </Container>
     </div >
 )

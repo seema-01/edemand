@@ -2,6 +2,7 @@ import {
   AccessTime,
   AlternateEmail,
   Call,
+  Label,
   LocationCity,
   LocationOn,
   LocationOnOutlined,
@@ -17,6 +18,7 @@ import {
   Breadcrumbs,
   Button,
   Container,
+  FormLabel,
   Grid,
   List,
   TextField,
@@ -188,7 +190,7 @@ const ContactForm = () => {
                 component="form"
                 sx={{
                   padding: { xs: "16px", md: "32px" },
-                  marginTop: 1,
+                  marginTop: 8,
                   marginLeft: { xs: 0 },
                 }}
                 height={"600px"}
@@ -309,8 +311,11 @@ const ContactForm = () => {
               }}
             >
               <Typography textAlign={"center"} variant="h5">
-                Contact Form
+               <strong> Contact Form </strong>
               </Typography>
+              {/* <FormLabel>
+                <Label>Contact Form</Label>
+              </FormLabel> */}
               <Typography variant="h6"> Name: </Typography>
               <TextField
                 fullWidth
@@ -384,9 +389,9 @@ const ContactForm = () => {
           width="100%"
           height="450"
           style={{ border: 0 }}
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </Box>
     </>
