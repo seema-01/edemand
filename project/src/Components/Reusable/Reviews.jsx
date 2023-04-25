@@ -32,12 +32,12 @@ const Review = () => {
           <strong>All Reviews</strong>
         </Typography>
 
-        <Box sx={{ background: "white", padding: 2, borderRadius: "10px" }}>
+        <Box sx={{ background: "white", padding: 2, borderRadius: "10px",marginBottom: 4}}>
           <Typography variant="h5"> Review & Rating</Typography> <hr />
         <CustomerReview /> <hr />
         <CustomerReview /> <hr />
         <CustomerReview /> <hr />
-        <CustomerReview /> <hr />
+        <CustomerReview />  
          </Box>
       </Container>
     </>

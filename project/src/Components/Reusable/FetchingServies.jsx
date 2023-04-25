@@ -66,7 +66,7 @@ const FetchingServies = () => {
             {image.map((response) => {
               return (
                 <SwiperSlide>
-                  <Card sx={{ width: 200, height: 300, border: "2px solid" }}>
+                  <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
                     <img
                       src={response.category_image}
                       title="Services"
@@ -138,7 +138,7 @@ export const FetchingPlumbing = () => {
             {image.map((response) => {
               return (
                 <SwiperSlide>
-                  <Card sx={{ width: 200, height: 300, border: "2px solid" }}>
+                  <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
                     <img
                       src={response.category_image}
                       title="Services"
@@ -208,7 +208,7 @@ export const FetchingLaundry = () => {
               {image.map((response) => {
                 return (
                   <SwiperSlide>
-                    <Card sx={{ width: 200, height: 300, border: "2px solid" }}>
+                    <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
                       <img
                         src={response.category_image}
                         title="Services"
@@ -278,7 +278,7 @@ export const FetchingCar = () => {
               {image.map((response) => {
                 return (
                   <SwiperSlide>
-                    <Card sx={{ width: 200, height: 300, border: "2px solid" }}>
+                    <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
                       <img
                         src={response.category_image}
                         title="Services"

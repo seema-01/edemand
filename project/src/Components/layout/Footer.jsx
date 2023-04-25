@@ -109,7 +109,7 @@ const Footer = () => {
             ></TextField>
             <br />
             <br />
-            <Typography fontSize={"20px"} marginTop={1}>
+            <Typography fontSize={"17px"} marginTop={1}>
               FOLLOW US
             </Typography>
             <hr />
