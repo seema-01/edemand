@@ -179,67 +179,165 @@ const ContactForm = () => {
             md={8}
             lg={8}
             xl={8}
-            sx={{ borderLeft: "2px solid lightgray" , backgroundColor: {xs:"blueviolet" , md:"white"}}}
+            sx={{
+              borderLeft: "2px solid lightgray",
+            }}
           >
-            <Box
-              component="form"
-              sx={{ padding: { xs: "16px", md: "32px" },marginTop: 1,marginLeft:{xs:0}}}
-              height={"600px"}
-              onSubmit={(e) => {
-                e.preventDefault();
-              }}
-              marginTop={10}
-            >
-              <Typography variant="h3" display={{xs:"block",md:"none"}}>Contact us </Typography>
-              <Box display={{ xs: "none", md: "flex" }}>
-                <Typography justifyContent={"start"} variant="h6" fontSize={16}>
-                  Name
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Box
+                component="form"
+                sx={{
+                  padding: { xs: "16px", md: "32px" },
+                  marginTop: 1,
+                  marginLeft: { xs: 0 },
+                }}
+                height={"600px"}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
+                marginTop={10}
+              >
+                <Typography variant="h3" display={{ xs: "block", md: "none" }}>
+                  Contact us{" "}
                 </Typography>
+                <Box display={{ xs: "none", md: "flex" }}>
+                  <Typography
+                    justifyContent={"start"}
+                    variant="h6"
+                    fontSize={16}
+                  >
+                    Name
+                  </Typography>
+                  <Typography
+                    textAlign={"center"}
+                    marginLeft={{ xs: 10, md: 39 }}
+                    variant="h6"
+                    fontSize={16}
+                  >
+                    Email
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{ display: { xs: "block", md: "flex" }, marginBottom: 6 }}
+                >
+                  <TextField
+                    fullWidth
+                    size="small"
+                    id="name"
+                    placeholder="Enter Name"
+                    variant="outlined"
+                    sx={{
+                      backgroundColor: "#f2f1f6",
+                      marginBottom: { xs: 4, md: 0 },
+                    }}
+                  />
+                  <TextField
+                    fullWidth
+                    size="small"
+                    id="email"
+                    placeholder="Enter Email"
+                    variant="outlined"
+                    sx={{
+                      marginLeft: { xs: 0, md: 1 },
+                      backgroundColor: "#f2f1f6",
+                    }}
+                  />
+                </Box>
+
                 <Typography
-                  textAlign={"center"}
-                  marginLeft={{ xs: 10, md: 39 }}
+                  justifyContent={"start"}
                   variant="h6"
+                  display={{ xs: "none", md: "block" }}
                   fontSize={16}
                 >
-                  Email
+                  Subject
                 </Typography>
-              </Box>
-
-              <Box
-                sx={{ display: { xs: "block", md: "flex" }, marginBottom: 6 }}
-              >
-                <TextField
-                  fullWidth
-                  size="small"
-                  id="name"
-                  placeholder="Enter Name"
-                  variant="outlined"
-                  sx={{
-                    backgroundColor: "#f2f1f6",
-                    marginBottom: { xs: 4, md: 0 },
-                  }}
-                />
                 <TextField
                   fullWidth
                   size="small"
                   id="email"
-                  placeholder="Enter Email"
+                  placeholder="Enter Subject"
+                  variant="outlined"
+                  sx={{ marginBottom: 6, backgroundColor: "#f2f1f6" }}
+                />
+
+                <Typography
+                  justifyContent={"start"}
+                  variant="h6"
+                  display={{ xs: "none", md: "block" }}
+                  fontSize={16}
+                >
+                  Message
+                </Typography>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={6}
+                  placeholder="Enter Message"
                   variant="outlined"
                   sx={{
-                    marginLeft: { xs: 0, md: 1 },
+                    marginBottom: "16px",
                     backgroundColor: "#f2f1f6",
                   }}
                 />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={{
+                    marginTop: "16px",
+                    marginLeft: { xs: "auto%", md: "78%" },
+                    backgroundColor: "#343f53",
+                  }}
+                >
+                  Send Message
+                </Button>
               </Box>
+            </Box>
 
-              <Typography
-                justifyContent={"start"}
-                variant="h6"
-                display={{ xs: "none", md: "block" }}
-                fontSize={16}
-              >
-                Subject
+            {/* contact form for mobile devices  */}
+            <Box
+              sx={{
+                display: { xs: "block", md: "none" },
+                marginBottom: 6,
+                height:"650px",
+                border: "1px solid",
+                borderRadius: "10px",
+                padding: "8PX",
+                marginRight:3
+              }}
+            >
+              <Typography textAlign={"center"} variant="h5">
+                Contact Form
               </Typography>
+              <Typography variant="h6"> Name: </Typography>
+              <TextField
+                fullWidth
+                size="small"
+                id="name"
+                placeholder="Enter Name"
+                variant="outlined"
+                sx={{
+                  backgroundColor: "#f2f1f6",
+                  marginBottom: 4,
+                }}
+              />
+              <Typography variant="h6"> Email: </Typography>
+
+              <TextField
+                fullWidth
+                size="small"
+                id="email"
+                placeholder="Enter Email"
+                variant="outlined"
+                sx={{
+                  backgroundColor: "#f2f1f6",
+                  marginBottom: 4,
+                }}
+              />
+              <Typography variant="h6">Subject:</Typography>
+
               <TextField
                 fullWidth
                 size="small"
@@ -249,14 +347,7 @@ const ContactForm = () => {
                 sx={{ marginBottom: 6, backgroundColor: "#f2f1f6" }}
               />
 
-              <Typography
-                justifyContent={"start"}
-                variant="h6"
-                display={{ xs: "none", md: "block" }}
-                fontSize={16}
-              >
-                Message
-              </Typography>
+              <Typography variant="h6">Message:</Typography>
               <TextField
                 fullWidth
                 multiline
@@ -268,13 +359,14 @@ const ContactForm = () => {
                   backgroundColor: "#f2f1f6",
                 }}
               />
+
               <Button
                 variant="contained"
                 color="primary"
                 type="submit"
                 sx={{
                   marginTop: "16px",
-                  marginLeft: { xs: "auto%", md: "78%" },
+                  float: "right",
                   backgroundColor: "#343f53",
                 }}
               >
