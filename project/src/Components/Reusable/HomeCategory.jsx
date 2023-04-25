@@ -9,6 +9,8 @@ import FetchingServies, {
 } from "./FetchingServies";
 import Providers from "./Providers";
 
+// create a function and calling and setting here \
+
 const HomeCategory = () => {
   return (
     <div>
@@ -23,6 +25,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
+          {/* function for fetching all categorys  */}
           <FetchingCategorys />
         </Box>
         <Box
@@ -35,6 +38,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
+          {/* function for fetching all home services  */}
           <FetchingServies />
         </Box>
         <Box
@@ -47,6 +51,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
+          {/* function for fetching all plumbing services  */}
           <FetchingPlumbing />
         </Box>
 
@@ -60,6 +65,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
+          {/* function for fetching all laundry services  */}
           <FetchingLaundry />
         </Box>
 
@@ -73,6 +79,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
+          {/* function for fetching all car services  */}
           <FetchingCar />
         </Box>
 
@@ -86,7 +93,7 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
-          <Container>
+          <Container  >
             <Box>
               <Typography variant="h4">
                 Our Valuabale Service Providers
@@ -94,7 +101,7 @@ const HomeCategory = () => {
               <hr />
             </Box>
             <Box marginTop={-6}>
-
+            {/* our provider is already created and i juts call that function and set here with some editing  */}
             <Providers />
             </Box>
           

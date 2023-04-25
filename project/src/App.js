@@ -6,6 +6,8 @@ import Provider from "./Pages/Provider";
 import PageNotFound from "./Pages/PageNotFound";
 import Home from "./Pages/Home";
 import Category from "./Pages/Category";
+import Footer from "./Components/layout/Footer";
+import Review from "./Components/Reusable/Reviews";
 function App() {
   return (
     <div className="App">
@@ -17,8 +19,10 @@ function App() {
           <Route path="/provider" element={<Provider />}></Route>
           <Route path="/category" element={<Category />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/review" element={<Review />}></Route>
           <Route path="/*" element={<PageNotFound />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
 
     </div>

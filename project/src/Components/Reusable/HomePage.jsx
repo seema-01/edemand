@@ -72,7 +72,7 @@ const HomePage = () => {
             type="text"
             id="myinp1"
             className="form-control"
-            InputProps={{ startAdornment: <LocationOnOutlinedIcon /> }}
+            InputProps={{ startAdornment: <LocationOnOutlinedIcon sx={{paddingRight: 2}}/> }}
             placeholder="Enter Zip code"
             sx={{zIndex:1,background:"white"}}
           />
@@ -87,7 +87,7 @@ const HomePage = () => {
                 <Button
                   startIcon={<Search />}
                   variant="contained"
-                  sx={{ paddingLeft: 2, paddingRight: 2 }}
+                  sx={{ paddingLeft: 2,float:"right" }}
                 >
                   {" "}
                   Search{" "}

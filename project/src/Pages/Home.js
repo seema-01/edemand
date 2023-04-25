@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <div>
         <Layout>
+          {/* calling just two function for home page Homepage contained only image slider with inputs and HomeCategory contianed all services   */}
             <HomePage />
             <HomeCategory />
         </Layout>
