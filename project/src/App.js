@@ -9,10 +9,10 @@ import Category from "./Pages/Category";
 import Footer from "./Components/layout/Footer";
 import Review from "./Components/Reusable/Reviews";
 import Navigation from "./Components/layout/Navigation";
-import ProfileNavigation from "./Components/Reusable/ProfileNavigation";
+import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
-import { Box } from "@mui/material";
-import RightContent from "./Components/Reusable/Profile/RightContent";
+import { Container } from "@mui/material";
+// import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
     <div className="App">
@@ -25,8 +25,9 @@ function App() {
           <Route path="/categorys" element={<Category />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/reviews" element={<Review />}></Route>
-          <Route path="/profile" element={<ProfileNavigation />}></Route>
+          <Route path="/profile" element={<><Container><ProfileNavigation /></Container></>}></Route>
           <Route path="/profile/payment" element={<ProfilePayment />}></Route>
+          {/* <Route path="/calander" element={<Calander />}></Route> */}
           <Route path="/*" element={<PageNotFound />}></Route>
         </Routes>
         <Footer />
