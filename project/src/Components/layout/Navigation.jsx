@@ -16,14 +16,14 @@ import {
   Grid,
   Avatar,
   Link,
-  FormControlLabel
+  FormControlLabel,
 } from "@mui/material";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -42,17 +42,25 @@ const style = {
   width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
+  borderRadius:"10px",
   boxShadow: 24,
-  p: 4,
 };
-
 
 const Navigation = () => {
   const [open, setOpen] = React.useState(false);
-  const [openLogin,setOpenLogin]=useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const [isopen, setisOpen] = React.useState(false);
   const handleOpen = () => setisOpen(true);
   const handleClose = () => setisOpen(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
 
   return (
     <Box sx={{ backgroundColor: "white" }}>
@@ -110,7 +118,7 @@ const Navigation = () => {
                 About
               </NavLink>
               <NavLink
-                to="/category"
+                to="/categorys"
                 style={{
                   paddingLeft: "5%",
                   textDecoration: "none",
@@ -120,7 +128,7 @@ const Navigation = () => {
                 Category
               </NavLink>
               <NavLink
-                to="/provider"
+                to="/providers"
                 style={{
                   paddingLeft: "5%",
                   textDecoration: "none",
@@ -155,74 +163,75 @@ const Navigation = () => {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-              <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            background: "white",
-            borderRadius: "10px",
-            padding: 2
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-              />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
-      </Box>
+                <Container component="main" maxWidth="xs" >
+                  <CssBaseline />
+                  <Box
+                    sx={{
+                      marginTop: 8,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      background: "white",
+                      borderRadius: "10px",
+                      padding: 2,
+                      margin:0,
+                    }}
+                  >
+                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                      <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                      Sign in
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                      />
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                      />
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                      >
+                        Sign In
+                      </Button>
+                      <Grid container>
+                        <Grid item xs>
+                          <Link href="#" variant="body2">
+                            Forgot password?
+                          </Link>
+                        </Grid>
+                        <Grid item>
+                          <Link href="#" variant="body2">
+                            {"Don't have an account? Sign Up"}
+                          </Link>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </Box>
+                </Container>
+              </Box>
             </Modal>
           </StyledToolBar>
         </Box>

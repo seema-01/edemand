@@ -62,24 +62,24 @@ const FetchingCategorys = () => {
             {image.map((response) => {
               return (
                 <SwiperSlide>
-                  <Card sx={{ width: 200, height: "auto",border: "2px solid" }}>
+                  <Card sx={{ width: 200, height: 200,border: "2px solid" }}>
                     <img
                       src={response.category_image}
                       title="Services"
                       style={{ maxHeight: "100%", maxWidth: "100%" }}
                     />
-                    <CardContent sx={{textAlign:"center"}}>
+                    <CardContent sx={{textAlign:"center", mt:-6}}>
                       <Typography
                         gutterBottom
                         variant="a"
                         href="#"
                         component="div"
                       >
-                        {response.name}
+                        <strong>{response.name}</strong>
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider
-                      </Typography>
+                      </Typography> */}
                     </CardContent>
                   </Card>
                 </SwiperSlide>

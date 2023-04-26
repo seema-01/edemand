@@ -5,9 +5,7 @@ import Categorys from '../Components/Reusable/Categorys'
 const Category = () => {
     return (
         <div>
-            <Layout>
                 <Categorys />
-            </Layout>
         </div>
     )
 }

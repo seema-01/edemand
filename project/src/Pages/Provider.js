@@ -5,9 +5,7 @@ import Layout from '../Components/layout/Layout'
 const Provider = () => {
     return (
         <div>
-            <Layout>
                 <Providers />
-            </Layout>
         </div>
     )
 }
