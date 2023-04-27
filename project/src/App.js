@@ -12,6 +12,7 @@ import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
 import { Container } from "@mui/material";
+import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 // import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/reviews" element={<Review />}></Route>
           <Route path="/profile" element={<><Container><ProfileNavigation /></Container></>}></Route>
           <Route path="/profile/payment" element={<ProfilePayment />}></Route>
+          <Route path="/profile/booking" element={<ProfileBooking />}></Route>
           {/* <Route path="/calander" element={<Calander />}></Route> */}
           <Route path="/*" element={<PageNotFound />}></Route>
         </Routes>

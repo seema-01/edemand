@@ -19,11 +19,23 @@ import {
   Book,
   Person,
   KeyboardArrowRight,
+  Delete,
+  Logout,
+  Notifications,
+  FavoriteBorder,
+  Wallet,
+  AccountBalance,
+  AccountBalanceWalletOutlined,
+  DeleteOutline,
+  NotificationsOutlined,
+  LocalActivityOutlined,
+  LocationCityOutlined,
 } from "@mui/icons-material";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 import ProfilePayment from "./ProfilePayment";
 import RightContent from "./RightContent";
+
 
 const ProfileNavigation = () => {
   return (
@@ -62,17 +74,18 @@ const ProfileNavigation = () => {
         </ListItem>
 
         <List component="nav" aria-label="main mailbox folders" sx={{}}>
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/booking"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <Book sx={{ color: "blue" }} />
               </ListItemIcon>
+              {/* booking address url  */}
               <Link
-                to={"/"}
+                to={"/profile/booking"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Mybooking
               </Link>
               <IconButton
                 sx={{
@@ -87,17 +100,17 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/payment"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <LocationCityOutlined sx={{ color: "blue" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/address"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Manage Address
               </Link>
               <IconButton
                 sx={{
@@ -112,17 +125,17 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/payment"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <AccountBalanceWalletOutlined sx={{ color: "blue" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/payment"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Payment
               </Link>
               <IconButton
                 sx={{
@@ -137,17 +150,17 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/bookmark"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <FavoriteBorder sx={{ color: "blue" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/bookmark"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                My Bookmark
               </Link>
               <IconButton
                 sx={{
@@ -162,17 +175,20 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link
+            to={"/profile/notifications"}
+            style={{ textDecoration: "none" }}
+          >
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <NotificationsOutlined sx={{ color: "blue" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/notifications"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Notification
               </Link>
               <IconButton
                 sx={{
@@ -187,17 +203,17 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/logout"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <Logout sx={{ color: "blue" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/logout"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Logout
               </Link>
               <IconButton
                 sx={{
@@ -212,17 +228,17 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>{" "}
           <Divider />
-          <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/profile/delete"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
-                <Book />
+                <DeleteOutline sx={{ color: "red" }} />
               </ListItemIcon>
               <Link
-                to={"/"}
+                to={"/profile/delete"}
                 style={{ textDecoration: "none", color: "black" }}
                 primary="My Bookings"
               >
-                Mybooking{" "}
+                Delete Account
               </Link>
               <IconButton
                 sx={{
