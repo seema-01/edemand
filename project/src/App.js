@@ -13,6 +13,9 @@ import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
 import { Container } from "@mui/material";
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
+import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
+import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
+import ProfileNotification from "./Components/Reusable/Profile/ProfileNotification";
 // import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
@@ -26,10 +29,23 @@ function App() {
           <Route path="/categorys" element={<Category />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/reviews" element={<Review />}></Route>
-          <Route path="/profile" element={<><Container><ProfileNavigation /></Container></>}></Route>
+          <Route path="/profile/address" element={<ProfileAddress />}></Route>
           <Route path="/profile/payment" element={<ProfilePayment />}></Route>
           <Route path="/profile/booking" element={<ProfileBooking />}></Route>
+          <Route path="/profile/bookmark" element={<ProfileBookmark />}></Route>
+          <Route path="/profile/notifications" element={<ProfileNotification />}></Route>
           {/* <Route path="/calander" element={<Calander />}></Route> */}
+          <Route
+            path="/profile"
+            element={
+              <>
+                <Container>
+                  <ProfileNavigation />
+                </Container>
+              </>
+            }
+          ></Route>
+          
           <Route path="/*" element={<PageNotFound />}></Route>
         </Routes>
         <Footer />

@@ -100,7 +100,8 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={"/profile/payment"} style={{ textDecoration: "none" }}>
+          
+          <Link to={"/profile/address"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>
                 <LocationCityOutlined sx={{ color: "blue" }} />
