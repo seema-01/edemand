@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
+  Backdrop,
   Box,
+  Button,
   Container,
   Divider,
   Grid,
@@ -12,6 +14,9 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  FormLabel,
+  TextField,
+  Badge,
 } from "@mui/material";
 import {
   Dashboard,
@@ -31,13 +36,33 @@ import {
   LocalActivityOutlined,
   LocationCityOutlined,
 } from "@mui/icons-material";
+import CircularProgress from "@mui/material/CircularProgress";
+import ClearIcon from "@mui/icons-material/Clear";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 import ProfilePayment from "./ProfilePayment";
 import RightContent from "./RightContent";
 
-
 const ProfileNavigation = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+const submite = () => {
+  let name = document.getElementById("editName").value;
+  let email = document.getElementById("editEmail").value;
+  let phone = document.getElementById("editPhone").value;
+
+  console.log(name)
+  console.log(email)
+  console.log(phone)
+}
+
   return (
     <Box display={"flex"} maxWidth={"100%"}>
       <Box
@@ -71,6 +96,127 @@ const ProfileNavigation = () => {
             <Typography fontSize="10px">murphybates@gmail.com</Typography>
             <Typography fontSize="10px">+91 01234 56789</Typography>
           </div>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={handleOpen}
+            sx={{
+              color: "white",
+              border: "1px solid white",
+              ml: "auto",
+              mt: -12,
+            }}
+          >
+            Edit
+          </Button>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+          >
+            <Box
+              sx={{
+                background: "white",
+                color: "black",
+                width: "400px",
+                borderRadius: "10px",
+              }}
+            >
+              <Box
+                marginLeft={3}
+                marginRight={3}
+                marginTop={3}
+                marginBottom={3}
+              >
+                <Box display={"flex"}>
+                  <Typography marginRight={"auto"}>Edit Profile</Typography>
+                  {<ClearIcon onClick={handleClose} />}
+                </Box>
+                {/* img */}
+
+                <Avatar
+                  size="lg"
+                  sx={{
+                    height: "80px",
+                    width: "80px",
+                    border: "5px solid black",
+                    borderRadius: "100px",
+                    marginTop: "30px",
+                    marginBottom: "30px",
+                    marginInlineStart: "122px",
+                  }}
+                >
+                  MB
+                </Avatar>
+                <Badge>
+                 
+                    <EditRoundedIcon
+                      sx={{
+                        color: "white",
+                        background: "blue",
+                        borderRadius: "50px",
+                        ml: 23,
+                        mt: -9,
+                        border: "3px solid white",
+                        cursor: "pointer"
+                      }}
+                    />
+                </Badge>
+
+                <Box display={"block"}>
+                  <FormLabel>Name</FormLabel>
+                  <br />
+                  <TextField
+                    id="editName"
+                    placeholder="Enter name"
+                    size="small"
+                    fullWidth
+                    variant="outlined"
+                    name="name"
+                    required
+                    sx={{ background: "#F2F1F6" }}
+                  />
+                  <br />
+                  <br />
+                  <FormLabel>Email</FormLabel>
+                  <br />
+                  <TextField
+                    id="editEmail"
+                    placeholder="Enter Email"
+                    size="small"
+                    fullWidth
+                    variant="outlined"
+                    name="email"
+                    required
+                    sx={{ background: "#F2F1F6" }}
+                  />
+                  <br />
+                  <br />
+                  <FormLabel>Phone</FormLabel>
+                  <br />{" "}
+                  <TextField
+                    id="editPhone"
+                    placeholder="Enter Phone"
+                    size="small"
+                    fullWidth
+                    variant="outlined"
+                    sx={{ background: "#F2F1F6" }}
+                  />{" "}
+                  <br />
+                  <br />
+                  <br />
+                  <Button
+                    variant="contained"
+                    size="medium"
+                    sx={{ width: "350px" }}
+                    onClick={submite}
+                  >
+                    Save Profile
+                  </Button>
+                </Box>
+                {/* form */}
+              </Box>
+            </Box>
+          </Backdrop>
         </ListItem>
 
         <List component="nav" aria-label="main mailbox folders" sx={{}}>
@@ -100,7 +246,6 @@ const ProfileNavigation = () => {
             </ListItem>
           </Link>
           <Divider />
-          
           <Link to={"/profile/address"} style={{ textDecoration: "none" }}>
             <ListItem button sx={{ paddingTop: 1, paddingBottom: 1 }} href="/">
               <ListItemIcon>

@@ -64,9 +64,9 @@ const Navigation = () => {
 
   return (
     <Box sx={{ backgroundColor: "white" }}>
-      {/* <Container> */}
-      <AppBar position="sticky" style={{ background: "none" }}>
-        <Box paddingLeft={20} paddingRight={20}>
+      <Container>
+      <AppBar position="sticky" style={{ background: "none", boxShadow: "none" }}>
+        <Box>
           <StyledToolBar>
             <IconButton
               color="inherit"
@@ -236,7 +236,7 @@ const Navigation = () => {
           </StyledToolBar>
         </Box>
       </AppBar>
-      {/* </Container> */}
+      </Container>
     </Box>
   );
 };

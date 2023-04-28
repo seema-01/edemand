@@ -31,13 +31,13 @@ const FetchingCategorys = () => {
   }, []);
   return (
     <Container>
-      <Box sx={{marginTop:2,marginBottom:2}}>
+      <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
           freeMode={true}
           navigation={true}
           style={{
-            height:"auto"
+            height: "auto",
           }}
           modules={[Navigation]}
           breakpoints={{
@@ -61,14 +61,16 @@ const FetchingCategorys = () => {
           <Box>
             {image.map((response) => {
               return (
-                <SwiperSlide>
-                  <Card sx={{ width: 200, height: 200,border: "2px solid" }}>
+                <SwiperSlide
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
                     <img
                       src={response.category_image}
                       title="Services"
                       style={{ maxHeight: "100%", maxWidth: "100%" }}
                     />
-                    <CardContent sx={{textAlign:"center", mt:-6}}>
+                    <CardContent sx={{ textAlign: "center", mt: -6 }}>
                       <Typography
                         gutterBottom
                         variant="a"
@@ -76,8 +78,8 @@ const FetchingCategorys = () => {
                         component="div"
                       >
                         <strong>{response.name}</strong>
-                        </Typography>
-                        {/* <Typography variant="body2" color="text.secondary">
+                      </Typography>
+                      {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider
                       </Typography> */}
                     </CardContent>
