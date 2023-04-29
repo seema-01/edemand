@@ -7,7 +7,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import Home from "./Pages/Home";
 import Category from "./Pages/Category";
 import Footer from "./Components/layout/Footer";
-import Review from "./Components/Reusable/Reviews";
+import Reviews from "./Components/Reusable/Reviews";
 import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
@@ -16,6 +16,8 @@ import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
 import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
 import ProfileNotification from "./Components/Reusable/Profile/ProfileNotification";
+import MyProvider from "./Components/Reusable/MyProvider";
+import ProviderServices from "./Components/Reusable/ProviderServices";
 // import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
@@ -26,9 +28,10 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/providers" element={<Provider />}></Route>
+          <Route path="/providers/services" element={<ProviderServices />}></Route>
+          <Route path="/providers/services/reviews" element={<Reviews />}></Route>
           <Route path="/categorys" element={<Category />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/reviews" element={<Review />}></Route>
           <Route path="/profile/address" element={<ProfileAddress />}></Route>
           <Route path="/profile/payment" element={<ProfilePayment />}></Route>
           <Route path="/profile/booking" element={<ProfileBooking />}></Route>

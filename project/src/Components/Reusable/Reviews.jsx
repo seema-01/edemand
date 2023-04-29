@@ -14,7 +14,6 @@ import CustomerReview from "./CustomerReview";
 const Review = () => {
   return (
     <>
-      <Navigation />
       <Container>
         <Breadcrumbs
           aria-label="breadcrumb"
@@ -23,8 +22,11 @@ const Review = () => {
           <Link underline="hover" color="inherit" href="/">
             Home
           </Link>
-          <Link underline="hover" color="inherit" href="/home">
-            provider
+          <Link underline="hover" color="inherit" href="/provider">
+            providers
+          </Link>
+          <Link underline="hover" color="inherit" href="/providers/services">
+            Services
           </Link>
           <Typography color="text.primary">All Reviews</Typography>
         </Breadcrumbs>

@@ -41,8 +41,8 @@ const ProfileBooking = () => {
 
               <Box
                 sx={{
-                  bgcolor: "#e6E6FF",
-                  border: "1px solid",
+                  bgcolor: "#f8f3ff",
+                  border: "1px solid #dedddd",
                   borderRadius:"10px",
                   p:1,
                   ml:4,

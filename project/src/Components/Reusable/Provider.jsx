@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Rating } from '@mui/material';
 import { ArrowRight, ArrowRightAltOutlined, Done } from '@mui/icons-material';
+import ProviderServices from './ProviderServices';
 
 export default function Provider() {
   return (
@@ -40,7 +41,7 @@ export default function Provider() {
             <hr />
         </div>
 
-        <Button variant='a' href="" sx={{marginTop: 3}} endIcon={<ArrowRightAltOutlined />}>View All Services</Button>
+        <Button href="/providers/services" sx={{marginTop: 3}} endIcon={<ArrowRightAltOutlined />}>View All Services</Button>
       </CardContent>
      
       </Box>
