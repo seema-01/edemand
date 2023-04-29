@@ -29,9 +29,9 @@ const CustomerReview = () => {
             Good Honest worker, who shows exacetly what you requested. Thank You !
           </Typography>
           <Box marginTop={3} marginBottom={3}>
-          <img src="./demo1.jpg" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
-          <img src="./demo1.jpg" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
-          <img src="./demo1.jpg" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
+          <img src="https://picsum.photos/300/300" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
+          <img src="https://picsum.photos/300/300" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
+          <img src="https://picsum.photos/300/300" height={"60px"} width={"60px"} alt="" style={{margin: 2, borderRadius: "10px"}}/>
           </Box>
         </Box>
     </div>
