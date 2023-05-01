@@ -17,13 +17,17 @@ import {
   Avatar,
   Link,
   FormControlLabel,
+  Backdrop,
 } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
+import intlTelInput from "intl-tel-input";
+import "intl-tel-input/build/css/intlTelInput.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import React, { useState, useRef, useEffect } from "react";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -42,200 +46,208 @@ const style = {
   width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
-  borderRadius:"10px",
+  borderRadius: "10px",
   boxShadow: 24,
 };
 
 const Navigation = () => {
   const [open, setOpen] = React.useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
-  const [isopen, setisOpen] = React.useState(false);
-  const handleOpen = () => setisOpen(true);
-  const handleClose = () => setisOpen(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const input = document.querySelector("#phone");
+  const [login, isLogin] = React.useState(false);
+  const handleClose = () => {
+    isLogin(false);
   };
+  const handleOpen = () => {
+    isLogin(true);
+  };
+  const telInputRef = useRef(null);
+  useEffect(() => {
+    const telInput = intlTelInput(telInputRef.current, {
+      // Options go here
+    });
+  }, []);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
 
   return (
     <Box sx={{ backgroundColor: "white" }}>
       <Container>
-      <AppBar position="sticky" style={{ background: "none", boxShadow: "none" }}>
-        <Box>
-          <StyledToolBar>
-            <IconButton
-              color="inherit"
-              aria-label="open-drawer"
-              edge="start"
-              sx={{ mr: 2, display: { md: "none" } }}
-              onClick={() => setOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
+        <AppBar
+          position="sticky"
+          style={{ background: "none", boxShadow: "none" }}
+        >
+          <Box>
+            <StyledToolBar>
+              <IconButton
+                color="inherit"
+                aria-label="open-drawer"
+                edge="start"
+                sx={{ mr: 2, display: { md: "none" } }}
+                onClick={() => setOpen(true)}
+              >
+                <MenuIcon />
+              </IconButton>
 
-            {/* Set logo and burger menu in one side */}
-            <div>
-              <Drawer open={open} onClose={() => setOpen(false)}>
-                <List>
-                  <ListItemButton href="/home">HOME</ListItemButton>
-                  <ListItemButton href="/about us">ABOUT US</ListItemButton>
-                  <ListItemButton href="/all categories">
-                    ALL CATEGORIES{" "}
-                  </ListItemButton>
-                  <ListItemButton href="/all providers">
-                    ALL PROVIDERS
-                  </ListItemButton>
-                  <ListItemButton href="/conatct us">CONATCT US</ListItemButton>
-                </List>
-              </Drawer>
-              <Typography variant="h6">eDemand</Typography>
-            </div>
+              {/* Set logo and burger menu in one side */}
+              <div>
+                <Drawer open={open} onClose={() => setOpen(false)}>
+                  <List>
+                    <ListItemButton href="/home">HOME</ListItemButton>
+                    <ListItemButton href="/about us">ABOUT US</ListItemButton>
+                    <ListItemButton href="/all categories">
+                      ALL CATEGORIES{" "}
+                    </ListItemButton>
+                    <ListItemButton href="/all providers">
+                      ALL PROVIDERS
+                    </ListItemButton>
+                    <ListItemButton href="/conatct us">
+                      CONATCT US
+                    </ListItemButton>
+                  </List>
+                </Drawer>
+                <NavLink
+                  style={{ textDecoration: "none", fontSize: 20 }}
+                  to="/"
+                >
+                  eDemand
+                </NavLink>
+              </div>
 
-            <Box sx={{ display: { xs: "none", lg: "block" } }}>
-              <NavLink
-                to="/"
-                style={{
-                  paddingLeft: "1%",
-                  textDecoration: "none",
-                  color: "black",
-                }}
+              <Box sx={{ display: { xs: "none", lg: "block" } }}>
+                <NavLink
+                  to="/"
+                  style={{
+                    paddingLeft: "1%",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/about"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  About
+                </NavLink>
+                <NavLink
+                  to="/categorys"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  Category
+                </NavLink>
+                <NavLink
+                  to="/providers"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  Provider
+                </NavLink>
+                <NavLink
+                  to="/contact"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  Contact
+                </NavLink>
+              </Box>
+              <Button
+                variant="contained"
+                startIcon={<AccountCircleIcon />}
+                onClick={handleOpen}
               >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about"
-                style={{
-                  paddingLeft: "5%",
-                  textDecoration: "none",
-                  color: "black",
+                Sign in
+              </Button>
+              <Backdrop
+                sx={{
+                  color: "#fff",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
+                open={login}
               >
-                About
-              </NavLink>
-              <NavLink
-                to="/categorys"
-                style={{
-                  paddingLeft: "5%",
-                  textDecoration: "none",
-                  color: "black",
-                }}
-              >
-                Category
-              </NavLink>
-              <NavLink
-                to="/providers"
-                style={{
-                  paddingLeft: "5%",
-                  textDecoration: "none",
-                  color: "black",
-                }}
-              >
-                Provider
-              </NavLink>
-              <NavLink
-                to="/contact"
-                style={{
-                  paddingLeft: "5%",
-                  textDecoration: "none",
-                  color: "black",
-                }}
-              >
-                Contact
-              </NavLink>
-            </Box>
-            <Button
-              variant="contained"
-              startIcon={<AccountCircleIcon />}
-              onClick={handleOpen}
-            >
-              Sign in
-            </Button>
-
-            <Modal
-              open={isopen}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Container component="main" maxWidth="xs" >
-                  <CssBaseline />
+                <Box
+                  sx={{
+                    background: "white",
+                    color: "black",
+                    width: "380px",
+                    borderRadius: "10px",
+                  }}
+                >
                   <Box
-                    sx={{
-                      marginTop: 8,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      background: "white",
-                      borderRadius: "10px",
-                      padding: 2,
-                      margin:0,
-                    }}
+                    marginLeft={3}
+                    marginRight={3}
+                    marginTop={3}
+                    marginBottom={3}
                   >
-                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                      <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                      Sign in
-                    </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                      <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                      />
-                      <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                      />
-                      <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                      />
-                      <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                      >
-                        Sign In
+                    <Box display={"flex"}>
+                      <Typography marginRight={"auto"} color={"gray"}>
+                        <strong>Login</strong>
+                      </Typography>
+                      {<ClearIcon onClick={handleClose} />}
+                    </Box>
+                    {/* img */}
+
+                    <Box sx={{ textAlign: "center", marginTop: "60px" }}>
+                      <Typography marginBottom={2}>Welcome!</Typography>
+                      <Typography color={"gray"}>
+                        Enter Phone number to continue and we will <br /> a
+                        verification code to this number.{" "}
+                      </Typography>
+                    </Box>
+                    <Box display={"block"}>
+                      <br />
+                      <br />
+                      <br />
+                      {/* form */}
+                      <Box display={"flex"}>
+                        <input
+                          ref={telInputRef}
+                          type="tel"
+                          style={{ width: "10px", background: "#f2f1f6", height: "30px", borderRadius: "4px", border: "1px solid grey" }}
+                        />
+                        <input type="tel" style={{paddingLeft: 10,marginLeft: 5, width: "260px",background: "#f2f1f6", borderRadius: "4px", border: "1px solid grey"}} placeholder="Enter Phone number"/>
+                      </Box>
+                      <br />
+
+                      <Button variant="contained" size="medium" fullWidth>
+                        <Typography>Login to Continue</Typography>
                       </Button>
-                      <Grid container>
-                        <Grid item xs>
-                          <Link href="#" variant="body2">
-                            Forgot password?
-                          </Link>
-                        </Grid>
-                        <Grid item>
-                          <Link href="#" variant="body2">
-                            {"Don't have an account? Sign Up"}
-                          </Link>
-                        </Grid>
-                      </Grid>
+
+                      {/* form */}
+                      <Box sx={{ textAlign: "center", mt: 3 }}>
+                        <Typography sx={{mb:0.1}} color={"gray"} fontSize={14}>
+                          By Continuing you agree to out
+                        </Typography>
+                        <Link fontSize={14}>Terms of Service </Link> &{" "}
+                        <Link fontSize={14}>Privacy Policy</Link>
+                      </Box>
                     </Box>
                   </Box>
-                </Container>
-              </Box>
-            </Modal>
-          </StyledToolBar>
-        </Box>
-      </AppBar>
+                </Box>
+              </Backdrop>
+            </StyledToolBar>
+          </Box>
+        </AppBar>
       </Container>
     </Box>
   );

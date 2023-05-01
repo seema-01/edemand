@@ -31,7 +31,7 @@ import Input from "@mui/joy/Input";
 const ContactForm = () => {
   return (
     <>
-      <Container maxWidth="lg">
+      <Container>
         <Breadcrumbs
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}

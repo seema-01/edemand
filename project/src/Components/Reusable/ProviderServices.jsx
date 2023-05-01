@@ -13,13 +13,14 @@ import {
   Rating,
   Divider,
   LinearProgress,
+  Avatar,
 } from "@mui/material";
 import React from "react";
 import ProviderService from "./ProviderService";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import GradeIcon from "@mui/icons-material/Grade";
 import CustomerReview from "./CustomerReview";
-
+import StarIcon from '@mui/icons-material/Star';
 const ProviderServices = () => {
   return (
     <div>
@@ -41,7 +42,7 @@ const ProviderServices = () => {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item xs={7}>
+          <Grid item xs={12} md={7} >
             <Box sx={{ background: "white", borderRadius: "10px", mb: 5 }}>
               <Typography variant="h5" ml={2} p={2}>
                 <strong>Our Services</strong>
@@ -58,7 +59,7 @@ const ProviderServices = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <Box>
               <Card sx={{}}>
                 <CardMedia
@@ -71,7 +72,8 @@ const ProviderServices = () => {
                     height: 80,
                     width: 80,
                     borderRadius: 50,
-                    ml: 24,
+                    ml: 'auto',
+                    mr: 'auto',
                     border: "5px solid white",
                     mt: -5,
                   }}
@@ -82,10 +84,16 @@ const ProviderServices = () => {
                   <Button
                     variant="contained"
                     sx={{ textAlign: "start", fontSize: 15 }}
-                    startIcon={<CheckCircleOutlineIcon />}
                   >
-                    {" "}
-                    89 <br /> Orders Complete
+                    <Avatar sx={{ bgcolor: "white" }}>
+                      <CheckCircleIcon
+                        sx={{ bgcolor: "white", color: "blue", borderRadius: "50px" }}
+                      />
+                    </Avatar>{" "}
+                    <Box sx={{ ml: 2 }}>
+                      <h3>89</h3>{" "}
+                      <p style={{ fontSize: 10 }}>Orders Complete</p>
+                    </Box>
                   </Button>
                   <Button
                     variant="contained"
@@ -95,10 +103,16 @@ const ProviderServices = () => {
                       bgcolor: "#323232",
                       "&:hover": { bgcolor: "#323232" },
                     }}
-                    startIcon={<GradeIcon />}
                   >
-                    4.3 <br />
-                    Provider Rating{" "}
+                    <Avatar sx={{ bgcolor: "white" }}>
+                      <StarIcon
+                        sx={{ color: "gray", borderRadius: "50px" }}
+                      />
+                    </Avatar>{" "}
+                    <Box sx={{ ml: 2 }}>
+                      <h3>4.3</h3>{" "}
+                      <p style={{ fontSize: 10 }}>provider rating</p>
+                    </Box>
                   </Button>
                 </CardActions>
 
@@ -211,19 +225,19 @@ const RatingCard = ({}) => {
       </Box>
       <Box display={"flex"} flexDirection={"column"} mt={2}>
         <Box display={"flex"}>
-          <GradeIcon sx={{ color: "yellow", mr:1}} /> 5
+          <GradeIcon sx={{ color: "yellow", mr: 1 }} /> 5
         </Box>
         <Box display={"flex"}>
-          <GradeIcon sx={{ color: "yellow", mr:1 }} /> 4
+          <GradeIcon sx={{ color: "yellow", mr: 1 }} /> 4
         </Box>
         <Box display={"flex"}>
-          <GradeIcon sx={{ color: "yellow", mr:1 }} /> 3
+          <GradeIcon sx={{ color: "yellow", mr: 1 }} /> 3
         </Box>
         <Box display={"flex"}>
-          <GradeIcon sx={{ color: "yellow", mr:1 }} /> 2
+          <GradeIcon sx={{ color: "yellow", mr: 1 }} /> 2
         </Box>
         <Box display={"flex"}>
-          <GradeIcon sx={{ color: "yellow", mr:1 }} /> 1
+          <GradeIcon sx={{ color: "yellow", mr: 1 }} /> 1
         </Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
