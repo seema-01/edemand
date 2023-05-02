@@ -87,7 +87,7 @@ const HomePage = () => {
                 <Button
                   startIcon={<Search />}
                   variant="contained"
-                  sx={{ paddingLeft: 2,float:"right" }}
+                  sx={{ paddingLeft: 2,marginRight: -2 }}
                 >
                   {" "}
                   Search{" "}

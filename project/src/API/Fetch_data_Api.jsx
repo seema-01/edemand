@@ -1,6 +1,8 @@
 /*Default Api calling
 Default location Bhuj  */
 
+import { useState } from "react";
+
 var formdata = new FormData();
 formdata.append("latitude", "23.2507356");
 formdata.append("longitude", "69.6689201");
@@ -33,7 +35,6 @@ PlumbingService.append("category_id", "240");
 
 /* function for fetching Category  */
 export const get_Api_Category = async () => {
-
     var requestOptions = {
         method: 'POST',
         body: formdata,

@@ -154,7 +154,7 @@ export const OrderAddAddress = () => {
           maxWidth: "100%",
           border: "1px solid gray",
           borderRadius: "10px",
-          height: "110px",
+          height: "94px",
           p: 2,
           justifyContent: "center",
           textAlign: "center",

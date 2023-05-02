@@ -9,6 +9,7 @@ import {
   Container,
   Grid,
   Link,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -23,10 +24,12 @@ import { NavLink } from "react-router-dom";
 
 const FetchingServies = () => {
   const [image, setImage] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     api
       .get_categories_home()
       .then((response) => setImage(response.data))
+      .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
   }, []);
   return (
@@ -62,6 +65,8 @@ const FetchingServies = () => {
             },
           }}
         >
+          {isLoading ? (
+
           <Box>
             {image.map((response) => {
               return (
@@ -80,6 +85,15 @@ const FetchingServies = () => {
               );
             })}
           </Box>
+          ) : (
+            <Box display={"flex"} gap={2}>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+          </Box>
+          )}
         </Swiper>
       </Box>
     </Container>
@@ -94,10 +108,12 @@ export default FetchingServies;
 
 export const FetchingPlumbing = () => {
   const [image, setImage] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     api
       .get_categories_laundry()
       .then((response) => setImage(response.data))
+      .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
   }, []);
 
@@ -134,6 +150,8 @@ export const FetchingPlumbing = () => {
             },
           }}
         >
+          {isLoading ? (
+
           <Box>
             {image.map((response) => {
               return (
@@ -152,6 +170,15 @@ export const FetchingPlumbing = () => {
               );
             })}
           </Box>
+          ) : (
+            <Box display={"flex"} gap={2}>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+          </Box>
+          )}
         </Swiper>
       </Box>
     </Container>
@@ -164,10 +191,12 @@ export const FetchingPlumbing = () => {
 
 export const FetchingLaundry = () => {
     const [image, setImage] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
       api
         .get_categories_plumbing()
         .then((response) => setImage(response.data))
+        .then((response) => setIsLoading(true))
         .catch((error) => console.log(error));
     }, []);
   
@@ -204,6 +233,8 @@ export const FetchingLaundry = () => {
               },
             }}
           >
+            {isLoading? (
+
             <Box>
               {image.map((response) => {
                 return (
@@ -222,6 +253,15 @@ export const FetchingLaundry = () => {
                 );
               })}
             </Box>
+            ) : (
+              <Box display={"flex"} gap={2}>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+          </Box>
+            )}
           </Swiper>
         </Box>
       </Container>
@@ -234,10 +274,12 @@ export const FetchingLaundry = () => {
 
 export const FetchingCar = () => {
     const [image, setImage] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
       api
         .get_categories_car()
         .then((response) => setImage(response.data))
+        .then((response) => setIsLoading(true))
         .catch((error) => console.log(error));
     }, []);
   
@@ -274,6 +316,8 @@ export const FetchingCar = () => {
               },
             }}
           >
+            {isLoading ? (
+
             <Box>
               {image.map((response) => {
                 return (
@@ -292,6 +336,15 @@ export const FetchingCar = () => {
                 );
               })}
             </Box>
+            ) : (
+                <Box display={"flex"} gap={2}>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+          </Box>
+            )}
           </Swiper>
         </Box>
       </Container>
