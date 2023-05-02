@@ -12,47 +12,64 @@ import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
 import { Container } from "@mui/material";
+import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
 import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
 import ProfileNotification from "./Components/Reusable/Profile/ProfileNotification";
 import MyProvider from "./Components/Reusable/MyProvider";
+import Theme from './Theme'
 import ProviderServices from "./Components/Reusable/ProviderServices";
 // import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/providers" element={<Provider />}></Route>
-          <Route path="/providers/services" element={<ProviderServices />}></Route>
-          <Route path="/providers/services/reviews" element={<Reviews />}></Route>
-          <Route path="/categorys" element={<Category />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/profile/address" element={<ProfileAddress />}></Route>
-          <Route path="/profile/payment" element={<ProfilePayment />}></Route>
-          <Route path="/profile/booking" element={<ProfileBooking />}></Route>
-          <Route path="/profile/bookmark" element={<ProfileBookmark />}></Route>
-          <Route path="/profile/notifications" element={<ProfileNotification />}></Route>
-          {/* <Route path="/calander" element={<Calander />}></Route> */}
-          <Route
-            path="/profile"
-            element={
-              <>
-                <Container>
-                  <ProfileNavigation />
-                </Container>
-              </>
-            }
-          ></Route>
-          
-          <Route path="/*" element={<PageNotFound />}></Route>
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+
+        <BrowserRouter>
+          <Navigation />
+          {/* <Theme /> */}
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/providers" element={<Provider />}></Route>
+            <Route
+              path="/providers/services"
+              element={<ProviderServices />}
+            ></Route>
+            <Route
+              path="/providers/services/reviews"
+              element={<Reviews />}
+            ></Route>
+            <Route path="/categorys" element={<Category />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/profile/address" element={<ProfileAddress />}></Route>
+            <Route path="/profile/payment" element={<ProfilePayment />}></Route>
+            <Route path="/profile/booking" element={<ProfileBooking />}></Route>
+            <Route
+              path="/profile/bookmark"
+              element={<ProfileBookmark />}
+            ></Route>
+            <Route
+              path="/profile/notifications"
+              element={<ProfileNotification />}
+            ></Route>
+            {/* <Route path="/calander" element={<Calander />}></Route> */}
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <Container>
+                    <ProfileNavigation />
+                  </Container>
+                </>
+              }
+            ></Route>
+
+            <Route path="/*" element={<PageNotFound />}></Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+
     </div>
   );
 }

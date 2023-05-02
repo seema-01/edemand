@@ -87,11 +87,11 @@ const FetchingServies = () => {
           </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
           </Box>
           )}
         </Swiper>
@@ -172,11 +172,11 @@ export const FetchingPlumbing = () => {
           </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
           </Box>
           )}
         </Swiper>
@@ -255,11 +255,11 @@ export const FetchingLaundry = () => {
             </Box>
             ) : (
               <Box display={"flex"} gap={2}>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
           </Box>
             )}
           </Swiper>
@@ -338,11 +338,11 @@ export const FetchingCar = () => {
             </Box>
             ) : (
                 <Box display={"flex"} gap={2}>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
+            <Skeleton variant="rectangular" animation="wave" height={"200px"} width={"20%"}/>
           </Box>
             )}
           </Swiper>
