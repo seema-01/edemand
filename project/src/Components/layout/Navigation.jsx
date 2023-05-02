@@ -54,6 +54,13 @@ const Navigation = () => {
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
+  const [otp, setOtp] = React.useState(false);
+  const OtphandleClose = () => {
+    setOtp(false);
+  };
+  const OtphandleOpen = () => {
+    setOtp(true);
+  };
   const handleClose = () => {
     isLogin(false);
   };
@@ -223,19 +230,169 @@ const Navigation = () => {
                         <input
                           ref={telInputRef}
                           type="tel"
-                          style={{ width: "10px", background: "#f2f1f6", height: "30px", borderRadius: "4px", border: "1px solid grey" }}
+                          style={{
+                            width: "10px",
+                            background: "#f2f1f6",
+                            height: "30px",
+                            borderRadius: "4px",
+                            border: "1px solid grey",
+                          }}
                         />
-                        <input type="tel" style={{paddingLeft: 10,marginLeft: 5, width: "260px",background: "#f2f1f6", borderRadius: "4px", border: "1px solid grey"}} placeholder="Enter Phone number"/>
+                        <input
+                          type="tel"
+                          style={{
+                            paddingLeft: 10,
+                            marginLeft: 5,
+                            width: "260px",
+                            background: "#f2f1f6",
+                            borderRadius: "4px",
+                            border: "1px solid grey",
+                          }}
+                          placeholder="Enter Phone number"
+                        />
                       </Box>
                       <br />
 
-                      <Button variant="contained" size="medium" fullWidth>
+                      {/* --------------------------------------------------------------------------------------- */}
+                      {/* on this button click login page open and user give opt to this page  */}
+                      <Button onClick={OtphandleOpen} variant="contained" size="medium" fullWidth>
                         <Typography>Login to Continue</Typography>
                       </Button>
+                      <Backdrop
+                        sx={{
+                          color: "#fff",
+                          zIndex: (theme) => theme.zIndex.drawer + 1,
+                        }}
+                        open={otp}
+                      >
+                        <Box
+                          sx={{
+                            background: "white",
+                            color: "black",
+                            width: "380px",
+                            height: "430px",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Box
+                            marginLeft={3}
+                            marginRight={3}
+                            marginTop={3}
+                            marginBottom={3}
+                          >
+                            <Box display={"flex"}>
+                              <Typography marginRight={"auto"}>
+                                Login
+                              </Typography>
+                              {<ClearIcon onClick={OtphandleClose} />}
+                            </Box>
+
+                            {/*  */}
+                            <Box alignItems={"center"} textAlign={"center"}>
+                              <Typography>Enter Verification Code</Typography>
+                              <Typography>
+                                We have Sent a Verification code to <br />
+                                <Typography>+91 -9876543210</Typography>
+                              </Typography>
+                              <Box display={"block"}>
+                                <br />
+                                <br />
+
+                                {/*  */}
+
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      fontSize: "small",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                  <TextField
+                                    size="small"
+                                    sx={{
+                                      width: "40px",
+                                      fontSize: "small",
+                                      borderRadius: 2,
+                                      backgroundColor: "#F2F1F6",
+                                    }}
+                                  ></TextField>
+                                </Box>
+                                {/*  */}
+                                <Button
+                                  variant="outlined"
+                                  display={"flex"}
+                                  alignItems={"center"}
+                                  sx={{ mt: 6 }}
+                                >
+                                  Resend OTP:<Typography>26s</Typography>
+                                </Button>
+                              </Box>
+                              <br />
+                              <br />
+                              <br />
+                              <Box>
+                                <Button
+                                  variant="contained"
+                                  size="medium"
+                                  sx={{  }}
+                                  fullWidth
+                                >
+                                  Verify and Process
+                                </Button>
+                              </Box>
+                            </Box>
+                            {/* form */}
+                          </Box>
+                        </Box>
+                      </Backdrop>
 
                       {/* form */}
                       <Box sx={{ textAlign: "center", mt: 3 }}>
-                        <Typography sx={{mb:0.1}} color={"gray"} fontSize={14}>
+                        <Typography
+                          sx={{ mb: 0.1 }}
+                          color={"gray"}
+                          fontSize={14}
+                        >
                           By Continuing you agree to out
                         </Typography>
                         <Link fontSize={14}>Terms of Service </Link> &{" "}

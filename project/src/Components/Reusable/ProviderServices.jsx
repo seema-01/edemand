@@ -17,10 +17,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import ProviderService from "./ProviderService";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GradeIcon from "@mui/icons-material/Grade";
 import CustomerReview from "./CustomerReview";
-import StarIcon from '@mui/icons-material/Star';
+import StarIcon from "@mui/icons-material/Star";
+import { NavLink } from "react-router-dom";
 const ProviderServices = () => {
   return (
     <div>
@@ -42,7 +43,7 @@ const ProviderServices = () => {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item xs={12} md={7} >
+          <Grid item xs={12} md={7}>
             <Box sx={{ background: "white", borderRadius: "10px", mb: 5 }}>
               <Typography variant="h5" ml={2} p={2}>
                 <strong>Our Services</strong>
@@ -72,8 +73,8 @@ const ProviderServices = () => {
                     height: 80,
                     width: 80,
                     borderRadius: 50,
-                    ml: 'auto',
-                    mr: 'auto',
+                    ml: "auto",
+                    mr: "auto",
                     border: "5px solid white",
                     mt: -5,
                   }}
@@ -87,7 +88,11 @@ const ProviderServices = () => {
                   >
                     <Avatar sx={{ bgcolor: "white" }}>
                       <CheckCircleIcon
-                        sx={{ bgcolor: "white", color: "blue", borderRadius: "50px" }}
+                        sx={{
+                          bgcolor: "white",
+                          color: "blue",
+                          borderRadius: "50px",
+                        }}
                       />
                     </Avatar>{" "}
                     <Box sx={{ ml: 2 }}>
@@ -105,9 +110,7 @@ const ProviderServices = () => {
                     }}
                   >
                     <Avatar sx={{ bgcolor: "white" }}>
-                      <StarIcon
-                        sx={{ color: "gray", borderRadius: "50px" }}
-                      />
+                      <StarIcon sx={{ color: "gray", borderRadius: "50px" }} />
                     </Avatar>{" "}
                     <Box sx={{ ml: 2 }}>
                       <h3>4.3</h3>{" "}
@@ -149,19 +152,29 @@ const ProviderServices = () => {
               <RatingCard />
               <CustomerReview /> <Divider />
               <CustomerReview /> <Divider />
-              <Button
-                href="/providers/services/reviews"
-                variant="contained"
-                fullWidth
-                sx={{
-                  mt: 2,
-                  mb: 2,
-                  bgcolor: "#343f53",
-                  "&:hover": { bgcolor: "#343f53" },
-                }}
-              >
-                View All Review
-              </Button>
+              {/* <Box sx={{m:1, pb:1, justifyContent: "center", display: "flex", bgcolor: "#343f53"}}> */}
+              <Box sx={{pl:2, pr:2}}>
+                <NavLink
+                  to="/providers/services/reviews"
+                  variant="contained"
+                  fullWidth
+                  style={{
+                    textDecoration: "none",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    display: "flex",
+                    marginTop: 20,
+                    background: "#343f53",
+                    color: "white",
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    borderRadius: "4px",
+                  }}
+                >
+                  View All Review
+                </NavLink>
+              </Box>
+              <br />
             </Box>
           </Grid>
         </Grid>
@@ -184,6 +197,7 @@ const RatingCard = ({}) => {
         borderRadius: "10px",
         height: "200px",
         padding: 1,
+        m: 2,
       }}
     >
       <Box

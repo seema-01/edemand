@@ -5,8 +5,11 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  TextField,
+  Grid,
   Drawer,
 } from "@mui/material";
+import { Textarea } from "@mui/joy";
 import StarIcon from "@mui/icons-material/Star";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import StarRateIcon from "@mui/icons-material/StarRate";
@@ -15,6 +18,7 @@ import IconButton from "@mui/joy/IconButton";
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
 import React from "react";
+import Address, { AddAddress, OrderAddAddress, OrderAddress } from '../Reusable/Profile/Address'
 
 const ProviderService = () => {
   const [open, setOpen] = React.useState(false);
@@ -24,6 +28,14 @@ const ProviderService = () => {
   const handleOpen = () => {
     setOpen(true);
   };
+  const [address, setAddress] = React.useState(false);
+  const handleCloseAddress = () => {
+    setAddress(false);
+  };
+  const handleAddress = () => {
+    setAddress(true);
+  };
+  const [text, setText] = React.useState("");
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Card sx={{ display: "flex", boxShadow: "none", height: 180, p: 1 }}>
@@ -97,7 +109,7 @@ const ProviderService = () => {
                         margin: 3,
                         borderRadius: 2,
                         alignItem: "center",
-                        mt:6
+                        mt: 6,
                       }}
                     >
                       {/* <Box display={"flex"}>
@@ -111,12 +123,13 @@ const ProviderService = () => {
                         variant="contained"
                         fullWidth
                         size="small"
+                        onClick={handleAddress}
                         sx={{
                           bgcolor: "#343f53",
                           justifyContent: "space-between",
-                          '&:hover':{
-                            bgcolor: "#343f53"
-                          }
+                          "&:hover": {
+                            bgcolor: "#343f53",
+                          },
                         }}
                       >
                         <Box sx={{ display: "block" }}>
@@ -124,6 +137,87 @@ const ProviderService = () => {
                         </Box>
                         <Box>Continue</Box>
                       </Button>
+                      <Drawer anchor="right" open={address}>
+                        <Box sx={{ width: "500px" }}>
+                          <Box
+                            display={"flex"}
+                            textAlign="center"
+                            marginTop={3}
+                          >
+                            {
+                              <NavigateBeforeIcon
+                                onClick={handleCloseAddress}
+                                fontSize="large"
+                                sx={{ marginLeft: "20px" }}
+                              />
+                            }
+                            <Typography fontSize={20} marginLeft={3}>
+                              From: W0rld Clean Pvt Ltd
+                            </Typography>
+                          </Box>
+                          <hr />
+                          <Box ml={3} mr={3}>
+                            <Grid container spacing={2} mt={2}>
+                              <Grid item xs={6}>
+                                <Typography mb={1} fontSize={15}>
+                                  Select Date
+                                </Typography>
+                                <TextField
+                                  fullWidth
+                                  size="small"
+                                  placeholder="Select Date"
+                                  sx={{ backgroundColor: "#F2F1F6" }}
+                                ></TextField>
+                                <br />
+
+                                <Typography mt={1} fontSize={15}>
+                                  Your Address
+                                </Typography>
+                                <OrderAddress sx={{ backgroundColor: "gray" }} />
+                              </Grid>
+                              <Grid item xs={6}>
+                                <Typography mb={1} fontSize={15}>
+                                  Select Time
+                                </Typography>
+                                <TextField
+                                  fullWidth
+                                  placeholder="Select Time"
+                                  size="small"
+                                  sx={{ backgroundColor: "#F2F1F6", marginBottom: 2 }}
+                                ></TextField>
+                                
+                                <OrderAddAddress />
+                              </Grid>
+                            </Grid>
+                            <br />
+                            <br />
+                            <Typography color={"gray"}>
+                              Write Instruction for provider
+                            </Typography>
+
+                            <Textarea
+                              placeholder="Type in here…"
+                              value={text}
+                              onChange={(event) => setText(event.target.value)}
+                              minRows={4}
+                              maxRows={30}
+                              sx={{ backgroundColor: "#F2F1F6", minWidth: 300 }}
+                            />
+                            <br />
+                            <br />
+                            <br />
+                            <Button
+                              variant="contained"
+                              fullWidth
+                              size="medium"
+                              sx={{ backgroundColor: "#343F53" }}
+                              onClick={handleOpen}
+                            >
+                              Continue
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Drawer>
                     </Box>
                   </Box>
                 </Drawer>
