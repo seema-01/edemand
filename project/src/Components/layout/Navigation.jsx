@@ -130,14 +130,18 @@ const Navigation = () => {
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <NavLink
                   to="/"
-                  style={{
-                    paddingLeft: "1%",
-                    textDecoration: "none",
-                    color: "black",
+                  style={({ isActive }) => {
+                    return {
+                      paddingLeft: "5%",
+                      textDecoration: "none",
+                      color: "black",
+                      borderBottom: isActive ? "1px sloid " : "",
+                    };
                   }}
                 >
                   Home
                 </NavLink>
+                
                 <NavLink
                   to="/about"
                   style={{
@@ -179,7 +183,7 @@ const Navigation = () => {
                   Contact
                 </NavLink>
               </Box>
-              
+
               <Button
                 variant="contained"
                 startIcon={<AccountCircleIcon />}
@@ -257,7 +261,12 @@ const Navigation = () => {
 
                       {/* --------------------------------------------------------------------------------------- */}
                       {/* on this button click login page open and user give opt to this page  */}
-                      <Button onClick={OtphandleOpen} variant="contained" size="medium" fullWidth>
+                      <Button
+                        onClick={OtphandleOpen}
+                        variant="contained"
+                        size="medium"
+                        fullWidth
+                      >
                         <Typography>Login to Continue</Typography>
                       </Button>
                       <Backdrop
@@ -376,7 +385,7 @@ const Navigation = () => {
                                 <Button
                                   variant="contained"
                                   size="medium"
-                                  sx={{  }}
+                                  sx={{}}
                                   fullWidth
                                 >
                                   Verify and Process

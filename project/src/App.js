@@ -22,6 +22,7 @@ import Theme from './Theme'
 import ProviderServices from "./Components/Reusable/ProviderServices";
 import PaymentPage from "./Components/Reusable/Payment";
 // import Calander from "./Components/Reusable/Calander";
+import './CSS/style.css'
 function App() {
   return (
     <div className="App">

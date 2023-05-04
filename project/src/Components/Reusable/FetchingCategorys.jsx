@@ -24,30 +24,34 @@ import { NavLink } from "react-router-dom";
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
-  const [isLoading, SetIsLoading] = useState(false)
-  
+  const [isLoading, SetIsLoading] = useState(false);
+
   useEffect(() => {
-      api.get_Api_Category()
+    api
+      .get_Api_Category()
       .then((response) => setImage(response.data))
       .then((response) => SetIsLoading(true))
       .catch((error) => console.log(error));
-  },[]);
+  }, []);
 
   return (
     <Container>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
-        <Typography variant="h5" sx={{marginBottom:1}}> Creative Category </Typography>
+        <Typography variant="h5" sx={{ marginBottom: 1 }}>
+          {" "}
+          Creative Category{" "}
+        </Typography>
         <Swiper
-        pagination={{
-          type: "progressbar",
-        }}
+          pagination={{
+            type: "progressbar",
+          }}
           slidesPerView={5}
           freeMode={true}
           navigation={true}
           style={{
             height: "auto",
           }}
-          modules={[Pagination,Navigation]}
+          modules={[Pagination, Navigation]}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -67,46 +71,52 @@ const FetchingCategorys = () => {
           }}
         >
           {isLoading ? (
-
-          <Box>
-            {image.map((response) => {
-              return (
-                <SwiperSlide
-                  style={{ display: "flex", justifyContent: "space-around" }}
-                >
-                  <Card sx={{ mt:3,width: 200, height: 200, border: "1px solid #e4e4e4" }}>
-                    <img
-                      src={response.category_image}
-                      title="Services"
-                      style={{ maxHeight: "100%", maxWidth: "100%" }}
-                    />
-                    <CardContent sx={{ textAlign: "center", mt: -6 }}>
-                      <Typography
-                        gutterBottom
-                        variant="a"
-                        href="#"
-                        component="div"
-                      >
-                        <strong>{response.name}</strong>
-                      </Typography>
-                      {/* <Typography variant="body2" color="text.secondary">
+            <Box>
+              {image.map((response) => {
+                return (
+                  <SwiperSlide
+                    style={{ display: "flex", justifyContent: "space-around" }}
+                  >
+                    <Card
+                      sx={{
+                        mt: 3,
+                        width: 200,
+                        height: 200,
+                        border: "1px solid #e4e4e4",
+                      }}
+                    >
+                      <img
+                        src={response.category_image}
+                        title="Services"
+                        style={{ maxHeight: "100%", maxWidth: "100%" }}
+                      />
+                      <CardContent sx={{ textAlign: "center", mt: -6 }}>
+                        <Typography
+                          gutterBottom
+                          variant="a"
+                          href="#"
+                          component="div"
+                        >
+                          <strong>{response.name}</strong>
+                        </Typography>
+                        {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider
                       </Typography> */}
-                    </CardContent>
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-          </Box>
-        ) : (
-          <Box display={"flex"} gap={2}>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-            <Skeleton variant="rectangular" height={"200px"} width={"20%"}/>
-          </Box>
-        )}
+                      </CardContent>
+                    </Card>
+                  </SwiperSlide>
+                );
+              })}
+            </Box>
+          ) : (
+            <Box display={"flex"} gap={2}>
+              <Skeleton variant="rectangular" height={"200px"} width={"20%"} />
+              <Skeleton variant="rectangular" height={"200px"} width={"20%"} />
+              <Skeleton variant="rectangular" height={"200px"} width={"20%"} />
+              <Skeleton variant="rectangular" height={"200px"} width={"20%"} />
+              <Skeleton variant="rectangular" height={"200px"} width={"20%"} />
+            </Box>
+          )}
         </Swiper>
       </Box>
     </Container>

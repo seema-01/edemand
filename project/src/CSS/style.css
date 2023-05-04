@@ -1,0 +1,32 @@
+/* .swiper-container {
+    position: relative;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+  }
+  
+  .swiper-button-prev {
+    left: -10px;
+  }
+  
+  .swiper-button-next {
+    right: 10px;
+  }
+   */
+
+   .swiper-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    /* button styles */
+  }
+  
