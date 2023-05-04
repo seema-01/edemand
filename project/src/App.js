@@ -20,6 +20,7 @@ import ProfileNotification from "./Components/Reusable/Profile/ProfileNotificati
 import MyProvider from "./Components/Reusable/MyProvider";
 import Theme from './Theme'
 import ProviderServices from "./Components/Reusable/ProviderServices";
+import PaymentPage from "./Components/Reusable/Payment";
 // import Calander from "./Components/Reusable/Calander";
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
             <Route
               path="/providers/services"
               element={<ProviderServices />}
+            ></Route>
+            <Route
+              path="/providers/services/payment"
+              element={<PaymentPage />}
             ></Route>
             <Route
               path="/providers/services/reviews"
