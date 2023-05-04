@@ -25,7 +25,7 @@ import { NavLink } from "react-router-dom";
 const ProviderServices = () => {
   return (
     <div>
-      <Container maxWidth="lg">
+      <Container>
         <Breadcrumbs
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}

@@ -19,7 +19,7 @@ import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
 
 const FetchingCategorys = () => {
@@ -36,14 +36,18 @@ const FetchingCategorys = () => {
   return (
     <Container>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
+        <Typography variant="h5" sx={{marginBottom:1}}> Creative Category </Typography>
         <Swiper
+        pagination={{
+          type: "progressbar",
+        }}
           slidesPerView={5}
           freeMode={true}
           navigation={true}
           style={{
             height: "auto",
           }}
-          modules={[Navigation]}
+          modules={[Pagination,Navigation]}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -70,7 +74,7 @@ const FetchingCategorys = () => {
                 <SwiperSlide
                   style={{ display: "flex", justifyContent: "space-around" }}
                 >
-                  <Card sx={{ width: 200, height: 200, border: "1px solid #e4e4e4" }}>
+                  <Card sx={{ mt:3,width: 200, height: 200, border: "1px solid #e4e4e4" }}>
                     <img
                       src={response.category_image}
                       title="Services"

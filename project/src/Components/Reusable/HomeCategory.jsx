@@ -98,11 +98,13 @@ const HomeCategory = () => {
               <Typography variant="h4">
                 Our Valuabale Service Providers
               </Typography>
-              <hr />
+              <hr color="Whitesmoke"/>
             </Box>
-            <Box marginTop={-6}>
+            <Box marginTop={-4}>
             {/* our provider is already created and i juts call that function and set here with some editing  */}
+            <Container maxWidth="xl">
             <Providers />
+            </Container>
             </Box>
           
           </Container>

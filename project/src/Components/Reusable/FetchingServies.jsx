@@ -36,7 +36,7 @@ const FetchingServies = () => {
     <Container>
         <Box sx={{ paddingBottom: 1}}>
             <Typography variant="h4">Home Services</Typography>
-            <hr />
+            <hr color="whitesmoke"/>
         </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -71,7 +71,7 @@ const FetchingServies = () => {
             {image.map((response) => {
               return (
                 <SwiperSlide  style={{ display: "flex", justifyContent: "space-around" }}>
-                  <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
+                  <Card sx={{ width: 200, height: 200,borderRadius: "10px" }}>
                     <img
                       src={response.category_image}
                       title="Services"
@@ -121,7 +121,7 @@ export const FetchingPlumbing = () => {
     <Container>
          <Box sx={{ paddingBottom: 1}}>
             <Typography variant="h4">Laundry Services</Typography>
-            <hr />
+            <hr color="whitesmoke" />
         </Box>  
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -156,7 +156,7 @@ export const FetchingPlumbing = () => {
             {image.map((response) => {
               return (
                 <SwiperSlide  style={{ display: "flex", justifyContent: "space-around" }}>
-                  <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
+                  <Card sx={{ width: 200, height: 200, borderRadius: "10px" }}>
                     <img
                       src={response.category_image}
                       title="Services"
@@ -204,7 +204,7 @@ export const FetchingLaundry = () => {
       <Container>
         <Box sx={{ paddingBottom: 1}}>
             <Typography variant="h4">Plumbing Services</Typography>
-            <hr />
+            <hr color="whitesmoke"/>
         </Box>
         <Box sx={{ marginTop: 2, marginBottom: 2 }}>
           <Swiper
@@ -239,7 +239,7 @@ export const FetchingLaundry = () => {
               {image.map((response) => {
                 return (
                   <SwiperSlide  style={{ display: "flex", justifyContent: "space-around" }}>
-                    <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
+                    <Card sx={{ width: 200, height: 200, borderRadius: "10px" }}>
                       <img
                         src={response.category_image}
                         title="Services"
@@ -287,7 +287,7 @@ export const FetchingCar = () => {
       <Container>
         <Box sx={{ paddingBottom: 1}}>
             <Typography variant="h4">Vehical Repair Services</Typography>
-            <hr />
+            <hr color="whitesmoke"/>
         </Box>
         <Box sx={{ marginTop: 2, marginBottom: 2 }}>
           <Swiper
@@ -322,7 +322,7 @@ export const FetchingCar = () => {
               {image.map((response) => {
                 return (
                   <SwiperSlide  style={{ display: "flex", justifyContent: "space-around" }}>
-                    <Card sx={{ width: 200, height: 200, border: "2px solid" }}>
+                    <Card sx={{ width: 200, height: 200,borderRadius: "10px" }}>
                       <img
                         src={response.category_image}
                         title="Services"
