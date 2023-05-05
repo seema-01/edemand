@@ -9,6 +9,7 @@ import {
   Grid,
   Drawer,
   Divider,
+  Skeleton,
 } from "@mui/material";
 import { Textarea } from "@mui/joy";
 import StarIcon from "@mui/icons-material/Star";
@@ -44,12 +45,16 @@ const ProviderService = () => {
 
   return (
     <Box>
+
+    {isLoading ? (
+      
+    <Box>
       {service.map((response) => {
         return (
           <Box sx={{ flexGrow: 1 }}>
             <Card
               sx={{ display: "flex", boxShadow: "none", height: 200, p: 1 }}
-            >
+              >
               <Grid container display={"flex"} spacing={3}>
                 <Grid item md={4}>
                   <CardMedia
@@ -60,7 +65,7 @@ const ProviderService = () => {
                       width: "200px",
                       borderRadius: "4px",
                     }}
-                  />
+                    />
                 </Grid>
                 <Grid item md={8}>
                   <CardContent sx={{ ml: 2, p: 0 }}>
@@ -69,7 +74,7 @@ const ProviderService = () => {
                         <Typography
                           color={"#2560FC"}
                           sx={{ marginRight: "auto" }}
-                        >
+                          >
                           {response.title}
                         </Typography>
                         <StarIcon sx={{ color: "gold" }} /> {response.rating}
@@ -87,7 +92,7 @@ const ProviderService = () => {
                         <Typography
                           color={"#2560FC"}
                           sx={{ marginRight: "auto" }}
-                        >
+                          >
                           ${response.discounted_price}{" "}
                           <del style={{ color: "gray" }}>${response.price}</del>{" "}
                         </Typography>
@@ -98,7 +103,7 @@ const ProviderService = () => {
                             onClick={handleOpen}
                             float="right"
                             size="small"
-                          >
+                            >
                             {" "}
                             Add
                           </Button>
@@ -110,12 +115,12 @@ const ProviderService = () => {
                                 textAlign="center"
                                 width="500px"
                                 marginTop={3}
-                              >
+                                >
                                 {
                                   <NavigateBeforeIcon
-                                    onClick={handleClose}
-                                    fontSize="large"
-                                    sx={{ marginLeft: "20px" }}
+                                  onClick={handleClose}
+                                  fontSize="large"
+                                  sx={{ marginLeft: "20px" }}
                                   />
                                 }
                                 <Typography fontSize={20} marginLeft={3}>
@@ -137,7 +142,7 @@ const ProviderService = () => {
                                   alignItem: "center",
                                   mt: 6,
                                 }}
-                              >
+                                >
                                 <NavLink
                                   to={"/providers/services/payment"}
                                   size="small"
@@ -149,7 +154,7 @@ const ProviderService = () => {
                                     textDecoration: "none",
                                     justifyContent: "space-between",
                                   }}
-                                >
+                                  >
                                   <Box sx={{ display: "block" }}>
                                     <p style={{ fontSize: 10 }}> 4 items</p>{" "}
                                     $2296
@@ -171,6 +176,17 @@ const ProviderService = () => {
         );
       })}
     </Box>
+    ) : (
+      <Box>
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+        <Skeleton variant="rectangular" height={200} width={620}></Skeleton> <br />
+      </Box>
+      )}
+      </Box>
   );
 };
 
