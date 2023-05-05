@@ -46,7 +46,6 @@ const FetchingServies = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        
         {/* ------------------------------------------------------------------ */}
         {/* Everything should be coming from api  */}
         {isLoading ? (
@@ -55,7 +54,7 @@ const FetchingServies = () => {
               if (response.id == 213) {
                 return (
                   <>
-                    <h2>{response.name}</h2>
+                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
                     <hr color="whitesmoke" />
                   </>
                 );
@@ -176,20 +175,47 @@ export default FetchingServies;
 
 export const FetchingPlumbing = () => {
   const [image, setImage] = useState([]);
+  const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
+
+  const fetchingFunction = () => {
     api
       .get_categories_laundry()
       .then((response) => setImage(response.data))
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
+
+    api
+      .get_Api_Category()
+      .then((response) => setTitle(response.data))
+      .then((response) => setIsLoading(true))
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    fetchingFunction();
   }, []);
 
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        <Typography variant="h4">Laundry Services</Typography>
-        <hr color="whitesmoke" />
+        {isLoading ? (
+          <Box>
+            {title.map((response) => {
+              if (response.id == 222) {
+                return (
+                  <>
+                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <hr color="whitesmoke" />
+                  </>
+                );
+              }
+            })}
+          </Box>
+        ) : (
+          <Box sx={{ width: 200 }}>
+            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
+          </Box>
+        )}
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -295,20 +321,47 @@ export const FetchingPlumbing = () => {
 
 export const FetchingLaundry = () => {
   const [image, setImage] = useState([]);
+  const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
+
+  const fetchingFunction = () => {
     api
       .get_categories_plumbing()
       .then((response) => setImage(response.data))
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
+
+    api
+      .get_Api_Category()
+      .then((response) => setTitle(response.data))
+      .then((response) => setIsLoading(true))
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    fetchingFunction();
   }, []);
 
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        <Typography variant="h4">Plumbing Services</Typography>
-        <hr color="whitesmoke" />
+        {isLoading ? (
+          <Box>
+            {title.map((response) => {
+              if (response.id == 240) {
+                return (
+                  <>
+                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <hr color="whitesmoke" />
+                  </>
+                );
+              }
+            })}
+          </Box>
+        ) : (
+          <Box sx={{ width: 200 }}>
+            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
+          </Box>
+        )}
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -414,20 +467,46 @@ export const FetchingLaundry = () => {
 
 export const FetchingCar = () => {
   const [image, setImage] = useState([]);
+  const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
+
+  const fetchingFunction = () => {
     api
       .get_categories_car()
       .then((response) => setImage(response.data))
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
-  }, []);
 
+    api
+      .get_Api_Category()
+      .then((response) => setTitle(response.data))
+      .then((response) => setIsLoading(true))
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    fetchingFunction();
+  }, []);
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        <Typography variant="h4">Vehical Repair Services</Typography>
-        <hr color="whitesmoke" />
+        {isLoading ? (
+          <Box>
+            {title.map((response) => {
+              if (response.id == 259) {
+                return (
+                  <>
+                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <hr color="whitesmoke" />
+                  </>
+                );
+              }
+            })}
+          </Box>
+        ) : (
+          <Box sx={{ width: 200 }}>
+            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
+          </Box>
+        )}
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper

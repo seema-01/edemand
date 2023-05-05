@@ -39,10 +39,10 @@ const FetchingCategorys = () => {
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         {/* Catregory name comes from api  */}
         {/* --------------------------------------------------- */}
-        {/* <Typography variant="h5" sx={{ marginBottom: 1 }}>
+        <Typography variant="h4" sx={{ marginBottom: 1 }}>
           {" "}
           Creative Category{" "}
-        </Typography> */}
+        </Typography>
         <Swiper
           pagination={{
             type: "progressbar",
