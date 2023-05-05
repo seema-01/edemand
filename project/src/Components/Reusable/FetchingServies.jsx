@@ -46,13 +46,19 @@ const FetchingServies = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
+        
         {/* ------------------------------------------------------------------ */}
         {/* Everything should be coming from api  */}
         {isLoading ? (
           <Box>
             {title.map((response) => {
               if (response.id == 213) {
-                return <h2>{response.name}</h2>;
+                return (
+                  <>
+                    <h2>{response.name}</h2>
+                    <hr color="whitesmoke" />
+                  </>
+                );
               }
             })}
           </Box>
@@ -61,9 +67,9 @@ const FetchingServies = () => {
             <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
           </Box>
         )}
-
-        <hr color="whitesmoke" />
       </Box>
+      {/* ------------------------------------------------------------------------ */}
+
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
