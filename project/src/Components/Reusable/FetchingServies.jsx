@@ -24,18 +24,44 @@ import { NavLink } from "react-router-dom";
 
 const FetchingServies = () => {
   const [image, setImage] = useState([]);
+  const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
+
+  const fetchingFunction = () => {
     api
       .get_categories_home()
       .then((response) => setImage(response.data))
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
+
+    api
+      .get_Api_Category()
+      .then((response) => setTitle(response.data))
+      .then((response) => setIsLoading(true))
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    fetchingFunction();
   }, []);
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        <Typography variant="h4">Home Services</Typography>
+        {/* ------------------------------------------------------------------ */}
+        {/* Everything should be coming from api  */}
+        {isLoading ? (
+          <Box>
+            {title.map((response) => {
+              if (response.id == 213) {
+                return <h2>{response.name}</h2>;
+              }
+            })}
+          </Box>
+        ) : (
+          <Box sx={{ width: 200 }}>
+            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
+          </Box>
+        )}
+
         <hr color="whitesmoke" />
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
@@ -492,7 +518,6 @@ export const FetchingCar = () => {
             </Box>
           )}
         </Swiper>
-     
       </Box>
     </Container>
   );
