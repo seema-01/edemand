@@ -111,10 +111,21 @@ async function get_categories_car() {
 }
 
 
-
+async function get_providers(){
+   
+    var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+    const response = await fetch("https://edemand.wrteam.me/api/v1/get_providers" , requestOptions)
+    const result = await response.json();
+    console.log(result)
+    return result;
+}
 
 /*Exporting all Functions for reuseing in differnt components*/
-export default { get_categories_home, get_Api_Category,get_categories_laundry,get_categories_car,get_categories_plumbing }
+export default { get_categories_home, get_Api_Category,get_categories_laundry,get_categories_car,get_categories_plumbing, get_providers }
 
 /** This code is for fetchig datas from api
  * api: https://edemand.wrteam.me/api/v1/

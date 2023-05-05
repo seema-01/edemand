@@ -23,23 +23,8 @@ const Providers = () => {
     return (
         <div>
             <Container maxWidth={"lg"}>
-                <Grid container sx={{backgroundColor:"white", borderRadius: "10px"}} marginTop={"6%"} boxShadow={"none"}>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <Item><Provider /></Item>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <Item><Provider /></Item>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <Item><Provider /></Item>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <Item><Provider /></Item>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <Item><Provider /></Item>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
+                <Grid container sx={{backgroundColor:"white", borderRadius: "10px", display: "flex"}} marginTop={"6%"} boxShadow={"none"} >
+                    <Grid item xs={12} md={6} lg={12}>
                         <Item><Provider /></Item>
                     </Grid>
                 </Grid>
