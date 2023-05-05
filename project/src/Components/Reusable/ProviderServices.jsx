@@ -50,12 +50,6 @@ const ProviderServices = () => {
               </Typography>
               <hr />
               <Box sx={{ p: 3 }}>
-                <ProviderService /> <hr />
-                <ProviderService /> <hr />
-                <ProviderService /> <hr />
-                <ProviderService /> <hr />
-                <ProviderService /> <hr />
-                <ProviderService /> <hr />
                 <ProviderService />
               </Box>
             </Box>

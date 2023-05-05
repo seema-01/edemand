@@ -54,7 +54,9 @@ const FetchingServies = () => {
               if (response.id == 213) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <Typography variant="h4" fontWeight={500}>
+                      {response.name}
+                    </Typography>
                     <hr color="whitesmoke" />
                   </>
                 );
@@ -121,7 +123,7 @@ const FetchingServies = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <strong>{response.name}</strong>
+                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -204,7 +206,9 @@ export const FetchingPlumbing = () => {
               if (response.id == 222) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <Typography variant="h4" fontWeight={500}>
+                      {response.name}
+                    </Typography>
                     <hr color="whitesmoke" />
                   </>
                 );
@@ -269,7 +273,7 @@ export const FetchingPlumbing = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <strong>{response.name}</strong>
+                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -350,7 +354,9 @@ export const FetchingLaundry = () => {
               if (response.id == 240) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <Typography variant="h4" fontWeight={500}>
+                      {response.name}
+                    </Typography>
                     <hr color="whitesmoke" />
                   </>
                 );
@@ -415,7 +421,7 @@ export const FetchingLaundry = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <strong>{response.name}</strong>
+                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -495,7 +501,9 @@ export const FetchingCar = () => {
               if (response.id == 259) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>{response.name}</Typography>
+                    <Typography variant="h4" fontWeight={500}>
+                      {response.name}
+                    </Typography>
                     <hr color="whitesmoke" />
                   </>
                 );
@@ -560,7 +568,7 @@ export const FetchingCar = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <strong>{response.name}</strong>
+                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
                         </Typography>
                       </Box>
                     </Card>

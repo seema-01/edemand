@@ -32,7 +32,7 @@ export default function Provider() {
       display={"flex"}
       gridColumn={3}
       flexWrap={"wrap"}
-      sx={{ gap: "32px", justifyContent: "space-around" }}
+      sx={{ gap: "22px", justifyContent: "space-around" }}
     >
       {isLoading ? (
         <>
@@ -105,7 +105,7 @@ export default function Provider() {
         </>
       ) : (
           <Grid container spacing={2}> 
-            <Grid item lg={12} display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"} gap={3}>
+            <Grid item lg={12} display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"} gap={2}>
               <Skeleton
                 sx={{ height: "500px", width: "345px" }}
                 variant="rectangular"
