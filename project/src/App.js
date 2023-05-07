@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Provider from "./Pages/Provider";
+import Providers from "./Pages/Provider";
 import PageNotFound from "./Pages/PageNotFound";
 import Home from "./Pages/Home";
 import Category from "./Pages/Category";
@@ -12,28 +12,41 @@ import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
 import { Container } from "@mui/material";
-import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
+import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
 import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
 import ProfileNotification from "./Components/Reusable/Profile/ProfileNotification";
 import MyProvider from "./Components/Reusable/MyProvider";
-import Theme from './Theme'
+import Theme from "./Theme";
 import ProviderServices from "./Components/Reusable/ProviderServices";
 import PaymentPage from "./Components/Reusable/Payment";
-// import Calander from "./Components/Reusable/Calander";
-import './CSS/style.css'
+import "./CSS/style.css";
+import { createStore } from "redux";
+import allReducers from "./reducer";
+// Provider can connect our global state our store to app
+import { Provider } from "react-redux";
+import Countervalue from "./reducer/Countervalue";
+
+
+
+// Store -> Globalized State
+let myStore = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 function App() {
   return (
-    <div className="App">
-
+    <Provider store={myStore}>
+      <div className="App">
         <BrowserRouter>
           <Navigation />
+          <Countervalue />
           {/* <Theme /> */}
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/providers" element={<Provider />}></Route>
+            <Route path="/providers" element={<Providers />}></Route>
             <Route
               path="/providers/services"
               element={<ProviderServices />}
@@ -48,6 +61,9 @@ function App() {
             ></Route>
             <Route path="/categorys" element={<Category />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
+
+            {/* profile section  */}
+
             <Route path="/profile/address" element={<ProfileAddress />}></Route>
             <Route path="/profile/payment" element={<ProfilePayment />}></Route>
             <Route path="/profile/booking" element={<ProfileBooking />}></Route>
@@ -65,18 +81,20 @@ function App() {
               element={
                 <>
                   <Container>
-                    <ProfileNavigation />
-                  </Container>
+                    {" "}
+                    <ProfileNavigation />{" "}
+                  </Container>{" "}
                 </>
               }
             ></Route>
 
+            {/* 404 Page Not Found */}
             <Route path="/*" element={<PageNotFound />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>
-
-    </div>
+      </div>
+    </Provider>
   );
 }
 
