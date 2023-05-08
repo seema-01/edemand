@@ -19,6 +19,7 @@
     "axios": "^1.4.0",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.7",
+    "firebase": "^9.21.0",
     "intl-tel-input": "^18.1.5",
     "jquery": "^3.6.4",
     "mui-file-input": "^2.0.0",

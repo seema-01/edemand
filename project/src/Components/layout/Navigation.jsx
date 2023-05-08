@@ -82,6 +82,15 @@ const Navigation = () => {
   //   });
   // };
 
+  // First Attempts => set here to second goes from 60 to 0
+  const [counter, setCounter] = React.useState(60);
+
+  // Third Attempts
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
   return (
     <Box sx={{ backgroundColor: "white" }}>
       <Container>
@@ -141,7 +150,7 @@ const Navigation = () => {
                 >
                   Home
                 </NavLink>
-                
+
                 <NavLink
                   to="/about"
                   style={{
@@ -375,7 +384,7 @@ const Navigation = () => {
                                   alignItems={"center"}
                                   sx={{ mt: 6 }}
                                 >
-                                  Resend OTP:<Typography>26s</Typography>
+                                  Resend OTP:<Typography>{counter}</Typography>
                                 </Button>
                               </Box>
                               <br />

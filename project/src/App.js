@@ -27,8 +27,7 @@ import allReducers from "./reducer";
 // Provider can connect our global state our store to app
 import { Provider } from "react-redux";
 import Countervalue from "./reducer/Countervalue";
-
-
+import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 
 // Store -> Globalized State
 let myStore = createStore(
@@ -41,7 +40,8 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navigation />
-          <Countervalue />
+          {/* <Countervalue /> */}
+          {/* <GetCities /> */}
           {/* <Theme /> */}
           <Routes>
             <Route path="/" element={<Home />}></Route>
