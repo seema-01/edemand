@@ -28,6 +28,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React, { useState, useRef, useEffect } from "react";
+import OTPInput, {ResendOTP} from "otp-input-react";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -53,6 +54,7 @@ const style = {
 const Navigation = () => {
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
+  const [OTP, setOTP] = useState("");
   const [login, isLogin] = React.useState(false);
   const [otp, setOtp] = React.useState(false);
   const OtphandleClose = () => {
@@ -322,11 +324,11 @@ const Navigation = () => {
 
                                 <Box
                                   sx={{
-                                    display: "flex",
+                                    display: "block",
                                     justifyContent: "space-between",
                                   }}
                                 >
-                                  <TextField
+                                  {/* <TextField
                                     size="small"
                                     sx={{
                                       width: "40px",
@@ -375,16 +377,29 @@ const Navigation = () => {
                                       borderRadius: 2,
                                       backgroundColor: "#F2F1F6",
                                     }}
-                                  ></TextField>
+                                  ></TextField> */}
+                                  <OTPInput
+                                    value={OTP}
+                                    onChange={setOTP}
+                                    autoFocus
+                                    OTPLength={6}
+                                    otpType="number"
+                                    disabled={false}
+                                    
+                                  /> <br />
                                 </Box>
                                 {/*  */}
                                 <Button
                                   variant="outlined"
                                   display={"flex"}
                                   alignItems={"center"}
-                                  sx={{ mt: 6 }}
+                                  sx={{ mt: 6 , flexDirection: "row-reverse"}}
                                 >
-                                  Resend OTP:<Typography>{counter}</Typography>
+                                 <ResendOTP className="resend"
+                                    onResendClick={() =>
+                                      console.log("Resend clicked")
+                                    }
+                                  />
                                 </Button>
                               </Box>
                               <br />
