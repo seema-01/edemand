@@ -19,6 +19,14 @@ import {
   FormControlLabel,
   Backdrop,
 } from "@mui/material";
+import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
+import { CgSpinner } from "react-icons/cg";
+import OtpInput from "otp-input-react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { auth } from "../../firebase/config";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { toast, Toaster } from "react-hot-toast";
 import ClearIcon from "@mui/icons-material/Clear";
 import intlTelInput from "intl-tel-input";
 import "intl-tel-input/build/css/intlTelInput.css";
@@ -28,7 +36,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React, { useState, useRef, useEffect } from "react";
-import OTPInput, {ResendOTP} from "otp-input-react";
+import OTPInput, { ResendOTP } from "otp-input-react";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -54,27 +62,22 @@ const style = {
 const Navigation = () => {
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
-  const [OTP, setOTP] = useState("");
   const [login, isLogin] = React.useState(false);
-  const [otp, setOtp] = React.useState(false);
-  const OtphandleClose = () => {
-    setOtp(false);
-  };
-  const OtphandleOpen = () => {
-    setOtp(true);
-  };
-  const handleClose = () => {
-    isLogin(false);
-  };
+  // const OtphandleClose = () => {
+  //   setOtp(false);
+  // };
+  // const OtphandleOpen = () => {
+  //   setOtp(true);
+  // };
+  // 
   const handleOpen = () => {
     isLogin(true);
   };
+  const handleClose = () => {
+       isLogin(false);
+     };
   const telInputRef = useRef(null);
-  useEffect(() => {
-    const telInput = intlTelInput(telInputRef.current, {
-      // Options go here
-    });
-  }, []);
+
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   const data = new FormData(event.currentTarget);
@@ -93,6 +96,65 @@ const Navigation = () => {
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
   }, [counter]);
+
+  const [otp, setOtp] = useState("");
+  const [ph, setPh] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [user, setUser] = useState(null);
+
+  function onCaptchVerify() {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: (response) => {
+            onSignup();
+          },
+          "expired-callback": () => {},
+        },
+        auth
+      );
+    }
+  }
+
+  function onSignup() {
+    setLoading(true);
+    onCaptchVerify();
+
+    const appVerifier = window.recaptchaVerifier;
+
+    const formatPh = "+" + ph;
+
+    signInWithPhoneNumber(auth, formatPh, appVerifier)
+      .then((confirmationResult) => {
+        window.confirmationResult = confirmationResult;
+        setLoading(false);
+        setShowOTP(true);
+        toast.success("OTP sended successfully!");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }
+
+  function onOTPVerify() {
+    setLoading(true);
+    window.confirmationResult
+      .confirm(otp)
+      .then(async (res) => {
+        console.log(res);
+        setUser(res.user);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }
+
   return (
     <Box sx={{ backgroundColor: "white" }}>
       <Container>
@@ -202,6 +264,7 @@ const Navigation = () => {
               >
                 Sign in
               </Button>
+              {/* ------------------------------------------------- */}
               <Backdrop
                 sx={{
                   color: "#fff",
@@ -213,228 +276,107 @@ const Navigation = () => {
                   sx={{
                     background: "white",
                     color: "black",
-                    width: "380px",
+                    width: "400px",
                     borderRadius: "10px",
+                    textAlign:"center",
+                    margin:30,
                   }}
                 >
-                  <Box
-                    marginLeft={3}
-                    marginRight={3}
-                    marginTop={3}
-                    marginBottom={3}
-                  >
-                    <Box display={"flex"}>
-                      <Typography marginRight={"auto"} color={"gray"}>
-                        <strong>Login</strong>
-                      </Typography>
-                      {<ClearIcon onClick={handleClose} />}
-                    </Box>
-                    {/* img */}
-
-                    <Box sx={{ textAlign: "center", marginTop: "60px" }}>
-                      <Typography marginBottom={2}>Welcome!</Typography>
-                      <Typography color={"gray"}>
-                        Enter Phone number to continue and we will <br /> a
-                        verification code to this number.{" "}
-                      </Typography>
-                    </Box>
-                    <Box display={"block"}>
-                      <br />
-                      <br />
-                      <br />
-                      {/* form */}
-                      <Box display={"flex"}>
-                        <input
-                          ref={telInputRef}
-                          type="tel"
-                          style={{
-                            width: "10px",
-                            background: "#f2f1f6",
-                            height: "30px",
-                            borderRadius: "4px",
-                            border: "1px solid grey",
-                          }}
-                        />
-                        <input
-                          type="tel"
-                          style={{
-                            paddingLeft: 10,
-                            marginLeft: 5,
-                            width: "260px",
-                            background: "#f2f1f6",
-                            borderRadius: "4px",
-                            border: "1px solid grey",
-                          }}
-                          placeholder="Enter Phone number"
-                        />
-                      </Box>
-                      <br />
-
-                      {/* --------------------------------------------------------------------------------------- */}
-                      {/* on this button click login page open and user give opt to this page  */}
-                      <Button
-                        onClick={OtphandleOpen}
-                        variant="contained"
-                        size="medium"
-                        fullWidth
-                      >
-                        <Typography>Login to Continue</Typography>
-                      </Button>
-                      <Backdrop
-                        sx={{
-                          color: "#fff",
-                          zIndex: (theme) => theme.zIndex.drawer + 1,
-                        }}
-                        open={otp}
-                      >
-                        <Box
-                          sx={{
-                            background: "white",
-                            color: "black",
-                            width: "380px",
-                            height: "430px",
-                            borderRadius: "10px",
-                          }}
-                        >
-                          <Box
-                            marginLeft={3}
-                            marginRight={3}
-                            marginTop={3}
-                            marginBottom={3}
+                    <Box marginLeft={3} marginRight={3} marginTop={3} marginBottom={3}>
+            <Box display={"flex"}>
+              <Typography marginRight={"auto"} color={"gray"}>
+                Login
+              </Typography>
+              {<ClearIcon onClick={handleClose} />}
+            </Box>
+                  <Box id="recaptcha-container"></Box>
+                  {user ? (
+                    <Typography>
+                      👍Login Success
+                    </Typography>
+                  ) : (
+                    <Box sx={{justifyContent:"center"}}>
+                     <Box sx={{ textAlign: "center", marginTop: "60px" }}>
+                     
+                     </Box>
+                      {showOTP ? (
+                        <>
+                          
+                          <label
+                            htmlFor="otp"
+                            className="font-bold text-xl text-white text-center"
                           >
-                            <Box display={"flex"}>
-                              <Typography marginRight={"auto"}>
-                                Login
-                              </Typography>
-                              {<ClearIcon onClick={OtphandleClose} />}
+                            <Typography>Enter Verification Code</Typography>
+              <Typography>
+                We have Sent a Verification code to <br />
+                <Typography>+91 -9876543210</Typography>
+              </Typography>
+                          </label>
+                          <Box marginTop={5}>
+
+                          <OtpInput
+                            value={otp}
+                            onChange={setOtp}
+                            OTPLength={6}
+                            otpType="number"
+                            disabled={false}
+                            autoFocus
+                            className="opt-container "
+                            ></OtpInput>
+                            </Box> <br />
+                          <Button
+                            onClick={onOTPVerify}
+                            className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                          >
+                            {loading && (
+                              <CgSpinner
+                                size={20}
+                                className="mt-1 animate-spin"
+                              />
+                            )}
+
+                             <Button variant="contained" size="medium" sx={{ width: "350px" }}>
+                Verify and Process
+              </Button>
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                         <Typography marginBottom={2}>Welcome!</Typography>
+              <Typography color={"gray"}>
+                Enter Phone number to continue and we will  a verification
+                code to this number.{" "}
+              </Typography> 
+                         <Box sx={{marginTop:5,display:"flex",alignItems:"center"}}>
+                          <PhoneInput
+                            country={"in"}
+                            value={ph}
+                            onChange={setPh}
+                            containerStyle={{display:"flex",alignItems:"center"}}
+                            />
                             </Box>
-
-                            {/*  */}
-                            <Box alignItems={"center"} textAlign={"center"}>
-                              <Typography>Enter Verification Code</Typography>
-                              <Typography>
-                                We have Sent a Verification code to <br />
-                                <Typography>+91 -9876543210</Typography>
-                              </Typography>
-                              <Box display={"block"}>
-                                <br />
-                                <br />
-
-                                {/*  */}
-
-                                <Box
-                                  sx={{
-                                    display: "block",
-                                    justifyContent: "space-between",
-                                  }}
-                                >
-                                  {/* <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField>
-                                  <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField>
-                                  <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField>
-                                  <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField>
-                                  <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      fontSize: "small",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField>
-                                  <TextField
-                                    size="small"
-                                    sx={{
-                                      width: "40px",
-                                      fontSize: "small",
-                                      borderRadius: 2,
-                                      backgroundColor: "#F2F1F6",
-                                    }}
-                                  ></TextField> */}
-                                  <OTPInput
-                                    value={OTP}
-                                    onChange={setOTP}
-                                    autoFocus
-                                    OTPLength={6}
-                                    otpType="number"
-                                    disabled={false}
-                                    
-                                  /> <br />
-                                </Box>
-                                {/*  */}
-                                <Button
-                                  variant="outlined"
-                                  display={"flex"}
-                                  alignItems={"center"}
-                                  sx={{ mt: 6 , flexDirection: "row-reverse"}}
-                                >
-                                 <ResendOTP className="resend"
-                                    onResendClick={() =>
-                                      console.log("Resend clicked")
-                                    }
-                                  />
-                                </Button>
-                              </Box>
-                              <br />
-                              <br />
-                              <br />
-                              <Box>
-                                <Button
-                                  variant="contained"
-                                  size="medium"
-                                  sx={{}}
-                                  fullWidth
-                                >
-                                  Verify and Process
-                                </Button>
-                              </Box>
-                            </Box>
-                            {/* form */}
-                          </Box>
-                        </Box>
-                      </Backdrop>
-
-                      {/* form */}
-                      <Box sx={{ textAlign: "center", mt: 3 }}>
-                        <Typography
-                          sx={{ mb: 0.1 }}
-                          color={"gray"}
-                          fontSize={14}
-                        >
-                          By Continuing you agree to out
-                        </Typography>
-                        <Link fontSize={14}>Terms of Service </Link> &{" "}
-                        <Link fontSize={14}>Privacy Policy</Link>
-                      </Box>
+                            <br />
+                            <br />
+                          <Button
+                            onClick={onSignup}
+                            variant="contained"
+                            size="large"
+                          >
+                            {loading && (
+                              <CgSpinner
+                                size={20}
+                                className="mt-1 animate-spin"
+                              />
+                            )}
+                            <span>Login to continue</span>
+                          </Button> <br /> <br/>
+                          <Typography sx={{color:"gray"}}>By Continue you agree to out</Typography>
+                          <Typography><NavLink>Terms of services</NavLink> &<NavLink>Privacy Policy</NavLink></Typography>
+                        </>
+                      )}
                     </Box>
-                  </Box>
+                  )}
+                </Box>
                 </Box>
               </Backdrop>
             </StyledToolBar>

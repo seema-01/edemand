@@ -10,7 +10,7 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 export const firebaseConfig = {
   apiKey: "AIzaSyAEC47CMGvInC32wQ-RG_pgZT9wpOZLJNA",
-  authDomain: "verification-c64ec.firebaseapp.com",
+  authDomain: "edemmand.com",
   projectId: "verification-c64ec",
   storageBucket: "verification-c64ec.appspot.com",
   messagingSenderId: "73777088904",

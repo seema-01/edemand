@@ -29,12 +29,13 @@ import { Provider } from "react-redux";
 import Countervalue from "./reducer/Countervalue";
 import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 import Firebase from "./Components/Reusable/Firebase";
-
+import CssBaseline from "@mui/material/CssBaseline";
 // Store -> Globalized State
 let myStore = createStore(
   allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
 function App() {
   return (
     <Provider store={myStore}>
@@ -44,7 +45,7 @@ function App() {
           {/* <Countervalue /> */}
           {/* <GetCities /> */}
           {/* <Theme /> */}
-          <Firebase />
+          {/* <Firebase /> */}
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/about" element={<About />}></Route>
