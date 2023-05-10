@@ -11,7 +11,7 @@ import Reviews from "./Components/Reusable/Reviews";
 import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
-import { Container, Paper } from "@mui/material";
+import { Button, Container, Paper } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
@@ -24,7 +24,8 @@ import { createStore } from "redux";
 import allReducers from "./reducer";
 // Provider can connect our global state our store to app
 import { Provider } from "react-redux";
-import theme from "./Theme";
+import theme, {darkTheme, lightTheme } from "./Theme";
+import { useState } from "react";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 // import Firebase from "./Components/Reusable/Firebase";
@@ -40,13 +41,19 @@ let myStore = createStore(
 );
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Paper sx={{ background: "#f2f1f6" }}>
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
               <Navigation />
+              <Button onClick={handleToggleDarkMode}>Click</Button>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about" element={<About />}></Route>
