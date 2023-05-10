@@ -3,12 +3,14 @@ import { Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { AboutList } from './Aboutparagraph';
 import Layout from '../layout/Layout';
+import { useNavigate } from 'react-router';
 
 function AboutPage() {
+  const navigate = useNavigate();
   return (
     <Container maxWidth="lg">
       <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 1, marginTop: 1}}>
-        <Link underline="hover" color="inherit" href="/home">
+        <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/")}>
           Home
         </Link>
         <Typography color="text.primary">About</Typography>

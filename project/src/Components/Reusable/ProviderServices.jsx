@@ -21,8 +21,11 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GradeIcon from "@mui/icons-material/Grade";
 import CustomerReview from "./CustomerReview";
 import StarIcon from "@mui/icons-material/Star";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const ProviderServices = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <Container>
@@ -30,12 +33,12 @@ const ProviderServices = () => {
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}
         >
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Link underline="hover" color="inherit" href="/providers">
-            Providers
-          </Link>
+         <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/")}>
+          Home
+        </Link>
+        <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/providers")}>
+          Providers
+        </Link>
           <Typography color="text.primary">Services</Typography>
         </Breadcrumbs>
         <Typography variant="h4" gutterBottom>

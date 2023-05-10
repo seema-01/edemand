@@ -34,6 +34,7 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
+// import ThemeButton from "./ThemeButton";
 // import intlTelInput from "intl-tel-input";
 // import CssBaseline from "@mui/material/CssBaseline";
 // import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -179,16 +180,16 @@ const Navigation = () => {
               <div>
                 <Drawer open={open} onClose={() => setOpen(false)}>
                   <List>
-                    <ListItemButton href="/home">HOME</ListItemButton>
-                    <ListItemButton href="/about us">ABOUT US</ListItemButton>
-                    <ListItemButton href="/all categories">
-                      ALL CATEGORIES{" "}
+                    <ListItemButton href="/">Home</ListItemButton>
+                    <ListItemButton href="/about">About us</ListItemButton>
+                    <ListItemButton href="/categorys">
+                      Categories
                     </ListItemButton>
-                    <ListItemButton href="/all providers">
-                      ALL PROVIDERS
+                    <ListItemButton href="/providers">
+                      Providers
                     </ListItemButton>
-                    <ListItemButton href="/conatct us">
-                      CONATCT US
+                    <ListItemButton href="/contact">
+                      Contact
                     </ListItemButton>
                   </List>
                 </Drawer>
@@ -258,7 +259,6 @@ const Navigation = () => {
                 </NavLink>
               </Box>
 
-              {/* <ToggleColorMode /> */}
               <Button
                 variant="contained"
                 startIcon={<AccountCircleIcon />}

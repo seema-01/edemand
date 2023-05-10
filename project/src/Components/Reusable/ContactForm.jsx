@@ -27,8 +27,10 @@ import {
 } from "@mui/material";
 import React from "react";
 import Input from "@mui/joy/Input";
+import { useNavigate } from "react-router";
 
 const ContactForm = () => {
+  const navigate = useNavigate()
   return (
     <>
       <Container>
@@ -36,9 +38,9 @@ const ContactForm = () => {
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}
         >
-          <Link underline="hover" color="inherit" href="/home">
-            Home
-          </Link>
+           <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/")}>
+          Home
+        </Link>
           <Typography color="text.primary">Contact</Typography>
         </Breadcrumbs>
         <Typography variant="h4" gutterBottom>

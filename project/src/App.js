@@ -11,8 +11,8 @@ import Reviews from "./Components/Reusable/Reviews";
 import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
-import { Box, Container, Paper } from "@mui/material";
-import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
+import { Container, Paper } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
 import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
@@ -25,11 +25,11 @@ import allReducers from "./reducer";
 // Provider can connect our global state our store to app
 import { Provider } from "react-redux";
 import theme from "./Theme";
-// import MyProvider from "./Components/Reusable/MyProvider";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 // import Firebase from "./Components/Reusable/Firebase";
 // import CssBaseline from "@mui/material/CssBaseline";
+// import theme from "./Theme";
 // import MyApp from "./Components/layout/ThemeButton";
 // import ToggleColorMode from "./Components/layout/ThemeButton";
 
@@ -42,7 +42,7 @@ let myStore = createStore(
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{background: "#f2f1f6"}}>
+      <Paper sx={{ background: "#f2f1f6" }}>
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
@@ -88,6 +88,7 @@ function App() {
                   path="/profile/notifications"
                   element={<ProfileNotification />}
                 ></Route>
+                {/* <Route path="/calander" element={<Calander />}></Route> */}
                 <Route
                   path="/profile"
                   element={
@@ -99,7 +100,6 @@ function App() {
                     </>
                   }
                 ></Route>
-                {/* <Route path="/calander" element={<Calander />}></Route> */}
 
                 {/* 404 Page Not Found */}
                 <Route path="/*" element={<PageNotFound />}></Route>
