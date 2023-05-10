@@ -10,17 +10,17 @@ import {
   ListItemButton,
   Drawer,
   Container,
-  Modal,
-  TextField,
-  Checkbox,
-  Grid,
-  Avatar,
-  Link,
-  FormControlLabel,
+  // Modal,
+  // TextField,
+  // Checkbox,
+  // Grid,
+  // Avatar,
+  // Link,
+  // FormControlLabel,
   Backdrop,
-  Switch,
+  // Switch,
 } from "@mui/material";
-import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
+// import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
 import PhoneInput from "react-phone-input-2";
@@ -29,15 +29,16 @@ import { auth } from "../../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import ClearIcon from "@mui/icons-material/Clear";
-import intlTelInput from "intl-tel-input";
 import "intl-tel-input/build/css/intlTelInput.css";
-import CssBaseline from "@mui/material/CssBaseline";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React, { useState, useRef, useEffect } from "react";
-import OTPInput, { ResendOTP } from "otp-input-react";
+// import intlTelInput from "intl-tel-input";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+// import OTPInput, { ResendOTP } from "otp-input-react";
+// import ToggleColorMode from "../../Theme";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -155,7 +156,6 @@ const Navigation = () => {
         setLoading(false);
       });
   }
-
   return (
     <Box sx={{ backgroundColor: "white" }}>
       <Container>
@@ -258,7 +258,7 @@ const Navigation = () => {
                 </NavLink>
               </Box>
 
-              <Switch sx={{marginLeft: 10}} defaultChecked color="default" />
+              {/* <ToggleColorMode /> */}
               <Button
                 variant="contained"
                 startIcon={<AccountCircleIcon />}
