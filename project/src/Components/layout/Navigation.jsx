@@ -18,6 +18,7 @@ import {
   Link,
   FormControlLabel,
   Backdrop,
+  Switch,
 } from "@mui/material";
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
@@ -69,13 +70,13 @@ const Navigation = () => {
   // const OtphandleOpen = () => {
   //   setOtp(true);
   // };
-  // 
+  //
   const handleOpen = () => {
     isLogin(true);
   };
   const handleClose = () => {
-       isLogin(false);
-     };
+    isLogin(false);
+  };
   const telInputRef = useRef(null);
 
   // const handleSubmit = (event) => {
@@ -257,6 +258,7 @@ const Navigation = () => {
                 </NavLink>
               </Box>
 
+              <Switch sx={{marginLeft: 10}} defaultChecked color="default" />
               <Button
                 variant="contained"
                 startIcon={<AccountCircleIcon />}
@@ -278,105 +280,126 @@ const Navigation = () => {
                     color: "black",
                     width: "400px",
                     borderRadius: "10px",
-                    textAlign:"center",
-                    margin:30,
+                    textAlign: "center",
+                    margin: 30,
                   }}
                 >
-                    <Box marginLeft={3} marginRight={3} marginTop={3} marginBottom={3}>
-            <Box display={"flex"}>
-              <Typography marginRight={"auto"} color={"gray"}>
-                Login
-              </Typography>
-              {<ClearIcon onClick={handleClose} />}
-            </Box>
-                  <Box id="recaptcha-container"></Box>
-                  {user ? (
-                    <Typography>
-                      👍Login Success
-                    </Typography>
-                  ) : (
-                    <Box sx={{justifyContent:"center"}}>
-                     <Box sx={{ textAlign: "center", marginTop: "60px" }}>
-                     
-                     </Box>
-                      {showOTP ? (
-                        <>
-                          
-                          <label
-                            htmlFor="otp"
-                            className="font-bold text-xl text-white text-center"
-                          >
-                            <Typography>Enter Verification Code</Typography>
-              <Typography>
-                We have Sent a Verification code to <br />
-                <Typography>+91 -9876543210</Typography>
-              </Typography>
-                          </label>
-                          <Box marginTop={5}>
+                  <Box
+                    marginLeft={3}
+                    marginRight={3}
+                    marginTop={3}
+                    marginBottom={3}
+                  >
+                    <Box display={"flex"}>
+                      <Typography marginRight={"auto"} color={"gray"}>
+                        Login
+                      </Typography>
+                      {<ClearIcon onClick={handleClose} />}
+                    </Box>
+                    <Box id="recaptcha-container"></Box>
+                    {user ? (
+                      <Typography>👍Login Success</Typography>
+                    ) : (
+                      <Box sx={{ justifyContent: "center" }}>
+                        <Box
+                          sx={{ textAlign: "center", marginTop: "60px" }}
+                        ></Box>
+                        {showOTP ? (
+                          <>
+                            <label
+                              htmlFor="otp"
+                              className="font-bold text-xl text-white text-center"
+                            >
+                              <Typography>Enter Verification Code</Typography>
+                              <Typography>
+                                We have Sent a Verification code to <br />
+                                <Typography>+91 -9876543210</Typography>
+                              </Typography>
+                            </label>
+                            <Box marginTop={5}>
+                              <OtpInput
+                                value={otp}
+                                onChange={setOtp}
+                                OTPLength={6}
+                                otpType="number"
+                                disabled={false}
+                                autoFocus
+                                className="opt-container "
+                              ></OtpInput>
+                            </Box>{" "}
+                            <br />
+                            <Button
+                              onClick={onOTPVerify}
+                              className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                            >
+                              {loading && (
+                                <CgSpinner
+                                  size={20}
+                                  className="mt-1 animate-spin"
+                                />
+                              )}
 
-                          <OtpInput
-                            value={otp}
-                            onChange={setOtp}
-                            OTPLength={6}
-                            otpType="number"
-                            disabled={false}
-                            autoFocus
-                            className="opt-container "
-                            ></OtpInput>
-                            </Box> <br />
-                          <Button
-                            onClick={onOTPVerify}
-                            className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                          >
-                            {loading && (
-                              <CgSpinner
-                                size={20}
-                                className="mt-1 animate-spin"
+                              <Button
+                                variant="contained"
+                                size="medium"
+                                sx={{ width: "350px" }}
+                              >
+                                Verify and Process
+                              </Button>
+                            </Button>
+                          </>
+                        ) : (
+                          <>
+                            <Typography marginBottom={2}>Welcome!</Typography>
+                            <Typography color={"gray"}>
+                              Enter Phone number to continue and we will a
+                              verification code to this number.{" "}
+                            </Typography>
+                            <Box
+                              sx={{
+                                marginTop: 5,
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              <PhoneInput
+                                country={"in"}
+                                value={ph}
+                                onChange={setPh}
+                                containerStyle={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
                               />
-                            )}
-
-                             <Button variant="contained" size="medium" sx={{ width: "350px" }}>
-                Verify and Process
-              </Button>
-                          </Button>
-                        </>
-                      ) : (
-                        <>
-                         <Typography marginBottom={2}>Welcome!</Typography>
-              <Typography color={"gray"}>
-                Enter Phone number to continue and we will  a verification
-                code to this number.{" "}
-              </Typography> 
-                         <Box sx={{marginTop:5,display:"flex",alignItems:"center"}}>
-                          <PhoneInput
-                            country={"in"}
-                            value={ph}
-                            onChange={setPh}
-                            containerStyle={{display:"flex",alignItems:"center"}}
-                            />
                             </Box>
                             <br />
                             <br />
-                          <Button
-                            onClick={onSignup}
-                            variant="contained"
-                            size="large"
-                          >
-                            {loading && (
-                              <CgSpinner
-                                size={20}
-                                className="mt-1 animate-spin"
-                              />
-                            )}
-                            <span>Login to continue</span>
-                          </Button> <br /> <br/>
-                          <Typography sx={{color:"gray"}}>By Continue you agree to out</Typography>
-                          <Typography><NavLink>Terms of services</NavLink> &<NavLink>Privacy Policy</NavLink></Typography>
-                        </>
-                      )}
-                    </Box>
-                  )}
-                </Box>
+                            <Button
+                              onClick={onSignup}
+                              variant="contained"
+                              size="large"
+                            >
+                              {loading && (
+                                <CgSpinner
+                                  size={20}
+                                  className="mt-1 animate-spin"
+                                />
+                              )}
+                              <span>Login to continue</span>
+                            </Button>{" "}
+                            <br /> <br />
+                            <Typography sx={{ color: "gray" }}>
+                              By Continue you agree to out
+                            </Typography>
+                            <Typography>
+                              <NavLink>Terms of services</NavLink> &
+                              <NavLink>Privacy Policy</NavLink>
+                            </Typography>
+                          </>
+                        )}
+                      </Box>
+                    )}
+                  </Box>
                 </Box>
               </Backdrop>
             </StyledToolBar>
