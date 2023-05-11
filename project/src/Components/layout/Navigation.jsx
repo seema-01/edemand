@@ -37,7 +37,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "@emotion/react";
-import Setting from "../Reusable/Drawers/Setting";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import Brightness4Icon from "@mui/icons-material/Brightness4";

@@ -235,7 +235,7 @@ const ContactForm = () => {
                     placeholder="Enter Name"
                     variant="outlined"
                     sx={{
-                      backgroundColor: "#f2f1f6",
+                      backgroundColor: theme.palette.background.paper,
                       marginBottom: { xs: 4, md: 0 },
                     }}
                   />
@@ -247,7 +247,7 @@ const ContactForm = () => {
                     variant="outlined"
                     sx={{
                       marginLeft: { xs: 0, md: 1 },
-                      backgroundColor: "#f2f1f6",
+                      backgroundColor: theme.palette.background.paper,
                     }}
                   />
                 </Box>
@@ -266,7 +266,7 @@ const ContactForm = () => {
                   id="email"
                   placeholder="Enter Subject"
                   variant="outlined"
-                  sx={{ marginBottom: 6, backgroundColor: "#f2f1f6" }}
+                  sx={{ marginBottom: 6, backgroundColor: theme.palette.background.paper,}}
                 />
 
                 <Typography
@@ -285,7 +285,7 @@ const ContactForm = () => {
                   variant="outlined"
                   sx={{
                     marginBottom: "16px",
-                    backgroundColor: "#f2f1f6",
+                    backgroundColor: theme.palette.background.paper,
                   }}
                 />
                 <Button

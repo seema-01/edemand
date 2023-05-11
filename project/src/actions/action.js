@@ -1,4 +1,4 @@
-//REDUX File
+//REDUX File that represent our all actions
 
 export const increment = (number) => {
     return{
