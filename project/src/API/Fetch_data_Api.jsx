@@ -145,6 +145,21 @@ async function get_services() {
   console.log(result);
   return result;
 }
+
+// async function allData() {
+//   var requestOptions = {
+//     method: "POST",
+//     body: formdata,
+//     redirect: "follow",
+//   };
+//   const response = await fetch(
+//     "https://edemand.wrteam.me/api/v1",
+//     requestOptions
+//   );
+//   const result = await response.json();
+//   console.log(result);
+//   return result;
+// }
 /*Exporting all Functions for reuseing in differnt components*/
 export default {
   get_categories_home,

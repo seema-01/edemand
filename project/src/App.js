@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Providers from "./Pages/Provider";
@@ -27,6 +26,7 @@ import { Provider } from "react-redux";
 import theme, { darkTheme, lightTheme } from "./Theme";
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
+import NavigateCategorys from "./Components/Reusable/Profile/NavigateCategorys";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 // import Firebase from "./Components/Reusable/Firebase";
@@ -81,6 +81,8 @@ function App() {
                 ></Route>
                 <Route path="/categorys" element={<Category />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
+
+                <Route path="/categorys/:id" element={<NavigateCategorys />}></Route>
 
                 {/* profile section  */}
 

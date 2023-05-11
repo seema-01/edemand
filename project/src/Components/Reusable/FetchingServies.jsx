@@ -21,6 +21,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 
 const FetchingServies = () => {
   const [image, setImage] = useState([]);
@@ -43,6 +44,9 @@ const FetchingServies = () => {
   useEffect(() => {
     fetchingFunction();
   }, []);
+
+  const theme = useTheme();
+
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
@@ -54,7 +58,10 @@ const FetchingServies = () => {
               if (response.id == 213) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>
+                    <Typography
+                      fontSize={theme.palette.fonts.h1}
+                      fontWeight={500}
+                    >
                       {response.name}
                     </Typography>
                     <hr color="whitesmoke" />
@@ -117,13 +124,22 @@ const FetchingServies = () => {
                           filter: "brightness(0.8)",
                         }}
                       />
-                      <Box marginTop={-5} textAlign={"center"} >
+                      <Box marginTop={-5} textAlign={"center"}>
                         <Typography
                           variant="h6"
                           zIndex={1}
                           position={"relative"}
                         >
-                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
+                          <NavLink
+                            to={"/category"}
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {response.name}
+                          </NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -193,6 +209,9 @@ export const FetchingPlumbing = () => {
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
   };
+  const theme = useTheme();
+
+
   useEffect(() => {
     fetchingFunction();
   }, []);
@@ -206,7 +225,10 @@ export const FetchingPlumbing = () => {
               if (response.id == 222) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>
+                    <Typography
+                      fontSize={theme.palette.fonts.h1}
+                      fontWeight={500}
+                    >
                       {response.name}
                     </Typography>
                     <hr color="whitesmoke" />
@@ -273,7 +295,16 @@ export const FetchingPlumbing = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
+                          <NavLink
+                            to={"/category"}
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {response.name}
+                          </NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -344,6 +375,7 @@ export const FetchingLaundry = () => {
   useEffect(() => {
     fetchingFunction();
   }, []);
+  const theme = useTheme();
 
   return (
     <Container>
@@ -354,7 +386,10 @@ export const FetchingLaundry = () => {
               if (response.id == 240) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>
+                    <Typography
+                      fontSize={theme.palette.fonts.h1}
+                      fontWeight={500}
+                    >
                       {response.name}
                     </Typography>
                     <hr color="whitesmoke" />
@@ -421,7 +456,16 @@ export const FetchingLaundry = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
+                          <NavLink
+                            to={"/category"}
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {response.name}
+                          </NavLink>
                         </Typography>
                       </Box>
                     </Card>
@@ -492,6 +536,8 @@ export const FetchingCar = () => {
   useEffect(() => {
     fetchingFunction();
   }, []);
+  const theme = useTheme();
+
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
@@ -501,7 +547,10 @@ export const FetchingCar = () => {
               if (response.id == 259) {
                 return (
                   <>
-                    <Typography variant="h4" fontWeight={500}>
+                    <Typography
+                      fontSize={theme.palette.fonts.h1}
+                      fontWeight={500}
+                    >
                       {response.name}
                     </Typography>
                     <hr color="whitesmoke" />
@@ -568,7 +617,16 @@ export const FetchingCar = () => {
                           zIndex={1}
                           position={"relative"}
                         >
-                          <NavLink to={"/category"} style={{color: "white", textDecoration: "none", fontWeight: 600}}>{response.name}</NavLink>
+                          <NavLink
+                            to={"/category"}
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {response.name}
+                          </NavLink>
                         </Typography>
                       </Box>
                     </Card>

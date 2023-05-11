@@ -21,6 +21,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "@emotion/react";
+import NavigateCategorys from "./Profile/NavigateCategorys";
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
@@ -34,14 +36,15 @@ const FetchingCategorys = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const theme = useTheme();
+
   return (
     <Container>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         {/* Catregory name comes from api  */}
         {/* --------------------------------------------------- */}
-        <Typography variant="h4" sx={{ marginBottom: 1 }}>
-          {" "}
-          Creative Category{" "}
+        <Typography sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}>
+          Creative Category
         </Typography>
         <Swiper
           pagination={{
@@ -93,14 +96,19 @@ const FetchingCategorys = () => {
                         style={{ maxHeight: "100%", maxWidth: "100%" }}
                       />
                       <CardContent sx={{ textAlign: "center", mt: -6 }}>
-                        <Typography
+                        <NavLink
                           gutterBottom
                           variant="a"
-                          href="#"
+                          // dynamic going to that page 
+                          to={'/categorys/'+response.id}
                           component="div"
+                          style={{
+                            textDecoration: "none",
+                            color: theme.palette.color.catLink,
+                          }}
                         >
                           <strong>{response.name}</strong>
-                        </Typography>
+                        </NavLink>
                         {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider
                       </Typography> */}

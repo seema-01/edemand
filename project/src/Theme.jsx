@@ -19,8 +19,16 @@ const lightTheme = createTheme({
     color: {
       navLink: "black",
       logo: "blue",
+      catLink:'black'
       // inputTag: "black"
     },
+    fonts: {
+      h1: "24pt",
+      h2: "20pt",
+      h3: "16pt",
+      h4: "12pt",
+    }
+    
   },
 });
 
@@ -45,7 +53,11 @@ const darkTheme = createTheme({
       logo: "white",
       // inputTag: "black",
     },
+    fonts: {
+      h1: "24pt"
+    }
   },
 });
+
 
 export { darkTheme, lightTheme };

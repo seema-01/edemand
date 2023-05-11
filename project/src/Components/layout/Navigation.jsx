@@ -10,19 +10,9 @@ import {
   ListItemButton,
   Drawer,
   Container,
-  // Modal,
-  // TextField,
-  // Checkbox,
-  // Grid,
-  // Avatar,
-  // Link,
-  // FormControlLabel,
   Backdrop,
-  Switch,
   createTheme,
-  // Switch,
 } from "@mui/material";
-// import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
 import PhoneInput from "react-phone-input-2";
@@ -189,13 +179,15 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         <Container>
           <Box>
             <StyledToolBar>
+              <Box display={'flex'} sx={{alignItems:'center'}}>
+
               <IconButton
                 color="inherit"
                 aria-label="open-drawer"
                 edge="start"
                 sx={{ mr: 2, display: { md: "none" } }}
                 onClick={() => setOpen(true)}
-              >
+                >
                 <MenuIcon />
               </IconButton>
               {/* Set logo and burger menu in one side */}
@@ -216,13 +208,15 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   style={{
                     textDecoration: "none",
                     fontSize: 20,
+
                     color: theme.palette.color.logo,
                   }}
                   to="/"
-                >
+                  >
                   eDemmand
                 </NavLink>
               </div>
+                  </Box>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <NavLink
                   to="/"
@@ -365,6 +359,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 <Box
                   sx={{
                     color: "black",
+                    background: theme.palette.background.box,
                     width: "400px",
                     borderRadius: "10px",
                     textAlign: "center",
