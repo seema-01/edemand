@@ -12,7 +12,7 @@ import Navigation from "./Components/layout/Navigation";
 import ProfileNavigation from "./Components/Reusable/Profile/ProfileNavigation";
 import ProfilePayment from "./Components/Reusable/Profile/ProfilePayment";
 import { Button, Container, Paper } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ProfileBooking from "./Components/Reusable/Profile/ProfileBooking";
 import ProfileAddress from "./Components/Reusable/Profile/ProfileAddress";
 import ProfileBookmark from "./Components/Reusable/Profile/ProfileBookmark";
@@ -48,16 +48,16 @@ function App() {
     setDarkMode(!darkMode);
   };
 
-  const theme = useTheme();
-
+ 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    // <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme} >
       <Paper>
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
-              <Navigation />
-              <Button onClick={handleToggleDarkMode}>Mode</Button>
+              <Navigation check={darkMode} change={handleToggleDarkMode}/>
+              {/* <Button onClick={handleToggleDarkMode}>Mode</Button> */}
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about" element={<About />}></Route>

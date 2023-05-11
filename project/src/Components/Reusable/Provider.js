@@ -32,7 +32,7 @@ export default function Provider() {
       display={"flex"}
       gridColumn={3}
       flexWrap={"wrap"}
-      sx={{ gap: "22px", justifyContent: "space-around" }}
+      sx={{ gap: "22px", justifyContent: "space-around", margin: 0 }}
     >
       {isLoading ? (
         <>
@@ -81,7 +81,7 @@ export default function Provider() {
                       <div className="lines" style={{ paddingTop: "30px" }}>
                         <hr />
                       </div>
-                      <Box sx={{ marginTop: 3 }}>
+                      <Box>
                         <NavLink
                           to="/providers/services"
                           style={{
@@ -91,6 +91,7 @@ export default function Provider() {
                             textDecoration: "none",
                             color: "black",
                             fontSize: 16,
+                            marginTop:10
                           }}
                         >
                           View All Services <ArrowRightAltOutlined />

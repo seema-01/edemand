@@ -1,4 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import React, { useState } from 'react'
+import { Button } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const lightTheme = createTheme({
   palette: {
@@ -41,5 +43,24 @@ const darkTheme = createTheme({
     }
   },
 });
+
+
+// export const Theme = () => {
+  
+//     const [darkMode, setDarkMode] = useState(false);
+
+//     const handleToggleDarkMode = () => {
+//       setDarkMode(!darkMode);
+//     };
+//     return (
+//     <div>
+//         <Button onClick={handleToggleDarkMode}>Toggle mode</Button>
+//         <ThemeProvider.myTheme theme={darkMode ? darkTheme : lightTheme}>
+            
+//         </ThemeProvider.myTheme>
+//     </div>
+//   )
+// }
+
 
 export { darkTheme, lightTheme };

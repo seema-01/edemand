@@ -1,13 +1,13 @@
-import React from 'react'
-import Providers from '../Components/Reusable/Providers'
-import Layout from '../Components/layout/Layout'
+import React from "react";
+import Providers from "../Components/Reusable/Providers";
+import Layout from "../Components/layout/Layout";
 
 const Provider = () => {
-    return (
-        <div>
-                <Providers />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Providers />
+    </div>
+  );
+};
 
-export default Provider
+export default Provider;

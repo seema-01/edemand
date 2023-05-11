@@ -18,6 +18,7 @@ import {
   // Link,
   // FormControlLabel,
   Backdrop,
+  Switch,
   // Switch,
 } from "@mui/material";
 // import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
@@ -62,7 +63,9 @@ const style = {
   boxShadow: 24,
 };
 
-const Navigation = () => {
+const label={inputProps:{'area-label':"switch demo"}}
+
+const Navigation = ({change, check}) => {
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
@@ -163,7 +166,10 @@ const Navigation = () => {
     <Box>
       <AppBar
         position="sticky"
-        style={{ backgroundColor: theme.palette.background.box, boxShadow: "none" }}
+        style={{
+          backgroundColor: theme.palette.background.box,
+          boxShadow: "none",
+        }}
       >
         <Container>
           <Box>
@@ -177,7 +183,6 @@ const Navigation = () => {
               >
                 <MenuIcon />
               </IconButton>
-
               {/* Set logo and burger menu in one side */}
               <div>
                 <Drawer open={open} onClose={() => setOpen(false)}>
@@ -193,13 +198,16 @@ const Navigation = () => {
                 </Drawer>
 
                 <NavLink
-                  style={{ textDecoration: "none", fontSize: 20, color: theme.palette.color.logo }}
+                  style={{
+                    textDecoration: "none",
+                    fontSize: 20,
+                    color: theme.palette.color.logo,
+                  }}
                   to="/"
                 >
                   eDemmand
                 </NavLink>
               </div>
-
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <NavLink
                   to="/"
@@ -256,6 +264,16 @@ const Navigation = () => {
                   Contact
                 </NavLink>
               </Box>
+
+
+              <Switch
+                {...label}
+                defaultChecked
+                color="default"
+                onChange={change}
+                checked={check}
+              />{" "}
+
 
               <Button
                 variant="contained"
