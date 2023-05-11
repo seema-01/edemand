@@ -11,8 +11,10 @@ import ImageIcon from "@mui/icons-material/Image";
 import WorkIcon from "@mui/icons-material/Work";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import Divider from "@mui/material/Divider";
+import { useTheme } from "@emotion/react";
 
 const ProfileNotification = () => {
+  const theme = useTheme()
   return (
     <div>
       <Container>
@@ -21,7 +23,7 @@ const ProfileNotification = () => {
             <ProfileNavigation />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box sx={{ mt: 3, background: "white", borderRadius: "10px" }}>
+            <Box sx={{ mt: 3, background: theme.palette.background.box, borderRadius: "10px" }}>
               <Heading heading="Notifications" />
               <Box>
                 <NotificationList />
@@ -40,12 +42,13 @@ const ProfileNotification = () => {
 };
 
 export const NotificationList = () => {
+  const theme = useTheme();
   return (
     <>
       <List
         sx={{
           maxWidth: "100%",
-          bgcolor: "background.paper",
+          bgcolor:  theme.palette.background.box,
           padding: 0
         }}
       >

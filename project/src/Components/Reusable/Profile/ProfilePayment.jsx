@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Heading from "./Heading";
+import { useTheme } from "@emotion/react";
 
 function createData( id,method,date, amount,status) {
   return {  id, method, date, amount, status };
@@ -23,6 +24,7 @@ const rows = [
 ];
 
 const ProfilePayment = () => {
+  const theme = useTheme()
   return (
     <Container>
       <Grid container sx={{ padding: 0 }}>
@@ -33,7 +35,7 @@ const ProfilePayment = () => {
           <Box
             sx={{
               mt: 3,
-              background: "white",
+              background: theme.palette.background.box,
               borderRadius: "10px",
               height: "580px",
             }}

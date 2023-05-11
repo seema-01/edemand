@@ -26,8 +26,10 @@ import {
   PunchClockOutlined,
 } from "@mui/icons-material";
 import Booking from "./Booking";
+import { useTheme } from "@emotion/react";
 
 const ProfileBooking = () => {
+  const theme = useTheme()
   return (
     <div>
       <Container>
@@ -36,12 +38,12 @@ const ProfileBooking = () => {
             <ProfileNavigation />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box sx={{ mt: 3, background: "white",pb:2, mb:1 }}>
+            <Box sx={{ mt: 3, background: theme.palette.background.box ,pb:2, mb:1 }}>
               <Heading heading="Booking Information" />
 
               <Box
                 sx={{
-                  bgcolor: "#f8f3ff",
+                  bgcolor: theme.palette.background.addressBox,
                   border: "1px solid #dedddd",
                   borderRadius:"10px",
                   p:1,

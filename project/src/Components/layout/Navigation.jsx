@@ -265,16 +265,6 @@ const Navigation = ({change, check}) => {
                 </NavLink>
               </Box>
 
-
-              <Switch
-                {...label}
-                defaultChecked
-                color="default"
-                onChange={change}
-                checked={check}
-              />{" "}
-
-
               <Button
                 variant="contained"
                 startIcon={<AccountCircleIcon />}
@@ -282,6 +272,13 @@ const Navigation = ({change, check}) => {
               >
                 Sign in
               </Button>
+              <Switch
+                {...label}
+                defaultChecked
+                color="default"
+                onChange={change}
+                checked={check}
+              />{" "}
               {/* ------------------------------------------------- */}
               <Backdrop
                 sx={{
@@ -292,7 +289,6 @@ const Navigation = ({change, check}) => {
               >
                 <Box
                   sx={{
-                    background: "white",
                     color: "black",
                     width: "400px",
                     borderRadius: "10px",

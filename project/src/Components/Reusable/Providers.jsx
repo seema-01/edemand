@@ -5,13 +5,11 @@ import { styled } from "@mui/material/styles";
 import { Container, Grid } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#323232" : "#fff",
+  backgroundColor: theme.palette.background.card,
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
-  color: theme.palette.text.secondary,
   border: 0,
-  boxShadow: "none",
 }));
 
 const Providers = () => {
@@ -26,6 +24,7 @@ const Providers = () => {
             display: "flex",
           }}
           marginTop={"6%"}
+          marginBottom={"6%"}
           boxShadow={"none"}
         >
           <Grid item xs={12} md={6} lg={12}>

@@ -22,7 +22,6 @@ import Bookmark from "./Bookmark";
 
 const ProfileBookmark = () => {
   const theme = useTheme();
-
   return (
     <div>
       <Box>
@@ -32,13 +31,13 @@ const ProfileBookmark = () => {
               <ProfileNavigation />
             </Grid>
             <Grid item xs={12} md={8}>
-              <Box sx={{ mt: 3, background: "white", borderRadius: "10px" }}>
+              <Box sx={{ mt: 3, background: theme.palette.background.box, borderRadius: "10px" }}>
                 <Heading heading="Bookmark" />
                 <Box sx={{ m: 2 }}>
                   <Bookmark /> <br />
                   <Bookmark /> <br />
                   <Bookmark /> <br />
-                  <Bookmark /> <br /> 
+                  <Bookmark /> <br />
                 </Box>
               </Box>
             </Grid>

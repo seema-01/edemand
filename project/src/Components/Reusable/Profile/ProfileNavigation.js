@@ -43,6 +43,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 import ProfilePayment from "./ProfilePayment";
 import RightContent from "./RightContent";
+import { useTheme } from "@emotion/react";
 
 const ProfileNavigation = () => {
   const [open, setOpen] = React.useState(false);
@@ -63,6 +64,8 @@ const ProfileNavigation = () => {
     console.log(phone);
   };
 
+  const theme = useTheme()
+
   return (
     <Grid>
       <Grid item xs={12} maxWidth={'lg'}>
@@ -71,7 +74,7 @@ const ProfileNavigation = () => {
             sx={{
               width: "100%",
               maxWidth: 360,
-              bgcolor: "background.paper",
+              bgcolor: theme.palette.background.box,
               borderRadius: "10px",
               p: 0,
               mt: 3,
@@ -236,7 +239,7 @@ const ProfileNavigation = () => {
                   {/* booking address url  */}
                   <Link
                     to={"/profile/booking"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Mybooking
@@ -265,7 +268,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/address"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Manage Address
@@ -294,7 +297,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/payment"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Payment
@@ -323,7 +326,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/bookmark"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     My Bookmark
@@ -355,7 +358,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/notifications"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Notification
@@ -384,7 +387,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/logout"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Logout
@@ -413,7 +416,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/delete"}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
                     primary="My Bookings"
                   >
                     Delete Account

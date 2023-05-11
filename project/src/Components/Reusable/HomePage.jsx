@@ -19,6 +19,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 // try to find out location
 import { Search, GpsFixed } from "@mui/icons-material";
+import { useTheme } from "@emotion/react";
 const apiKey = "AIzaSyDArxAFcnCgz7xmveZFLVgWkuocoRfumfA";
 const mapApiJs = "https://maps.googleapis.com/maps/api/js";
 const geocodeJson = "https://maps.googleapis.com/maps/api/geocode/json";
@@ -92,6 +93,8 @@ const HomePage = () => {
     initMapScript().then(() => initAutocomplete());
   }, []);
 
+  const theme = useTheme();
+
   return (
     <>
       <Container>
@@ -148,20 +151,26 @@ const HomePage = () => {
             display: "flex",
           }}
         >
+          <button
+            style={{
+              zIndex: 1,
+              height: 40,
+              background: theme.palette.background.box,
+              border: 0,
+            }}
+            onClick={findMyLocation}
+          >
+            <GpsFixed />
+          </button>
           <TextField
             size="small"
             type="text"
             id="myinp1"
             className="form-control"
-            InputProps={{
-              startAdornment: (
-                <LocationOnOutlinedIcon sx={{ paddingRight: 2 }} />
-              ),
-            }}
             placeholder="Enter Zip code"
-            sx={{ zIndex: 1, background: "white" }}
+            sx={{ zIndex: 1, background: theme.palette.background.box }}
           />
-          <div style={{zIndex:1 }} className="search">
+          <div style={{ zIndex: 1 }} className="search">
             <TextField
               ref={searchInput}
               size="small"
@@ -169,7 +178,11 @@ const HomePage = () => {
               id="input_search"
               className="form-control"
               placeholder="Enter Location name,Area name etc..."
-              sx={{ zIndex: 1, background: "white", width: "500px" }}
+              sx={{
+                zIndex: 1,
+                background: theme.palette.background.box,
+                width: "500px",
+              }}
               InputProps={{
                 endAdornment: (
                   <Button
@@ -184,9 +197,6 @@ const HomePage = () => {
                 ),
               }}
             />
-            <button style={{zIndex:1,height:40}} onClick={findMyLocation}>
-              <GpsFixed />
-            </button>
           </div>
         </Box>
       </Container>

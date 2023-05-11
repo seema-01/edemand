@@ -48,15 +48,14 @@ function App() {
     setDarkMode(!darkMode);
   };
 
- 
   return (
     // <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme} >
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Paper>
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
-              <Navigation check={darkMode} change={handleToggleDarkMode}/>
+              <Navigation check={darkMode} change={handleToggleDarkMode} />
               {/* <Button onClick={handleToggleDarkMode}>Mode</Button> */}
               <Routes>
                 <Route path="/" element={<Home />}></Route>

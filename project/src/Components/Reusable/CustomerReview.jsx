@@ -9,11 +9,13 @@ import {
   } from "@mui/material";
   import React from "react";
   import Navigation from "../layout/Navigation";
+import { useTheme } from "@emotion/react";
 
 const CustomerReview = () => {
+  const theme = useTheme();
   return (
     <div>
-         <Box sx={{ background: "white", padding: 2, borderRadius: "10px" }}>
+         <Box sx={{ background: theme.palette.background.box , padding: 2, borderRadius: "10px" }}>
           <Box marginTop={2} marginLeft={1} display={"flex"} textAlign={"start"} alignItems={"center"}>
             <Avatar alt="Remy Sharp" sx={{height:"50px",width:"50px"}}/>
             <Box marginLeft={3} width={"100%"}>

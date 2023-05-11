@@ -10,6 +10,7 @@ import { ArrowRight, ArrowRightAltOutlined, Done } from "@mui/icons-material";
 import ProviderServices from "./ProviderServices";
 import { NavLink } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
+import { useTheme } from "@emotion/react";
 
 export default function Provider() {
   const [provider, setProvider] = useState([]);
@@ -27,6 +28,8 @@ export default function Provider() {
     ApiProviders();
   }, []);
 
+  const theme = useTheme()
+
   return (
     <Box
       display={"flex"}
@@ -43,7 +46,6 @@ export default function Provider() {
                   <CardMedia
                     sx={{ height: 240 }}
                     image={response.banner_image}
-                    title="green iguana"
                   />
 
                   <CardMedia
@@ -56,7 +58,6 @@ export default function Provider() {
                       marginLeft: "35%",
                     }}
                     image={response.image}
-                    title="green iguana"
                   />
                   <Box textAlign={"center"}>
                     <CardContent>
@@ -89,7 +90,7 @@ export default function Provider() {
                             justifyContent: "center",
                             display: "flex",
                             textDecoration: "none",
-                            color: "black",
+                            color: theme.palette.color.navLink,
                             fontSize: 16,
                             marginTop:10
                           }}

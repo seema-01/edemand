@@ -18,7 +18,9 @@ import {
   RadioButtonChecked,
 } from "@mui/icons-material";
 import Address, { AddAddress } from "./Address";
+import { useTheme } from "@emotion/react";
 const ProfileAddress = () => {
+  const theme = useTheme();
   return (
     <div>
       <Container>
@@ -27,11 +29,11 @@ const ProfileAddress = () => {
             <ProfileNavigation />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box sx={{ mt: 3, bgcolor: "white" }}>
+            <Box sx={{ mt: 3, bgcolor: theme.palette.background.box }}>
               <Heading heading="Select Address" />
               <Grid
                 container
-                sx={{ backgroundColor: "white", borderRadius: "10px" }}
+                sx={{ backgroundColor: theme.palette.background.box, borderRadius: "10px" }}
                 boxShadow={"none"}
               >
                 <Grid item xs={12} sm={6}>

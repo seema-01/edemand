@@ -22,10 +22,11 @@ import GradeIcon from "@mui/icons-material/Grade";
 import CustomerReview from "./CustomerReview";
 import StarIcon from "@mui/icons-material/Star";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 const ProviderServices = () => {
 
   const navigate = useNavigate();
-
+  const theme = useTheme();
   return (
     <div>
       <Container>
@@ -47,7 +48,7 @@ const ProviderServices = () => {
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={7}>
-            <Box sx={{ background: "white", borderRadius: "10px", mb: 5 }}>
+            <Box sx={{ background: theme.palette.background.box, borderRadius: "10px", mb: 5 }}>
               <Typography variant="h5" ml={2} p={2}>
                 <strong>Our Services</strong>
               </Typography>
@@ -139,7 +140,7 @@ const ProviderServices = () => {
               </Card>
             </Box>
             <Box
-              sx={{ background: "white", borderRadius: "10px", mb: 3, mt: 3 }}
+              sx={{ background: theme.palette.background.box , borderRadius: "10px", mb: 3, mt: 3 }}
             >
               <Typography variant="h5" pt={2} pb={2} pl={1}>
                 <strong>Reviews and Rating</strong>

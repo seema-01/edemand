@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import { Button } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const lightTheme = createTheme({
@@ -12,15 +10,17 @@ const lightTheme = createTheme({
       main: "#f48fb1",
     },
     background: {
-        paper: '#f2f1f6', // Set the color of the paper background
-        container: "#f2f1f6",
-        box: 'white',
-        appbar: 'red'
+      paper: "#f2f1f6", // Set the color of the paper background
+      box: "white",
+      card: "white",
+      addressBox: "#FAF1EB",
+      input: "#3d3f48"
     },
     color: {
-        navLink : "black",
-        logo: "blue"
-    }
+      navLink: "black",
+      logo: "blue",
+      // inputTag: "black"
+    },
   },
 });
 
@@ -34,33 +34,18 @@ const darkTheme = createTheme({
       main: "#343f53",
     },
     background: {
-        paper: 'black', // Set the color of the paper background
-        box: '#323232'
+      paper: "#041C32", // Set the color of the paper background
+      box: "#041C32",
+      addressBox: "#343F53",
+      card: "#343f53",
+      input: "#3d3f48"
     },
     color: {
-        navLink : "white",
-        logo: "white"
-    }
+      navLink: "white",
+      logo: "white",
+      // inputTag: "black",
+    },
   },
 });
-
-
-// export const Theme = () => {
-  
-//     const [darkMode, setDarkMode] = useState(false);
-
-//     const handleToggleDarkMode = () => {
-//       setDarkMode(!darkMode);
-//     };
-//     return (
-//     <div>
-//         <Button onClick={handleToggleDarkMode}>Toggle mode</Button>
-//         <ThemeProvider.myTheme theme={darkMode ? darkTheme : lightTheme}>
-            
-//         </ThemeProvider.myTheme>
-//     </div>
-//   )
-// }
-
 
 export { darkTheme, lightTheme };
