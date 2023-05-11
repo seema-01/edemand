@@ -11,3 +11,8 @@ export const decremrnt = () => {
         type: 'DECREMENT'
     }
 }
+export const Transert = () => {
+    return{
+        type: 'Transfer' 
+    }
+}
