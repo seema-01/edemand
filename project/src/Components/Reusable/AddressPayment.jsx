@@ -1,15 +1,17 @@
 import React from "react";
 import Address, { AddAddress } from "./Profile/Address";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { useTheme } from "@emotion/react";
 
 const AddressPayment = () => {
+  const theme = useTheme()
   return (
     <div>
       <Box>
         <Grid
           container
           spacing={15}
-          sx={{backgroundColor: "white",borderRadius: "10px" }}
+          sx={{backgroundColor: theme.palette.background.paper,borderRadius: "10px" }}
           boxShadow={"none"}
         >
           <Grid item xs={12} sm={6}>

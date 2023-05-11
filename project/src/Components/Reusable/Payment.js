@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Checkbox, Container, FormControlLabel, Grid, TextField } from "@mui/material";
 import Provider from "./Provider";
 import AddressPayment from "./AddressPayment";
+import { useTheme } from "@emotion/react";
 
 const steps = ["Select The Address", "Confirm Your Payment"];
 
@@ -56,18 +57,17 @@ export default function PaymentPage() {
     setActiveStep(0);
   };
 
+  const theme = useTheme()
+
   return (
-    <Box sx={{ mt: 3, bgcolor: "white", mb: 3, overflow: "hidden" }}>
+    <Box sx={{ mt: 3, bgcolor: theme.palette.background.paper , mb: 3, overflow: "hidden" }}>
       <Container>
-        <Box sx={{ width: "100%", paddingTop: "20px" }}>
+        <Box sx={{ width: "100%", marginTop: "20px" }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
 
-              // if (isStepSkipped(index)) {
-              //   stepProps.completed = false;
-              // }
               return (
                 <Step key={label} {...stepProps}>
                   <StepLabel {...labelProps}>{label}</StepLabel>
@@ -99,7 +99,7 @@ export default function PaymentPage() {
                       <Typography variant="h6" gutterBottom>
                         Payment method
                       </Typography>
-                      <Grid container spacing={3}>
+                      <Grid container spacing={2}>
                         <Grid item xs={12} md={6}>
                           <TextField
                             required

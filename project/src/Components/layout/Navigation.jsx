@@ -36,6 +36,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "@emotion/react";
+import Setting from "../Reusable/Drawers/Setting";
 // import ThemeButton from "./ThemeButton";
 // import intlTelInput from "intl-tel-input";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -272,6 +273,7 @@ const Navigation = ({change, check}) => {
               >
                 Sign in
               </Button>
+              <Setting />
               <Switch
                 {...label}
                 defaultChecked
