@@ -19,6 +19,7 @@ import {
   // FormControlLabel,
   Backdrop,
   Switch,
+  createTheme,
   // Switch,
 } from "@mui/material";
 // import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
@@ -37,6 +38,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "@emotion/react";
 import Setting from "../Reusable/Drawers/Setting";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import CloseIcon from "@mui/icons-material/Close";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 // import ThemeButton from "./ThemeButton";
 // import intlTelInput from "intl-tel-input";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -64,35 +71,34 @@ const style = {
   boxShadow: 24,
 };
 
-const label={inputProps:{'area-label':"switch demo"}}
+const label = { inputProps: { "area-label": "switch demo" } };
 
-const Navigation = ({change, check}) => {
+const Navigation = ({ check, changeLight, changeDark }) => {
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
-  // const OtphandleClose = () => {
-  //   setOtp(false);
-  // };
-  // const OtphandleOpen = () => {
-  //   setOtp(true);
-  // };
-  //
+  const [openSetting, setOpenSetting] = useState(false);
+  const handleOpenSetting = () => {
+    setOpenSetting(true);
+  };
+  const handleCloseSetting = () => {
+    setOpenSetting(false);
+  };
   const handleOpen = () => {
     isLogin(true);
   };
   const handleClose = () => {
     isLogin(false);
   };
-  const telInputRef = useRef(null);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+  const [view, setView] = React.useState("list");
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    nextView: string
+  ) => {
+    setView(nextView);
+  };
+  const telInputRef = useRef(null);
 
   // First Attempts => set here to second goes from 60 to 0
   const [counter, setCounter] = React.useState(60);
@@ -163,6 +169,15 @@ const Navigation = ({change, check}) => {
         setLoading(false);
       });
   }
+
+  const [mode, setDarkMode] = useState(false);
+
+  const darkmode = createTheme({
+    palette: {
+      mode: mode ? "dark" : "light",
+    },
+  });
+
   return (
     <Box>
       <AppBar
@@ -265,22 +280,81 @@ const Navigation = ({change, check}) => {
                   Contact
                 </NavLink>
               </Box>
+              <Box>
+                <Button
+                  variant="contained"
+                  startIcon={<AccountCircleIcon />}
+                  onClick={handleOpen}
+                >
+                  Sign in
+                </Button>
+                <IconButton onClick={handleOpenSetting}>
+                  <SettingsOutlinedIcon />{" "}
+                </IconButton>
+              </Box>
 
-              <Button
-                variant="contained"
-                startIcon={<AccountCircleIcon />}
-                onClick={handleOpen}
-              >
-                Sign in
-              </Button>
-              <Setting />
-              <Switch
-                {...label}
-                defaultChecked
-                color="default"
-                onChange={change}
-                checked={check}
-              />{" "}
+              <Drawer anchor="right" open={openSetting}>
+                <Box width="400px">
+                  <Box>
+                    {/* Heading  */}
+                    <AppBar position="static">
+                      <Toolbar>
+                        <IconButton
+                          size="medium"
+                          edge="start"
+                          color="inherit"
+                          aria-label="menu"
+                          // sx={{ mr: 2 }}
+                        >
+                          <SettingsOutlinedIcon />
+                        </IconButton>
+                        <Typography
+                          variant="h6"
+                          component="div"
+                          sx={{ flexGrow: 1 }}
+                        >
+                          eDemmand&nbsp;Setting
+                        </Typography>
+                        <IconButton
+                          color="inherit"
+                          onClick={handleCloseSetting}
+                        >
+                          <CloseIcon />
+                        </IconButton>
+                      </Toolbar>
+                    </AppBar>
+
+                    {/* Toggle Button for Modes  */}
+                    <Box
+                      justifyContent={"space-around"}
+                      display={"flex"}
+                      marginTop={3}
+                    >
+                      <ToggleButtonGroup
+                        value={view}
+                        exclusive
+                        onChange={handleChange}
+                      >
+                        <ToggleButton
+                          onClick={changeLight}
+                          value="list"
+                          aria-label="list"
+                        >
+                          <Brightness7Icon /> Light Theme
+                        </ToggleButton>
+                        <ToggleButton
+                          onClick={changeDark}
+                          value="module"
+                          aria-label="module"
+                        >
+                          <Brightness4Icon /> Dark Theme
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </Box>
+                  </Box>
+                </Box>
+              </Drawer>
+              {/* ------------------------------------------ */}
               {/* ------------------------------------------------- */}
               <Backdrop
                 sx={{

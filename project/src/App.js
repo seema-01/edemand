@@ -43,10 +43,16 @@ let myStore = createStore(
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  
+  const handleChangeLight = () => {
+    setDarkMode(false)
+  }
 
-  const handleToggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+
+  const handleChangeDark = () => {
+    setDarkMode(true)
+  }
+
 
   return (
     // <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -55,7 +61,7 @@ function App() {
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
-              <Navigation check={darkMode} change={handleToggleDarkMode} />
+              <Navigation check={darkMode} changeLight={handleChangeLight} changeDark={handleChangeDark} />
               {/* <Button onClick={handleToggleDarkMode}>Mode</Button> */}
               <Routes>
                 <Route path="/" element={<Home />}></Route>
