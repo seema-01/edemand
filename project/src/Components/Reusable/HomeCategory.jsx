@@ -8,10 +8,12 @@ import FetchingServies, {
   FetchingPlumbing,
 } from "./FetchingServies";
 import Providers from "./Providers";
+import { useTheme } from "@emotion/react";
 
 // create a function and calling and setting here \
 
 const HomeCategory = () => {
+  const theme = useTheme();
   return (
     <div>
       <Container maxWidth="100%">
@@ -19,10 +21,10 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
             height: "auto",
             justifyContent: "center",
             display: "flex",
+            background: theme.palette.background.box
           }}
         >
           {/* function for fetching all categorys  */}
@@ -32,7 +34,7 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
+            background: theme.palette.background.box,
             height: "auto",
             justifyContent: "center",
             display: "flex",
@@ -45,7 +47,7 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
+            background: theme.palette.background.box,
             height: "auto",
             justifyContent: "center",
             display: "flex",
@@ -59,7 +61,7 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
+            background: theme.palette.background.box,
             height: "auto",
             justifyContent: "center",
             display: "flex",
@@ -73,7 +75,7 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
+            background: theme.palette.background.box,
             height: "auto",
             justifyContent: "center",
             display: "flex",
@@ -87,7 +89,7 @@ const HomeCategory = () => {
           sx={{
             marginTop: 4,
             padding: 2,
-            background: "white",
+            background: theme.palette.background.box,
             height: "auto",
             justifyContent: "center",
             display: "flex",

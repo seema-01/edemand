@@ -117,7 +117,7 @@ const FetchingServies = () => {
                           filter: "brightness(0.8)",
                         }}
                       />
-                      <Box marginTop={-5} textAlign={"center"} color={"white"}>
+                      <Box marginTop={-5} textAlign={"center"} >
                         <Typography
                           variant="h6"
                           zIndex={1}
@@ -267,7 +267,7 @@ export const FetchingPlumbing = () => {
                           filter: "brightness(0.8)",
                         }}
                       />
-                      <Box marginTop={-5} textAlign={"center"} color={"white"}>
+                      <Box marginTop={-5} textAlign={"center"}>
                         <Typography
                           variant="h6"
                           zIndex={1}

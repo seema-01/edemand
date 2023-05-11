@@ -34,6 +34,7 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
+import { useTheme } from "@emotion/react";
 // import ThemeButton from "./ThemeButton";
 // import intlTelInput from "intl-tel-input";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -44,7 +45,6 @@ import React, { useState, useRef, useEffect } from "react";
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
   display: "flex",
-  backgroundColor: "white",
   color: "blue",
   maxWidth: "lg",
   justifyContent: "space-between",
@@ -106,6 +106,8 @@ const Navigation = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
 
+  const theme = useTheme();
+
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -158,12 +160,12 @@ const Navigation = () => {
       });
   }
   return (
-    <Box sx={{ backgroundColor: "white" }}>
-      <Container>
-        <AppBar
-          position="sticky"
-          style={{ background: "none", boxShadow: "none" }}
-        >
+    <Box>
+      <AppBar
+        position="sticky"
+        style={{ backgroundColor: theme.palette.background.box, boxShadow: "none" }}
+      >
+        <Container>
           <Box>
             <StyledToolBar>
               <IconButton
@@ -185,20 +187,16 @@ const Navigation = () => {
                     <ListItemButton href="/categorys">
                       Categories
                     </ListItemButton>
-                    <ListItemButton href="/providers">
-                      Providers
-                    </ListItemButton>
-                    <ListItemButton href="/contact">
-                      Contact
-                    </ListItemButton>
+                    <ListItemButton href="/providers">Providers</ListItemButton>
+                    <ListItemButton href="/contact">Contact</ListItemButton>
                   </List>
                 </Drawer>
 
                 <NavLink
-                  style={{ textDecoration: "none", fontSize: 20 }}
+                  style={{ textDecoration: "none", fontSize: 20, color: theme.palette.color.logo }}
                   to="/"
                 >
-                  eDemand
+                  eDemmand
                 </NavLink>
               </div>
 
@@ -209,7 +207,7 @@ const Navigation = () => {
                     return {
                       paddingLeft: "5%",
                       textDecoration: "none",
-                      color: "black",
+                      color: theme.palette.color.navLink,
                       borderBottom: isActive ? "1px sloid " : "",
                     };
                   }}
@@ -222,7 +220,7 @@ const Navigation = () => {
                   style={{
                     paddingLeft: "5%",
                     textDecoration: "none",
-                    color: "black",
+                    color: theme.palette.color.navLink,
                   }}
                 >
                   About
@@ -232,7 +230,7 @@ const Navigation = () => {
                   style={{
                     paddingLeft: "5%",
                     textDecoration: "none",
-                    color: "black",
+                    color: theme.palette.color.navLink,
                   }}
                 >
                   Category
@@ -242,7 +240,7 @@ const Navigation = () => {
                   style={{
                     paddingLeft: "5%",
                     textDecoration: "none",
-                    color: "black",
+                    color: theme.palette.color.navLink,
                   }}
                 >
                   Provider
@@ -252,7 +250,7 @@ const Navigation = () => {
                   style={{
                     paddingLeft: "5%",
                     textDecoration: "none",
-                    color: "black",
+                    color: theme.palette.color.navLink,
                   }}
                 >
                   Contact
@@ -404,8 +402,8 @@ const Navigation = () => {
               </Backdrop>
             </StyledToolBar>
           </Box>
-        </AppBar>
-      </Container>
+        </Container>
+      </AppBar>
     </Box>
   );
 };

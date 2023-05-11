@@ -24,8 +24,9 @@ import { createStore } from "redux";
 import allReducers from "./reducer";
 // Provider can connect our global state our store to app
 import { Provider } from "react-redux";
-import theme, {darkTheme, lightTheme } from "./Theme";
+import theme, { darkTheme, lightTheme } from "./Theme";
 import { useState } from "react";
+import { useTheme } from "@emotion/react";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 // import Firebase from "./Components/Reusable/Firebase";
@@ -46,14 +47,17 @@ function App() {
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const theme = useTheme();
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Paper sx={{ background: "#f2f1f6" }}>
+      <Paper>
         <Provider store={myStore}>
           <div className="App">
             <BrowserRouter>
               <Navigation />
-              <Button onClick={handleToggleDarkMode}>Click</Button>
+              <Button onClick={handleToggleDarkMode}>Mode</Button>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about" element={<About />}></Route>
