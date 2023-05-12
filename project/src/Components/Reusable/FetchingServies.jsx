@@ -131,7 +131,7 @@ const FetchingServies = () => {
                           position={"relative"}
                         >
                           <NavLink
-                            to={"/category"}
+                            to={"/providers/services"}
                             style={{
                               color: "white",
                               textDecoration: "none",
@@ -296,7 +296,7 @@ export const FetchingPlumbing = () => {
                           position={"relative"}
                         >
                           <NavLink
-                            to={"/category"}
+                            to={"/providers/services"}
                             style={{
                               color: "white",
                               textDecoration: "none",
@@ -457,7 +457,7 @@ export const FetchingLaundry = () => {
                           position={"relative"}
                         >
                           <NavLink
-                            to={"/category"}
+                            to={"/providers/services"}
                             style={{
                               color: "white",
                               textDecoration: "none",
@@ -618,7 +618,7 @@ export const FetchingCar = () => {
                           position={"relative"}
                         >
                           <NavLink
-                            to={"/category"}
+                            to={"/providers/services"}
                             style={{
                               color: "white",
                               textDecoration: "none",

@@ -309,8 +309,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           eDemmand&nbsp;Setting
                         </Typography>
                         <IconButton
-                          color="inherit"
                           onClick={handleCloseSetting}
+                          sx={{color: theme.palette.color.navLink}}
                         >
                           <CloseIcon />
                         </IconButton>
@@ -392,10 +392,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                               htmlFor="otp"
                               className="font-bold text-xl text-white text-center"
                             >
-                              <Typography>Enter Verification Code</Typography>
-                              <Typography>
+                              <Typography sx={{color: theme.palette.color.navLink}}>Enter Verification Code</Typography>
+                              <Typography  sx={{color: theme.palette.color.navLink}}>
                                 We have Sent a Verification code to <br />
-                                <Typography>+91 -9876543210</Typography>
+                                <Typography>Your Number</Typography>
                               </Typography>
                             </label>
                             <Box marginTop={5}>
@@ -432,8 +432,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           </>
                         ) : (
                           <>
-                            <Typography marginBottom={2}>Welcome!</Typography>
-                            <Typography color={"gray"}>
+                            <Typography sx={{color: theme.palette.color.navLink}} marginBottom={2}>Welcome!</Typography>
+                            <Typography sx={{color: theme.palette.color.navLink}}>
                               Enter Phone number to continue and we will a
                               verification code to this number.{" "}
                             </Typography>
@@ -473,9 +473,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                             <Typography sx={{ color: "gray" }}>
                               By Continue you agree to out
                             </Typography>
-                            <Typography>
-                              <NavLink>Terms of services</NavLink> &
-                              <NavLink>Privacy Policy</NavLink>
+                            <Typography display={"flex"} justifyContent={"center"}>
+                              <NavLink style={{color: theme.palette.color.navLink}}>Terms of services</NavLink>  &nbsp;
+                              <p style={{color: theme.palette.color.navLink}}>&</p> &nbsp;
+                              <NavLink style={{color: theme.palette.color.navLink}}>Privacy Policy</NavLink>
                             </Typography>
                           </>
                         )}

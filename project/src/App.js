@@ -79,7 +79,7 @@ function App() {
                   path="/providers/services/reviews"
                   element={<Reviews />}
                 ></Route>
-                <Route path="/categorys" element={<Category />}></Route>
+                <Route path="/categorys" element={<div style={{marginBottom: "100px"}}><Category /></div> }></Route>
                 <Route path="/contact" element={<Contact />}></Route>
 
                 <Route path="/categorys/:id" element={<NavigateCategorys />}></Route>
@@ -112,9 +112,8 @@ function App() {
                   element={
                     <>
                       <Container>
-                        {" "}
-                        <ProfileNavigation />{" "}
-                      </Container>{" "}
+                        <ProfileNavigation />
+                      </Container>
                     </>
                   }
                 ></Route>

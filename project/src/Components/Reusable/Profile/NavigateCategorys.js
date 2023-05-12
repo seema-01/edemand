@@ -162,7 +162,7 @@ const NavigateCategorys = ({ match }) => {
                             position={"relative"}
                           >
                             <NavLink
-                              to={"/category"}
+                              to={"/providers/services"}
                               style={{
                                 color: "white",
                                 textDecoration: "none",
