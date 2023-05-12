@@ -6,6 +6,7 @@ import {
   TextField,
   IconButton,
   Container,
+  Button,
 } from "@mui/material";
 import React from "react";
 import SendIcon from "@mui/icons-material/Send";
@@ -29,7 +30,7 @@ const Footer = () => {
         <Box
           display={{ xs: "block", md: "flex" }}
           sx={{
-            marginLeft: 10,
+            // marginLeft: 10,
             justifyContent: "space-around",
             marginRight: 10,
             marginBottom: 2,
@@ -37,7 +38,7 @@ const Footer = () => {
         >
           <Box>
             <Typography fontWeight="bold">USEFUL CATEGORUIES</Typography>
-            <hr />
+            <hr fullWidth />
             <Box display={"flex"}>
               <Box marginRight={3}>
                 <ListItemButton>Carpenter</ListItemButton>
@@ -75,12 +76,12 @@ const Footer = () => {
             <Typography fontWeight="bold">QUICK LINKS</Typography>
             <hr />
             <Box display={{ xs: "flex", md: "block" }}>
-              <Box marginRight={7}>
+              <Box marginRight={{ md: 7, xs: 2 }}>
                 <ListItemButton>Home</ListItemButton>
                 <ListItemButton>About Us </ListItemButton>
                 <ListItemButton>All Categories</ListItemButton>
               </Box>
-              <Box marginRight={7}>
+              <Box marginRight={{ md: 7, xs: 3 }}>
                 {" "}
                 <ListItemButton>All Providers</ListItemButton>
                 <ListItemButton>Contact Us</ListItemButton>
@@ -102,10 +103,11 @@ const Footer = () => {
             <br />
             <TextField
               fontSize={"20px"}
-              sx={{ background: "white", width: 400, borderRadius: "10px", marginTop:3}}
+              sx={{ background: "white", borderRadius: "10px", marginTop: 3 }}
               placeholder="Enter Email"
               size="small"
               InputProps={{ endAdornment: <SendIcon /> }}
+              width={{ xs: "400px", md: "600px" }}
             ></TextField>
             <br />
             <br />
@@ -113,23 +115,38 @@ const Footer = () => {
               FOLLOW US
             </Typography>
             <hr />
-            <IconButton sx={{ zIndex: 1, color: "white" }}>
-              <Typography href="https://www.instagram.com">
+            <Box sx={{marginTop: 2}} gap={-2}>
+              <IconButton
+                href="https://www.instagram.com"
+                sx={{ zIndex: 1, color: "white", padding: 0 }}
+              >
                 {<InstagramIcon fontSize="large" />}
-              </Typography>
-              <Typography href="https://www.web.whatsapp.com">
+              </IconButton>
+              <IconButton
+                href="https://www.web.whatsapp.com"
+                sx={{ zIndex: 1, color: "white", padding: 0 }}
+              >
                 {<WhatsAppIcon fontSize="large" />}
-              </Typography>
-              <Typography href="https://www.facebook.com">
+              </IconButton>
+              <IconButton
+                href="https://www.facebook.com"
+                sx={{ zIndex: 1, color: "white", padding: 0 }}
+              >
                 {<FacebookIcon fontSize="large" />}
-              </Typography>
-              <Typography href="https://www.twitter.com">
+              </IconButton>
+              <IconButton
+                href="https://www.twitter.com"
+                sx={{ zIndex: 1, color: "white", padding: 0 }}
+              >
                 {<TwitterIcon fontSize="large" />}
-              </Typography>
-              <Typography href="https://in.linkedin.com">
+              </IconButton>
+              <IconButton
+                href="https://in.linkedin.com"
+                sx={{ zIndex: 1, color: "white", padding: 0 }}
+              >
                 {<LinkedInIcon fontSize="large" />}
-              </Typography>
-            </IconButton>
+              </IconButton>
+            </Box>
           </Box>
         </Box>
         <hr />
