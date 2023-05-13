@@ -108,6 +108,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   const theme = useTheme();
 
+  // function for Capture Code Verification
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -124,6 +125,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     }
   }
 
+  // Function for SignUP
   function onSignup() {
     setLoading(true);
     onCaptchVerify();
@@ -145,6 +147,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
+  //Function for Otp Verification
   function onOTPVerify() {
     setLoading(true);
     window.confirmationResult
@@ -160,14 +163,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
-  const [mode, setDarkMode] = useState(false);
-
-  const darkmode = createTheme({
-    palette: {
-      mode: mode ? "dark" : "light",
-    },
-  });
-
+  // For Verified User Icon
   const sign_in = document.getElementById("sign_in");
   const login_user = document.getElementById("logined_user");
 
@@ -193,6 +189,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 >
                   <MenuIcon />
                 </IconButton>
+                {/* #Phone Menu  */}
                 {/* Set logo and burger menu in one side */}
                 <div>
                   <Drawer open={open} onClose={() => setOpen(false)}>
@@ -209,6 +206,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     </List>
                   </Drawer>
 
+                  {/* # PC Navigation  */}
+                  {/* logo  */}
                   <NavLink
                     style={{
                       textDecoration: "none",
@@ -221,6 +220,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     eDemmand
                   </NavLink>
                 </div>
+
+                {/* Navigation Links  */}
               </Box>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <NavLink
@@ -278,7 +279,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   Contact
                 </NavLink>
               </Box>
-              <Box sx={{display: "flex"}}>
+
+              {/* #Navigation Button functionality */}
+              <Box sx={{ display: "flex" }}>
                 <Button
                   id="sign_in"
                   variant="contained"
@@ -287,10 +290,18 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 >
                   Sign in
                 </Button>
-                <IconButton id="logined_user" style={{display: "none", borderRadius: "100px",  "&:hover": {
-                  backgroundColor: "white"
-                }}}>
-                <Avatar sx={{height: "30px", width: "30px"}} />
+              {/* #Authorized user icon    */}
+                <IconButton
+                  id="logined_user"
+                  style={{
+                    display: "none",
+                    borderRadius: "100px",
+                    "&:hover": {
+                      backgroundColor: "white",
+                    },
+                  }}
+                >
+                  <Avatar sx={{ height: "30px", width: "30px" }} />
                 </IconButton>
                 <IconButton onClick={handleOpenSetting}>
                   <SettingsOutlinedIcon />{" "}
@@ -358,7 +369,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   </Box>
                 </Box>
               </Drawer>
-              {/* ------------------------------------------ */}
+              {/* ------------------------------------------------- */}
+              {/* =================Authentication=================  */}
               {/* ------------------------------------------------- */}
               <Backdrop
                 sx={{
@@ -393,9 +405,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     {user ? (
                       <Box>
                         <Typography>👍Login Success</Typography>
-                        {(sign_in.style.display = "none",
-                        login_user.style.display = "flex"
-                        )}
+                        {
+                          ((sign_in.style.display = "none",login_user.style.display = "block"))
+                        }
                       </Box>
                     ) : (
                       <Box sx={{ justifyContent: "center" }}>
