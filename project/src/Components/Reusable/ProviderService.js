@@ -11,25 +11,31 @@ import {
   Divider,
   Skeleton,
 } from "@mui/material";
-import { Textarea } from "@mui/joy";
 import StarIcon from "@mui/icons-material/Star";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import React, { useState, useEffect } from "react";
-import AddServices from "./Drawers/AddServices";
 import { NavLink } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
-import IconButton from "@mui/joy/IconButton";
-import Add from "@mui/icons-material/Add";
-import Remove from "@mui/icons-material/Remove";
-import StarRateIcon from "@mui/icons-material/StarRate";
+import { useDispatch, useSelector } from "react-redux";
+import { Transert } from "../../actions/action";
 
-const ProviderService = () => {
+const ProviderService = (props) => {
+
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen = () => {
+  
+  const dispatch = useDispatch()
+  const list_item = useSelector((state) => state.reducer)  // here we call our data that we print in console
+
+  // Here we create a function that open drawer as well as add item to that drawer
+  const handleOpen = (item) => {
     setOpen(true);
+    console.warn("clicked", item);
+    dispatch(Transert(item))
+    const val = item
+    console.log("val : " + dispatch(Transert(val)))
   };
 
   const [service, setServices] = useState([]);
@@ -45,6 +51,7 @@ const ProviderService = () => {
 
   useEffect(() => {
     ApiProviders();
+    console.warn("My Data : ", list_item)
   }, []);
 
   return (
@@ -109,7 +116,7 @@ const ProviderService = () => {
                             <Box sx={{ float: "right", mt: -1 }}>
                               <Button
                                 variant="outlined"
-                                onClick={handleOpen}
+                                onClick={() => handleOpen(response)}
                                 float="right"
                                 size="small"
                               >
@@ -155,6 +162,17 @@ const ProviderService = () => {
                                         mt: 6,
                                       }}
                                     >
+
+                                    {/* {
+                                       list_item.map((response)=>{
+                                          return(
+                                            <Box>
+                                              <h2> {response.name} </h2>
+                                            </Box>
+                                          )
+                                       })
+                                    } */}
+
                                       <NavLink
                                         to={"/providers/services/payment"}
                                         size="small"

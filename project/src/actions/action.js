@@ -1,3 +1,4 @@
+import { add_to_card } from "../reducer/TransferReducer"
 //REDUX File that represent our all actions
 
 export const increment = (number) => {
@@ -11,8 +12,9 @@ export const decremrnt = () => {
         type: 'DECREMENT'
     }
 }
-export const Transert = () => {
-    return{
-        type: 'Transfer' 
+export const Transert = (data) => {
+    return{ 
+        type: add_to_card,
+        data: data 
     }
 }
