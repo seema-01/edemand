@@ -19,23 +19,25 @@ import api from "../../API/Fetch_data_Api";
 import { useDispatch, useSelector } from "react-redux";
 import { Transert } from "../../actions/action";
 
-const ProviderService = (props) => {
-
+const ProviderService = (item) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
   };
-  
-  const dispatch = useDispatch()
-  const list_item = useSelector((state) => state.reducer)  // here we call our data that we print in console
 
+  const dispatch = useDispatch();
+  const list_item = useSelector((state) => state.reducer); 
+  // here we call our data that we print in console
+
+  
   // Here we create a function that open drawer as well as add item to that drawer
   const handleOpen = (item) => {
     setOpen(true);
     console.warn("clicked", item);
-    dispatch(Transert(item))
-    const val = item
-    console.log("val : " + dispatch(Transert(val)))
+    dispatch(Transert(item));
+    item.id
+      ? console.info("item Found " + item.id)
+      : console.info("item Not Found");
   };
 
   const [service, setServices] = useState([]);
@@ -51,7 +53,10 @@ const ProviderService = (props) => {
 
   useEffect(() => {
     ApiProviders();
-    console.warn("My Data : ", list_item)
+    console.warn("My Data : ", list_item);
+    console.log("---------------");
+    console.warn("clicked", item);
+    dispatch(Transert(item));
   }, []);
 
   return (
@@ -143,6 +148,12 @@ const ProviderService = (props) => {
                                     </Typography>
                                   </Box>
                                   <hr />
+
+                                  {/* All Data come Dynamicly  */}
+                                  <Box>
+                                    <h2>{item.category_name}</h2>
+                                  </Box>
+
                                   <Box
                                     sx={{
                                       backgroundColor: "#343F53",
@@ -162,17 +173,6 @@ const ProviderService = (props) => {
                                         mt: 6,
                                       }}
                                     >
-
-                                    {/* {
-                                       list_item.map((response)=>{
-                                          return(
-                                            <Box>
-                                              <h2> {response.name} </h2>
-                                            </Box>
-                                          )
-                                       })
-                                    } */}
-
                                       <NavLink
                                         to={"/providers/services/payment"}
                                         size="small"

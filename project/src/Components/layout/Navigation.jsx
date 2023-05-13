@@ -12,6 +12,7 @@ import {
   Container,
   Backdrop,
   createTheme,
+  Avatar,
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -167,6 +168,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     },
   });
 
+  const sign_in = document.getElementById("sign_in");
+  const login_user = document.getElementById("logined_user");
+
   return (
     <Box>
       <AppBar
@@ -179,44 +183,45 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         <Container>
           <Box>
             <StyledToolBar>
-              <Box display={'flex'} sx={{alignItems:'center'}}>
-
-              <IconButton
-                color="inherit"
-                aria-label="open-drawer"
-                edge="start"
-                sx={{ mr: 2, display: { md: "none" } }}
-                onClick={() => setOpen(true)}
+              <Box display={"flex"} sx={{ alignItems: "center" }}>
+                <IconButton
+                  color="inherit"
+                  aria-label="open-drawer"
+                  edge="start"
+                  sx={{ mr: 2, display: { md: "none" } }}
+                  onClick={() => setOpen(true)}
                 >
-                <MenuIcon />
-              </IconButton>
-              {/* Set logo and burger menu in one side */}
-              <div>
-                <Drawer open={open} onClose={() => setOpen(false)}>
-                  <List>
-                    <ListItemButton href="/">Home</ListItemButton>
-                    <ListItemButton href="/about">About us</ListItemButton>
-                    <ListItemButton href="/categorys">
-                      Categories
-                    </ListItemButton>
-                    <ListItemButton href="/providers">Providers</ListItemButton>
-                    <ListItemButton href="/contact">Contact</ListItemButton>
-                  </List>
-                </Drawer>
+                  <MenuIcon />
+                </IconButton>
+                {/* Set logo and burger menu in one side */}
+                <div>
+                  <Drawer open={open} onClose={() => setOpen(false)}>
+                    <List>
+                      <ListItemButton href="/">Home</ListItemButton>
+                      <ListItemButton href="/about">About us</ListItemButton>
+                      <ListItemButton href="/categorys">
+                        Categories
+                      </ListItemButton>
+                      <ListItemButton href="/providers">
+                        Providers
+                      </ListItemButton>
+                      <ListItemButton href="/contact">Contact</ListItemButton>
+                    </List>
+                  </Drawer>
 
-                <NavLink
-                  style={{
-                    textDecoration: "none",
-                    fontSize: 20,
+                  <NavLink
+                    style={{
+                      textDecoration: "none",
+                      fontSize: 20,
 
-                    color: theme.palette.color.logo,
-                  }}
-                  to="/"
+                      color: theme.palette.color.logo,
+                    }}
+                    to="/"
                   >
-                  eDemmand
-                </NavLink>
-              </div>
-                  </Box>
+                    eDemmand
+                  </NavLink>
+                </div>
+              </Box>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <NavLink
                   to="/"
@@ -273,14 +278,20 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   Contact
                 </NavLink>
               </Box>
-              <Box>
+              <Box sx={{display: "flex"}}>
                 <Button
+                  id="sign_in"
                   variant="contained"
                   startIcon={<AccountCircleIcon />}
                   onClick={handleOpen}
                 >
                   Sign in
                 </Button>
+                <IconButton id="logined_user" style={{display: "none", borderRadius: "100px",  "&:hover": {
+                  backgroundColor: "white"
+                }}}>
+                <Avatar sx={{height: "30px", width: "30px"}} />
+                </IconButton>
                 <IconButton onClick={handleOpenSetting}>
                   <SettingsOutlinedIcon />{" "}
                 </IconButton>
@@ -310,7 +321,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         </Typography>
                         <IconButton
                           onClick={handleCloseSetting}
-                          sx={{color: theme.palette.color.navLink}}
+                          sx={{ color: theme.palette.color.navLink }}
                         >
                           <CloseIcon />
                         </IconButton>
@@ -380,7 +391,12 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     </Box>
                     <Box id="recaptcha-container"></Box>
                     {user ? (
-                      <Typography>👍Login Success</Typography>
+                      <Box>
+                        <Typography>👍Login Success</Typography>
+                        {(sign_in.style.display = "none",
+                        login_user.style.display = "flex"
+                        )}
+                      </Box>
                     ) : (
                       <Box sx={{ justifyContent: "center" }}>
                         <Box
@@ -392,8 +408,14 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                               htmlFor="otp"
                               className="font-bold text-xl text-white text-center"
                             >
-                              <Typography sx={{color: theme.palette.color.navLink}}>Enter Verification Code</Typography>
-                              <Typography  sx={{color: theme.palette.color.navLink}}>
+                              <Typography
+                                sx={{ color: theme.palette.color.navLink }}
+                              >
+                                Enter Verification Code
+                              </Typography>
+                              <Typography
+                                sx={{ color: theme.palette.color.navLink }}
+                              >
                                 We have Sent a Verification code to <br />
                                 <Typography>Your Number</Typography>
                               </Typography>
@@ -432,8 +454,15 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           </>
                         ) : (
                           <>
-                            <Typography sx={{color: theme.palette.color.navLink}} marginBottom={2}>Welcome!</Typography>
-                            <Typography sx={{color: theme.palette.color.navLink}}>
+                            <Typography
+                              sx={{ color: theme.palette.color.navLink }}
+                              marginBottom={2}
+                            >
+                              Welcome!
+                            </Typography>
+                            <Typography
+                              sx={{ color: theme.palette.color.navLink }}
+                            >
                               Enter Phone number to continue and we will a
                               verification code to this number.{" "}
                             </Typography>
@@ -473,10 +502,25 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                             <Typography sx={{ color: "gray" }}>
                               By Continue you agree to out
                             </Typography>
-                            <Typography display={"flex"} justifyContent={"center"}>
-                              <NavLink style={{color: theme.palette.color.navLink}}>Terms of services</NavLink>  &nbsp;
-                              <p style={{color: theme.palette.color.navLink}}>&</p> &nbsp;
-                              <NavLink style={{color: theme.palette.color.navLink}}>Privacy Policy</NavLink>
+                            <Typography
+                              display={"flex"}
+                              justifyContent={"center"}
+                            >
+                              <NavLink
+                                style={{ color: theme.palette.color.navLink }}
+                              >
+                                Terms of services
+                              </NavLink>{" "}
+                              &nbsp;
+                              <p style={{ color: theme.palette.color.navLink }}>
+                                &
+                              </p>{" "}
+                              &nbsp;
+                              <NavLink
+                                style={{ color: theme.palette.color.navLink }}
+                              >
+                                Privacy Policy
+                              </NavLink>
                             </Typography>
                           </>
                         )}
