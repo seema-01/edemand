@@ -18,13 +18,14 @@ import { NavLink } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
 import { useDispatch, useSelector } from "react-redux";
 import { Transert } from "../../actions/action";
+import TransferReducer from "../../reducer/TransferReducer";
 
 const ProviderService = (item) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
   };
-  const Data = useSelector(state => state.Data)
+  const Data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
   // const list_item = useSelector((state) => state.reducer);
   // const myData = useSelector(state => state.myReducer);
@@ -36,7 +37,7 @@ const ProviderService = (item) => {
   const handleOpen = (item) => {
     setOpen(true);
     console.info("clicked", item);
-    dispatch(Transert(item));
+    let data = dispatch(Transert(item));
   };
 
   const [service, setServices] = useState([]);
@@ -52,8 +53,8 @@ const ProviderService = (item) => {
 
   useEffect(() => {
     ApiProviders();
-    // console.log("---------------");
-    // dispatch(Transert(item));
+    console.warn(item);
+    // dispatch(TransferReducer(item))
   }, []);
 
   return (
@@ -148,11 +149,112 @@ const ProviderService = (item) => {
 
                                   {/* All Data come Dynamicly  */}
                                   <Box>
-                                   {
-                                    // Data.data.map((response) => {
-
-                                    // })
-                                   }
+                                    {service.map((response) => {
+                                      // if (item.id === response.id)
+                                        return (
+                                          <Box sx={{ flexGrow: 1, border: "1px solid",m: 1 }}>
+                                            <Card
+                                              sx={{
+                                                display: "flex",
+                                                boxShadow: "none",
+                                                height: 200,
+                                                p: 1,
+                                                width: 520,
+                                              }}
+                                            >
+                                              <Grid
+                                                container
+                                                display={"flex"}
+                                                spacing={1}
+                                              >
+                                                <Grid item md={2}>
+                                                  <CardMedia
+                                                    image={
+                                                      response.image_of_the_service
+                                                    }
+                                                    alt="hi"
+                                                    sx={{
+                                                      height: "80px",
+                                                      width: "100px",
+                                                      borderRadius: "4px",
+                                                    }}
+                                                  />
+                                                </Grid>
+                                                <Grid item md={10}>
+                                                  <CardContent
+                                                    sx={{ ml: 2, p: 0 }}
+                                                  >
+                                                    <Box
+                                                      sx={{
+                                                        display: "block",
+                                                        textAlign: "start",
+                                                      }}
+                                                    >
+                                                      <Box
+                                                        sx={{ display: "flex" }}
+                                                      >
+                                                        <Typography
+                                                          color={"#2560FC"}
+                                                          sx={{
+                                                            marginRight: "auto",
+                                                          }}
+                                                        >
+                                                          {response.title}
+                                                        </Typography>
+                                                        <StarIcon
+                                                          sx={{ color: "gold" }}
+                                                        />{" "}
+                                                        {response.rating}
+                                                        <br />
+                                                      </Box>
+                                                      <Typography
+                                                        fontSize={14}
+                                                        pt={2}
+                                                      >
+                                                        {response.description}
+                                                      </Typography>
+                                                      <br /> <br />
+                                                      <Typography
+                                                        color={"gray"}
+                                                        fontSize={14}
+                                                        sx={{ mt: -4 }}
+                                                      >
+                                                        2 Person | 150 min
+                                                      </Typography>
+                                                      <br />
+                                                      <Box
+                                                        sx={{
+                                                          display: "flex",
+                                                          mt: 3,
+                                                        }}
+                                                      >
+                                                        <Typography
+                                                          color={"#2560FC"}
+                                                          sx={{
+                                                            marginRight: "auto",
+                                                          }}
+                                                        >
+                                                          $
+                                                          {
+                                                            response.discounted_price
+                                                          }{" "}
+                                                          <del
+                                                            style={{
+                                                              color: "gray",
+                                                            }}
+                                                          >
+                                                            ${response.price}
+                                                          </del>{" "}
+                                                        </Typography>
+                                                      </Box>
+                                                    </Box>
+                                                  </CardContent>
+                                                </Grid>
+                                              </Grid>
+                                            </Card>
+                                          </Box>
+                                        );
+                                    })}
                                   </Box>
 
                                   <Box
