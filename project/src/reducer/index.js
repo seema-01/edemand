@@ -6,8 +6,7 @@ import TransferReducer from "./TransferReducer";
 const allReducers = combineReducers({
     counter : counterReducer,
     islogged: loggedReducer,
-    addtocard: TransferReducer,
-    
+    cart: TransferReducer,
 })
 
 export default allReducers

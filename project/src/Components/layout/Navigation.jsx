@@ -23,7 +23,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import ClearIcon from "@mui/icons-material/Clear";
 import "intl-tel-input/build/css/intlTelInput.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState, useRef, useEffect } from "react";
@@ -167,6 +167,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const sign_in = document.getElementById("sign_in");
   const login_user = document.getElementById("logined_user");
 
+  const navigate = useNavigate();
+
   return (
     <Box>
       <AppBar
@@ -300,6 +302,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                       backgroundColor: "white",
                     },
                   }}
+                  onClick={()=>navigate("/profile")}
                 >
                   <Avatar sx={{ height: "30px", width: "30px" }} />
                 </IconButton>
@@ -406,7 +409,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                       <Box>
                         <Typography>👍Login Success</Typography>
                         {
-                          ((sign_in.style.display = "none",login_user.style.display = "block"))
+                          (( sign_in.style.display = "none", login_user.style.display = "block"))
                         }
                       </Box>
                     ) : (

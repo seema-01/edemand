@@ -109,7 +109,7 @@
 //   cartSlice.actions;
 
 // export default cartSlice.reducer;
-import React from "react";
+
 export const add_to_card = "add_to_card";
 
 const initialState = [];

@@ -24,20 +24,19 @@ const ProviderService = (item) => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const Data = useSelector(state => state.Data)
   const dispatch = useDispatch();
-  const list_item = useSelector((state) => state.reducer); 
+  // const list_item = useSelector((state) => state.reducer);
+  // const myData = useSelector(state => state.myReducer);
   // here we call our data that we print in console
+  // const Data = useSelector(getData)
 
-  
   // Here we create a function that open drawer as well as add item to that drawer
+  //  ✅ Working
   const handleOpen = (item) => {
     setOpen(true);
-    console.warn("clicked", item);
+    console.info("clicked", item);
     dispatch(Transert(item));
-    item.id
-      ? console.info("item Found " + item.id)
-      : console.info("item Not Found");
   };
 
   const [service, setServices] = useState([]);
@@ -53,10 +52,8 @@ const ProviderService = (item) => {
 
   useEffect(() => {
     ApiProviders();
-    console.warn("My Data : ", list_item);
-    console.log("---------------");
-    console.warn("clicked", item);
-    dispatch(Transert(item));
+    // console.log("---------------");
+    // dispatch(Transert(item));
   }, []);
 
   return (
@@ -151,7 +148,11 @@ const ProviderService = (item) => {
 
                                   {/* All Data come Dynamicly  */}
                                   <Box>
-                                    <h2>{item.category_name}</h2>
+                                   {
+                                    // Data.data.map((response) => {
+
+                                    // })
+                                   }
                                   </Box>
 
                                   <Box
@@ -214,11 +215,7 @@ const ProviderService = (item) => {
         <Box>
           <Skeleton variant="rectangular" height={200} width={620}></Skeleton>{" "}
           <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>{" "}
+          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
           <br />
           <Skeleton
             variant="rectangular"

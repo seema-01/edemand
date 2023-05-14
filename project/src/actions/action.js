@@ -18,3 +18,5 @@ export const Transert = (data) => {
         data: data 
     }
 }
+
+// export const getData = state => state.id
