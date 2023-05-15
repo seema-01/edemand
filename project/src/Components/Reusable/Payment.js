@@ -145,7 +145,7 @@ export default function PaymentPage() {
                           <FormControlLabel
                             control={
                               <Checkbox
-                                color="secondary"
+                                color="primary"
                                 name="saveCard"
                                 value="yes"
                               />
