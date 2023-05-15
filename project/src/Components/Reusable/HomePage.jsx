@@ -100,7 +100,7 @@ const HomePage = () => {
       <Container>
         <Box
           sx={{
-            height: "500px",
+            // height: "500px",
             position: "relative",
             marginTop: 5,
             overflow: "hidden",
@@ -162,15 +162,7 @@ const HomePage = () => {
           >
             <GpsFixed />
           </button>
-          <TextField
-            size="small"
-            type="text"
-            id="myinp1"
-            className="form-control"
-            placeholder="Enter Zip code"
-            sx={{ zIndex: 1, background: theme.palette.background.box }}
-          />
-          <div style={{ zIndex: 1 }} className="search">
+          <Box style={{ zIndex: 1 }} className="search">
             <TextField
               ref={searchInput}
               size="small"
@@ -181,7 +173,7 @@ const HomePage = () => {
               sx={{
                 zIndex: 1,
                 background: theme.palette.background.box,
-                width: "500px",
+                width:{xs: "100px", md: "auto"},
               }}
               InputProps={{
                 endAdornment: (
@@ -197,7 +189,7 @@ const HomePage = () => {
                 ),
               }}
             />
-          </div>
+          </Box>
         </Box>
       </Container>
     </>

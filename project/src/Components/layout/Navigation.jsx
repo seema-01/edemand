@@ -13,6 +13,8 @@ import {
   Backdrop,
   createTheme,
   Avatar,
+  Tabs,
+  Tab
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -68,6 +70,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
   const [openSetting, setOpenSetting] = useState(false);
+  
   const handleOpenSetting = () => {
     setOpenSetting(true);
   };
@@ -105,6 +108,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
+  const [value, setValue] = useState(0);
 
   const theme = useTheme();
 
@@ -226,20 +230,58 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 {/* Navigation Links  */}
               </Box>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
-                <NavLink
+                <Tabs
+                  sx={{ marginLeft: "auto" }}
+                  indicatorColor="primary"
+                  defaultValue={1}
+                  value={value}
+                  onChange={(e, value) => setValue(value)}
+                >
+                  <Tab
+                    value={1}
+                    defaultChecked
+                    onClick={() => navigate("/")}
+                    sx={{ color: theme.palette.color.navLink }}
+                    label="Home"
+                  />
+                  <Tab
+                    value={2}
+                    onClick={() => navigate("/about")}
+                    label="About Us"
+                    sx={{ color: theme.palette.color.navLink }}
+                  />
+                  <Tab
+                    value={3}
+                    onClick={() => navigate("/categorys")}
+                    label="Category"
+                    sx={{ color: theme.palette.color.navLink }}
+                  />
+                  <Tab
+                    value={4}
+                    onClick={() => navigate("/providers")}
+                    label="Providers"
+                    sx={{ color: theme.palette.color.navLink }}
+                  />
+                  <Tab
+                    value={5}
+                    onClick={() => navigate("/contact")}
+                    label="Contact"
+                    sx={{ color: theme.palette.color.navLink }}
+                  />
+                </Tabs>
+                {/* <NavLink
                   to="/"
                   style={({ isActive }) => {
                     return {
                       paddingLeft: "5%",
                       textDecoration: "none",
                       color: theme.palette.color.navLink,
-                      borderBottom: isActive ? "1px sloid " : "",
                     };
                   }}
                 >
                   Home
                 </NavLink>
-
+          
                 <NavLink
                   to="/about"
                   style={{
@@ -279,7 +321,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   }}
                 >
                   Contact
-                </NavLink>
+                </NavLink> */}
               </Box>
 
               {/* #Navigation Button functionality */}
@@ -292,7 +334,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 >
                   Sign in
                 </Button>
-              {/* #Authorized user icon    */}
+                {/* #Authorized user icon    */}
                 <IconButton
                   id="logined_user"
                   style={{
@@ -302,7 +344,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                       backgroundColor: "white",
                     },
                   }}
-                  onClick={()=>navigate("/profile")}
+                  onClick={() => navigate("/profile")}
                 >
                   <Avatar sx={{ height: "30px", width: "30px" }} />
                 </IconButton>
@@ -409,7 +451,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                       <Box>
                         <Typography>👍Login Success</Typography>
                         {
-                          (( sign_in.style.display = "none", login_user.style.display = "block"))
+                          ((sign_in.style.display = "none"),
+                          (login_user.style.display = "block"))
                         }
                       </Box>
                     ) : (

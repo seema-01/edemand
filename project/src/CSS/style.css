@@ -18,20 +18,24 @@
   }
    */
 
-   .swiper-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
-  }
-  
-  /* Swiper Buttons adjustment */
-  .swiper-button-prev,
-  .swiper-button-next {
-    /* button styles */
-  }
-  
-  /* input tag width for number in login form  */
-  .react-tel-input .form-control{
-    width: 350px;
-  }
+.swiper-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+
+/* Swiper Buttons adjustment */
+.swiper-button-prev,
+.swiper-button-next {
+  /* button styles */
+}
+
+/* input tag width for number in login form  */
+.react-tel-input .form-control {
+  width: 350px;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+}

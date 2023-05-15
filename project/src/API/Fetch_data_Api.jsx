@@ -44,7 +44,7 @@ export const get_Api_Category = async () => {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -61,7 +61,7 @@ export const get_categories_home = async () => {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -78,7 +78,7 @@ async function get_categories_laundry() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -95,7 +95,7 @@ async function get_categories_plumbing() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -112,7 +112,7 @@ async function get_categories_car() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -127,7 +127,7 @@ async function get_providers() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -142,7 +142,7 @@ async function get_services() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 }
 

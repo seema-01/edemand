@@ -112,7 +112,7 @@ const FetchingServies = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card
+                    <Card key={response.id}
                       sx={{ width: 200, height: 200, borderRadius: "10px" }}
                     >
                       <img
@@ -277,7 +277,7 @@ export const FetchingPlumbing = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card
+                    <Card key={response.id}
                       sx={{ width: 200, height: 200, borderRadius: "10px" }}
                     >
                       <img
@@ -438,7 +438,7 @@ export const FetchingLaundry = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card
+                    <Card key={response.id}
                       sx={{ width: 200, height: 200, borderRadius: "10px" }}
                     >
                       <img
@@ -599,7 +599,7 @@ export const FetchingCar = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card
+                    <Card key={response.id}
                       sx={{ width: 200, height: 200, borderRadius: "10px" }}
                     >
                       <img

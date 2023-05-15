@@ -42,7 +42,7 @@ export default function Provider() {
           {provider.map((response) => {
             return (
               <>
-                <Card sx={{ maxWidth: 345, display: "inline-block" }}>
+                <Card key={response.id} sx={{ maxWidth: 345, display: "inline-block" }}>
                   <CardMedia
                     sx={{ height: 240 }}
                     image={response.banner_image}

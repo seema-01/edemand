@@ -82,7 +82,7 @@ const FetchingCategorys = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card
+                    <Card key={response.id}
                       sx={{
                         mt: 3,
                         width: 200,
