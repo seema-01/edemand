@@ -36,12 +36,6 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-// import ThemeButton from "./ThemeButton";
-// import intlTelInput from "intl-tel-input";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-// import OTPInput, { ResendOTP } from "otp-input-react";
-// import ToggleColorMode from "../../Theme";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -66,6 +60,10 @@ const style = {
 const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
+
+  let loggedInUser = localStorage.setItem("isLoggedIn","")
+
+
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
@@ -452,7 +450,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         <Typography>👍Login Success</Typography>
                         {
                           ((sign_in.style.display = "none"),
-                          (login_user.style.display = "block"))
+                          (login_user.style.display = "block"),
+                          (loggedInUser = localStorage.setItem("isLoggedIn","Login"))
+                          )
                         }
                       </Box>
                     ) : (

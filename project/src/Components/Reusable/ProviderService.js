@@ -21,9 +21,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Transert } from "../../actions/action";
 import TransferReducer from "../../reducer/TransferReducer";
 
-
-
-
 const ProviderService = (item) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -60,10 +57,8 @@ const ProviderService = (item) => {
 
   useEffect(() => {
     ApiProviders();
-    
     // dispatch(TransferReducer(item))
   }, []);
-
 
   return (
     <Box>

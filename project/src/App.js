@@ -53,7 +53,6 @@ function App() {
     setDarkMode(true)
   }
 
-
   return (
     // <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
