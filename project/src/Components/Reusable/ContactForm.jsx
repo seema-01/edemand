@@ -87,6 +87,7 @@ const ContactForm = () => {
                   <Typography
                     variant="h6"
                     fontSize={18}
+                    fontFamily={"Plus Jakarta Sans"}
                   >
                     +91 01234 56789
                   </Typography>
@@ -113,6 +114,7 @@ const ContactForm = () => {
                   <Typography
                     variant="h6"
                     fontSize={18}
+                    fontFamily={"Plus Jakarta Sans"}
                   >
                     info@edemand.com
                   </Typography>
@@ -139,6 +141,7 @@ const ContactForm = () => {
                   <Typography
                     variant="h6"
                     fontSize={18}
+                    fontFamily={"Plus Jakarta Sans"}
                   >
                     Time Square Empire Time <br /> Square Empire, Bhuj, Gujrat,{" "}
                     <br /> 370001{" "}
@@ -166,6 +169,7 @@ const ContactForm = () => {
                   <Typography
                     variant="h6"
                     fontSize={18}
+                    fontFamily={"Plus Jakarta Sans"}
                   >
                     9:00 AM to 7:00 PM
                   </Typography>
