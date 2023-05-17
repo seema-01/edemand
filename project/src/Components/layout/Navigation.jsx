@@ -14,7 +14,7 @@ import {
   createTheme,
   Avatar,
   Tabs,
-  Tab
+  Tab,
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -44,31 +44,28 @@ const StyledToolBar = styled(Toolbar)({
   maxWidth: "lg",
   justifyContent: "space-between",
 });
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  borderRadius: "10px",
-  boxShadow: 24,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   borderRadius: "10px",
+//   boxShadow: 24,
+// };
 
 const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
-
-  let loggedInUser = localStorage.setItem("isLoggedIn","")
-
+  let loggedInUser = localStorage.setItem("isLoggedIn", "");
 
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
   const [openSetting, setOpenSetting] = useState(false);
-  
+
   const handleOpenSetting = () => {
     setOpenSetting(true);
   };
@@ -83,12 +80,12 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   };
 
   const [view, setView] = React.useState("list");
-  const handleChange = (
+  const handleChange = () =>
     // event: React.MouseEvent<HTMLElement>,
     // nextView: string
-  ) => {
-    // setView(nextView);
-  };
+    {
+      // setView(nextView);
+    };
 
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -177,7 +174,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   color="inherit"
                   aria-label="open-drawer"
                   edge="start"
-                  sx={{ mr: 2, display: { md: "none" } }}
+                  sx={{ display: { md: "none" } }}
                   onClick={() => setOpen(true)}
                 >
                   <MenuIcon />
@@ -205,7 +202,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     style={{
                       textDecoration: "none",
                       fontSize: 20,
-
+                 
                       color: theme.palette.color.logo,
                     }}
                     to="/"
@@ -293,7 +290,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           edge="start"
                           color="inherit"
                           aria-label="menu"
-                          // sx={{ mr: 2 }}
                         >
                           <SettingsOutlinedIcon />
                         </IconButton>
@@ -382,8 +378,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         {
                           ((sign_in.style.display = "none"),
                           (login_user.style.display = "block"),
-                          (loggedInUser = localStorage.setItem("isLoggedIn","Login"))
-                          )
+                          (loggedInUser = localStorage.setItem(
+                            "isLoggedIn",
+                            "Login"
+                          )))
                         }
                       </Box>
                     ) : (
