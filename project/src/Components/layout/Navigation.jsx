@@ -84,22 +84,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   const [view, setView] = React.useState("list");
   const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    nextView: string
+    // event: React.MouseEvent<HTMLElement>,
+    // nextView: string
   ) => {
-    setView(nextView);
+    // setView(nextView);
   };
-  const telInputRef = useRef(null);
-
-  // First Attempts => set here to second goes from 60 to 0
-  const [counter, setCounter] = React.useState(60);
-
-  // Third Attempts
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    return () => clearInterval(timer);
-  }, [counter]);
 
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -231,37 +220,32 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 <Tabs
                   sx={{ marginLeft: "auto" }}
                   indicatorColor="primary"
-                  defaultValue={1}
+                  defaultValue={0}
                   value={value}
                   onChange={(e, value) => setValue(value)}
                 >
                   <Tab
-                    value={1}
                     defaultChecked
                     onClick={() => navigate("/")}
                     sx={{ color: theme.palette.color.navLink }}
                     label="Home"
                   />
                   <Tab
-                    value={2}
                     onClick={() => navigate("/about")}
                     label="About Us"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={3}
                     onClick={() => navigate("/categorys")}
                     label="Category"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={4}
                     onClick={() => navigate("/providers")}
                     label="Providers"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={5}
                     onClick={() => navigate("/contact")}
                     label="Contact"
                     sx={{ color: theme.palette.color.navLink }}
