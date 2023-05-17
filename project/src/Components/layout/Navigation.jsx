@@ -84,11 +84,22 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   const [view, setView] = React.useState("list");
   const handleChange = (
-    // event: React.MouseEvent<HTMLElement>,
-    // nextView: string
+    event: React.MouseEvent<HTMLElement>,
+    nextView: string
   ) => {
-    // setView(nextView);
+    setView(nextView);
   };
+  const telInputRef = useRef(null);
+
+  // First Attempts => set here to second goes from 60 to 0
+  const [counter, setCounter] = React.useState(60);
+
+  // Third Attempts
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
 
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -184,7 +195,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 </IconButton>
                 {/* #Phone Menu  */}
                 {/* Set logo and burger menu in one side */}
-                <Box>
+                <div>
                   <Drawer open={open} onClose={() => setOpen(false)}>
                     <List>
                       <ListItemButton href="/">Home</ListItemButton>
@@ -212,7 +223,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   >
                     eDemmand
                   </NavLink>
-                </Box>
+                </div>
 
                 {/* Navigation Links  */}
               </Box>
@@ -220,37 +231,95 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 <Tabs
                   sx={{ marginLeft: "auto" }}
                   indicatorColor="primary"
-                  defaultValue={0}
+                  defaultValue={1}
                   value={value}
                   onChange={(e, value) => setValue(value)}
                 >
                   <Tab
+                    value={1}
                     defaultChecked
                     onClick={() => navigate("/")}
                     sx={{ color: theme.palette.color.navLink }}
                     label="Home"
                   />
                   <Tab
+                    value={2}
                     onClick={() => navigate("/about")}
                     label="About Us"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
+                    value={3}
                     onClick={() => navigate("/categorys")}
                     label="Category"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
+                    value={4}
                     onClick={() => navigate("/providers")}
                     label="Providers"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
+                    value={5}
                     onClick={() => navigate("/contact")}
                     label="Contact"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                 </Tabs>
+                {/* <NavLink
+                  to="/"
+                  style={({ isActive }) => {
+                    return {
+                      paddingLeft: "5%",
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    };
+                  }}
+                >
+                  Home
+                </NavLink>
+          
+                <NavLink
+                  to="/about"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: theme.palette.color.navLink,
+                  }}
+                >
+                  About
+                </NavLink>
+                <NavLink
+                  to="/categorys"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: theme.palette.color.navLink,
+                  }}
+                >
+                  Category
+                </NavLink>
+                <NavLink
+                  to="/providers"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: theme.palette.color.navLink,
+                  }}
+                >
+                  Provider
+                </NavLink>
+                <NavLink
+                  to="/contact"
+                  style={{
+                    paddingLeft: "5%",
+                    textDecoration: "none",
+                    color: theme.palette.color.navLink,
+                  }}
+                >
+                  Contact
+                </NavLink> */}
               </Box>
 
               {/* #Navigation Button functionality */}
@@ -263,7 +332,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 >
                   Sign in
                 </Button>
-                {/* Authorized user icon    */}
+                {/* #Authorized user icon    */}
                 <IconButton
                   id="logined_user"
                   style={{
@@ -299,7 +368,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         </IconButton>
                         <Typography
                           variant="h6"
-                          component="Box"
+                          component="div"
                           sx={{ flexGrow: 1 }}
                         >
                           eDemmand&nbsp;Setting
