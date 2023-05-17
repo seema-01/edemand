@@ -115,37 +115,8 @@ const Footer = () => {
               FOLLOW US
             </Typography>
             <hr />
-            <Box sx={{marginTop: 2}} gap={-2}>
-              <IconButton
-                href="https://www.instagram.com"
-                sx={{ zIndex: 1, color: "white", padding: 0 }}
-              >
-                {<InstagramIcon fontSize="large" />}
-              </IconButton>
-              <IconButton
-                href="https://www.web.whatsapp.com"
-                sx={{ zIndex: 1, color: "white", padding: 0 }}
-              >
-                {<WhatsAppIcon fontSize="large" />}
-              </IconButton>
-              <IconButton
-                href="https://www.facebook.com"
-                sx={{ zIndex: 1, color: "white", padding: 0 }}
-              >
-                {<FacebookIcon fontSize="large" />}
-              </IconButton>
-              <IconButton
-                href="https://www.twitter.com"
-                sx={{ zIndex: 1, color: "white", padding: 0 }}
-              >
-                {<TwitterIcon fontSize="large" />}
-              </IconButton>
-              <IconButton
-                href="https://in.linkedin.com"
-                sx={{ zIndex: 1, color: "white", padding: 0 }}
-              >
-                {<LinkedInIcon fontSize="large" />}
-              </IconButton>
+            <Box sx={{ marginTop: 2 }} gap={-2}>
+              <Buttons />
             </Box>
           </Box>
         </Box>
@@ -159,3 +130,40 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const Buttons = () => {
+  return (
+    <Box>
+      <IconButton
+        href="https://www.instagram.com"
+        sx={{ zIndex: 1, color: "white", padding: 0 }}
+      >
+        {<InstagramIcon fontSize="large" />}
+      </IconButton>
+      <IconButton
+        href="https://www.web.whatsapp.com"
+        sx={{ zIndex: 1, color: "white", padding: 0 }}
+      >
+        {<WhatsAppIcon fontSize="large" />}
+      </IconButton>
+      <IconButton
+        href="https://www.facebook.com"
+        sx={{ zIndex: 1, color: "white", padding: 0 }}
+      >
+        {<FacebookIcon fontSize="large" />}
+      </IconButton>
+      <IconButton
+        href="https://www.twitter.com"
+        sx={{ zIndex: 1, color: "white", padding: 0 }}
+      >
+        {<TwitterIcon fontSize="large" />}
+      </IconButton>
+      <IconButton
+        href="https://in.linkedin.com"
+        sx={{ zIndex: 1, color: "white", padding: 0 }}
+      >
+        {<LinkedInIcon fontSize="large" />}
+      </IconButton>
+    </Box>
+  );
+};

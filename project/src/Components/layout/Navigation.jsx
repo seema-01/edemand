@@ -184,7 +184,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 </IconButton>
                 {/* #Phone Menu  */}
                 {/* Set logo and burger menu in one side */}
-                <div>
+                <Box>
                   <Drawer open={open} onClose={() => setOpen(false)}>
                     <List>
                       <ListItemButton href="/">Home</ListItemButton>
@@ -212,7 +212,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   >
                     eDemmand
                   </NavLink>
-                </div>
+                </Box>
 
                 {/* Navigation Links  */}
               </Box>
@@ -251,59 +251,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     sx={{ color: theme.palette.color.navLink }}
                   />
                 </Tabs>
-                {/* <NavLink
-                  to="/"
-                  style={({ isActive }) => {
-                    return {
-                      paddingLeft: "5%",
-                      textDecoration: "none",
-                      color: theme.palette.color.navLink,
-                    };
-                  }}
-                >
-                  Home
-                </NavLink>
-          
-                <NavLink
-                  to="/about"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  About
-                </NavLink>
-                <NavLink
-                  to="/categorys"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Category
-                </NavLink>
-                <NavLink
-                  to="/providers"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Provider
-                </NavLink>
-                <NavLink
-                  to="/contact"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Contact
-                </NavLink> */}
               </Box>
 
               {/* #Navigation Button functionality */}
@@ -316,7 +263,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 >
                   Sign in
                 </Button>
-                {/* #Authorized user icon    */}
+                {/* Authorized user icon    */}
                 <IconButton
                   id="logined_user"
                   style={{
@@ -352,7 +299,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         </IconButton>
                         <Typography
                           variant="h6"
-                          component="div"
+                          component="Box"
                           sx={{ flexGrow: 1 }}
                         >
                           eDemmand&nbsp;Setting
