@@ -28,7 +28,7 @@ To set up the eDemand Service project locally, please follow these steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd edemand-service
+   cd edemand/project
    ```
 
 3. Install the project dependencies:
