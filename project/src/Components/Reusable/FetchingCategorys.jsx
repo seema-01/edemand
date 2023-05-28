@@ -82,7 +82,8 @@ const FetchingCategorys = () => {
                   <SwiperSlide
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
-                    <Card key={response.id}
+                    <Card
+                      key={response.id}
                       sx={{
                         mt: 3,
                         width: 200,
@@ -99,8 +100,8 @@ const FetchingCategorys = () => {
                         <NavLink
                           gutterBottom
                           variant="a"
-                          // dynamic going to that page 
-                          to={'/categorys/'+response.id}
+                          // dynamic going to that page
+                          to={"/categorys/" + response.id}
                           component="div"
                           style={{
                             textDecoration: "none",

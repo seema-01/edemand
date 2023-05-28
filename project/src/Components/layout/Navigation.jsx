@@ -236,7 +236,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   onChange={(e, value) => setValue(value)}
                 >
                   <Tab
-                    value={1}
+                    value={0}
                     defaultChecked
                     onClick={() => navigate("/")}
                     sx={{ color: theme.palette.color.navLink }}

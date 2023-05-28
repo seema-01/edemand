@@ -27,6 +27,7 @@ import theme, { darkTheme, lightTheme } from "./Theme";
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
 import NavigateCategorys from "./Components/Reusable/Profile/NavigateCategorys";
+// import Logout from "./Components/layout/Logout";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
 // import Firebase from "./Components/Reusable/Firebase";
@@ -114,6 +115,11 @@ function App() {
                   path="/profile/bookmark"
                   element={<ProfileBookmark />}
                 ></Route>
+                {/* <Route
+                  path="/profile/logout"
+                  element={<Logout />}
+                >  
+                </Route> */}
                 <Route
                   path="/profile/notifications"
                   element={<ProfileNotification />}

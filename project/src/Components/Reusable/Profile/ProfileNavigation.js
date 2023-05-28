@@ -47,6 +47,22 @@ import { useTheme } from "@emotion/react";
 
 const ProfileNavigation = () => {
   const [open, setOpen] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleLogout = () => {
+    setIsVisible(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    // Clear the phone number value from local storage
+    localStorage.removeItem("phoneNumber");
+    setIsVisible(false);
+  };
+
+  const handleLogoutCancel = () => {
+    setIsVisible(false);
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -64,11 +80,11 @@ const ProfileNavigation = () => {
     console.log(phone);
   };
 
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Grid>
-      <Grid item xs={12} maxWidth={'lg'}>
+      <Grid item xs={12} maxWidth={"lg"}>
         <Box display={"flex"} maxWidth={"100%"}>
           <Box
             sx={{
@@ -239,7 +255,10 @@ const ProfileNavigation = () => {
                   {/* booking address url  */}
                   <Link
                     to={"/profile/booking"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     Mybooking
@@ -268,7 +287,10 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/address"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     Manage Address
@@ -297,7 +319,10 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/payment"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     Payment
@@ -326,7 +351,10 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/bookmark"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     My Bookmark
@@ -358,7 +386,10 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/notifications"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     Notification
@@ -376,7 +407,7 @@ const ProfileNavigation = () => {
                 </ListItem>
               </Link>
               <Divider />
-              <Link to={"/profile/logout"} style={{ textDecoration: "none" }}>
+              <Link onClick={handleLogout} style={{ textDecoration: "none" }}>
                 <ListItem
                   button
                   sx={{ paddingTop: 1, paddingBottom: 1 }}
@@ -385,13 +416,28 @@ const ProfileNavigation = () => {
                   <ListItemIcon>
                     <Logout sx={{ color: "blue" }} />
                   </ListItemIcon>
+
                   <Link
-                    to={"/profile/logout"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    // to={"/profile/logout"}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
+                    onClick={handleLogout}
                   >
                     Logout
                   </Link>
+                  {isVisible && (
+                    <div
+                      className={`logout-popup ${isVisible ? "visible" : ""}`}
+                    >
+                      <p>Are you sure you want to log out?</p> <br />
+                      <Button variant="contained" color="error" onClick={handleLogoutConfirm}>Confirm</Button>
+                      <Button onClick={() => setIsVisible(false)}>Cancel</Button>
+                    </div>
+                  )}
+
                   <IconButton
                     sx={{
                       marginLeft: "auto",
@@ -416,7 +462,10 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
                   <Link
                     to={"/profile/delete"}
-                    style={{ textDecoration: "none", color:  theme.palette.color.navLink }}
+                    style={{
+                      textDecoration: "none",
+                      color: theme.palette.color.navLink,
+                    }}
                     primary="My Bookings"
                   >
                     Delete Account
