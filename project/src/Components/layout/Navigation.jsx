@@ -107,6 +107,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
   const [value, setValue] = useState(0);
+  
+
 
   const theme = useTheme();
 
@@ -267,59 +269,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     sx={{ color: theme.palette.color.navLink }}
                   />
                 </Tabs>
-                {/* <NavLink
-                  to="/"
-                  style={({ isActive }) => {
-                    return {
-                      paddingLeft: "5%",
-                      textDecoration: "none",
-                      color: theme.palette.color.navLink,
-                    };
-                  }}
-                >
-                  Home
-                </NavLink>
-          
-                <NavLink
-                  to="/about"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  About
-                </NavLink>
-                <NavLink
-                  to="/categorys"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Category
-                </NavLink>
-                <NavLink
-                  to="/providers"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Provider
-                </NavLink>
-                <NavLink
-                  to="/contact"
-                  style={{
-                    paddingLeft: "5%",
-                    textDecoration: "none",
-                    color: theme.palette.color.navLink,
-                  }}
-                >
-                  Contact
-                </NavLink> */}
               </Box>
 
               {/* #Navigation Button functionality */}
