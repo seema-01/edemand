@@ -96,13 +96,13 @@ const FetchingServies = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 4,
               spaceBetween: 30,
-            },
+            }
           }}
         >
           {isLoading ? (
@@ -113,15 +113,17 @@ const FetchingServies = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card key={response.id}
-                      sx={{ width: 200, height: 200, borderRadius: "10px" }}
+                      sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
                       <img
                         src={response.category_image}
                         title="Services"
                         style={{
                           height: "100%",
-                          width: "100%",
+                          width: "auto",
+                          justifyContent: "center",
                           filter: "brightness(0.8)",
+                          objectFit: "cover"
                         }}
                       />
                       <Box marginTop={-5} textAlign={"center"}>
@@ -261,11 +263,11 @@ export const FetchingPlumbing = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 4,
               spaceBetween: 30,
             },
           }}
@@ -278,7 +280,7 @@ export const FetchingPlumbing = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card key={response.id}
-                      sx={{ width: 200, height: 200, borderRadius: "10px" }}
+                      sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
                       <img
                         src={response.category_image}
@@ -422,11 +424,11 @@ export const FetchingLaundry = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 4,
               spaceBetween: 30,
             },
           }}
@@ -439,7 +441,7 @@ export const FetchingLaundry = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card key={response.id}
-                      sx={{ width: 200, height: 200, borderRadius: "10px" }}
+                      sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
                       <img
                         src={response.category_image}
@@ -583,11 +585,11 @@ export const FetchingCar = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 4,
               spaceBetween: 30,
             },
           }}
@@ -600,7 +602,7 @@ export const FetchingCar = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card key={response.id}
-                      sx={{ width: 200, height: 200, borderRadius: "10px" }}
+                      sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
                       <img
                         src={response.category_image}
