@@ -66,13 +66,17 @@ const FetchingCategorys = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 5,
-              spaceBetween: 30,
+              slidesPerView: 4,
+              spaceBetween: 20,
             },
+            1200:{
+              slidesPerView: 5,
+              spaceBetween:30,
+            }
           }}
         >
           {isLoading ? (
@@ -86,6 +90,7 @@ const FetchingCategorys = () => {
                       key={response.id}
                       sx={{
                         mt: 3,
+                        mb: 2,
                         width: 200,
                         height: 200,
                         border: "1px solid #e4e4e4",
