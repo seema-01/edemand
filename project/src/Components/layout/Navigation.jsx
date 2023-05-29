@@ -488,7 +488,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                               <PhoneInput
                                 country={"in"}
                                 value={ph}
-                                onChange={handlePhoneChange}
+                                onChange={setPh}
                                 containerStyle={{
                                   display: "flex",
                                   alignItems: "center",
