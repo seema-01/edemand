@@ -233,37 +233,36 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 <Tabs
                   sx={{ marginLeft: "auto" }}
                   indicatorColor="primary"
-                  defaultValue={1}
+                  // defaultValue={value}
                   value={value}
                   onChange={(e, value) => setValue(value)}
                 >
                   <Tab
                     value={0}
-                    defaultChecked
                     onClick={() => navigate("/")}
                     sx={{ color: theme.palette.color.navLink }}
                     label="Home"
                   />
                   <Tab
-                    value={2}
+                    value={1}
                     onClick={() => navigate("/about")}
                     label="About Us"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={3}
+                    value={2}
                     onClick={() => navigate("/categorys")}
                     label="Category"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={4}
+                    value={3}
                     onClick={() => navigate("/providers")}
                     label="Providers"
                     sx={{ color: theme.palette.color.navLink }}
                   />
                   <Tab
-                    value={5}
+                    value={4}
                     onClick={() => navigate("/contact")}
                     label="Contact"
                     sx={{ color: theme.palette.color.navLink }}
