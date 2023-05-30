@@ -10,7 +10,6 @@ import {
   Drawer,
   Divider,
   Skeleton,
-  Modal,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";

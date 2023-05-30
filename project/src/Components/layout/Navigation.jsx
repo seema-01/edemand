@@ -98,17 +98,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   ) => {
     setView(nextView);
   };
-  const telInputRef = useRef(null);
-
-  // // Third Attempts
-  // useEffect(() => {
-  //   const timer =
-  //     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-  //   return () => clearInterval(timer);
-  // }, [counter]);
 
   const handlePhoneChange = (e) => {
     setPhoneNo(e);
+    localStorage.setItem("temparory", e);
   };
 
   const theme = useTheme();
@@ -166,10 +159,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         console.log(err);
         setLoading(false);
       });
-    // localStorage.setItem("ContactNoFinal",phoneNo);
+    localStorage.setItem("ContactNoFinal",phoneNo);
   }
 
-  // For Verified User Icon
+  // For Verified User Icon #temparory 
   const sign_in = document.getElementById("sign_in");
   const login_user = document.getElementById("logined_user");
 
@@ -220,7 +213,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     style={{
                       textDecoration: "none",
                       fontSize: 20,
-
+                      marginLeft: -23,
                       color: theme.palette.color.logo,
                     }}
                     to="/"
@@ -273,7 +266,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
               </Box>
 
               {/* #Navigation Button functionality */}
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex", marginRight: -4 }}>
                 <Button
                   id="sign_in"
                   variant="contained"
