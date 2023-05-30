@@ -128,7 +128,7 @@ const ProviderService = (item) => {
                                 Add
                               </Button>
                               {/* ➡️ Open Drawer When user Click on Add Button  */}
-                              <Drawer anchor="right" open={open}>
+                              <Drawer anchor="right" open={open} sx={{backgroundColor: "gray"}}>
                                 <Box>
                                   <Box
                                     display={"flex"}

@@ -44,10 +44,15 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 import ProfilePayment from "./ProfilePayment";
 import RightContent from "./RightContent";
 import { useTheme } from "@emotion/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProfileNavigation = () => {
   const [open, setOpen] = React.useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [defname, setDefName] = useState("Murthy Bates");
+  const [defeml, setDefEml] = useState("Murthybates@gmail.com");
+  const [defnum, setDefNum] = useState("+9157818297");
 
   const handleLogout = () => {
     setIsVisible(true);
@@ -56,6 +61,7 @@ const ProfileNavigation = () => {
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
     localStorage.removeItem("phoneNumber");
+    localStorage.removeItem("ContactInfo");
     setIsVisible(false);
   };
 
@@ -71,13 +77,23 @@ const ProfileNavigation = () => {
   };
 
   const submite = () => {
-    let name = document.getElementById("editName").value;
+    let Myname = document.getElementById("editName").value;
     let email = document.getElementById("editEmail").value;
     let phone = document.getElementById("editPhone").value;
 
-    console.log(name);
+    console.log(Myname);
     console.log(email);
     console.log(phone);
+
+    setDefName(Myname);
+    setDefEml(email);
+    setDefNum(phone);
+
+    localStorage.setItem("currentuser", Myname);
+    localStorage.setItem("currentemail", email);
+    localStorage.setItem("currentphone", phone);
+
+    toast.success("Update Successfully...");
   };
 
   const theme = useTheme();
@@ -113,9 +129,9 @@ const ProfileNavigation = () => {
                 </Avatar>
               </ListItemDecorator>
               <div style={{ marginLeft: 10, color: "white" }}>
-                <Typography fontSize="xl">Murphy Bates</Typography>
-                <Typography fontSize="10px">murphybates@gmail.com</Typography>
-                <Typography fontSize="10px">+91 01234 56789</Typography>
+                <Typography fontSize="xl">{defname}</Typography>
+                <Typography fontSize="10px">{defeml}</Typography>
+                <Typography fontSize="10px">{defnum}</Typography>
               </div>
               <Button
                 variant="outlined"
@@ -235,6 +251,18 @@ const ProfileNavigation = () => {
                       >
                         Save Profile
                       </Button>
+                      <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                      />
                     </Box>
                     {/* form */}
                   </Box>
@@ -433,8 +461,16 @@ const ProfileNavigation = () => {
                       className={`logout-popup ${isVisible ? "visible" : ""}`}
                     >
                       <p>Are you sure you want to log out?</p> <br />
-                      <Button variant="contained" color="error" onClick={handleLogoutConfirm}>Confirm</Button>
-                      <Button onClick={() => setIsVisible(false)}>Cancel</Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={handleLogoutConfirm}
+                      >
+                        Confirm
+                      </Button>
+                      <Button onClick={() => setIsVisible(false)}>
+                        Cancel
+                      </Button>
                     </div>
                   )}
 

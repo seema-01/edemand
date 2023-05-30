@@ -89,6 +89,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     isLogin(false);
   };
 
+  localStorage.setItem("ContactInfo",'');
 
   // mode change toggle
   const [view, setView] = React.useState("list");
@@ -159,10 +160,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         console.log(err);
         setLoading(false);
       });
-    localStorage.setItem("ContactNoFinal",phoneNo);
   }
 
-  // For Verified User Icon #temparory 
+  // For Verified User Icon #temparory
   const sign_in = document.getElementById("sign_in");
   const login_user = document.getElementById("logined_user");
 
@@ -267,28 +267,35 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
               {/* #Navigation Button functionality */}
               <Box sx={{ display: "flex", marginRight: -4 }}>
-                <Button
-                  id="sign_in"
-                  variant="contained"
-                  startIcon={<AccountCircleIcon />}
-                  onClick={handleOpen}
-                >
-                  Sign in
-                </Button>
-                {/* #Authorized user icon    */}
-                <IconButton
-                  id="logined_user"
-                  style={{
-                    display: "none",
-                    borderRadius: "100px",
-                    "&:hover": {
-                      backgroundColor: "white",
-                    },
-                  }}
-                  onClick={() => navigate("/profile")}
-                >
-                  <Avatar sx={{ height: "30px", width: "30px" }} />
-                </IconButton>
+                {localStorage.getItem("ContactInfo") == '' ? (
+                  // if user is not logged in then show sign in button otherwise avatar of user 
+                  <Button
+                    id="sign_in"
+                    variant="contained"
+                    startIcon={<AccountCircleIcon />}
+                    onClick={handleOpen}
+                  >
+                    Sign in
+                  </Button>
+                ) : (
+                  <>
+                    {/* #Authorized user icon    */}
+                    <IconButton
+                      id="logined_user"
+                      style={{
+                        display: "none",
+                        borderRadius: "100px",
+                        "&:hover": {
+                          backgroundColor: "white",
+                        },
+                      }}
+                      onClick={() => navigate("/profile")}
+                    >
+                      <Avatar sx={{ height: "30px", width: "30px" }} />
+                    </IconButton>
+                  </>
+                )}
+
                 <IconButton onClick={handleOpenSetting}>
                   <SettingsOutlinedIcon />{" "}
                 </IconButton>
@@ -398,7 +405,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                             "isLoggedIn",
                             "Login"
                           )),
-                          localStorage.setItem("ContactInfo", phoneNo)))
+                          localStorage.setItem("ContactInfo", ph)))
                         }
                       </Box>
                     ) : (
@@ -480,7 +487,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                               <PhoneInput
                                 country={"in"}
                                 value={ph}
-                                onChange={handlePhoneChange}
+                                onChange={setPh}
                                 containerStyle={{
                                   display: "flex",
                                   alignItems: "center",
