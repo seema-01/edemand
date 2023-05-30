@@ -53,7 +53,7 @@ const Categorys = () => {
           <Typography color="text.primary">category</Typography>
         </Breadcrumbs>
         <Typography variant="h4" gutterBottom>
-          <strong>Categorys</strong>
+          <>Categorys</>
         </Typography>
 
         <FetchingCategorys />
