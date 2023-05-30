@@ -14,7 +14,7 @@ import {
   createTheme,
   Avatar,
   Tabs,
-  Tab
+  Tab,
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -60,15 +60,22 @@ const style = {
 const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
-
-  let loggedInUser = localStorage.setItem("isLoggedIn","")
-
+  let loggedInUser = localStorage.setItem("isLoggedIn", "");
 
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
   const [openSetting, setOpenSetting] = useState(false);
-  
+  // First Attempts => set here to second goes from 60 to 0
+  // const [counter, setCounter] = React.useState(60);
+  const [otp, setOtp] = useState("");
+  const [ph, setPh] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [user, setUser] = useState(null);
+  const [value, setValue] = useState(0);
+  const [phoneNo, setPhoneNo] = useState("");
+
   const handleOpenSetting = () => {
     setOpenSetting(true);
   };
@@ -82,6 +89,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     isLogin(false);
   };
 
+
+  // mode change toggle
   const [view, setView] = React.useState("list");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -91,28 +100,16 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   };
   const telInputRef = useRef(null);
 
-  // First Attempts => set here to second goes from 60 to 0
-  const [counter, setCounter] = React.useState(60);
+  // // Third Attempts
+  // useEffect(() => {
+  //   const timer =
+  //     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+  //   return () => clearInterval(timer);
+  // }, [counter]);
 
-  // Third Attempts
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    return () => clearInterval(timer);
-  }, [counter]);
-
-  const [otp, setOtp] = useState("");
-  const [ph, setPh] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [showOTP, setShowOTP] = useState(false);
-  const [user, setUser] = useState(null);
-  const [value, setValue] = useState(0);
-  
-  const [phoneNo,setPhoneNo] = useState('');
-  
   const handlePhoneChange = (e) => {
     setPhoneNo(e);
-  }
+  };
 
   const theme = useTheme();
 
@@ -169,7 +166,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         console.log(err);
         setLoading(false);
       });
-      // localStorage.setItem("ContactNoFinal",phoneNo);
+    // localStorage.setItem("ContactNoFinal",phoneNo);
   }
 
   // For Verified User Icon
@@ -404,9 +401,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         {
                           ((sign_in.style.display = "none"),
                           (login_user.style.display = "block"),
-                          (loggedInUser = localStorage.setItem("isLoggedIn","Login"),
-                          localStorage.setItem("ContactInfo",phoneNo)  )
-                          )
+                          ((loggedInUser = localStorage.setItem(
+                            "isLoggedIn",
+                            "Login"
+                          )),
+                          localStorage.setItem("ContactInfo", phoneNo)))
                         }
                       </Box>
                     ) : (
@@ -488,7 +487,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                               <PhoneInput
                                 country={"in"}
                                 value={ph}
-                                onChange={setPh}
+                                onChange={handlePhoneChange}
                                 containerStyle={{
                                   display: "flex",
                                   alignItems: "center",

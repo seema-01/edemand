@@ -1,14 +1,9 @@
 import React from "react";
 import {
   Box,
-  Breadcrumbs,
   Card,
-  CardActions,
   CardContent,
-  CardMedia,
   Container,
-  Grid,
-  Link,
   Skeleton,
   Typography,
 } from "@mui/material";
@@ -22,7 +17,6 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@emotion/react";
-import NavigateCategorys from "./Profile/NavigateCategorys";
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
@@ -94,12 +88,14 @@ const FetchingCategorys = () => {
                         width: 200,
                         height: 200,
                         border: "1px solid #e4e4e4",
+                        background: "white",
+                        boxShadow: 0
                       }}
                     >
                       <img
                         src={response.category_image}
-                        title="Services"
-                        style={{ maxHeight: "100%", maxWidth: "100%" }}
+                        title={response.name}
+                        style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "cover" }}
                       />
                       <CardContent sx={{ textAlign: "center", mt: -6 }}>
                         <NavLink
@@ -113,7 +109,7 @@ const FetchingCategorys = () => {
                             color: theme.palette.color.catLink,
                           }}
                         >
-                          <strong>{response.name}</strong>
+                          <h4 style={{fontWeight: 400}}>{response.name}</h4>
                         </NavLink>
                         {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider
