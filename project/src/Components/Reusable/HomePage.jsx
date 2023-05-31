@@ -173,7 +173,7 @@ const HomePage = () => {
               sx={{
                 zIndex: 1,
                 background: theme.palette.background.box,
-                width:{xs: "100px", md: "auto"},
+                width:{xs: "200px", md: "auto"},
               }}
               InputProps={{
                 endAdornment: (

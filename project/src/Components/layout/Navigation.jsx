@@ -15,6 +15,7 @@ import {
   Avatar,
   Tabs,
   Tab,
+  Badge,
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -36,6 +37,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -61,7 +63,7 @@ const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
   let loggedInUser = localStorage.setItem("isLoggedIn", "");
-
+  let id = localStorage.getItem("Data");
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
   const [login, isLogin] = React.useState(false);
@@ -75,6 +77,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const [user, setUser] = useState(null);
   const [value, setValue] = useState(0);
   const [phoneNo, setPhoneNo] = useState("");
+  const [cart, setCart] = useState(false);
 
   const handleOpenSetting = () => {
     setOpenSetting(true);
@@ -89,7 +92,15 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     isLogin(false);
   };
 
-  localStorage.setItem("ContactInfo",'');
+  const handleOpenCart = () => {
+    setCart(true);
+  };
+
+  const handleCloseCart = () => {
+    setCart(false);
+  };
+
+  localStorage.setItem("ContactInfo", "");
 
   // mode change toggle
   const [view, setView] = React.useState("list");
@@ -162,9 +173,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
-  // For Verified User Icon #temparory
-  const sign_in = document.getElementById("sign_in");
-  const login_user = document.getElementById("logined_user");
+  const islogined = localStorage.getItem("ContactInfo");
+
+  // // For Verified User Icon #temparory
+  // const sign_in = document.getElementById("sign_in");
+  // const login_user = document.getElementById("logined_user");
 
   const navigate = useNavigate();
 
@@ -267,8 +280,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
               {/* #Navigation Button functionality */}
               <Box sx={{ display: "flex", marginRight: -4 }}>
-                {localStorage.getItem("ContactInfo") == '' ? (
-                  // if user is not logged in then show sign in button otherwise avatar of user 
+                {localStorage.getItem("ContactInfo") == "" ? (
+                  // if user is not logged in then show sign in button otherwise avatar of user
                   <Button
                     id="sign_in"
                     variant="contained"
@@ -296,6 +309,23 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   </>
                 )}
 
+                <IconButton aria-label="cart" onClick={handleOpenCart}>
+                  {islogined === "" ? (
+                    <ShoppingCartOutlinedIcon />
+                  ) : (
+                    <Badge color="primary" variant="dot">
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+                  )}
+                </IconButton>
+
+                <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
+                    {
+                      // islogined === '' ? (<h1>Please Login...</h1>) : (<h1>Hello World</h1>) 
+                    }
+                  <Box sx={{ width: 300 }}></Box>
+                </Drawer>
+
                 <IconButton onClick={handleOpenSetting}>
                   <SettingsOutlinedIcon />{" "}
                 </IconButton>
@@ -316,6 +346,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         >
                           <SettingsOutlinedIcon />
                         </IconButton>
+
                         <Typography
                           variant="h6"
                           component="div"
@@ -398,15 +429,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     {user ? (
                       <Box>
                         <Typography>👍Login Success</Typography>
-                        {
-                          ((sign_in.style.display = "none"),
-                          (login_user.style.display = "block"),
-                          ((loggedInUser = localStorage.setItem(
-                            "isLoggedIn",
-                            "Login"
-                          )),
-                          localStorage.setItem("ContactInfo", ph)))
-                        }
+                        {localStorage.setItem("ContactInfo", ph)}
                       </Box>
                     ) : (
                       <Box sx={{ justifyContent: "center" }}>

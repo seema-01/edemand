@@ -204,6 +204,7 @@ const ProfileNavigation = () => {
                     <Box display={"block"}>
                       <FormLabel>Name</FormLabel>
                       <br />
+                      <form>
                       <TextField
                         id="editName"
                         placeholder="Enter name"
@@ -237,6 +238,7 @@ const ProfileNavigation = () => {
                         placeholder="Enter Phone"
                         size="small"
                         fullWidth
+                        required
                         variant="outlined"
                         sx={{ background: "#F2F1F6" }}
                       />{" "}
@@ -251,6 +253,7 @@ const ProfileNavigation = () => {
                       >
                         Save Profile
                       </Button>
+                      </form>
                       <ToastContainer
                         position="top-right"
                         autoClose={5000}

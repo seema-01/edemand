@@ -18,7 +18,8 @@ import { NavLink } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
 import { useDispatch, useSelector } from "react-redux";
 import { Transert } from "../../actions/action";
-import TransferReducer from "../../reducer/TransferReducer";
+// import TransferReducer from "../../reducer/TransferReducer";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProviderService = (item) => {
   const [open, setOpen] = React.useState(false);
@@ -35,13 +36,19 @@ const ProviderService = (item) => {
   // Here we create a function that open drawer as well as add item to that drawer
   //  ✅ Working
 
-  const handleOpen = (item) => {
-    setOpen(true);
-    var data = item;
-    console.info("clicked", item);
-    dispatch(Transert(item));
-  };
+  const islogined = localStorage.getItem("ContactInfo");
 
+  const handleOpen = (item) => {
+    // setOpen(true);
+    // if user is logged in then success otherwiser error 'please login'
+    islogined === ""
+      ? toast.error("Please Login...")
+      : toast.success("Added Success...");
+    var data = JSON.stringify(item);
+    console.info("clicked", data);
+    dispatch(Transert(item));
+    localStorage.setItem("Data", [item.id]);
+  };
 
   const [service, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -127,9 +134,14 @@ const ProviderService = (item) => {
                               >
                                 Add
                               </Button>
+                              <ToastContainer />
                               {/* ➡️ Open Drawer When user Click on Add Button  */}
-                              <Drawer anchor="right" open={open} sx={{backgroundColor: "gray"}}>
-                                <Box>
+                              <Drawer
+                                anchor="right"
+                                open={open}
+                                sx={{ backgroundColor: "gray" }}
+                              >
+                                <Box sx={{ background: "white" }}>
                                   <Box
                                     display={"flex"}
                                     textAlign="center"
