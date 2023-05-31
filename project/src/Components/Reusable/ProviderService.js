@@ -47,7 +47,8 @@ const ProviderService = (item) => {
     var data = JSON.stringify(item);
     console.info("clicked", data);
     dispatch(Transert(item));
-    localStorage.setItem("Data", [item.id]);
+    item = JSON.stringify(item);
+    localStorage.setItem("Data", item);
   };
 
   const [service, setServices] = useState([]);

@@ -184,8 +184,7 @@ const HomePage = () => {
                     size="small"
                     sx={{ paddingLeft: 2, paddingRight: 2, boxShadow: "none" }}
                   >
-                    {" "}
-                    Search{" "}
+                    Search
                   </Button>
                 ),
               }}
