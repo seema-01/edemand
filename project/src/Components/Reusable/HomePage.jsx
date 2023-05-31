@@ -162,18 +162,19 @@ const HomePage = () => {
           >
             <GpsFixed />
           </button>
-          <Box style={{ zIndex: 1 }} className="search">
+          <Box style={{ zIndex: 1 }} className="search" width={600}>
             <TextField
               ref={searchInput}
               size="small"
               type="text"
               id="input_search"
+              fullWidth
               className="form-control"
               placeholder="Enter Location name,Area name etc..."
               sx={{
                 zIndex: 1,
                 background: theme.palette.background.box,
-                width:{xs: "200px", md: "auto"},
+                // width:{xs: "200px", md: "auto"},
               }}
               InputProps={{
                 endAdornment: (
