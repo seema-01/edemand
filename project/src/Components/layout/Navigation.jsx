@@ -38,6 +38,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import Cart from "../Reusable/Cart";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -100,7 +101,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     setCart(false);
   };
 
-  localStorage.setItem("ContactInfo", "");
+  let finalNo = '';
 
   // mode change toggle
   const [view, setView] = React.useState("list");
@@ -323,6 +324,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     {
                       // islogined === '' ? (<h1>Please Login...</h1>) : (<h1>Hello World</h1>) 
                     }
+                    {/* cart for displaying data  */}
+                    <Cart />
                   <Box sx={{ width: 300 }}></Box>
                 </Drawer>
 
@@ -429,13 +432,19 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     {user ? (
                       <Box>
                         <Typography>👍Login Success</Typography>
-                        {localStorage.setItem("ContactInfo", ph)}
+                        {
+                        finalNo = ph
+                        }
+                        {
+                          localStorage.setItem("ContactInfo", finalNo)}
+                        }
                       </Box>
                     ) : (
                       <Box sx={{ justifyContent: "center" }}>
                         <Box
                           sx={{ textAlign: "center", marginTop: "60px" }}
                         ></Box>
+                        {localStorage.setItem("ContactInfo", '')}
                         {showOTP ? (
                           <>
                             <label

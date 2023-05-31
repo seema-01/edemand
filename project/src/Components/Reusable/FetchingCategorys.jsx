@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Container,
+  IconButton,
   Skeleton,
   Typography,
 } from "@mui/material";
@@ -17,6 +18,8 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
@@ -37,16 +40,30 @@ const FetchingCategorys = () => {
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         {/* Catregory name comes from api  */}
         {/* --------------------------------------------------- */}
-        <Typography sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}>
-          Creative Category
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}>
+            Creative Category
+          </Typography>
+          <Box>
+            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </span>
+          </Box>
+        </Box>
+
         <Swiper
           pagination={{
             type: "progressbar",
           }}
           slidesPerView={5}
           freeMode={true}
-          navigation={true}
+          // navigation={true}
           style={{
             height: "auto",
           }}
@@ -67,10 +84,10 @@ const FetchingCategorys = () => {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            1200:{
+            1200: {
               slidesPerView: 5,
-              spaceBetween:30,
-            }
+              spaceBetween: 30,
+            },
           }}
         >
           {isLoading ? (
@@ -89,13 +106,17 @@ const FetchingCategorys = () => {
                         height: 200,
                         border: "1px solid #e4e4e4",
                         background: "white",
-                        boxShadow: 0
+                        boxShadow: 0,
                       }}
                     >
                       <img
                         src={response.category_image}
                         title={response.name}
-                        style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "cover" }}
+                        style={{
+                          maxHeight: "100%",
+                          maxWidth: "100%",
+                          objectFit: "cover",
+                        }}
                       />
                       <CardContent sx={{ textAlign: "center", mt: -6 }}>
                         <NavLink
@@ -109,7 +130,7 @@ const FetchingCategorys = () => {
                             color: theme.palette.color.catLink,
                           }}
                         >
-                          <h4 style={{fontWeight: 400}}>{response.name}</h4>
+                          <h4 style={{ fontWeight: 400 }}>{response.name}</h4>
                         </NavLink>
                         {/* <Typography variant="body2" color="text.secondary">
                         {response.admin_commission}+ Provider

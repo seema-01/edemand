@@ -60,7 +60,7 @@ const ProfileNavigation = () => {
 
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
-    localStorage.removeItem("phoneNumber");
+    // localStorage.removeItem("phoneNumber");
     localStorage.removeItem("ContactInfo");
     setIsVisible(false);
   };

@@ -39,7 +39,6 @@ const ProviderService = (item) => {
   const islogined = localStorage.getItem("ContactInfo");
 
   const handleOpen = (item) => {
-    // setOpen(true);
     // if user is logged in then success otherwiser error 'please login'
     islogined === ""
       ? toast.error("Please Login...")
@@ -47,6 +46,10 @@ const ProviderService = (item) => {
     var data = JSON.stringify(item);
     console.info("clicked", data);
     dispatch(Transert(item));
+
+    // let newarr = [...item];
+    // let finalarr = newarr.push(item);
+
     item = JSON.stringify(item);
     localStorage.setItem("Data", item);
   };
@@ -99,7 +102,7 @@ const ProviderService = (item) => {
                             >
                               {response.title}
                             </Typography>
-                            <StarIcon sx={{ color: "gold" }} />{" "}
+                            <StarIcon sx={{ color: "gold" }} />
                             {response.rating}
                             <br />
                           </Box>
@@ -120,10 +123,10 @@ const ProviderService = (item) => {
                               color={"#2560FC"}
                               sx={{ marginRight: "auto" }}
                             >
-                              ${response.discounted_price}{" "}
+                              ${response.discounted_price}
                               <del style={{ color: "gray" }}>
                                 ${response.price}
-                              </del>{" "}
+                              </del>
                             </Typography>
 
                             <Box sx={{ float: "right", mt: -1 }}>
@@ -228,7 +231,7 @@ const ProviderService = (item) => {
                                                       </Typography>
                                                       <StarIcon
                                                         sx={{ color: "gold" }}
-                                                      />{" "}
+                                                      />
                                                       {response.rating}
                                                       <br />
                                                     </Box>
@@ -262,14 +265,14 @@ const ProviderService = (item) => {
                                                         $
                                                         {
                                                           response.discounted_price
-                                                        }{" "}
+                                                        }
                                                         <del
                                                           style={{
                                                             color: "gray",
                                                           }}
                                                         >
                                                           ${response.price}
-                                                        </del>{" "}
+                                                        </del>
                                                       </Typography>
                                                     </Box>
                                                   </Box>
@@ -315,9 +318,8 @@ const ProviderService = (item) => {
                                       >
                                         <Box sx={{ display: "block" }}>
                                           <p style={{ fontSize: 10 }}>
-                                            {" "}
                                             4 items
-                                          </p>{" "}
+                                          </p>
                                           $2296
                                         </Box>
                                         <Box>Continue</Box>
@@ -340,33 +342,33 @@ const ProviderService = (item) => {
         </Box>
       ) : (
         <Box>
-          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>{" "}
+          <Skeleton variant="rectangular" height={200} width={620} />
           <br />
-          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
-          <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>{" "}
+          <Skeleton variant="rectangular" height={200} width={620} />
           <br />
           <Skeleton
             variant="rectangular"
             height={200}
             width={620}
-          ></Skeleton>{" "}
+          ></Skeleton>
           <br />
           <Skeleton
             variant="rectangular"
             height={200}
             width={620}
-          ></Skeleton>{" "}
+          ></Skeleton>
           <br />
           <Skeleton
             variant="rectangular"
             height={200}
             width={620}
-          ></Skeleton>{" "}
+          ></Skeleton>
+          <br />
+          <Skeleton
+            variant="rectangular"
+            height={200}
+            width={620}
+          ></Skeleton>
           <br />
         </Box>
       )}

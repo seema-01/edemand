@@ -10,6 +10,7 @@ import {
   Grid,
   Link,
   Skeleton,
+  IconButton,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -22,6 +23,8 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const FetchingServies = () => {
   const [image, setImage] = useState([]);
@@ -52,38 +55,53 @@ const FetchingServies = () => {
       <Box sx={{ paddingBottom: 1 }}>
         {/* ------------------------------------------------------------------ */}
         {/* Everything should be coming from api  */}
-        {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {isLoading ? (
+            <Box>
+              {title.map((response) => {
+                if (response.id == 213) {
+                  return (
+                    <>
+                      <Typography
+                        fontSize={theme.palette.fonts.h1}
+                        marginBottom={1}
+                        // fontWeight={400}
+                      >
+                        {response.name}
+                      </Typography>
+                    </>
+                  );
+                }
+              })}
+            </Box>
+          ) : (
+            <Box sx={{ width: 200 }}>
+              <Skeleton
+                variant="text"
+                sx={{ height: 50, width: 200 }}
+              ></Skeleton>
+            </Box>
+          )}
           <Box>
-            {title.map((response) => {
-              if (response.id == 213) {
-                return (
-                  <>
-                    <Typography
-                      fontSize={theme.palette.fonts.h1}
-                      marginBottom={1}
-                      // fontWeight={400}
-                    >
-                      {response.name}
-                    </Typography>
-                    <hr color="whitesmoke" />
-                  </>
-                );
-              }
-            })}
+            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </span>
           </Box>
-        ) : (
-          <Box sx={{ width: 200 }}>
-            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
-          </Box>
-        )}
+        </Box>
       </Box>
+      <hr color="whitesmoke" />
       {/* ------------------------------------------------------------------------ */}
 
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
           freeMode={true}
-          navigation={true}
+          // navigation={true}
           style={{
             height: "auto",
           }}
@@ -223,35 +241,50 @@ export const FetchingPlumbing = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {isLoading ? (
+            <Box>
+              {title.map((response) => {
+                if (response.id == 222) {
+                  return (
+                    <>
+                      <Typography
+                        fontSize={theme.palette.fonts.h1}
+                        marginBottom={1}
+                      >
+                        {response.name}
+                      </Typography>
+                      <hr color="whitesmoke" />
+                    </>
+                  );
+                }
+              })}
+            </Box>
+          ) : (
+            <Box sx={{ width: 200 }}>
+              <Skeleton
+                variant="text"
+                sx={{ height: 50, width: 200 }}
+              ></Skeleton>
+            </Box>
+          )}
           <Box>
-            {title.map((response) => {
-              if (response.id == 222) {
-                return (
-                  <>
-                    <Typography
-                      fontSize={theme.palette.fonts.h1}
-                      marginBottom={1}
-                    >
-                      {response.name}
-                    </Typography>
-                    <hr color="whitesmoke" />
-                  </>
-                );
-              }
-            })}
+            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </span>
           </Box>
-        ) : (
-          <Box sx={{ width: 200 }}>
-            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
-          </Box>
-        )}
+        </Box>
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
           freeMode={true}
-          navigation={true}
+          // navigation={true}
           style={{
             height: "auto",
           }}
@@ -388,29 +421,44 @@ export const FetchingLaundry = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {isLoading ? (
+            <Box>
+              {title.map((response) => {
+                if (response.id == 240) {
+                  return (
+                    <>
+                      <Typography
+                        fontSize={theme.palette.fonts.h1}
+                        marginBottom={1}
+                      >
+                        {response.name}
+                      </Typography>
+                      <hr color="whitesmoke" />
+                    </>
+                  );
+                }
+              })}
+            </Box>
+          ) : (
+            <Box sx={{ width: 200 }}>
+              <Skeleton
+                variant="text"
+                sx={{ height: 50, width: 200 }}
+              ></Skeleton>
+            </Box>
+          )}
           <Box>
-            {title.map((response) => {
-              if (response.id == 240) {
-                return (
-                  <>
-                    <Typography
-                      fontSize={theme.palette.fonts.h1}
-                      marginBottom={1}
-                    >
-                      {response.name}
-                    </Typography>
-                    <hr color="whitesmoke" />
-                  </>
-                );
-              }
-            })}
+            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </span>
           </Box>
-        ) : (
-          <Box sx={{ width: 200 }}>
-            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
-          </Box>
-        )}
+        </Box>
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -553,35 +601,50 @@ export const FetchingCar = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {isLoading ? (
+            <Box>
+              {title.map((response) => {
+                if (response.id == 259) {
+                  return (
+                    <>
+                      <Typography
+                        fontSize={theme.palette.fonts.h1}
+                        marginBottom={1}
+                      >
+                        {response.name}
+                      </Typography>
+                      <hr color="whitesmoke" />
+                    </>
+                  );
+                }
+              })}
+            </Box>
+          ) : (
+            <Box sx={{ width: 200 }}>
+              <Skeleton
+                variant="text"
+                sx={{ height: 50, width: 200 }}
+              ></Skeleton>
+            </Box>
+          )}
           <Box>
-            {title.map((response) => {
-              if (response.id == 259) {
-                return (
-                  <>
-                    <Typography
-                     fontSize={theme.palette.fonts.h1}
-                     marginBottom={1}
-                    >
-                      {response.name}
-                    </Typography>
-                    <hr color="whitesmoke" />
-                  </>
-                );
-              }
-            })}
+            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton aria-label="delete" color="primary">
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </span>
           </Box>
-        ) : (
-          <Box sx={{ width: 200 }}>
-            <Skeleton variant="text" sx={{ height: 50, width: 200 }}></Skeleton>
-          </Box>
-        )}
+        </Box>
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
           freeMode={true}
-          navigation={true}
+          // navigation={true}
           style={{
             height: "auto",
           }}
