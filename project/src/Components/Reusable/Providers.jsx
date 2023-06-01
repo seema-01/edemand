@@ -2,7 +2,9 @@ import React from "react";
 import Provider from "./Provider";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
+
+import { useNavigate } from "react-router";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.background.card,
@@ -13,8 +15,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Providers = () => {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div style={{display: "flex", justifyContent: "space-around"}}>
       <Container maxWidth={"lg"}>
         <Grid
           container
@@ -27,7 +30,7 @@ const Providers = () => {
           marginBottom={"6%"}
           boxShadow={"none"}
         >
-          <Grid item xs={12} md={6} lg={12}>
+          <Grid item xs={12}>
             <Item>
               <Provider />
             </Item>

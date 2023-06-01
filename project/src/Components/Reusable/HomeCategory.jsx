@@ -1,7 +1,7 @@
 import React from "react";
 import Categorys from "./Categorys";
 import FetchingCategorys from "./FetchingCategorys";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import FetchingServies, {
   FetchingCar,
   FetchingLaundry,
@@ -9,11 +9,13 @@ import FetchingServies, {
 } from "./FetchingServies";
 import Providers from "./Providers";
 import { useTheme } from "@emotion/react";
-
+import EastIcon from '@mui/icons-material/East';
+import { useNavigate } from "react-router";
 // create a function and calling and setting here \
 
 const HomeCategory = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   return (
     <div>
       <Container maxWidth="100%">
@@ -102,10 +104,12 @@ const HomeCategory = () => {
               </Typography>
               <hr color="Whitesmoke"/>
             </Box>
-            <Box gap={-1} marginTop={-4}>
+            <Box gap={-1} marginTop={-4} sx={{background: "white"}}>
             {/* our provider is already created and i juts call that function and set here with some editing  */}
             <Providers />
-          
+            <Box sx={{padding: 2, display: "flex", justifyContent: "end", marginTop: -4}}>
+              <Button variant="outlined" onClick={()=> navigate('/providers')} endIcon={<EastIcon /> }> View all Proiders</Button>
+              </Box>
             </Box>
           
           </Container>
