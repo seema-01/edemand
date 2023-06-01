@@ -35,14 +35,14 @@ export default function Provider() {
       display={"flex"}
       gridColumn={3}
       flexWrap={"wrap"}
-      sx={{ gap: "22px", justifyContent: "space-around", margin: 0 }}
+      sx={{ gap: "22px", justifyContent: "space-around", marginTop:2}}
     >
       {isLoading ? (
         <>
           {provider.map((response) => {
             return (
               <>
-                <Card key={response.id} sx={{ maxWidth: 345, display: "inline-block" }}>
+                <Card key={response.id} sx={{ maxWidth: 345, display: "inline-block"}}>
                   <CardMedia
                     sx={{ height: 240 }}
                     image={response.banner_image}

@@ -24,7 +24,7 @@ const HomeCategory = () => {
             height: "auto",
             justifyContent: "center",
             display: "flex",
-            background: theme.palette.background.box
+            background: theme.palette.background.box,
           }}
         >
           {/* function for fetching all categorys  */}
@@ -95,19 +95,20 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
-          <Container  >
+          <Container>
             <Box>
               <Typography variant="h4">
                 Our Valuabale Service Providers
-              </Typography>
-              <hr color="Whitesmoke"/>
+              </Typography>{" "}
+              <br />
+              <hr color="Whitesmoke" />
             </Box>
+            
+
             <Box gap={-1} marginTop={-4}>
-            {/* our provider is already created and i juts call that function and set here with some editing  */}
-            <Providers />
-          
+              {/* our provider is already created and i juts call that function and set here with some editing  */}
+              <Providers />
             </Box>
-          
           </Container>
         </Box>
       </Container>

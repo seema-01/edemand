@@ -27,7 +27,7 @@ const Providers = () => {
           marginBottom={"6%"}
           boxShadow={"none"}
         >
-          <Grid item xs={12} md={6} lg={12}>
+          <Grid item>
             <Item>
               <Provider />
             </Item>

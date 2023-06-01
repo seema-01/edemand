@@ -273,7 +273,6 @@ export const FetchingPlumbing = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -299,6 +298,8 @@ export const FetchingPlumbing = () => {
           </Box>
         </Box>
       </Box>
+      <hr color="whitesmoke" />
+
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
@@ -465,7 +466,6 @@ export const FetchingLaundry = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -491,6 +491,8 @@ export const FetchingLaundry = () => {
           </Box>
         </Box>
       </Box>
+      <hr color="whitesmoke" />
+
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={5}
@@ -656,7 +658,6 @@ export const FetchingCar = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -682,6 +683,8 @@ export const FetchingCar = () => {
           </Box>
         </Box>
       </Box>
+      <hr color="whitesmoke" />
+
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
           slidesPerView={4}

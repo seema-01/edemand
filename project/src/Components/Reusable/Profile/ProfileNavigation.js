@@ -61,7 +61,8 @@ const ProfileNavigation = () => {
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
     // localStorage.removeItem("phoneNumber");
-    localStorage.setItem("ContactInfo",'');
+    localStorage.removeItem("ContactInfo");
+    localStorage.removeItem("isLoggedIn");
     setIsVisible(false);
   };
 
