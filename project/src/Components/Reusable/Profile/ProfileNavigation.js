@@ -17,6 +17,7 @@ import {
   FormLabel,
   TextField,
   Badge,
+  Modal,
 } from "@mui/material";
 import {
   Dashboard,
@@ -62,6 +63,7 @@ const ProfileNavigation = () => {
     // Clear the phone number value from local storage
     // localStorage.removeItem("phoneNumber");
     localStorage.setItem("ContactInfo",'');
+    localStorage.setItem("isLoggedIn",'');
     setIsVisible(false);
   };
 
@@ -457,27 +459,20 @@ const ProfileNavigation = () => {
                       color: theme.palette.color.navLink,
                     }}
                     primary="My Bookings"
-                    onClick={handleLogout}
+                    onClick={()=>setIsVisible(true)}
                   >
                     Logout
                   </Link>
-                  {isVisible && (
-                    <div
-                      className={`logout-popup ${isVisible ? "visible" : ""}`}
-                    >
-                      <p>Are you sure you want to log out?</p> <br />
-                      <Button
-                        variant="contained"
-                        color="error"
-                        onClick={handleLogoutConfirm}
-                      >
-                        Confirm
-                      </Button>
-                      <Button onClick={() => setIsVisible(false)}>
-                        Cancel
-                      </Button>
-                    </div>
-                  )}
+
+                  <Modal open={isVisible} onClose={handleClose}>
+                  <div  className={`logout-popup ${isVisible ? "visible" : ""}`}>
+                    <p>Are you sure you want to log out?</p> <br />
+                    <Button variant="contained" color="error" onClick={handleLogoutConfirm}>
+                      Confirm
+                    </Button>
+                    <Button onClick={()=>setIsVisible(false)}>Cancel</Button>
+                  </div>
+                </Modal>
 
                   <IconButton
                     sx={{

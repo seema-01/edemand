@@ -128,7 +128,7 @@ const ProviderService = (item) => {
                               >
                                 Add
                               </Button>
-                              <ToastContainer />
+                              <ToastContainer autoClose={3000} />
                             </Box>
                           </Box>
                         </Box>

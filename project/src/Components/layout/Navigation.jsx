@@ -306,7 +306,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   )}
                 </IconButton>
 
-                {isLogin === "" ? (
+                {islogined === "" ? (
                   <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
                     <Box sx={{ width: 400 }}>
                       {/* {/ arrow btn /} */}
@@ -327,8 +327,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         <h3>No Products here!</h3>
                         <br />
                         <h4 style={{ color: "gray" }}>
-                          Your cart is empty . Add products <br /> to that we
-                          can serve you!
+                          Your cart is empty. Login & Add products <br /> to that we
+                          can serve you! 
                         </h4>
                         {/* <Button variant="contained" sx={{ marginTop: "50px" }}>
                        ADD NEW

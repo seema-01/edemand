@@ -188,31 +188,25 @@ const FetchingServies = () => {
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
             </Box>
           )}
@@ -382,31 +376,25 @@ export const FetchingPlumbing = () => {
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
             </Box>
           )}
@@ -574,31 +562,25 @@ export const FetchingLaundry = () => {
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
             </Box>
           )}
@@ -765,31 +747,25 @@ export const FetchingCar = () => {
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
               <Skeleton
                 variant="rectangular"
                 animation="wave"
                 height={"200px"}
-                width={"20%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"20%"}
+                width={"24%"}
               />
             </Box>
           )}
