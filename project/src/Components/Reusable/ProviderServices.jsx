@@ -14,19 +14,82 @@ import {
   Divider,
   LinearProgress,
   Avatar,
+  Skeleton,
 } from "@mui/material";
-import React from "react";
+import api from "../../API/Fetch_data_Api";
+import React, { useEffect, useState } from "react";
 import ProviderService from "./ProviderService";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GradeIcon from "@mui/icons-material/Grade";
 import CustomerReview from "./CustomerReview";
 import StarIcon from "@mui/icons-material/Star";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "@emotion/react";
-const ProviderServices = () => {
+import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { Transert } from "../../actions/action";
 
+const ProviderServices = ({ match }) => {
   const navigate = useNavigate();
   const theme = useTheme();
+
+  const [open, setOpen] = React.useState(false);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+
+  const Data = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const islogined = localStorage.getItem("ContactInfo");
+
+  const handleOpen = (item) => {
+    // if user is logged in then success otherwiser error 'please login'
+    islogined === ""
+      ? toast.error("Please Login...")
+      : toast.success("Added Success...");
+    console.info("clicked", item);
+
+    dispatch(Transert(item));
+
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    cartData.push(item);
+    localStorage.setItem("cart", JSON.stringify(cartData));
+  };
+
+
+  //dynamic urlN
+  const params = useParams();
+  const { partner_id } = params;
+  console.log("partner_id" +partner_id)
+
+  async function allData() {
+    var formdata = new FormData();
+    formdata.append("latitude", "23.2507356");
+    formdata.append("longitude", "69.6689201");
+    formdata.append("partner_id", `${partner_id}`);
+
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    const response = await fetch(
+      "https://edemand.wrteam.me/api/v1/get_services",
+      requestOptions
+    );
+    const result = await response.json();
+    console.log(result);
+    return result;
+  }
+
+  useEffect(() => {
+    allData()
+      .then((response) => setData(response.data))
+      .then((response) => setIsLoading(true))
+      .then((response) => console.log(response));
+  }, []);
+
   return (
     <div>
       <Container>
@@ -34,12 +97,20 @@ const ProviderServices = () => {
           aria-label="breadcrumb"
           sx={{ marginBottom: 1, marginTop: 1 }}
         >
-         <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/")}>
-          Home
-        </Link>
-        <Link sx={{cursor: "pointer", textDecoration: "none"}} color="inherit" onClick={()=>navigate("/providers")}>
-          Providers
-        </Link>
+          <Link
+            sx={{ cursor: "pointer", textDecoration: "none" }}
+            color="inherit"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </Link>
+          <Link
+            sx={{ cursor: "pointer", textDecoration: "none" }}
+            color="inherit"
+            onClick={() => navigate("/providers")}
+          >
+            Providers
+          </Link>
           <Typography color="text.primary">Services</Typography>
         </Breadcrumbs>
         <Typography variant="h4" gutterBottom>
@@ -48,13 +119,152 @@ const ProviderServices = () => {
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={7}>
-            <Box sx={{ background: theme.palette.background.box, borderRadius: "10px", mb: 5 }}>
+            <Box
+              sx={{
+                background: theme.palette.background.box,
+                borderRadius: "10px",
+                mb: 5,
+              }}
+            >
               <Typography variant="h5" ml={2} p={2}>
                 <strong>Our Services</strong>
               </Typography>
               <hr />
+
               <Box sx={{ p: 3 }}>
-                <ProviderService />
+                <Box>
+                  {isLoading ? (
+                    <Box>
+                      {data.map((response) => {
+                          return (
+                            <Box sx={{ flexGrow: 1 }}>
+                              <Card
+                                sx={{
+                                  display: "flex",
+                                  boxShadow: "none",
+                                  height: 200,
+                                  p: 1,
+                                }}
+                              >
+                                <Grid container display={"flex"} spacing={3}>
+                                  <Grid item md={4}>
+                                    <CardMedia
+                                      image={response.image_of_the_service}
+                                      alt="hi"
+                                      sx={{
+                                        height: "180px",
+                                        width: "200px",
+                                        borderRadius: "4px",
+                                      }}
+                                    />
+                                  </Grid>
+                                  <Grid item md={8}>
+                                    <CardContent sx={{ ml: 2, p: 0 }}>
+                                      <Box
+                                        sx={{
+                                          display: "block",
+                                          textAlign: "start",
+                                        }}
+                                      >
+                                        <Box sx={{ display: "flex" }}>
+                                          <Typography
+                                            color={"#2560FC"}
+                                            sx={{ marginRight: "auto" }}
+                                          >
+                                            {response.title}
+                                          </Typography>
+                                          <StarIcon sx={{ color: "gold" }} />
+                                          {response.rating}
+                                          <br />
+                                        </Box>
+                                        <Typography fontSize={14} pt={2}>
+                                          {response.description}
+                                        </Typography>
+                                        <br /> <br />
+                                        <Typography
+                                          color={"gray"}
+                                          fontSize={14}
+                                          sx={{ mt: -4 }}
+                                        >
+                                          2 Person | 150 min
+                                        </Typography>
+                                        <br />
+                                        <Box sx={{ display: "flex", mt: 3 }}>
+                                          <Typography
+                                            color={"#2560FC"}
+                                            sx={{ marginRight: "auto" }}
+                                          >
+                                            ${response.discounted_price}
+                                            <del style={{ color: "gray" }}>
+                                              ${response.price}
+                                            </del>
+                                          </Typography>
+
+                                          <Box sx={{ float: "right", mt: -1 }}>
+                                            <Button
+                                              variant="outlined"
+                                              onClick={() =>
+                                                handleOpen(response)
+                                              }
+                                              float="right"
+                                              size="small"
+                                            >
+                                              Add
+                                            </Button>
+                                            <ToastContainer autoClose={3000} />
+                                          </Box>
+                                        </Box>
+                                      </Box>
+                                    </CardContent>
+                                  </Grid>
+                                </Grid>
+                              </Card>
+                              <Divider />
+                            </Box>
+                          );
+                      })}
+                    </Box>
+                  ) : (
+                    <Box>
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      />
+                      <br />
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      />
+                      <br />
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      ></Skeleton>
+                      <br />
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      ></Skeleton>
+                      <br />
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      ></Skeleton>
+                      <br />
+                      <Skeleton
+                        variant="rectangular"
+                        height={200}
+                        width={620}
+                      ></Skeleton>
+                      <br />
+                    </Box>
+                  )}
+                </Box>
               </Box>
             </Box>
           </Grid>
@@ -140,7 +350,12 @@ const ProviderServices = () => {
               </Card>
             </Box>
             <Box
-              sx={{ background: theme.palette.background.box , borderRadius: "10px", mb: 3, mt: 3 }}
+              sx={{
+                background: theme.palette.background.box,
+                borderRadius: "10px",
+                mb: 3,
+                mt: 3,
+              }}
             >
               <Typography variant="h5" pt={2} pb={2} pl={1}>
                 <strong>Reviews and Rating</strong>
@@ -151,7 +366,7 @@ const ProviderServices = () => {
               <CustomerReview /> <Divider />
               <CustomerReview /> <Divider />
               {/* <Box sx={{m:1, pb:1, justifyContent: "center", display: "flex", bgcolor: "#343f53"}}> */}
-              <Box sx={{pl:2, pr:2}}>
+              <Box sx={{ pl: 2, pr: 2 }}>
                 <NavLink
                   to="/providers/services/reviews"
                   variant="contained"

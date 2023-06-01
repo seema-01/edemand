@@ -97,7 +97,7 @@ export default function Provider() {
                       </div>
                       <Box>
                         <NavLink
-                          to="/providers/services"
+                          to={"/providers/services/" + response.partner_id} 
                           style={{
                             textAlign: "center",
                             justifyContent: "center",

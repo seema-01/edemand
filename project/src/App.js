@@ -70,10 +70,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/providers" element={<Providers />}></Route>
-                <Route
-                  path="/providers/services"
-                  element={<ProviderServices />}
-                ></Route>
+
                 <Route
                   path="/providers/services/payment"
                   element={<PaymentPage />}
@@ -91,6 +88,11 @@ function App() {
                   }
                 ></Route>
                 <Route path="/contact" element={<Contact />}></Route>
+
+                <Route
+                  path="/providers/services/:partner_id"
+                  element={<ProviderServices />}
+                ></Route>
 
                 <Route
                   path="/categorys/:id"

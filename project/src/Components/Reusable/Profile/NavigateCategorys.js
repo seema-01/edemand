@@ -24,6 +24,7 @@ import {
   Typography,
 } from "@mui/material";
 const NavigateCategorys = ({ match }) => {
+  
   const params = useParams();
   // add as a object because it is multiple
   const { id } = params;
