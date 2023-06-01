@@ -119,7 +119,8 @@ const TransferReducer = (state = initialState, action) => {
     case add_to_card : 
         return[
             ...state,
-            action.data
+            action.data,
+            // localStorage.setItem("Cart",...state,action.data)
         ]
     default: 
         return state

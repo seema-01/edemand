@@ -28,14 +28,6 @@ const ProviderService = (item) => {
   };
   const Data = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // const list_item = useSelector((state) => state.reducer);
-  // const myData = useSelector(state => state.myReducer);
-  // here we call our data that we print in console
-  // const Data = useSelector(getData)
-
-  // Here we create a function that open drawer as well as add item to that drawer
-  //  ✅ Working
-
   const islogined = localStorage.getItem("ContactInfo");
 
   const handleOpen = (item) => {
@@ -43,15 +35,13 @@ const ProviderService = (item) => {
     islogined === ""
       ? toast.error("Please Login...")
       : toast.success("Added Success...");
-    var data = JSON.stringify(item);
-    console.info("clicked", data);
+    console.info("clicked", item);
+
     dispatch(Transert(item));
 
-    // let newarr = [...item];
-    // let finalarr = newarr.push(item);
-
-    item = JSON.stringify(item);
-    localStorage.setItem("Data", item);
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    cartData.push(item);
+    localStorage.setItem("cart", JSON.stringify(cartData));
   };
 
   const [service, setServices] = useState([]);
@@ -139,195 +129,6 @@ const ProviderService = (item) => {
                                 Add
                               </Button>
                               <ToastContainer />
-                              {/* ➡️ Open Drawer When user Click on Add Button  */}
-                              <Drawer
-                                anchor="right"
-                                open={open}
-                                sx={{ backgroundColor: "gray" }}
-                              >
-                                <Box sx={{ background: "white" }}>
-                                  <Box
-                                    display={"flex"}
-                                    textAlign="center"
-                                    width="500px"
-                                    marginTop={3}
-                                  >
-                                    {
-                                      <NavigateBeforeIcon
-                                        onClick={handleClose}
-                                        fontSize="large"
-                                        sx={{ marginLeft: "20px" }}
-                                      />
-                                    }
-                                    <Typography fontSize={20} marginLeft={3}>
-                                      From: World Clean Pvt Ltd
-                                    </Typography>
-                                  </Box>
-                                  <hr />
-
-                                  {/* All Data come Dynamicly  */}
-                                  <Box>
-                                    {service.map((response) => {
-                                      /* we have to do something here that we can 
-                                      compare item id with our response id so get
-                                      only those data */
-
-                                      // if (data.id === response.id)
-                                      return (
-                                        <Box
-                                          sx={{
-                                            flexGrow: 1,
-                                            border: "1px solid",
-                                            m: 1,
-                                          }}
-                                        >
-                                          <Card
-                                            sx={{
-                                              display: "flex",
-                                              boxShadow: "none",
-                                              height: 200,
-                                              p: 1,
-                                              width: 520,
-                                            }}
-                                          >
-                                            <Grid
-                                              container
-                                              display={"flex"}
-                                              spacing={1}
-                                            >
-                                              <Grid item md={2}>
-                                                <CardMedia
-                                                  image={
-                                                    response.image_of_the_service
-                                                  }
-                                                  alt="hi"
-                                                  sx={{
-                                                    height: "80px",
-                                                    width: "100px",
-                                                    borderRadius: "4px",
-                                                  }}
-                                                />
-                                              </Grid>
-                                              <Grid item md={10}>
-                                                <CardContent
-                                                  sx={{ ml: 2, p: 0 }}
-                                                >
-                                                  <Box
-                                                    sx={{
-                                                      display: "block",
-                                                      textAlign: "start",
-                                                    }}
-                                                  >
-                                                    <Box
-                                                      sx={{ display: "flex" }}
-                                                    >
-                                                      <Typography
-                                                        color={"#2560FC"}
-                                                        sx={{
-                                                          marginRight: "auto",
-                                                        }}
-                                                      >
-                                                        {response.title}
-                                                      </Typography>
-                                                      <StarIcon
-                                                        sx={{ color: "gold" }}
-                                                      />
-                                                      {response.rating}
-                                                      <br />
-                                                    </Box>
-                                                    <Typography
-                                                      fontSize={14}
-                                                      pt={2}
-                                                    >
-                                                      {response.description}
-                                                    </Typography>
-                                                    <br /> <br />
-                                                    <Typography
-                                                      color={"gray"}
-                                                      fontSize={14}
-                                                      sx={{ mt: -4 }}
-                                                    >
-                                                      2 Person | 150 min
-                                                    </Typography>
-                                                    <br />
-                                                    <Box
-                                                      sx={{
-                                                        display: "flex",
-                                                        mt: 3,
-                                                      }}
-                                                    >
-                                                      <Typography
-                                                        color={"#2560FC"}
-                                                        sx={{
-                                                          marginRight: "auto",
-                                                        }}
-                                                      >
-                                                        $
-                                                        {
-                                                          response.discounted_price
-                                                        }
-                                                        <del
-                                                          style={{
-                                                            color: "gray",
-                                                          }}
-                                                        >
-                                                          ${response.price}
-                                                        </del>
-                                                      </Typography>
-                                                    </Box>
-                                                  </Box>
-                                                </CardContent>
-                                              </Grid>
-                                            </Grid>
-                                          </Card>
-                                        </Box>
-                                      );
-                                    })}
-                                  </Box>
-
-                                  <Box
-                                    sx={{
-                                      backgroundColor: "#343F53",
-                                      color: "white",
-                                      width: "500px",
-                                      margin: 3,
-                                      borderRadius: 2,
-                                      alignItem: "center",
-                                    }}
-                                  >
-                                    <Box
-                                      sx={{
-                                        backgroundColor: "gray",
-                                        margin: 3,
-                                        borderRadius: 2,
-                                        alignItem: "center",
-                                        mt: 6,
-                                      }}
-                                    >
-                                      <NavLink
-                                        to={"/providers/services/payment"}
-                                        size="small"
-                                        style={{
-                                          backgroundColor: "#343f53",
-                                          display: "flex",
-                                          color: "white",
-                                          padding: "10px",
-                                          textDecoration: "none",
-                                          justifyContent: "space-between",
-                                        }}
-                                      >
-                                        <Box sx={{ display: "block" }}>
-                                          <p style={{ fontSize: 10 }}>
-                                            4 items
-                                          </p>
-                                          $2296
-                                        </Box>
-                                        <Box>Continue</Box>
-                                      </NavLink>
-                                    </Box>
-                                  </Box>
-                                </Box>
-                              </Drawer>
                             </Box>
                           </Box>
                         </Box>
@@ -346,29 +147,13 @@ const ProviderService = (item) => {
           <br />
           <Skeleton variant="rectangular" height={200} width={620} />
           <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>
+          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
           <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>
+          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
           <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>
+          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
           <br />
-          <Skeleton
-            variant="rectangular"
-            height={200}
-            width={620}
-          ></Skeleton>
+          <Skeleton variant="rectangular" height={200} width={620}></Skeleton>
           <br />
         </Box>
       )}

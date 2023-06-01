@@ -52,7 +52,7 @@ const ProfileNavigation = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [defname, setDefName] = useState("Murthy Bates");
   const [defeml, setDefEml] = useState("Murthybates@gmail.com");
-  const [defnum, setDefNum] = useState("+9157818297");
+  const [defnum, setDefNum] = useState("+91987654321");
 
   const handleLogout = () => {
     setIsVisible(true);
@@ -61,7 +61,7 @@ const ProfileNavigation = () => {
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
     // localStorage.removeItem("phoneNumber");
-    localStorage.removeItem("ContactInfo");
+    localStorage.setItem("ContactInfo",'');
     setIsVisible(false);
   };
 
@@ -239,6 +239,8 @@ const ProfileNavigation = () => {
                         size="small"
                         fullWidth
                         required
+                        disabled
+                        value={defnum}
                         variant="outlined"
                         sx={{ background: "#F2F1F6" }}
                       />{" "}

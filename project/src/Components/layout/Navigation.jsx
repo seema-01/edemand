@@ -38,7 +38,8 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import Cart from "../Reusable/Cart";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import CartItem from "../Reusable/CartItem";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -63,7 +64,6 @@ const style = {
 const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
-  let loggedInUser = localStorage.setItem("isLoggedIn", "");
   let id = localStorage.getItem("Data");
   const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
@@ -101,7 +101,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     setCart(false);
   };
 
-  let finalNo = '';
+  let finalNo = "";
 
   // mode change toggle
   const [view, setView] = React.useState("list");
@@ -110,11 +110,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
     nextView: string
   ) => {
     setView(nextView);
-  };
-
-  const handlePhoneChange = (e) => {
-    setPhoneNo(e);
-    localStorage.setItem("temparory", e);
   };
 
   const theme = useTheme();
@@ -174,12 +169,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
-  const islogined = localStorage.getItem("ContactInfo");
-
-  // // For Verified User Icon #temparory
-  // const sign_in = document.getElementById("sign_in");
-  // const login_user = document.getElementById("logined_user");
-
+  const islogined = localStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
 
   return (
@@ -281,8 +271,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
               {/* #Navigation Button functionality */}
               <Box sx={{ display: "flex", marginRight: -4 }}>
-                {localStorage.getItem("ContactInfo") == "" ? (
-                  // if user is not logged in then show sign in button otherwise avatar of user
+                {islogined === "" ? (
                   <Button
                     id="sign_in"
                     variant="contained"
@@ -292,22 +281,19 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     Sign in
                   </Button>
                 ) : (
-                  <>
-                    {/* #Authorized user icon    */}
-                    <IconButton
-                      id="logined_user"
-                      style={{
-                        display: "none",
-                        borderRadius: "100px",
-                        "&:hover": {
-                          backgroundColor: "white",
-                        },
-                      }}
-                      onClick={() => navigate("/profile")}
-                    >
-                      <Avatar sx={{ height: "30px", width: "30px" }} />
-                    </IconButton>
-                  </>
+                  <IconButton
+                    id="logined_user"
+                    style={{
+                      display: "none",
+                      borderRadius: "100px",
+                      "&:hover": {
+                        backgroundColor: "white",
+                      },
+                    }}
+                    onClick={() => navigate("/profile")}
+                  >
+                    <Avatar sx={{ height: "30px", width: "30px" }} />
+                  </IconButton>
                 )}
 
                 <IconButton aria-label="cart" onClick={handleOpenCart}>
@@ -320,14 +306,44 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   )}
                 </IconButton>
 
-                <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
-                    {
-                      // islogined === '' ? (<h1>Please Login...</h1>) : (<h1>Hello World</h1>) 
-                    }
-                    {/* cart for displaying data  */}
-                    <Cart />
-                  <Box sx={{ width: 300 }}></Box>
-                </Drawer>
+                {isLogin === "" ? (
+                  <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
+                    <Box sx={{ width: 400 }}>
+                      {/* {/ arrow btn /} */}
+                      {/* <ArrowBackIosIcon /> */}
+                      <Box sx={{ textAlign: "center" }}>
+                        <img
+                          src="https://img.freepik.com/free-vector/corrugated-box-white-background_1308-111117.jpg"
+                          style={{
+                            width: "220px",
+                            borderRadius: "500px",
+                            marginTop: "150px",
+                          }}
+                        />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h3>No Products here!</h3>
+                        <br />
+                        <h4 style={{ color: "gray" }}>
+                          Your cart is empty . Add products <br /> to that we
+                          can serve you!
+                        </h4>
+                        {/* <Button variant="contained" sx={{ marginTop: "50px" }}>
+                       ADD NEW
+                     </Button> */}
+                      </Box>
+                    </Box>
+                  </Drawer>
+                ) : (
+                  <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
+                    {/* <Cart /> */}
+                    <Box sx={{ width: 400 }}>
+                      <CartItem />
+                    </Box>
+                  </Drawer>
+                )}
 
                 <IconButton onClick={handleOpenSetting}>
                   <SettingsOutlinedIcon />{" "}
@@ -432,11 +448,10 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     {user ? (
                       <Box>
                         <Typography>👍Login Success</Typography>
+                        {(finalNo = ph)}
                         {
-                        finalNo = ph
-                        }
-                        {
-                          localStorage.setItem("ContactInfo", finalNo)}
+                          (localStorage.setItem("ContactInfo", finalNo),
+                          localStorage.setItem("isLoggedIn", "true"))
                         }
                       </Box>
                     ) : (
@@ -444,7 +459,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         <Box
                           sx={{ textAlign: "center", marginTop: "60px" }}
                         ></Box>
-                        {localStorage.setItem("ContactInfo", '')}
                         {showOTP ? (
                           <>
                             <label

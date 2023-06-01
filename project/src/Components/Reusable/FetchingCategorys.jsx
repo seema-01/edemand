@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Card,
@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import api from "../../API/Fetch_data_Api";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,12 +19,19 @@ import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
   const [isLoading, SetIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
 
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
   useEffect(() => {
     api
       .get_Api_Category()
@@ -35,23 +42,33 @@ const FetchingCategorys = () => {
 
   const theme = useTheme();
 
+
   return (
     <Container>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
-        {/* Catregory name comes from api  */}
-        {/* --------------------------------------------------- */}
+     
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
-            sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}>
+            sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}
+          >
             Creative Category
           </Typography>
+          {/* <SwiperButton /> */}
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
-              <IconButton aria-label="delete" color="primary">
-                <ArrowBackIosIcon />
+              <IconButton
+                aria-label="delete"
+                color="primary"
+                onClick={() => prevSlide()}
+              >
+                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
-              <IconButton aria-label="delete" color="primary">
-                <ArrowForwardIosIcon />
+              <IconButton
+                aria-label="delete"
+                color="primary"
+                onClick={() => nextSlide()}
+              >
+                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
           </Box>
@@ -63,11 +80,14 @@ const FetchingCategorys = () => {
           }}
           slidesPerView={5}
           freeMode={true}
-          // navigation={true}
           style={{
             height: "auto",
           }}
           modules={[Pagination, Navigation]}
+          onSwiper={(s) => {
+            console.log("initialize swiper", s);
+            setSwiper(s);
+          }}
           breakpoints={{
             0: {
               slidesPerView: 1,

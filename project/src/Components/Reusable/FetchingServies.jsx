@@ -85,10 +85,10 @@ const FetchingServies = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" color="primary">
-                <ArrowBackIosIcon />
+                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
               <IconButton aria-label="delete" color="primary">
-                <ArrowForwardIosIcon />
+                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
           </Box>
@@ -271,10 +271,10 @@ export const FetchingPlumbing = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" color="primary">
-                <ArrowBackIosIcon />
+                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
               <IconButton aria-label="delete" color="primary">
-                <ArrowForwardIosIcon />
+                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
           </Box>
@@ -451,10 +451,10 @@ export const FetchingLaundry = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" color="primary">
-                <ArrowBackIosIcon />
+                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
               <IconButton aria-label="delete" color="primary">
-                <ArrowForwardIosIcon />
+                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
           </Box>
@@ -464,7 +464,7 @@ export const FetchingLaundry = () => {
         <Swiper
           slidesPerView={5}
           freeMode={true}
-          navigation={true}
+          // navigation={true}
           style={{
             height: "auto",
           }}
@@ -631,10 +631,10 @@ export const FetchingCar = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" color="primary">
-                <ArrowBackIosIcon />
+                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
               <IconButton aria-label="delete" color="primary">
-                <ArrowForwardIosIcon />
+                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
           </Box>
@@ -642,7 +642,7 @@ export const FetchingCar = () => {
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
-          slidesPerView={5}
+          slidesPerView={4}
           freeMode={true}
           // navigation={true}
           style={{
