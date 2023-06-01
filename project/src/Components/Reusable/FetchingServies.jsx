@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import api from "../../API/Fetch_data_Api";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -30,6 +30,14 @@ const FetchingServies = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
+
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
 
   const fetchingFunction = () => {
     api
@@ -84,10 +92,10 @@ const FetchingServies = () => {
           )}
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={prevSlide}>
                 <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
@@ -106,6 +114,10 @@ const FetchingServies = () => {
             height: "auto",
           }}
           modules={[Navigation]}
+          onSwiper={(s) => {
+            console.log("initialize swiper", s);
+            setSwiper(s);
+          }}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -212,13 +224,20 @@ const FetchingServies = () => {
 
 export default FetchingServies;
 
-// plumbing services fetching
+// plumbing services fetching -----------------------------------------------------------------------------------------------------------------------
 
 export const FetchingPlumbing = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
 
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
   const fetchingFunction = () => {
     api
       .get_categories_laundry()
@@ -270,10 +289,10 @@ export const FetchingPlumbing = () => {
           )}
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={prevSlide}>
                 <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
@@ -285,6 +304,10 @@ export const FetchingPlumbing = () => {
           slidesPerView={5}
           freeMode={true}
           // navigation={true}
+          onSwiper={(s) => {
+            console.log("initialize swiper", s);
+            setSwiper(s);
+          }}
           style={{
             height: "auto",
           }}
@@ -393,12 +416,20 @@ export const FetchingPlumbing = () => {
   );
 };
 
-// Laundry services fetching
+// Laundry services fetching-------------------------------------------------------------------------------------------------------------------------
 
 export const FetchingLaundry = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
+
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
 
   const fetchingFunction = () => {
     api
@@ -450,10 +481,10 @@ export const FetchingLaundry = () => {
           )}
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={prevSlide}>
                 <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
@@ -465,6 +496,10 @@ export const FetchingLaundry = () => {
           slidesPerView={5}
           freeMode={true}
           // navigation={true}
+          onSwiper={(s) => {
+            console.log("initialize swiper", s);
+            setSwiper(s);
+          }}
           style={{
             height: "auto",
           }}
@@ -573,13 +608,20 @@ export const FetchingLaundry = () => {
   );
 };
 
-// car services fetching
+// car services fetching -----------------------------------------------------------------------------------------------------------------------
 
 export const FetchingCar = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
 
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
   const fetchingFunction = () => {
     api
       .get_categories_car()
@@ -630,10 +672,10 @@ export const FetchingCar = () => {
           )}
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={prevSlide}>
                 <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
               </IconButton>
             </span>
@@ -645,6 +687,10 @@ export const FetchingCar = () => {
           slidesPerView={4}
           freeMode={true}
           // navigation={true}
+          onSwiper={(s) => {
+            console.log("initialize swiper", s);
+            setSwiper(s);
+          }}
           style={{
             height: "auto",
           }}
