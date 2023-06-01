@@ -11,6 +11,7 @@ import Providers from "./Providers";
 import { useTheme } from "@emotion/react";
 import EastIcon from '@mui/icons-material/East';
 import { useNavigate } from "react-router";
+import { HomeProvider } from "./Provider";
 // create a function and calling and setting here \
 
 const HomeCategory = () => {
@@ -100,18 +101,17 @@ const HomeCategory = () => {
           <Container  >
             <Box>
               <Typography variant="h4">
-                Our Valuabale Service Providers
+                Our Valuable Service Providers
               </Typography>
               <hr color="Whitesmoke"/>
             </Box>
-            <Box gap={-1} marginTop={-4} sx={{background: "white"}}>
+            <Box gap={-1} marginTop={2} sx={{background: "white"}}>
             {/* our provider is already created and i juts call that function and set here with some editing  */}
-            <Providers />
-            <Box sx={{padding: 2, display: "flex", justifyContent: "end", marginTop: -4}}>
+            <HomeProvider />
+            <Box sx={{padding: 2, display: "flex", justifyContent: "end", marginTop: 2}}>
               <Button variant="outlined" onClick={()=> navigate('/providers')} endIcon={<EastIcon /> }> View all Proiders</Button>
               </Box>
             </Box>
-          
           </Container>
         </Box>
       </Container>

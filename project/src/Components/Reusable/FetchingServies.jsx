@@ -93,10 +93,12 @@ const FetchingServies = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
-                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowForwardIosIcon
+                  sx={{ color: theme.palette.color.navLink }}
+                />
               </IconButton>
             </span>
           </Box>
@@ -184,30 +186,10 @@ const FetchingServies = () => {
             </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
             </Box>
           )}
         </Swiper>
@@ -267,7 +249,6 @@ export const FetchingPlumbing = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -284,14 +265,17 @@ export const FetchingPlumbing = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
-                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowForwardIosIcon
+                  sx={{ color: theme.palette.color.navLink }}
+                />
               </IconButton>
             </span>
           </Box>
         </Box>
+        <hr color="whitesmoke" />
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -372,30 +356,10 @@ export const FetchingPlumbing = () => {
             </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
             </Box>
           )}
         </Swiper>
@@ -453,7 +417,6 @@ export const FetchingLaundry = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -470,14 +433,17 @@ export const FetchingLaundry = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
-                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowForwardIosIcon
+                  sx={{ color: theme.palette.color.navLink }}
+                />
               </IconButton>
             </span>
           </Box>
         </Box>
+        <hr color="whitesmoke" />
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -558,30 +524,10 @@ export const FetchingLaundry = () => {
             </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
             </Box>
           )}
         </Swiper>
@@ -638,7 +584,6 @@ export const FetchingCar = () => {
                       >
                         {response.name}
                       </Typography>
-                      <hr color="whitesmoke" />
                     </>
                   );
                 }
@@ -655,14 +600,17 @@ export const FetchingCar = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
-                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowForwardIosIcon
+                  sx={{ color: theme.palette.color.navLink }}
+                />
               </IconButton>
             </span>
           </Box>
         </Box>
+        <hr color="whitesmoke" />
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
@@ -743,34 +691,25 @@ export const FetchingCar = () => {
             </Box>
           ) : (
             <Box display={"flex"} gap={2}>
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                height={"200px"}
-                width={"24%"}
-              />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
+              <MySkeleton />
             </Box>
           )}
         </Swiper>
       </Box>
     </Container>
+  );
+};
+
+const MySkeleton = () => {
+  return (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      height={"200px"}
+      width={"24%"}
+    />
   );
 };

@@ -326,8 +326,8 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         <br />
                         <h3>No Products here!</h3>
                         <br />
+                          Your cart is empt.y. Login & Add products <br /> to that we
                         <h4 style={{ color: "gray" }}>
-                          Your cart is empty. Login & Add products <br /> to that we
                           can serve you! 
                         </h4>
                         {/* <Button variant="contained" sx={{ marginTop: "50px" }}>

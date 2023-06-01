@@ -26,7 +26,7 @@ const Providers = () => {
             borderRadius: "10px",
             display: "flex",
           }}
-          marginTop={"6%"}
+          marginTop={"2%"}
           marginBottom={"6%"}
           boxShadow={"none"}
         >
