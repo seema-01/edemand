@@ -55,6 +55,7 @@ const ProfileNavigation = () => {
   const [defeml, setDefEml] = useState("Murthybates@gmail.com");
   const [defnum, setDefNum] = useState("+91987654321");
   const [selectedOption, setSelectedOption] = useState("");
+  const [loggedOut, setLoggedOut] = useState(false);
 
   const handleLogout = () => {
     setIsVisible(true);
@@ -447,7 +448,7 @@ const ProfileNavigation = () => {
                 </ListItem>
               </Link>
               <Divider />
-              <Link onClick={handleLogout} style={{ textDecoration: "none" }}>
+              <Link fullWidth onClick={handleLogout} style={{ textDecoration: "none" }}>
                 <ListItem
                   button
                   sx={{ paddingTop: 1, paddingBottom: 1 }}

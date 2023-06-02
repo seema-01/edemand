@@ -5,7 +5,13 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Checkbox, Container, FormControlLabel, Grid, TextField } from "@mui/material";
+import {
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  TextField,
+} from "@mui/material";
 import Provider from "./Provider";
 import AddressPayment from "./AddressPayment";
 import { useTheme } from "@emotion/react";
@@ -19,48 +25,81 @@ export default function PaymentPage() {
     return step === 1;
   };
 
-  // const isStepSkipped = (step) => {
-  //   return skipped.has(step);
-  // };
-
   const handleNext = () => {
-    // let newSkipped = skipped;
-    // if (isStepSkipped(activeStep)) {
-    //   newSkipped = new Set(newSkipped.values());
-    //   newSkipped.delete(activeStep);
-    // }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // setSkipped(newSkipped);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // setSkipped((prevSkipped) => {
-    //   const newSkipped = new Set(prevSkipped.values());
-    //   newSkipped.add(activeStep);
-    //   return newSkipped;
-    // });
-  };
-
   const handleReset = () => {
     setActiveStep(0);
   };
 
-  const theme = useTheme()
+  const theme = useTheme();
+
+  //Payment of RazorPay...
+  const handlePayment = () => {
+    const options = {
+      key: "rzp_test_k94uzC2zWjNsrD",
+      amount: 10000, // Amount in paise (e.g., 10000 paise = ₹100)
+      currency: "INR",
+      name: "eDemmand",
+      description: "Payment for Your Product",
+      image: "https://yourcompany.com/logo.png",
+      handler: function (response) {
+        // Handle the success callback
+        console.log(response);
+      },
+      prefill: {
+        name: "John Doe",
+        email: "john.doe@example.com",
+        contact: "9876543210",
+      },
+      theme: {
+        color: "#F37254",
+      },
+    };
+
+    window.Razorpay.open(options);
+  };
+
+  //payment of PayStack
+  // function payWithPaystack(e) {
+  //   e.preventDefault();
+
+  //   let handler = PaystackPop.setup({
+  //     key: "pk_test_xxxxxxxxxx", // Replace with your public key
+  //     amount: 100,
+  //     // amount: document.getElementById("amount").value * 100,
+  //     ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+
+  //     // label: "Optional string that replaces customer email"
+
+  //     onClose: function () {
+  //       alert("Window closed.");
+  //     },
+
+  //     callback: function (response) {
+  //       let message = "Payment complete! Reference: " + response.reference;
+
+  //       alert(message);
+  //     },
+  //   });
+
+  //   handler.openIframe();
+  // }
 
   return (
-    <Box sx={{ mt: 3, bgcolor: theme.palette.background.paper , mb: 3, overflow: "hidden" }}>
+    <Box
+      sx={{
+        mt: 3,
+        bgcolor: theme.palette.background.paper,
+        mb: 3,
+        overflow: "hidden",
+      }}
+    >
       <Container>
         <Box sx={{ width: "100%", marginTop: "20px" }}>
           <Stepper activeStep={activeStep}>
@@ -99,59 +138,50 @@ export default function PaymentPage() {
                       <Typography variant="h6" gutterBottom>
                         Payment method
                       </Typography>
+
                       <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
-                          <TextField
-                            required
-                            id="cardName"
-                            label="Name on card"
-                            fullWidth
-                            autoComplete="cc-name"
-                            variant="standard"
-                          />
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                          <TextField
-                            required
-                            id="cardNumber"
-                            label="Card number"
-                            fullWidth
-                            autoComplete="cc-number"
-                            variant="standard"
-                          />
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                          <TextField
-                            required
-                            id="expDate"
-                            label="Expiry date"
-                            fullWidth
-                            autoComplete="cc-exp"
-                            variant="standard"
-                          />
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                          <TextField
-                            required
-                            id="cvv"
-                            label="CVV"
-                            helperText="Last three digits on signature strip"
-                            fullWidth
-                            autoComplete="cc-csc"
-                            variant="standard"
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                color="primary"
-                                name="saveCard"
-                                value="yes"
-                              />
-                            }
-                            label="Remember credit card details for next time"
-                          />
+                        <Grid item spacing={2}>
+                          <Box justifyContent={"center"} display={"flex"}>
+                            <Button color="primary">
+                              <img
+                                src={require("../../Images/PayPal.png")}
+                                alt="paypal"
+                                width="200px"
+                                height="80px"
+                                style={{ borderRadius: "10px" }}
+                              />{" "}
+                            </Button>
+
+                            <Button color="primary" onClick={handlePayment}>
+                              <img
+                                src={require("../../Images/RazorPay.png")}
+                                alt="paypal"
+                                width="200px"
+                                height="80px"
+                                style={{ borderRadius: "10px" }}
+                              />{" "}
+                            </Button>
+
+                            <Button color="primary">
+                              <img
+                                src={require("../../Images/PayStack.png")}
+                                alt="payStack"
+                                width="200px"
+                                height="80px"
+                                style={{ borderRadius: "10px" }}
+                              />{" "}
+                            </Button>
+
+                            <Button color="primary">
+                              <img
+                                src={require("../../Images/Stripe.png")}
+                                alt="Stripe"
+                                width="200px"
+                                height="80px"
+                                style={{ borderRadius: "10px" }}
+                              />{" "}
+                            </Button>
+                          </Box>
                         </Grid>
                       </Grid>
                     </React.Fragment>

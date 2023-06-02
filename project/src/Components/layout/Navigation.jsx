@@ -65,20 +65,21 @@ const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
   let id = localStorage.getItem("Data");
-  const [open, setOpen] = React.useState(false);
   const input = document.querySelector("#phone");
+ 
+  const [open, setOpen] = React.useState(false);
   const [login, isLogin] = React.useState(false);
   const [openSetting, setOpenSetting] = useState(false);
-  // First Attempts => set here to second goes from 60 to 0
-  // const [counter, setCounter] = React.useState(60);
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
   const [value, setValue] = useState(0);
-  const [phoneNo, setPhoneNo] = useState("");
   const [cart, setCart] = useState(false);
+  const [phoneNo, setPhoneNo] = useState("");
+  // First Attempts => set here to second goes from 60 to 0
+  // const [counter, setCounter] = React.useState(60);
 
   const handleOpenSetting = () => {
     setOpenSetting(true);
