@@ -40,12 +40,6 @@ const ProfileAddress = () => {
                   <Address />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Address />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Address />
-                </Grid>
-                <Grid item xs={12} sm={6}>
                   <AddAddress />
                 </Grid>
               </Grid>

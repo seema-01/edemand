@@ -9,7 +9,7 @@ import FetchingServies, {
 } from "./FetchingServies";
 import Providers from "./Providers";
 import { useTheme } from "@emotion/react";
-import EastIcon from '@mui/icons-material/East';
+import EastIcon from "@mui/icons-material/East";
 import { useNavigate } from "react-router";
 import { HomeProvider } from "./Provider";
 // create a function and calling and setting here \
@@ -27,7 +27,7 @@ const HomeCategory = () => {
             height: "auto",
             justifyContent: "center",
             display: "flex",
-            background: theme.palette.background.box
+            background: theme.palette.background.box,
           }}
         >
           {/* function for fetching all categorys  */}
@@ -98,18 +98,34 @@ const HomeCategory = () => {
             display: "flex",
           }}
         >
-          <Container  >
-            <Box>
-              <Typography variant="h4">
-                Our Valuable Service Providers
-              </Typography>
-              <hr color="Whitesmoke"/>
-            </Box>
-            <Box gap={-1} marginTop={2} sx={{background: "white"}}>
-            {/* our provider is already created and i juts call that function and set here with some editing  */}
-            <HomeProvider />
-            <Box sx={{padding: 2, display: "flex", justifyContent: "end", marginTop: 2}}>
-              <Button variant="outlined" onClick={()=> navigate('/providers')} endIcon={<EastIcon /> }> View all Proiders</Button>
+          <Container>
+            <Box sx={{background: theme.palette.background.box}}>
+              <>
+                <Typography variant="h4">
+                  Our Valuable Service Providers
+                </Typography>
+                <hr color="Whitesmoke" />
+              </>
+              <Box gap={-1} marginTop={2} sx={{  }}>
+                {/* our provider is already created and i juts call that function and set here with some editing  */}
+                <HomeProvider />
+                <Box
+                  sx={{
+                    padding: 2,
+                    display: "flex",
+                    justifyContent: "end",
+                    marginTop: 2,
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    onClick={() => navigate("/providers")}
+                    endIcon={<EastIcon />}
+                  >
+                    {" "}
+                    View all Proiders
+                  </Button>
+                </Box>
               </Box>
             </Box>
           </Container>

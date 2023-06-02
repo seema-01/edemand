@@ -4,21 +4,22 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
 
 const AddressPayment = () => {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <div>
       <Box>
         <Grid
           container
           spacing={15}
-          sx={{backgroundColor: theme.palette.background.paper,borderRadius: "10px" }}
+          sx={{
+            backgroundColor: theme.palette.background.paper,
+            borderRadius: "10px",
+          }}
           boxShadow={"none"}
         >
           <Grid item xs={12} sm={6}>
             <Box mt={1}>
               {/* <Typography variant="h6"> Select Your Address: </Typography> */}
-              <Address />
-              <Address />
               <Address />
               <Box sx={{ float: "right", mr: 2 }}>
                 <Button variant="contained">Continue</Button>

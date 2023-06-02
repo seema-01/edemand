@@ -168,7 +168,7 @@ export const HomeProvider = () => {
       display={"flex"}
       gridColumn={3}
       flexWrap={"wrap"}
-      sx={{ gap: "22px", justifyContent: "space-around", margin: 0 }}
+      sx={{ gap: "22px", justifyContent: "space-around", margin: 0, background: theme.palette.background.box }}
     >
       {isLoading ? (
         <>
