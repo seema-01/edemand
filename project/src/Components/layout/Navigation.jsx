@@ -106,10 +106,14 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   // mode change toggle
   const [view, setView] = React.useState("list");
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    nextView: string
-  ) => {
+  // tsx file 
+  // const handleChange = (
+  //   event: React.MouseEvent<HTMLElement>,
+  //   nextView: string
+  // ) => {
+  //   setView(nextView);
+  // };
+  const handleChange = (event, nextView) => {
     setView(nextView);
   };
 

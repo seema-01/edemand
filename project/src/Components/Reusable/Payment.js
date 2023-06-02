@@ -65,31 +65,31 @@ export default function PaymentPage() {
     window.Razorpay.open(options);
   };
 
-  //payment of PayStack
-  // function payWithPaystack(e) {
-  //   e.preventDefault();
+  // payment of PayStack
+  function payWithPaystack(e) {
+    e.preventDefault();
 
-  //   let handler = PaystackPop.setup({
-  //     key: "pk_test_xxxxxxxxxx", // Replace with your public key
-  //     amount: 100,
-  //     // amount: document.getElementById("amount").value * 100,
-  //     ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    let handler = PaystackPop.setup({
+      key: "pk_test_xxxxxxxxxx", // Replace with your public key
+      amount: 100,
+      // amount: document.getElementById("amount").value * 100,
+      ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
 
-  //     // label: "Optional string that replaces customer email"
+      // label: "Optional string that replaces customer email"
 
-  //     onClose: function () {
-  //       alert("Window closed.");
-  //     },
+      onClose: function () {
+        alert("Window closed.");
+      },
 
-  //     callback: function (response) {
-  //       let message = "Payment complete! Reference: " + response.reference;
+      callback: function (response) {
+        let message = "Payment complete! Reference: " + response.reference;
 
-  //       alert(message);
-  //     },
-  //   });
+        alert(message);
+      },
+    });
 
-  //   handler.openIframe();
-  // }
+    handler.openIframe();
+  }
 
   return (
     <Box
@@ -162,7 +162,7 @@ export default function PaymentPage() {
                               />{" "}
                             </Button>
 
-                            <Button color="primary">
+                            <Button color="primary" onClick={payWithPaystack(1)}>
                               <img
                                 src={require("../../Images/PayStack.png")}
                                 alt="payStack"
