@@ -24,15 +24,14 @@ import {
   Typography,
 } from "@mui/material";
 const NavigateCategorys = ({ match }) => {
-  
+  const [data, setData] = useState([]);
+  const [title, setTitle] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const params = useParams();
   // add as a object because it is multiple
   const { id } = params;
   console.log(id);
-
-  const [data, setData] = useState([]);
-  const [title, setTitle] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   async function allData() {
     var formdata = new FormData();
@@ -61,13 +60,11 @@ const NavigateCategorys = ({ match }) => {
       .then((response) => setIsLoading(true))
       .then((response) => console.log(response));
 
-
     api
       .get_Api_Category()
       .then((response) => setTitle(response.data))
       .then((response) => setIsLoading(true))
       .catch((error) => console.log(error));
-
   }, []);
 
   const theme = useTheme();

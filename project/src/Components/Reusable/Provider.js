@@ -12,10 +12,16 @@ import { NavLink } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
 import { useTheme } from "@emotion/react";
 import ProviderBookmark from "./ProviderBookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { Checkbox } from "@mui/material";
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function Provider() {
   const [provider, setProvider] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [bookmart, isBookmarke] = useState(false);
 
   const ApiProviders = () => {
     api
@@ -25,12 +31,19 @@ export default function Provider() {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    ApiProviders();
-  }, []);
+ const handle = () => {
+   bookmart == false ? 
+   (localStorage.setItem("BookMark",provider)) : 
+   (isBookmarke(false));
+ };
+
+ useEffect(() => {
+   ApiProviders();
+ }, []);
 
   const theme = useTheme();
 
+  console.log("Bookmark" + bookmart);
   return (
     <Box
       display={"flex"}
@@ -47,7 +60,6 @@ export default function Provider() {
                   key={response.id}
                   sx={{ maxWidth: 345, display: "inline-block" }}
                 >
-                  {" "}
                   <Box
                     sx={{
                       mt: 1,
@@ -55,7 +67,15 @@ export default function Provider() {
                       position: "absolute",
                     }}
                   >
-                    <ProviderBookmark />
+                    {/* Bookmark  */}
+                    <Checkbox
+                      size="large"
+                      sx={{ color: "white" }}
+                      {...label}
+                      icon={<BookmarkBorderIcon />}
+                      checkedIcon={<BookmarkIcon />}
+                      onClick={handle}
+                    />
                   </Box>
                   <CardMedia
                     sx={{ height: 240 }}
@@ -97,7 +117,7 @@ export default function Provider() {
                       </div>
                       <Box>
                         <NavLink
-                          to={"/providers/services/" + response.partner_id} 
+                          to={"/providers/services/" + response.partner_id}
                           style={{
                             textAlign: "center",
                             justifyContent: "center",
@@ -168,7 +188,12 @@ export const HomeProvider = () => {
       display={"flex"}
       gridColumn={3}
       flexWrap={"wrap"}
-      sx={{ gap: "22px", justifyContent: "space-around", margin: 0, background: theme.palette.background.box }}
+      sx={{
+        gap: "22px",
+        justifyContent: "space-around",
+        margin: 0,
+        background: theme.palette.background.box,
+      }}
     >
       {isLoading ? (
         <>
@@ -220,7 +245,7 @@ export const HomeProvider = () => {
                       </div>
                       <Box>
                         <NavLink
-                          to={"/providers/services/" + response.partner_id} 
+                          to={"/providers/services/" + response.partner_id}
                           style={{
                             textAlign: "center",
                             justifyContent: "center",
