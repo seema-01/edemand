@@ -54,6 +54,7 @@ const ProfileNavigation = () => {
   const [defname, setDefName] = useState("Murthy Bates");
   const [defeml, setDefEml] = useState("Murthybates@gmail.com");
   const [defnum, setDefNum] = useState("+91987654321");
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleLogout = () => {
     setIsVisible(true);
@@ -62,19 +63,23 @@ const ProfileNavigation = () => {
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
     // localStorage.removeItem("phoneNumber");
-    localStorage.setItem("ContactInfo",'');
-    localStorage.setItem("isLoggedIn",'');
+    localStorage.setItem("ContactInfo", "");
+    localStorage.setItem("isLoggedIn", "");
     setIsVisible(false);
   };
 
   const handleLogoutCancel = () => {
+    setSelectedOption("cancel");
     setIsVisible(false);
+    setOpen(false);
   };
 
   const handleClose = () => {
+    setSelectedOption("cancel");
     setOpen(false);
   };
   const handleOpen = () => {
+    setSelectedOption("continue");
     setOpen(true);
   };
 
@@ -207,56 +212,56 @@ const ProfileNavigation = () => {
                       <FormLabel>Name</FormLabel>
                       <br />
                       <form>
-                      <TextField
-                        id="editName"
-                        placeholder="Enter name"
-                        size="small"
-                        fullWidth
-                        variant="outlined"
-                        name="name"
-                        required
-                        sx={{ background: "#F2F1F6" }}
-                      />
-                      <br />
-                      <br />
-                      <FormLabel>Email</FormLabel>
-                      <br />
-                      <TextField
-                        id="editEmail"
-                        placeholder="Enter Email"
-                        size="small"
-                        fullWidth
-                        variant="outlined"
-                        name="email"
-                        required
-                        sx={{ background: "#F2F1F6" }}
-                      />
-                      <br />
-                      <br />
-                      <FormLabel>Phone</FormLabel>
-                      <br />{" "}
-                      <TextField
-                        id="editPhone"
-                        placeholder="Enter Phone"
-                        size="small"
-                        fullWidth
-                        required
-                        disabled
-                        value={defnum}
-                        variant="outlined"
-                        sx={{ background: "#F2F1F6" }}
-                      />{" "}
-                      <br />
-                      <br />
-                      <br />
-                      <Button
-                        variant="contained"
-                        size="medium"
-                        sx={{ width: "350px" }}
-                        onClick={submite}
-                      >
-                        Save Profile
-                      </Button>
+                        <TextField
+                          id="editName"
+                          placeholder="Enter name"
+                          size="small"
+                          fullWidth
+                          variant="outlined"
+                          name="name"
+                          required
+                          sx={{ background: "#F2F1F6" }}
+                        />
+                        <br />
+                        <br />
+                        <FormLabel>Email</FormLabel>
+                        <br />
+                        <TextField
+                          id="editEmail"
+                          placeholder="Enter Email"
+                          size="small"
+                          fullWidth
+                          variant="outlined"
+                          name="email"
+                          required
+                          sx={{ background: "#F2F1F6" }}
+                        />
+                        <br />
+                        <br />
+                        <FormLabel>Phone</FormLabel>
+                        <br />{" "}
+                        <TextField
+                          id="editPhone"
+                          placeholder="Enter Phone"
+                          size="small"
+                          fullWidth
+                          required
+                          disabled
+                          value={defnum}
+                          variant="outlined"
+                          sx={{ background: "#F2F1F6" }}
+                        />{" "}
+                        <br />
+                        <br />
+                        <br />
+                        <Button
+                          variant="contained"
+                          size="medium"
+                          sx={{ width: "350px" }}
+                          onClick={submite}
+                        >
+                          Save Profile
+                        </Button>
                       </form>
                       <ToastContainer
                         position="top-right"
@@ -459,20 +464,39 @@ const ProfileNavigation = () => {
                       color: theme.palette.color.navLink,
                     }}
                     primary="My Bookings"
-                    onClick={()=>setIsVisible(true)}
+                    onClick={() => setIsVisible(true)}
                   >
                     Logout
                   </Link>
 
-                  <Modal open={isVisible} onClose={handleClose}>
-                  <div  className={`logout-popup ${isVisible ? "visible" : ""}`}>
-                    <p>Are you sure you want to log out?</p> <br />
-                    <Button variant="contained" color="error" onClick={handleLogoutConfirm}>
-                      Confirm
-                    </Button>
-                    <Button onClick={()=>setIsVisible(false)}>Cancel</Button>
-                  </div>
-                </Modal>
+                  <Modal open={isVisible} onClose={handleLogoutCancel}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-around",
+                      }}
+                    >
+                      <div
+                        style={{
+                          marginTop: "20%",
+                          background: "white",
+                          padding: 12,
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <p>Are you sure you want to log out?</p> <br />
+                        <Button
+                          variant="contained"
+                          color="error"
+                          onClick={handleLogoutConfirm}
+                        >
+                          Confirm
+                        </Button>
+                        &nbsp;
+                        <Button onClick={handleLogoutCancel}>Cancle</Button>
+                      </div>
+                    </div>
+                  </Modal>
 
                   <IconButton
                     sx={{

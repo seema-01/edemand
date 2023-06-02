@@ -284,7 +284,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   <IconButton
                     id="logined_user"
                     style={{
-                      display: "none",
                       borderRadius: "100px",
                       "&:hover": {
                         backgroundColor: "white",

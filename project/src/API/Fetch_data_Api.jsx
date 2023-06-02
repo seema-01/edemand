@@ -167,6 +167,20 @@ async function get_services() {
 }
 
 
+async function get_settings() {
+  var requestOptions = {
+    method: "POST",
+    redirect: "follow",
+  };
+  const response = await fetch(
+    "https://edemand.wrteam.me/api/v1/get_settings",
+    requestOptions
+  );
+  const result = await response.json();
+  return result;
+}
+
+
 
 // async function allData() {
 //   var requestOptions = {
@@ -192,6 +206,7 @@ export default {
   get_providers,
   get_services,
   get_home_providers,
+  get_settings
 };
 
 /** This code is for fetchig datas from api

@@ -106,6 +106,7 @@ const Footer = () => {
               sx={{ background: "white", borderRadius: "10px", marginTop: 3 }}
               placeholder="Enter Email"
               size="small"
+              fullWidth
               InputProps={{ endAdornment: <SendIcon /> }}
               width={{ xs: "400px", md: "600px" }}
             ></TextField>
