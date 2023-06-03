@@ -176,9 +176,8 @@ export default function PaymentPage() {
                         Payment method
                       </Typography>
 
-                      <Grid container spacing={2}>
+                      <Grid container spacing={2} justifyContent={"space-aroundFina"}>
                         <Grid item spacing={2}>
-                          <Box justifyContent={"center"} display={"flex"}>
                             <Button color="primary">
                               <img
                                 src={require("../../Images/PayPal.png")}
@@ -221,7 +220,6 @@ export default function PaymentPage() {
                                 style={{ borderRadius: "10px" }}
                               />{" "}
                             </Button>
-                          </Box>
                         </Grid>
                       </Grid>
                     </React.Fragment>
