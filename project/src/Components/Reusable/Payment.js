@@ -16,12 +16,16 @@ import Provider from "./Provider";
 import AddressPayment from "./AddressPayment";
 import { useTheme } from "@emotion/react";
 import { loadStripe } from "@stripe/stripe-js";
+import { Elements, useStripe } from "@stripe/react-stripe-js";
+import StripeCheckout from "react-stripe-checkout";
 
 const steps = ["Select The Address", "Confirm Your Payment"];
 
 export default function PaymentPage() {
   const [activeStep, setActiveStep] = React.useState(0);
-
+  const stripePromise = loadStripe(
+    "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
+  );
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -69,32 +73,6 @@ export default function PaymentPage() {
     window.Razorpay.open(options);
   };
 
-  // payment of PayStack
-  // function payWithPaystack(e) {
-  //   e.preventDefault();
-
-  //   let handler = PaystackPop.setup({
-  //     key: "pk_test_xxxxxxxxxx", // Replace with your public key
-  //     amount: 100,
-  //     // amount: document.getElementById("amount").value * 100,
-  //     ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-
-  //     // label: "Optional string that replaces customer email"
-
-  //     onClose: function () {
-  //       alert("Window closed.");
-  //     },
-
-  //     callback: function (response) {
-  //       let message = "Payment complete! Reference: " + response.reference;
-
-  //       alert(message);
-  //     },
-  //   });
-
-  //   handler.openIframe();
-  // }
-
   const handleStripePayment = async () => {
     const stripe = await loadStripe(
       "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
@@ -107,25 +85,10 @@ export default function PaymentPage() {
       successUrl: "https://your-website.com/success",
       cancelUrl: "https://your-website.com/cancel",
     });
-    // // Call your backend API to create a session
-    // const response = await fetch('/create-checkout-session', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ amount: 1099, currency: 'usd' }),
-    // });
+  };
 
-    // const { sessionId } = await response.json();
-
-    // // Redirect to the Stripe Checkout page
-    // const result = await stripe.redirectToCheckout({
-    //   sessionId: sessionId,
-    // });
-
-    // if (result.error) {
-    //   console.error(result.error.message);
-    // }
+  const onToken = (token) => {
+    console.log(token);
   };
 
   return (
@@ -176,41 +139,47 @@ export default function PaymentPage() {
                         Payment method
                       </Typography>
 
-                      <Grid container spacing={2} justifyContent={"space-aroundFina"}>
+                      <Grid
+                        container
+                        spacing={2}
+                        justifyContent={"space-around"}
+                      >
                         <Grid item spacing={2}>
-                            <Button color="primary">
-                              <img
-                                src={require("../../Images/PayPal.png")}
-                                alt="paypal"
-                                width="200px"
-                                height="80px"
-                                style={{ borderRadius: "10px" }}
-                              />{" "}
-                            </Button>
+                          <Button color="primary">
+                            <img
+                              src={require("../../Images/PayPal.png")}
+                              alt="paypal"
+                              width="200px"
+                              height="80px"
+                              style={{ borderRadius: "10px" }}
+                            />{" "}
+                          </Button>
 
-                            <Button color="primary" onClick={handlePayment}>
-                              <img
-                                src={require("../../Images/RazorPay.png")}
-                                alt="paypal"
-                                width="200px"
-                                height="80px"
-                                style={{ borderRadius: "10px" }}
-                              />{" "}
-                            </Button>
+                          <Button color="primary" onClick={handlePayment}>
+                            <img
+                              src={require("../../Images/RazorPay.png")}
+                              alt="paypal"
+                              width="200px"
+                              height="80px"
+                              style={{ borderRadius: "10px" }}
+                            />{" "}
+                          </Button>
 
-                            <Button color="primary">
-                              <img
-                                src={require("../../Images/PayStack.png")}
-                                alt="payStack"
-                                width="200px"
-                                height="80px"
-                                style={{ borderRadius: "10px" }}
-                              />{" "}
-                            </Button>
+                          <Button color="primary">
+                            <img
+                              src={require("../../Images/PayStack.png")}
+                              alt="payStack"
+                              width="200px"
+                              height="80px"
+                              style={{ borderRadius: "10px" }}
+                            />{" "}
+                          </Button>
 
-                            <Button
-                              color="primary"
-                              onClick={handleStripePayment}
+                          {/* Stripe payment Error */}
+                          <Elements stripe={stripePromise}>
+                            <StripeCheckout
+                              token={onToken}
+                              stripeKey="pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
                             >
                               <img
                                 src={require("../../Images/Stripe.png")}
@@ -218,8 +187,9 @@ export default function PaymentPage() {
                                 width="200px"
                                 height="80px"
                                 style={{ borderRadius: "10px" }}
-                              />{" "}
-                            </Button>
+                              />
+                            </StripeCheckout>
+                          </Elements>
                         </Grid>
                       </Grid>
                     </React.Fragment>
