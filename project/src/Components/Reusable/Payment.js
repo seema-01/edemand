@@ -18,6 +18,7 @@ import { useTheme } from "@emotion/react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, useStripe } from "@stripe/react-stripe-js";
 import StripeCheckout from "react-stripe-checkout";
+import { PaystackButton } from "react-paystack";
 
 const steps = ["Select The Address", "Confirm Your Payment"];
 
@@ -26,6 +27,20 @@ export default function PaymentPage() {
   const stripePromise = loadStripe(
     "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
   );
+  const publicKey = "pk_test_0c7a420e09aff08160ec866529f03a13eeaabc6a";
+  const amount = 1000000
+  const componentProps = {
+    publicKey,
+    amount,
+    currency: "GHS",
+    // amount: 100,
+    text: "Pay Now",
+    email: "xyz@gmail.com",
+
+    onSuccess: () =>
+      alert("Thanks for doing business with us! Come back soon!!"),
+  };
+
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -44,7 +59,7 @@ export default function PaymentPage() {
 
   const theme = useTheme();
 
-  let price = localStorage.getItem("cart").discounted_price;
+  // let price = localStorage.getItem("cart").discounted_price;
 
   //Payment of RazorPay...
   const handlePayment = () => {
@@ -73,6 +88,32 @@ export default function PaymentPage() {
     window.Razorpay.open(options);
   };
 
+  // payment of PayStack
+  // function payWithPaystack(e) {
+  //   e.preventDefault();
+
+  //   let handler = PaystackPop.setup({
+  //     key: "pk_test_xxxxxxxxxx", // Replace with your public key
+  //     amount: 100,
+  //     // amount: document.getElementById("amount").value * 100,
+  //     ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+
+  //     // label: "Optional string that replaces customer email"
+
+  //     onClose: function () {
+  //       alert("Window closed.");
+  //     },
+
+  //     callback: function (response) {
+  //       let message = "Payment complete! Reference: " + response.reference;
+
+  //       alert(message);
+  //     },
+  //   });
+
+  //   handler.openIframe();
+  // }
+
   const handleStripePayment = async () => {
     const stripe = await loadStripe(
       "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
@@ -85,11 +126,13 @@ export default function PaymentPage() {
       successUrl: "https://your-website.com/success",
       cancelUrl: "https://your-website.com/cancel",
     });
+    // // Call your backend API to create a session
   };
 
   const onToken = (token) => {
     console.log(token);
   };
+  
 
   return (
     <Box
@@ -166,13 +209,15 @@ export default function PaymentPage() {
                           </Button>
 
                           <Button color="primary">
-                            <img
-                              src={require("../../Images/PayStack.png")}
-                              alt="payStack"
-                              width="200px"
-                              height="80px"
-                              style={{ borderRadius: "10px" }}
-                            />{" "}
+                            <PaystackButton {...componentProps}>
+                              <img
+                                src={require("../../Images/PayStack.png")}
+                                alt="payStack"
+                                width="200px"
+                                height="80px"
+                                style={{ borderRadius: "10px" }}
+                              />{" "}
+                            </PaystackButton>
                           </Button>
 
                           {/* Stripe payment Error */}
