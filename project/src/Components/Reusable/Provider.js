@@ -31,15 +31,22 @@ export default function Provider() {
       .catch((error) => console.log(error));
   };
 
- const handle = () => {
-   bookmart == false ? 
-   (localStorage.setItem("BookMark",provider)) : 
-   (isBookmarke(false));
- };
+  const handle = (item) => {
+    const bookData = JSON.parse(localStorage.getItem("bookmark")) || [];
+    bookData.push(item);
+    localStorage.setItem("bookmark", JSON.stringify(bookData));
+  };
 
- useEffect(() => {
-   ApiProviders();
- }, []);
+  //we have to apply some logic for remove data from bookmark
+  const handleremove = (item) => {
+    const bookData = (localStorage.getItem("bookmark") || []);
+    bookData.pop(item);
+    localStorage.removeItem("bookmark", item);
+  } 
+
+  useEffect(() => {
+    ApiProviders();
+  }, []);
 
   const theme = useTheme();
 
@@ -67,14 +74,17 @@ export default function Provider() {
                       position: "absolute",
                     }}
                   >
-                    {/* Bookmark  */}
+                    {/*user should able to Bookmark
+                    but i want to remove book mark when user click on next buttom  */}
                     <Checkbox
                       size="large"
                       sx={{ color: "white" }}
                       {...label}
                       icon={<BookmarkBorderIcon />}
-                      checkedIcon={<BookmarkIcon />}
-                      onClick={handle}
+                      checkedIcon={
+                        <BookmarkIcon onClick={() => handleremove(response)} />
+                      }
+                      onClick={() => handle(response)}
                     />
                   </Box>
                   <CardMedia
