@@ -1,4 +1,5 @@
 import { DeleteOutline, EditOutlined, PlusOne } from "@mui/icons-material";
+import { Textarea } from "@mui/joy";
 import {
   Backdrop,
   Box,
@@ -12,13 +13,38 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Address = () => {
   const [selectedValue, setSelectedValue] = React.useState("a");
+  const [defName, setDefName] = useState([]);
+  const [defAddress, setDefAddress] = useState([]);
+  const [edit, setEdit] = useState(false);
+
+  const handleEdit = () => {
+    setEdit(true);
+  };
+
+  const handleEditClose = () => {
+    setEdit(false);
+  };
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+  let name = localStorage.getItem("addressName");
+  let address = localStorage.getItem("addressLocation");
+
+  const handleUpdate = () => {
+    let updatedName = document.getElementById("updateName").value;
+    let updatedEmail = document.getElementById("updatedAddress").value;
+
+    localStorage.setItem("addressName", updatedName);
+    localStorage.getItem("addressLocation", updatedEmail);
+    setEdit(false);
+  };
+
   return (
     <div>
       <Box>
@@ -64,6 +90,7 @@ const Address = () => {
                 sx={{
                   backgroundColor: "green",
                   mr: 1,
+                  color: "white",
                   borderRadius: 2,
                   "&:hover": {
                     background: "green",
@@ -77,6 +104,7 @@ const Address = () => {
                 size="small"
                 sx={{
                   backgroundColor: "red",
+                  color: "white",
                   borderRadius: 2,
                   "&:hover": {
                     background: "red",
@@ -94,6 +122,7 @@ const Address = () => {
         </Box>
 
         {/* Section 2 */}
+        {/* Dynamic Section */}
 
         <Box
           sx={{
@@ -115,7 +144,7 @@ const Address = () => {
                   name="radio-buttons"
                   inputProps={{ "aria-label": "B" }}
                 />
-                Divy Jani
+                {name}
               </Typography>
               <Button
                 variant="outlined"
@@ -134,6 +163,7 @@ const Address = () => {
               <IconButton
                 aria-label="delete"
                 size="small"
+                onClick={handleEdit}
                 sx={{
                   backgroundColor: "green",
                   color: "white",
@@ -146,11 +176,41 @@ const Address = () => {
               >
                 <EditOutlined sx={{ fontSize: "large" }} />
               </IconButton>
+              <Backdrop open={edit}>
+                <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
+                  <label>Name:</label>
+                  <br />
+                  <br />
+                  <TextField placeholder={name} id="updateName" fullWidth>
+                    {" "}
+                  </TextField>{" "}
+                  <br /> <br />
+                  <label>Address:</label>
+                  <br />
+                  <br />
+                  <TextField
+                    placeholder={address}
+                    id="updatedAddress"
+                    fullWidth
+                  ></TextField>{" "}
+                  <br /> <br />
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleUpdate}
+                  >
+                    Save
+                  </Button>
+                  <Button onClick={handleEditClose}>Close</Button>
+                </Box>
+              </Backdrop>
+
               <IconButton
                 aria-label="delete"
                 size="small"
                 sx={{
                   backgroundColor: "red",
+                  color: "white",
                   borderRadius: 2,
                   "&:hover": {
                     background: "red",
@@ -162,12 +222,9 @@ const Address = () => {
             </Grid>
           </Grid>
           <Typography color="text.secondary" variant="body2">
-            2-3-577/2 Minister Road, Nallakunta, Nallakunta, Secunderabad <br />
-            Andhra Pradesh, 500003 - India
+            {address}
           </Typography>
         </Box>
-
-
       </Box>
     </div>
   );
@@ -175,6 +232,9 @@ const Address = () => {
 
 export const AddAddress = () => {
   const [openAdd, isOpenAdd] = useState(false);
+  const [name, setName] = React.useState([]);
+  const [address, setAddress] = React.useState([]);
+  const [copy, setCopy] = useState(false);
 
   const handleOpenAddress = () => {
     isOpenAdd(true);
@@ -183,8 +243,6 @@ export const AddAddress = () => {
   const handleCloseAdderss = () => {
     isOpenAdd(false);
   };
-  const [name, setName] = React.useState([]);
-  const [address, setAddress] = React.useState([]);
 
   const submit = () => {
     let name = document.getElementById("addressName").value;
@@ -193,8 +251,18 @@ export const AddAddress = () => {
     setName(name);
     setAddress(location);
 
-    localStorage.setItem("addressName", name);
-    localStorage.setItem("addressLocation", address);
+    // localStorage.setItem("addressName", name);
+    // localStorage.setItem("addressLocation", address);
+
+    const userName = JSON.parse(localStorage.getItem("userName")) || [];
+    const userAdderss = JSON.parse(localStorage.getItem("userAddress")) || [];
+    userName.push(name);
+    userAdderss.push(location);
+    localStorage.setItem("userName", JSON.stringify(userName));
+    localStorage.setItem("userAddress", JSON.stringify(userAdderss));
+
+    toast.done("Address Added Success");
+    setCopy(true);
   };
 
   return (
@@ -203,18 +271,24 @@ export const AddAddress = () => {
         sx={{
           // my: 3,
           mx: 2,
-        //   maxWidth: "100%",
-        //   border: "1px solid gray",
-        //   borderRadius: "10px",
-        //   height: "104px",
-        //   p: 2,
-        //   justifyContent: "center",
-        //   textAlign: "center",
-        //   display: "flex",
+          //   maxWidth: "100%",
+          //   border: "1px solid gray",
+          //   borderRadius: "10px",
+          //   height: "104px",
+          //   p: 2,
+          //   justifyContent: "center",
+          //   textAlign: "center",
+          //   display: "flex",
         }}
       >
-        <Button variant="outlined" sx={{marginTop: 3, height
-        : 140}} fullWidth onClick={handleOpenAddress}>+Add New Address</Button>
+        <Button
+          variant="outlined"
+          sx={{ marginTop: 3, height: 140 }}
+          fullWidth
+          onClick={handleOpenAddress}
+        >
+          +Add New Address
+        </Button>
 
         <Backdrop open={openAdd}>
           <Box sx={{ background: "white" }} borderRadius={"10px"} padding={3}>
@@ -237,6 +311,9 @@ export const AddAddress = () => {
               <Button variant="contained" onClick={submit}>
                 Save
               </Button>
+              {copy ? DynamicAddress : <></>}
+              {DynamicAddress}
+              <ToastContainer />
               <Button variant="outlined" onClick={handleCloseAdderss}>
                 close
               </Button>
@@ -249,3 +326,145 @@ export const AddAddress = () => {
 };
 
 export default Address;
+
+const DynamicAddress = () => {
+  const [selectedValue, setSelectedValue] = React.useState("a");
+  const [defName, setDefName] = useState([]);
+  const [defAddress, setDefAddress] = useState([]);
+  const [edit, setEdit] = useState(false);
+
+  const finaluser = localStorage.getItem("userName") || [];
+  const finalAddress = localStorage.getItem("userAddress") || [];
+
+  const handleEdit = () => {
+    setEdit(true);
+  };
+
+  const handleEditClose = () => {
+    setEdit(false);
+  };
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  let name = localStorage.getItem("addressName");
+  let address = localStorage.getItem("addressLocation");
+
+  const handleUpdate = () => {
+    let updatedName = document.getElementById("updateName").value;
+    let updatedEmail = document.getElementById("updatedAddress").value;
+
+    localStorage.setItem("addressName", updatedName);
+    localStorage.setItem("addressLocation", updatedEmail);
+    setEdit(false);
+  };
+
+  return (
+    <Box
+      sx={{
+        my: 3,
+        mx: 2,
+        maxWidth: "100%",
+        border: "1px solid gray",
+        borderRadius: "10px",
+        p: 2,
+      }}
+    >
+      <Grid container alignItems="center">
+        {finaluser((response) => (
+          <>
+            <Grid item xs display={"flex"}>
+              <Typography gutterBottom variant="p" component="div">
+                <Radio
+                  checked={selectedValue === "b"}
+                  onChange={handleChange}
+                  value="b"
+                  name="radio-buttons"
+                  inputProps={{ "aria-label": "B" }}
+                />
+                {name}
+              </Typography>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  height: "22px",
+                  width: "auto",
+                  ml: 1,
+                  mt: 1,
+                }}
+              >
+                Home
+              </Button>
+            </Grid>
+            <Grid item>
+              <IconButton
+                aria-label="delete"
+                size="small"
+                onClick={handleEdit}
+                sx={{
+                  backgroundColor: "green",
+                  color: "white",
+                  mr: 1,
+                  borderRadius: 2,
+                  "&:hover": {
+                    background: "green",
+                  },
+                }}
+              >
+                <EditOutlined sx={{ fontSize: "large" }} />
+              </IconButton>
+              <Backdrop open={edit}>
+                <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
+                  <label>Name:</label>
+                  <br />
+                  <br />
+                  <TextField placeholder={name} id="updateName" fullWidth>
+                    {" "}
+                  </TextField>{" "}
+                  <br /> <br />
+                  <label>Address:</label>
+                  <br />
+                  <br />
+                  <TextField
+                    placeholder={address}
+                    id="updatedAddress"
+                    fullWidth
+                  ></TextField>{" "}
+                  <br /> <br />
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleUpdate}
+                  >
+                    Save
+                  </Button>
+                  <Button onClick={handleEditClose}>Close</Button>
+                </Box>
+              </Backdrop>
+
+              <IconButton
+                aria-label="delete"
+                size="small"
+                sx={{
+                  backgroundColor: "red",
+                  color: "white",
+                  borderRadius: 2,
+                  "&:hover": {
+                    background: "red",
+                  },
+                }}
+              >
+                <DeleteOutline sx={{ fontSize: "large" }} />
+              </IconButton>
+            </Grid>
+          </>
+        ))}
+      </Grid>
+      <Typography color="text.secondary" variant="body2">
+        {address}
+      </Typography>
+    </Box>
+  );
+};

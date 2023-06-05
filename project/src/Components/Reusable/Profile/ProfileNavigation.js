@@ -51,8 +51,8 @@ import "react-toastify/dist/ReactToastify.css";
 const ProfileNavigation = () => {
   const [open, setOpen] = React.useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [defname, setDefName] = useState("Murthy Bates");
-  const [defeml, setDefEml] = useState("Murthybates@gmail.com");
+  const [defname, setDefName] = useState();
+  const [defeml, setDefEml] = useState();
   const [defnum, setDefNum] = useState("+91987654321");
   const [selectedOption, setSelectedOption] = useState("");
   const [loggedOut, setLoggedOut] = useState(false);
@@ -104,6 +104,11 @@ const ProfileNavigation = () => {
     toast.success("Update Successfully...");
   };
 
+  let name = localStorage.getItem("currentuser");
+  let email = localStorage.getItem("currentemail");
+  let contact = localStorage.getItem("ContactInfo");
+
+
   const theme = useTheme();
 
   return (
@@ -136,9 +141,9 @@ const ProfileNavigation = () => {
                 </Avatar>
               </ListItemDecorator>
               <div style={{ marginLeft: 10, color: "white" }}>
-                <Typography fontSize="xl">{defname}</Typography>
-                <Typography fontSize="10px">{defeml}</Typography>
-                <Typography fontSize="10px">{defnum}</Typography>
+                <Typography fontSize="xl">{name}</Typography>
+                <Typography fontSize="10px">{email}</Typography>
+                <Typography fontSize="10px">+{contact}</Typography>
               </div>
               <Button
                 variant="outlined"
@@ -192,7 +197,6 @@ const ProfileNavigation = () => {
                         marginInlineStart: "122px",
                       }}
                     >
-                      MB
                     </Avatar>
                     <Badge>
                       <EditRoundedIcon
@@ -447,7 +451,11 @@ const ProfileNavigation = () => {
                 </ListItem>
               </Link>
               <Divider />
-              <Link fullWidth onClick={handleLogout} style={{ textDecoration: "none" }}>
+              <Link
+                fullWidth
+                onClick={handleLogout}
+                style={{ textDecoration: "none" }}
+              >
                 <ListItem
                   button
                   sx={{ paddingTop: 1, paddingBottom: 1 }}
@@ -545,9 +553,6 @@ const ProfileNavigation = () => {
             </List>
           </Box>
         </Box>
-      </Grid>
-      <Grid xs={12} md={8}>
-        HEHEHE
       </Grid>
     </Grid>
   );

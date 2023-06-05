@@ -45,7 +45,7 @@ const Booking = () => {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography
+              <Typography 
                 gutterBottom
                 variant="h6"
                 textAlign={"end"}
