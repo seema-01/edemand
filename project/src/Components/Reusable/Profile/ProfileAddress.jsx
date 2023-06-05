@@ -24,12 +24,12 @@ const ProfileAddress = () => {
   return (
     <div>
       <Container>
-        <Grid container sx={{ padding: 0 }}>
+        <Grid container spacing={3} sx={{ padding: 0 }}>
           <Grid item xs={12} md={4}>
             <ProfileNavigation />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box sx={{ mt: 3, bgcolor: theme.palette.background.box }}>
+            <Box sx={{ mt: 3, bgcolor: theme.palette.background.box, borderRadius: "10px" }}>
               <Heading heading="Select Address" />
               <Grid
                 container

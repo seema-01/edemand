@@ -37,22 +37,23 @@ const ProfileBooking = () => {
   return (
     <div>
       <Container>
-        {cartData.map((response) => (
-          <>
-            <Grid container sx={{ padding: 0 }}>
-              <Grid item xs={12} md={4}>
-                <ProfileNavigation />
-              </Grid>
-              <Grid item xs={12} md={8}>
-                <Box
-                  sx={{
-                    mt: 3,
-                    background: theme.palette.background.box,
-                    pb: 2,
-                    mb: 1,
-                  }}
-                >
-                  <Heading heading="Booking Information" />
+        <Grid spacing={3} container sx={{ padding: 0 }}>
+          <Grid item xs={12} md={4}>
+            <ProfileNavigation />
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Box
+              sx={{
+                mt: 3,
+                background: theme.palette.background.box,
+                pb: 2,
+                mb: 1,
+                borderRadius: "10px"
+              }}
+            >
+              <Heading heading="Booking Information" />
+              {cartData.map((response) => (
+                <>
 
                   <Box
                     sx={{
@@ -176,7 +177,12 @@ const ProfileBooking = () => {
                               color={""}
                             >
                               {/* set this how to add this  */}
-                              <strong>${(response.discounted_price+visiting_charge+tax)}</strong>
+                              <strong>
+                                $
+                                {response.discounted_price +
+                                  visiting_charge +
+                                  tax}
+                              </strong>
                             </Typography>
                           </Grid>
                         </Grid>
@@ -184,11 +190,11 @@ const ProfileBooking = () => {
                       </Box>
                     </Box>
                   </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </>
-        ))}
+                </>
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

@@ -81,7 +81,9 @@ const Bookmark = () => {
                 sx={{ mt: 5, mr: "auto" }}
                 variant="outlined"
                 size="small"
-                onClick={() => navigate("./")}
+                onClick={() =>
+                  navigate("/providers/services/" + response.partner_id)
+                }
               >
                 View all Services
               </Button>

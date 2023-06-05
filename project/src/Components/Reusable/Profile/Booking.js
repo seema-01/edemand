@@ -36,7 +36,7 @@ const Booking = () => {
           <Grid container alignItems="center" sx={{ ml: 1 }}>
             <Grid item xs>
               <Typography gutterBottom variant="h6" fontSize={18}>
-                <strong>{response.category_name}</strong>
+                <strong>{response.title}</strong>
               </Typography>
               <Typography gutterBottom variant="p" fontSize={16}>
                 1 * ${response.discounted_price}

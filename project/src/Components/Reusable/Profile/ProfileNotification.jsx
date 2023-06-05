@@ -18,7 +18,7 @@ const ProfileNotification = () => {
   return (
     <div>
       <Container>
-        <Grid container sx={{ padding: 0 }}>
+        <Grid container spacing={3} sx={{ padding: 0 }}>
           <Grid item xs={12} md={4}>
             <ProfileNavigation />
           </Grid>
