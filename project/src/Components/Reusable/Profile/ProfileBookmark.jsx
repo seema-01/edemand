@@ -24,7 +24,6 @@ import { useNavigate, useParams } from "react-router";
 const ProfileBookmark = () => {
   const theme = useTheme();
 
-
   const params = useParams();
   const { partner_id } = params;
 
@@ -68,7 +67,6 @@ const ProfileBookmark = () => {
                 <Heading heading="Bookmark" />
                 <Box sx={{ m: 2 }}>
                   <Bookmark /> <br />
-                 
                 </Box>
               </Box>
             </Grid>

@@ -29,6 +29,8 @@ const Booking = () => {
   };
 
 
+  // const finalValue = ;
+
   return (
     <div>
       {cartData.map((response) => (
