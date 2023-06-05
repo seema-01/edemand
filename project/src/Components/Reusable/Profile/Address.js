@@ -136,6 +136,7 @@ const Address = () => {
                 size="small"
                 sx={{
                   backgroundColor: "green",
+                  color: "white",
                   mr: 1,
                   borderRadius: 2,
                   "&:hover": {
@@ -200,19 +201,20 @@ export const AddAddress = () => {
     <>
       <Box
         sx={{
-          my: 3,
+          // my: 3,
           mx: 2,
-          maxWidth: "100%",
-          border: "1px solid gray",
-          borderRadius: "10px",
-          height: "84px",
-          p: 2,
-          justifyContent: "center",
-          textAlign: "center",
-          display: "flex",
+        //   maxWidth: "100%",
+        //   border: "1px solid gray",
+        //   borderRadius: "10px",
+        //   height: "104px",
+        //   p: 2,
+        //   justifyContent: "center",
+        //   textAlign: "center",
+        //   display: "flex",
         }}
       >
-        <Button onClick={handleOpenAddress}>+Add New Address</Button>
+        <Button variant="outlined" sx={{marginTop: 3, height
+        : 140}} fullWidth onClick={handleOpenAddress}>+Add New Address</Button>
 
         <Backdrop open={openAdd}>
           <Box sx={{ background: "white" }} borderRadius={"10px"} padding={3}>

@@ -108,12 +108,11 @@ const ProfileNavigation = () => {
 
   return (
     <Grid>
-      <Grid item xs={12} maxWidth={"lg"}>
+      <Grid item xs={12}>
         <Box display={"flex"} maxWidth={"100%"}>
           <Box
             sx={{
               width: "100%",
-              maxWidth: 360,
               bgcolor: theme.palette.background.box,
               borderRadius: "10px",
               p: 0,
@@ -546,6 +545,9 @@ const ProfileNavigation = () => {
             </List>
           </Box>
         </Box>
+      </Grid>
+      <Grid xs={12} md={8}>
+        HEHEHE
       </Grid>
     </Grid>
   );

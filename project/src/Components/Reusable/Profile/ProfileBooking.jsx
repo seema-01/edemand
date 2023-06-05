@@ -91,7 +91,7 @@ const ProfileBooking = () => {
                     </Grid>
                   </Box>
                   <br />
-                  <hr />
+                  <Divider />
 
                   <Box sx={{ pl: 3 }}>
                     <ListItem>
@@ -114,7 +114,7 @@ const ProfileBooking = () => {
                       />
                     </ListItem>
                   </Box>
-                  <hr />
+                  <Divider />
 
                   {/* my bookings  */}
                   <Box sx={{ mt: 1, ml: 3, mr: 3 }}>
@@ -122,7 +122,7 @@ const ProfileBooking = () => {
                       <Booking />
                     </Box>
                   </Box>
-                  <hr />
+                  <Divider />
 
                   <Box sx={{ background: "#CCCCFF" }}>
                     <Box sx={{ ml: 3, pt: 2, pb: 3, mr: 3 }}>

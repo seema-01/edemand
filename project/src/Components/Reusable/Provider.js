@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Box, Grid, Rating, Skeleton } from "@mui/material";
 import { ArrowRight, ArrowRightAltOutlined, Done } from "@mui/icons-material";
 import ProviderServices from "./ProviderServices";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
 import { useTheme } from "@emotion/react";
 import ProviderBookmark from "./ProviderBookmark";
@@ -39,17 +39,17 @@ export default function Provider() {
 
   //we have to apply some logic for remove data from bookmark
   const handleremove = (item) => {
-    const bookData = (localStorage.getItem("bookmark") || []);
+    const bookData = localStorage.getItem("bookmark") || [];
     bookData.pop(item);
     localStorage.removeItem("bookmark", item);
-  } 
+  };
 
   useEffect(() => {
     ApiProviders();
   }, []);
 
   const theme = useTheme();
-
+  const navigate = useNavigate();
   console.log("Bookmark" + bookmart);
   return (
     <Box
@@ -66,6 +66,9 @@ export default function Provider() {
                 <Card
                   key={response.id}
                   sx={{ maxWidth: 345, display: "inline-block" }}
+                  onClick={() =>
+                    navigate("/providers/services/" + response.partner_id)
+                  }
                 >
                   <Box
                     sx={{
