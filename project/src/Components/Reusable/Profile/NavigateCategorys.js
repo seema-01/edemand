@@ -19,14 +19,26 @@ import {
   CardMedia,
   Container,
   Grid,
+  IconButton,
   Link,
   Skeleton,
   Typography,
 } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
 const NavigateCategorys = ({ match }) => {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [swiper, setSwiper] = React.useState(null);
+
+  const nextSlide = () => {
+    swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiper.slidePrev();
+  };
 
   const params = useParams();
   // add as a object because it is multiple
@@ -80,18 +92,45 @@ const NavigateCategorys = ({ match }) => {
               {title.map((response) => {
                 if (response.id == `${id}`) {
                   return (
-                    <>
-                      <Typography
-                        fontSize={theme.palette.fonts.h1}
-                        fontWeight={500}
-                      >
-                        {response.name}
-                      </Typography>
-                      <hr color="whitesmoke" />
-                    </>
+                    <Box display={"flex"} justifyContent={"space-between"}>
+                      <Box display={"flex"} justifyContent={"space-between"}>
+                        <Typography
+                          fontSize={theme.palette.fonts.h1}
+                          fontWeight={500}
+                        >
+                          {response.name}
+                        </Typography>
+                      </Box>
+                      <Box>
+                        <span
+                          className="previous-next-btn"
+                          sx={{ marginLeft: "auto" }}
+                        >
+                          <IconButton
+                            aria-label="delete"
+                            color="primary"
+                            onClick={() => prevSlide()}
+                          >
+                            <ArrowBackIosIcon
+                              sx={{ color: theme.palette.color.navLink }}
+                            />
+                          </IconButton>
+                          <IconButton
+                            aria-label="delete"
+                            color="primary"
+                            onClick={() => nextSlide()}
+                          >
+                            <ArrowForwardIosIcon
+                              sx={{ color: theme.palette.color.navLink }}
+                            />
+                          </IconButton>
+                        </span>
+                      </Box>
+                    </Box>
                   );
                 }
               })}
+              <hr color="whitesmoke" />
             </Box>
           ) : (
             <Box sx={{ width: 200 }}>
@@ -108,11 +147,14 @@ const NavigateCategorys = ({ match }) => {
           <Swiper
             slidesPerView={5}
             freeMode={true}
-            navigation={true}
+            // navigation={true}
             style={{
               height: "auto",
             }}
-            modules={[Navigation]}
+            onSwiper={(s) => {
+              console.log("initialize swiper", s);
+              setSwiper(s);
+            }}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -122,11 +164,11 @@ const NavigateCategorys = ({ match }) => {
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 4,
+                slidesPerView: 3,
                 spaceBetween: 30,
               },
               1024: {
-                slidesPerView: 5,
+                slidesPerView: 4,
                 spaceBetween: 30,
               },
             }}
@@ -142,11 +184,11 @@ const NavigateCategorys = ({ match }) => {
                       }}
                     >
                       <Card
-                        sx={{ width: 200, height: 200, borderRadius: "10px" }}
+                        sx={{ width: 240, height: 200, borderRadius: "10px" }}
                       >
                         <img
                           src={response.category_image}
-                          title="Services"
+                          title={response.name}
                           style={{
                             height: "100%",
                             width: "100%",

@@ -16,6 +16,7 @@ import {
   Tabs,
   Tab,
   Badge,
+  Divider,
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -66,7 +67,7 @@ const label = { inputProps: { "area-label": "switch demo" } };
 const Navigation = ({ check, changeLight, changeDark }) => {
   let id = localStorage.getItem("Data");
   const input = document.querySelector("#phone");
- 
+
   const [open, setOpen] = React.useState(false);
   const [login, isLogin] = React.useState(false);
   const [openSetting, setOpenSetting] = useState(false);
@@ -106,7 +107,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   // mode change toggle
   const [view, setView] = React.useState("list");
-  // tsx file 
+  // tsx file
   // const handleChange = (
   //   event: React.MouseEvent<HTMLElement>,
   //   nextView: string
@@ -177,6 +178,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const islogined = localStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
 
+  const myLink = {
+    color: theme.palette.color.navLink,
+    textDecoration: "none",
+  };
+
   return (
     <Box>
       <AppBar
@@ -194,7 +200,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   color="inherit"
                   aria-label="open-drawer"
                   edge="start"
-                  sx={{ mr: 2, display: { md: "none" } }}
+                  sx={{ mr: 2, display: { lg: "none" } }}
                   onClick={() => setOpen(true)}
                 >
                   <MenuIcon />
@@ -203,17 +209,33 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 {/* Set logo and burger menu in one side */}
                 <div>
                   <Drawer open={open} onClose={() => setOpen(false)}>
-                    <List>
-                      <ListItemButton href="/">Home</ListItemButton>
-                      <ListItemButton href="/about">About us</ListItemButton>
-                      <ListItemButton href="/categorys">
+                    <Box display={"block"} width={140} padding={3} marginLeft={3}>
+                      <NavLink style={myLink} to="/">
+                        Home
+                      </NavLink>
+                      <br />
+                      <br />
+                      <NavLink style={myLink} to="/about">
+                        About us
+                      </NavLink>
+                      <br />
+                      <br />
+                      <NavLink style={myLink} to="/categorys">
                         Categories
-                      </ListItemButton>
-                      <ListItemButton href="/providers">
+                      </NavLink>
+                      <br />
+                      <br />
+                      <NavLink style={myLink} to="/providers">
                         Providers
-                      </ListItemButton>
-                      <ListItemButton href="/contact">Contact</ListItemButton>
-                    </List>
+                      </NavLink>
+                      <br />
+                      <br />
+                      <NavLink style={myLink} to="/contact">
+                        Contact
+                      </NavLink>
+                      <br />
+                      <br />
+                    </Box>
                   </Drawer>
 
                   {/* # PC Navigation  */}
@@ -330,10 +352,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         <br />
                         <h3>No Products here!</h3>
                         <br />
-                          Your cart is empt.y. Login & Add products <br /> to that we
-                        <h4 style={{ color: "gray" }}>
-                          can serve you! 
-                        </h4>
+                        Your cart is empt.y. Login & Add products <br /> to that
+                        we
+                        <h4 style={{ color: "gray" }}>can serve you!</h4>
                         {/* <Button variant="contained" sx={{ marginTop: "50px" }}>
                        ADD NEW
                      </Button> */}

@@ -19,6 +19,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, useStripe } from "@stripe/react-stripe-js";
 import StripeCheckout from "react-stripe-checkout";
 import { PaystackButton } from "react-paystack";
+import { loadScript } from "@paypal/paypal-js";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const steps = ["Select The Address", "Confirm Your Payment"];
 
@@ -28,7 +30,7 @@ export default function PaymentPage() {
     "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
   );
   const publicKey = "pk_test_0c7a420e09aff08160ec866529f03a13eeaabc6a";
-  const amount = 1000000
+  const amount = 1000000;
   const componentProps = {
     publicKey,
     amount,
@@ -36,7 +38,6 @@ export default function PaymentPage() {
     // amount: 100,
     text: "Pay Now",
     email: "xyz@gmail.com",
-
     onSuccess: () =>
       alert("Thanks for doing business with us! Come back soon!!"),
   };
@@ -88,32 +89,6 @@ export default function PaymentPage() {
     window.Razorpay.open(options);
   };
 
-  // payment of PayStack
-  // function payWithPaystack(e) {
-  //   e.preventDefault();
-
-  //   let handler = PaystackPop.setup({
-  //     key: "pk_test_xxxxxxxxxx", // Replace with your public key
-  //     amount: 100,
-  //     // amount: document.getElementById("amount").value * 100,
-  //     ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-
-  //     // label: "Optional string that replaces customer email"
-
-  //     onClose: function () {
-  //       alert("Window closed.");
-  //     },
-
-  //     callback: function (response) {
-  //       let message = "Payment complete! Reference: " + response.reference;
-
-  //       alert(message);
-  //     },
-  //   });
-
-  //   handler.openIframe();
-  // }
-
   const handleStripePayment = async () => {
     const stripe = await loadStripe(
       "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
@@ -132,7 +107,6 @@ export default function PaymentPage() {
   const onToken = (token) => {
     console.log(token);
   };
-  
 
   return (
     <Box
@@ -186,18 +160,18 @@ export default function PaymentPage() {
                         container
                         spacing={2}
                         justifyContent={"space-around"}
+                        display={"flex"}
                       >
                         <Grid item spacing={2}>
-                          <Button color="primary">
-                            <img
-                              src={require("../../Images/PayPal.png")}
-                              alt="paypal"
-                              width="200px"
-                              height="80px"
-                              style={{ borderRadius: "10px" }}
-                            />{" "}
-                          </Button>
-
+                          <Box>
+                            <PayPalScriptProvider
+                              options={{ "client-id": "test" }}
+                            >
+                              <PayPalButtons
+                                style={{ height: 50, width: 200 }}
+                              />
+                            </PayPalScriptProvider>
+                          </Box>
                           <Button color="primary" onClick={handlePayment}>
                             <img
                               src={require("../../Images/RazorPay.png")}
@@ -205,38 +179,47 @@ export default function PaymentPage() {
                               width="200px"
                               height="80px"
                               style={{ borderRadius: "10px" }}
-                            />{" "}
-                          </Button>
-
-                          <Button color="primary">
-                            <PaystackButton {...componentProps}>
-                              <img
-                                src={require("../../Images/PayStack.png")}
-                                alt="payStack"
-                                width="200px"
-                                height="80px"
-                                style={{ borderRadius: "10px" }}
-                              />{" "}
-                            </PaystackButton>
+                            />
                           </Button>
 
                           {/* Stripe payment Error */}
-                          <Elements stripe={stripePromise}>
-                            <StripeCheckout
-                              token={onToken}
-                              stripeKey="pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
-                            >
-                              <img
-                                src={require("../../Images/Stripe.png")}
-                                alt="Stripe"
-                                width="200px"
-                                height="80px"
-                                style={{ borderRadius: "10px" }}
-                              />
-                            </StripeCheckout>
-                          </Elements>
+                          <Box>
+                            <Elements stripe={stripePromise}>
+                              <StripeCheckout
+                                token={onToken}
+                                stripeKey="pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
+                              >
+                                <img
+                                  src={require("../../Images/Stripe.png")}
+                                  alt="Stripe"
+                                  width="200px"
+                                  height="80px"
+                                  style={{ borderRadius: "10px" }}
+                                />
+                              </StripeCheckout>
+                            </Elements>
+
+                            <Box>
+                        {/* <img
+                              src={require("../../Images/PayStack.png")}
+                              alt="payStack"
+                              width="200px"
+                              height="80px"
+                              style={{ borderRadius: "10px" }}
+                            />{" "} */}
+                        <Button color="primary">
+                          <PaystackButton 
+                            data-custom-button=""
+                            image={require("../../Images/PayStack.png")}
+                            {...componentProps}
+                          ></PaystackButton>
+                        </Button>
+                      </Box>
+                          </Box>
                         </Grid>
                       </Grid>
+
+                    
                     </React.Fragment>
                   </Box>
                 )}

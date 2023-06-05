@@ -19,7 +19,7 @@ import { Navigation, Pagination } from "swiper";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
@@ -42,11 +42,9 @@ const FetchingCategorys = () => {
 
   const theme = useTheme();
 
-
   return (
     <Container>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
-     
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
             sx={{ marginBottom: 1, fontSize: theme.palette.fonts.h1 }}
@@ -61,14 +59,16 @@ const FetchingCategorys = () => {
                 color="primary"
                 onClick={() => prevSlide()}
               >
-                <ArrowBackIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
               </IconButton>
               <IconButton
                 aria-label="delete"
                 color="primary"
                 onClick={() => nextSlide()}
               >
-                <ArrowForwardIosIcon sx={{color: theme.palette.color.navLink}}/>
+                <ArrowForwardIosIcon
+                  sx={{ color: theme.palette.color.navLink }}
+                />
               </IconButton>
             </span>
           </Box>

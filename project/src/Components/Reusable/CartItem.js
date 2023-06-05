@@ -28,7 +28,7 @@ const CartItem = () => {
                   <img
                     src={response.image_of_the_service}
                     height={100}
-                    width={100}
+                    width={140}
                   />
                 </CardMedia>
                 <CardContent>

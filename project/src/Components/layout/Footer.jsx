@@ -15,7 +15,11 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useTheme } from "@emotion/react";
+import { th } from "date-fns/locale";
+
 const Footer = () => {
+  const theme = useTheme();
   return (
     <>
       <Box
@@ -103,7 +107,7 @@ const Footer = () => {
             <br />
             <TextField
               fontSize={"20px"}
-              sx={{ background: "white", borderRadius: "10px", marginTop: 3 }}
+              sx={{ background: theme.palette.background.box, borderRadius: "10px", marginTop: 3 }}
               placeholder="Enter Email"
               size="small"
               fullWidth
