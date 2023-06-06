@@ -36,7 +36,8 @@ const ProfileBooking = () => {
   const tax = 10;
   const visiting_charge = 20;
 
-  const sub_total = 0;
+  const sub_total = localStorage.getItem("totalPrice");
+  const total = parseInt(sub_total) + tax + visiting_charge;
 
   return (
     <div>
@@ -70,15 +71,15 @@ const ProfileBooking = () => {
                 {" "}
                 <>
                   <Box sx={{ my: 1, mx: 2, display: "flex" }}>
-                    <img
+                    {/* <img
                       src={require("../../../Images/Booking.jpg")}
                       height={80}
                       width={80}
                       style={{ borderRadius: "10px" }}
                       alt=""
-                    />
-                    <Grid container alignItems="center" sx={{ ml: 1 }}>
-                      <Grid item xs>
+                    /> */}
+                    <Grid container alignItems="center">
+                      <Grid item xs display={"flex"} justifyContent={"center"} textAlign={"center"}>
                         <Typography gutterBottom variant="h4" component="div">
                           Your Booking Info
                         </Typography>
@@ -152,13 +153,7 @@ const ProfileBooking = () => {
                             fontSize={18}
                             color={"grey"}
                           >
-                            {
-                              cartData.map((response) => {
-                                return(
-                                  <p>{response.dicounted_price}</p>
-                                )
-                              })
-                            }
+                            ${sub_total}
                           </Typography>
                           <Typography
                             gutterBottom
@@ -186,8 +181,7 @@ const ProfileBooking = () => {
                             fontSize={18}
                             color={""}
                           >
-                            {/* set this how to add this  */}
-                            <strong>${visiting_charge + tax + 300}</strong>
+                            <strong>${total}</strong>
                           </Typography>
                         </Grid>
                       </Grid>

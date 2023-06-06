@@ -7,41 +7,93 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const CartItem = () => {
-  const cartData = JSON.parse(localStorage.getItem("cart")) || [];
 
+const CartItem = ({ item, onDelete }) => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const totalPrice = item.discounted_price * quantity;
+  
+
+  return (
+    <Box>
+      <Card sx={{ display: "flex" }}>
+        <CardMedia>
+          <img src={item.image_of_the_service} height={100} width={140} />
+        </CardMedia>
+        <CardContent>
+          <Typography>{item.title}</Typography>
+          <Typography>${item.discounted_price}</Typography>
+          <Box display="flex" alignItems="center" marginTop={2}>
+            <Button onClick={handleDecrement}>-</Button>
+            <Typography variant="body2">{quantity}</Typography>
+            <Button onClick={handleIncrement}>+</Button>
+          </Box>
+          <Typography variant="body2">Total: ${totalPrice}</Typography>
+          <Button onClick={() => onDelete(item.id)}>Delete</Button>
+        </CardContent>
+      </Card>
+      <br />
+    </Box>
+  );
+};
+
+// Rest of the code...
+
+const Cart = () => {
+  const [cartData, setCartData] = useState(() => {
+    const storedCartData = JSON.parse(localStorage.getItem("cart"));
+    return storedCartData || [];
+  });
   const navigate = useNavigate();
+
+  // Filter out duplicate items based on their IDs
+  const distinctCartData = Array.from(
+    new Set(cartData.map((item) => item.id))
+  ).map((id) => cartData.find((item) => item.id === id));
+
+  const handleAddToCart = (item) => {
+    setCartData((prevCartData) => {
+      const updatedCartData = [...prevCartData, item];
+      localStorage.setItem("cart", JSON.stringify(updatedCartData));
+      return updatedCartData;
+    });
+  };
+
+  const handleDelete = (itemId) => {
+    setCartData((prevCartData) => {
+      const updatedCartData = prevCartData.filter((item) => item.id !== itemId);
+      localStorage.setItem("cart", JSON.stringify(updatedCartData));
+      return updatedCartData;
+    });
+  };
+
   return (
     <div>
       <Box padding={1}>
         <Typography variant="h4">Cart</Typography>
         <Divider />
         <br />
-        {cartData.map((response) => (
-          <>
-            <Box>
-              <Card sx={{ display: "flex" }}>
-                <CardMedia>
-                  <img
-                    src={response.image_of_the_service}
-                    height={100}
-                    width={140}
-                  />
-                </CardMedia>
-                <CardContent>
-                  <Typography>{response.title}</Typography>
-                  <Typography>${response.discounted_price}</Typography>
-                </CardContent>
-              </Card>
-              <br />
-            </Box>
-          </>
+        {distinctCartData.map((item) => (
+          <CartItem item={item} key={item.id} onDelete={handleDelete} />
         ))}
-
-        <Button fullWidth variant="contained" onClick={() => navigate('/providers/services/payment')}>
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={() => navigate("/providers/services/payment")}
+        >
           Continue
         </Button>
       </Box>
@@ -49,4 +101,4 @@ const CartItem = () => {
   );
 };
 
-export default CartItem;
+export default Cart;

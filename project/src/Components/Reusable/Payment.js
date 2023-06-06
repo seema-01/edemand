@@ -25,12 +25,13 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 const steps = ["Select The Address", "Confirm Your Payment"];
 
 export default function PaymentPage() {
+  const amount = localStorage.getItem("totalPrice") * 100;
+
   const [activeStep, setActiveStep] = React.useState(0);
   const stripePromise = loadStripe(
     "pk_test_51Hh90WLYfObhNTTwooBHwynrlfiPo2uwxyCVqGNNCWGmpdOHuaW4rYS9cDldKJ1hxV5ik52UXUDSYgEM66OX45550065US7tRX"
   );
   const publicKey = "pk_test_0c7a420e09aff08160ec866529f03a13eeaabc6a";
-  const amount = 1000000;
   const componentProps = {
     publicKey,
     amount,
@@ -67,7 +68,7 @@ export default function PaymentPage() {
     const options = {
       key: "rzp_test_k94uzC2zWjNsrD",
       //here we have to fetch data from cart and show payable amount
-      amount: 10000, // Amount in paise (e.g., 10000 paise = ₹100)
+      amount, // Amount in paise (e.g., 10000 paise = ₹100)
       currency: "INR",
       name: "eDemmand",
       description: "Payment for Your Product",
@@ -200,26 +201,24 @@ export default function PaymentPage() {
                             </Elements>
 
                             <Box>
-                        {/* <img
+                              {/* <img
                               src={require("../../Images/PayStack.png")}
                               alt="payStack"
                               width="200px"
                               height="80px"
                               style={{ borderRadius: "10px" }}
                             />{" "} */}
-                        <Button color="primary">
-                          <PaystackButton 
-                            data-custom-button=""
-                            image={require("../../Images/PayStack.png")}
-                            {...componentProps}
-                          ></PaystackButton>
-                        </Button>
-                      </Box>
+                              <Button color="primary">
+                                <PaystackButton
+                                  data-custom-button=""
+                                  image={require("../../Images/PayStack.png")}
+                                  {...componentProps}
+                                ></PaystackButton>
+                              </Button>
+                            </Box>
                           </Box>
                         </Grid>
                       </Grid>
-
-                    
                     </React.Fragment>
                   </Box>
                 )}
@@ -234,12 +233,6 @@ export default function PaymentPage() {
                   Back
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                {/* {isStepOptional(activeStep) && (
-                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                    Skip
-                  </Button>
-                )} */}
-
                 <Button onClick={handleNext}>
                   {activeStep === steps.length - 1 ? "Finish" : "Next"}
                 </Button>

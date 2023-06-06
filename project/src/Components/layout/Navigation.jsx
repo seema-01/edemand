@@ -40,7 +40,8 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import CartItem from "../Reusable/CartItem";
+// import CartItem from "../Reusable/CartItem";
+import Cart from "../Reusable/CartItem";
 
 //for creating logo
 const StyledToolBar = styled(Toolbar)({
@@ -365,7 +366,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
                     {/* <Cart /> */}
                     <Box sx={{ width: 400 }}>
-                      <CartItem />
+                      <Cart/>
                     </Box>
                   </Drawer>
                 )}

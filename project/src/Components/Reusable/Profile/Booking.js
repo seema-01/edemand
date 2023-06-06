@@ -24,12 +24,14 @@ const Booking = () => {
   };
   const [file, setFile] = React.useState(null);
   const cartData = JSON.parse(localStorage.getItem("cart")) || [];
-  const handleChange = (newFile) => {
-    setFile(newFile);
-  };
 
+  // Calculate total discounted price
+  const totalDiscountedPrice = cartData.reduce(
+    (total, response) => total + parseFloat(response.discounted_price),
+    0
+  );
 
-  // const finalValue = ;
+  localStorage.setItem("totalPrice" , totalDiscountedPrice)
 
   return (
     <div>
@@ -45,7 +47,7 @@ const Booking = () => {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography 
+              <Typography
                 gutterBottom
                 variant="h6"
                 textAlign={"end"}
@@ -54,11 +56,36 @@ const Booking = () => {
               >
                 <strong>${response.discounted_price}</strong>
               </Typography>
-              {/* <Button size="small" onClick={handleOpen} variant="contained">
-                Rate
-              </Button> */}
+            </Grid>
+          </Grid>
+          <br />
+        </>
+      ))}
 
-              {/* <Drawer anchor="right" open={open}>
+      {/* Display total discounted price */}
+      <Typography
+        gutterBottom
+        variant="h6"
+        textAlign={"end"}
+        fontSize={18}
+        color={"blue"}
+      >
+        <strong>Total: ${totalDiscountedPrice}</strong>
+      </Typography>
+    </div>
+  );
+};
+
+export default Booking;
+
+{
+  /* <Button size="small" onClick={handleOpen} variant="contained">
+                Rate
+              </Button> */
+}
+
+{
+  /* <Drawer anchor="right" open={open}>
                 <Box marginLeft={3} marginRight={3}>
                   <Box display={"flex"} width="500px" marginTop={3}>
                     {
@@ -196,15 +223,5 @@ const Booking = () => {
                     </Button>
                   </Box>
                 </Box>
-              </Drawer> */}
-              
-            </Grid>
-          </Grid>
-          <br />
-        </>
-      ))}
-    </div>
-  );
-};
-
-export default Booking;
+              </Drawer> */
+}
