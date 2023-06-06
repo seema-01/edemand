@@ -36,6 +36,8 @@ const ProfileBooking = () => {
   const tax = 10;
   const visiting_charge = 20;
 
+  const sub_total = 0;
+
   return (
     <div>
       <Container>
@@ -150,7 +152,13 @@ const ProfileBooking = () => {
                             fontSize={18}
                             color={"grey"}
                           >
-                            $300
+                            {
+                              cartData.map((response) => {
+                                return(
+                                  <p>{response.dicounted_price}</p>
+                                )
+                              })
+                            }
                           </Typography>
                           <Typography
                             gutterBottom
@@ -170,6 +178,7 @@ const ProfileBooking = () => {
                           >
                             ${visiting_charge}
                           </Typography>
+                          <Divider />
                           <Typography
                             gutterBottom
                             variant="h6"

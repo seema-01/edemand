@@ -183,6 +183,8 @@ export const HomeProvider = () => {
   const [provider, setProvider] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const ApiProviders = () => {
     api
       .get_home_providers()
@@ -214,6 +216,9 @@ export const HomeProvider = () => {
             return (
               <>
                 <Card
+                  onClick={() =>
+                    navigate("/providers/services/" + response.partner_id)
+                  }
                   key={response.id}
                   sx={{ maxWidth: 345, display: "inline-block" }}
                 >

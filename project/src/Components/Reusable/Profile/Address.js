@@ -44,8 +44,8 @@ const Address = () => {
     setSelectedValue(event.target.value);
   };
 
-  let name = localStorage.getItem("addressName");
-  let address = localStorage.getItem("addressLocation");
+  let name = localStorage.getItem("userName");
+  let address = localStorage.getItem("userAddress");
 
   const handleUpdate = () => {
     let updatedName = document.getElementById("updateName").value;
@@ -59,9 +59,7 @@ const Address = () => {
   return (
     <div>
       <Box>
-        {/* Section 2 */}
-        {/* Dynamic Section */}
-
+        {/* Default Section */}
         <Box
           sx={{
             my: 3,
@@ -82,7 +80,7 @@ const Address = () => {
                   name="radio-buttons"
                   inputProps={{ "aria-label": "B" }}
                 />
-                {name}
+                Your name
               </Typography>
               <Button
                 variant="outlined"
@@ -179,7 +177,7 @@ const Address = () => {
             </Grid>
           </Grid>
           <Typography color="text.secondary" variant="body2">
-            {address}
+            Your Address
           </Typography>
         </Box>
         <DynamicAddress />
@@ -214,7 +212,7 @@ export const AddAddress = () => {
     userName.push(name);
     userAdderss.push(location);
     localStorage.setItem("userName", JSON.stringify(userName));
-    localStorage.setItem("userAddress", JSON.stringify(userAdderss));
+    localStorage.setItem(" ", JSON.stringify(userAdderss));
 
     toast.done("Address Added Success");
     setCopy(true);
@@ -291,6 +289,7 @@ const DynamicAddress = () => {
     setEdit(false);
   };
 
+ 
 
   useEffect(() => {
     const storedAddresses = localStorage.getItem("addresses");
@@ -315,12 +314,20 @@ const DynamicAddress = () => {
     }
   };
 
+  const handleDeleteAddress = (index) => {
+    const updatedAddressList = [...addressList];
+    updatedAddressList.splice(index, 1);
+    setAddressList(updatedAddressList);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+    isDeleteItem(true)
+  };
+
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
 
   return (
-    <ul>
+    <>
       {addressList.map((address, index) => (
         <Box
           sx={{
@@ -431,7 +438,7 @@ const DynamicAddress = () => {
                     <Button
                       variant="contaied"
                       color="error"
-                      onClick={handleDeleteClose}
+                      onClick={handleDeleteAddress}
                     >
                       Delete
                     </Button>
@@ -446,7 +453,7 @@ const DynamicAddress = () => {
           </Typography>{" "}
         </Box>
       ))}
-    </ul>
+    </>
   );
 };
 

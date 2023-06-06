@@ -9,7 +9,7 @@ const Logout = () => {
   const theme = useTheme();
 
   const handleLogout = () => {
-    localStorage.removeItem("ContactInfo");
+    localStorage.setItem("ContactInfo",'');
     localStorage.setItem("isLoggedIn",'');
   };
   return (
