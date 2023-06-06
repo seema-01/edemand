@@ -27,6 +27,8 @@ import theme, { darkTheme, lightTheme } from "./Theme";
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
 import NavigateCategorys from "./Components/Reusable/Profile/NavigateCategorys";
+import Logout from "./Pages/Logout";
+import DeleteAccount from "./Pages/DeleteAccount";
 // import Logout from "./Components/layout/Logout";
 // import Countervalue from "./reducer/Countervalue";
 // import HandleSubmit, { GetCities } from "./Components/Reusable/Firebase";
@@ -136,6 +138,10 @@ function App() {
                     </>
                   }
                 ></Route>
+                <Route path="/profile/logout" element={<Logout/>}>
+                  </Route>
+                <Route path="/profile/delete" element={<DeleteAccount/>}>
+                  </Route>
 
                 {/* 404 Page Not Found */}
                 <Route path="/*" element={<PageNotFound />}></Route>

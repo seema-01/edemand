@@ -124,7 +124,7 @@ const ProfileBooking = () => {
                   </Box>
                   <Divider />
 
-                  <Box sx={{ background: "#CCCCFF" }}>
+                  <Box sx={{ background: "#f9f8f8" }}>
                     <Box sx={{ ml: 3, pt: 2, pb: 3, mr: 3 }}>
                       <Grid container alignItems="center" sx={{ ml: 1 }}>
                         <Grid item xs>

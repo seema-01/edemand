@@ -18,6 +18,7 @@ import {
   TextField,
   Badge,
   Modal,
+  Skeleton,
 } from "@mui/material";
 import {
   Dashboard,
@@ -108,8 +109,9 @@ const ProfileNavigation = () => {
   let email = localStorage.getItem("currentemail");
   let contact = localStorage.getItem("ContactInfo");
 
-
   const theme = useTheme();
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   return (
     <Grid>
@@ -137,14 +139,19 @@ const ProfileNavigation = () => {
                     border: "5px solid white",
                   }}
                 >
-                  MB
                 </Avatar>
               </ListItemDecorator>
-              <div style={{ marginLeft: 10, color: "white" }}>
-                <Typography fontSize="xl">{name}</Typography>
-                <Typography fontSize="10px">{email}</Typography>
-                <Typography fontSize="10px">+{contact}</Typography>
-              </div>
+              {isLoggedIn === "" ? (
+                <Skeleton variant="rectangular" />
+
+              ) : (
+                <div style={{ marginLeft: 10, color: "white" }}>
+                  <Typography fontSize="xl">{name}</Typography>
+                  <Typography fontSize="10px">{email}</Typography>
+                  <Typography fontSize="10px">+{contact}</Typography>
+                </div>
+              )}
+
               <Button
                 variant="outlined"
                 size="small"
@@ -196,8 +203,7 @@ const ProfileNavigation = () => {
                         marginBottom: "30px",
                         marginInlineStart: "122px",
                       }}
-                    >
-                    </Avatar>
+                    ></Avatar>
                     <Badge>
                       <EditRoundedIcon
                         sx={{
@@ -453,7 +459,7 @@ const ProfileNavigation = () => {
               <Divider />
               <Link
                 fullWidth
-                onClick={handleLogout}
+                to={"/profile/logout"}
                 style={{ textDecoration: "none" }}
               >
                 <ListItem
@@ -466,7 +472,7 @@ const ProfileNavigation = () => {
                   </ListItemIcon>
 
                   <Link
-                    // to={"/profile/logout"}
+                    to={"/profile/logout"}
                     style={{
                       textDecoration: "none",
                       color: theme.palette.color.navLink,
@@ -476,35 +482,6 @@ const ProfileNavigation = () => {
                   >
                     Logout
                   </Link>
-
-                  <Modal open={isVisible} onClose={handleLogoutCancel}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-around",
-                      }}
-                    >
-                      <div
-                        style={{
-                          marginTop: "20%",
-                          background: "white",
-                          padding: 12,
-                          borderRadius: "10px",
-                        }}
-                      >
-                        <p>Are you sure you want to log out?</p> <br />
-                        <Button
-                          variant="contained"
-                          color="error"
-                          onClick={handleLogoutConfirm}
-                        >
-                          Confirm
-                        </Button>
-                        &nbsp;
-                        <Button onClick={handleLogoutCancel}>Cancle</Button>
-                      </div>
-                    </div>
-                  </Modal>
 
                   <IconButton
                     sx={{

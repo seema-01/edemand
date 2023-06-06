@@ -7,7 +7,7 @@ const Heading = (props) => {
       <Typography variant="h5" sx={{ ml: 3, mb: 2, pt: 2 }}>
         {props.heading}
       </Typography>
-      <hr />
+      <hr color="#dfdfdf"/>
       <br />
     </div>
   );

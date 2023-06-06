@@ -13,7 +13,7 @@ const lightTheme = createTheme({
       paper: "#f2f1f6", // Set the color of the paper background
       box: "white",
       card: "white",
-      addressBox: "#FAF1EB",
+      addressBox: "#Fdfdfd",
       input: "#3d3f48"
     },
     color: {

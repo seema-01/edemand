@@ -21,7 +21,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -57,6 +57,7 @@ const FetchingServies = () => {
   }, []);
 
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -160,6 +161,8 @@ const FetchingServies = () => {
                           objectFit: "cover",
                           display: "flex",
                         }}
+                        // we have to implemenmt provider/service/...
+                        onClick={() => navigate("./categorys/213")}
                       />
                       <Box marginTop={-5} textAlign={"center"}>
                         <Typography

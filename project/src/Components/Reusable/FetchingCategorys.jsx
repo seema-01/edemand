@@ -16,7 +16,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -41,6 +41,7 @@ const FetchingCategorys = () => {
   }, []);
 
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -119,6 +120,7 @@ const FetchingCategorys = () => {
                   >
                     <Card
                       key={response.id}
+                      onClick={() => navigate("/categorys/" + response.id)}
                       sx={{
                         mt: 3,
                         mb: 2,
@@ -132,6 +134,7 @@ const FetchingCategorys = () => {
                       <img
                         src={response.category_image}
                         title={response.name}
+                        //  onClick={navigate("./categorys/213")}
                         style={{
                           maxHeight: "100%",
                           maxWidth: "100%",

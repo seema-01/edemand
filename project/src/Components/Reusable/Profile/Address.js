@@ -20,6 +20,7 @@ const Address = () => {
   const [defName, setDefName] = useState([]);
   const [defAddress, setDefAddress] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [deleteItem, isDeleteItem] = useState(false);
 
   const handleEdit = () => {
     setEdit(true);
@@ -27,6 +28,14 @@ const Address = () => {
 
   const handleEditClose = () => {
     setEdit(false);
+  };
+
+  const handleDelete = () => {
+    isDeleteItem(true);
+  };
+
+  const handleDeleteClose = () => {
+    isDeleteItem(false);
   };
 
   const handleChange = (event) => {
@@ -216,9 +225,23 @@ const Address = () => {
                     background: "red",
                   },
                 }}
+                onClick={handleDelete}
               >
                 <DeleteOutline sx={{ fontSize: "large" }} />
               </IconButton>
+              <Backdrop open={deleteItem}>
+                <Box sx={{background: "white", p:4}}>
+                  <Typography>
+                    {" "}
+                    Are You Sure You Want to Delete This Address ?
+                  </Typography>
+                  {/* for now we just write to close this box when user click on delete  */}
+                  <Button variant="contaied" color="error" onClick={handleDeleteClose}>
+                    Delete
+                  </Button>
+                  <Button onClick={handleDeleteClose}>Close</Button>
+                </Box>
+              </Backdrop>
             </Grid>
           </Grid>
           <Typography color="text.secondary" variant="body2">

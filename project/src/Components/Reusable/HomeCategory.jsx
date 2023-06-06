@@ -122,8 +122,7 @@ const HomeCategory = () => {
                     onClick={() => navigate("/providers")}
                     endIcon={<EastIcon />}
                   >
-                    {" "}
-                    View all Proiders
+                    View all Providers
                   </Button>
                 </Box>
               </Box>

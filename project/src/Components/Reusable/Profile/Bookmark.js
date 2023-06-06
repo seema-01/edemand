@@ -17,6 +17,12 @@ const Bookmark = () => {
   const navigate = useNavigate();
   return (
     <div>
+      {/* Empty state  */}
+      {bookData=== '' ? (
+        <>
+          <img src={require('../../../Images/bookmark.jpg')} />
+        </>
+      ) : (<>SomeThing </>)}
       {bookData.map((response) => (
         <>
           <Card
