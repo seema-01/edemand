@@ -191,7 +191,6 @@ const Address = () => {
                   <br />
                   <br />
                   <TextField placeholder={name} id="updateName" fullWidth>
-                    {" "}
                   </TextField>{" "}
                   <br /> <br />
                   <label>Address:</label>
@@ -232,7 +231,6 @@ const Address = () => {
               <Backdrop open={deleteItem}>
                 <Box sx={{background: "white", p:4}}>
                   <Typography>
-                    {" "}
                     Are You Sure You Want to Delete This Address ?
                   </Typography>
                   {/* for now we just write to close this box when user click on delete  */}
@@ -444,7 +442,6 @@ const DynamicAddress = () => {
                   <br />
                   <br />
                   <TextField placeholder={name} id="updateName" fullWidth>
-                    {" "}
                   </TextField>{" "}
                   <br /> <br />
                   <label>Address:</label>
