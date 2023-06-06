@@ -20,6 +20,7 @@ import {
 } from "@mui/icons-material";
 import Bookmark from "./Bookmark";
 import { useNavigate, useParams } from "react-router";
+import Pnavigation from "./Pnavigation";
 
 const ProfileBookmark = () => {
   const theme = useTheme();
@@ -54,7 +55,7 @@ const ProfileBookmark = () => {
         <Container>
           <Grid container spacing={3} sx={{ padding: 0 }}>
             <Grid item xs={12} md={4}>
-              <ProfileNavigation />
+              <Pnavigation />
             </Grid>
             <Grid item xs={12} md={8}>
               <Box

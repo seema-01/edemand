@@ -9,10 +9,12 @@ import {
   IconButton,
   Modal,
   Radio,
+  RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 const Address = () => {
@@ -57,79 +59,6 @@ const Address = () => {
   return (
     <div>
       <Box>
-        <Box
-          sx={{
-            my: 3,
-            mx: 2,
-            maxWidth: "100%",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            p: 2,
-          }}
-        >
-          <Grid container alignItems="center">
-            <Grid item xs display={"flex"}>
-              <Typography gutterBottom variant="p" component="div">
-                <Radio
-                  checked={selectedValue === "a"}
-                  onChange={handleChange}
-                  value="a"
-                  name="radio-buttons"
-                  inputProps={{ "aria-label": "A" }}
-                />
-                Divy Jani
-              </Typography>
-              <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  height: "22px",
-                  width: "auto",
-                  ml: 1,
-                  mt: 1,
-                }}
-              >
-                Home
-              </Button>
-            </Grid>
-            <Grid item>
-              <IconButton
-                aria-label="delete"
-                size="small"
-                sx={{
-                  backgroundColor: "green",
-                  mr: 1,
-                  color: "white",
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "green",
-                  },
-                }}
-              >
-                <EditOutlined sx={{ fontSize: "large" }} />
-              </IconButton>
-              <IconButton
-                aria-label="delete"
-                size="small"
-                sx={{
-                  backgroundColor: "red",
-                  color: "white",
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "red",
-                  },
-                }}
-              >
-                <DeleteOutline sx={{ fontSize: "large" }} />
-              </IconButton>
-            </Grid>
-          </Grid>
-          <Typography color="text.secondary" variant="body2">
-            2-3-577/2 Minister Road, Nallakunta, Nallakunta, Secunderabad <br />
-            Andhra Pradesh, 500003 - India
-          </Typography>
-        </Box>
-
         {/* Section 2 */}
         {/* Dynamic Section */}
 
@@ -190,8 +119,11 @@ const Address = () => {
                   <label>Name:</label>
                   <br />
                   <br />
-                  <TextField placeholder={name} id="updateName" fullWidth>
-                  </TextField>{" "}
+                  <TextField
+                    placeholder={name}
+                    id="updateName"
+                    fullWidth
+                  ></TextField>{" "}
                   <br /> <br />
                   <label>Address:</label>
                   <br />
@@ -229,12 +161,16 @@ const Address = () => {
                 <DeleteOutline sx={{ fontSize: "large" }} />
               </IconButton>
               <Backdrop open={deleteItem}>
-                <Box sx={{background: "white", p:4}}>
+                <Box sx={{ background: "white", p: 4 }}>
                   <Typography>
                     Are You Sure You Want to Delete This Address ?
                   </Typography>
                   {/* for now we just write to close this box when user click on delete  */}
-                  <Button variant="contaied" color="error" onClick={handleDeleteClose}>
+                  <Button
+                    variant="contaied"
+                    color="error"
+                    onClick={handleDeleteClose}
+                  >
                     Delete
                   </Button>
                   <Button onClick={handleDeleteClose}>Close</Button>
@@ -246,6 +182,7 @@ const Address = () => {
             {address}
           </Typography>
         </Box>
+        <DynamicAddress />
       </Box>
     </div>
   );
@@ -272,9 +209,6 @@ export const AddAddress = () => {
     setName(name);
     setAddress(location);
 
-    // localStorage.setItem("addressName", name);
-    // localStorage.setItem("addressLocation", address);
-
     const userName = JSON.parse(localStorage.getItem("userName")) || [];
     const userAdderss = JSON.parse(localStorage.getItem("userAddress")) || [];
     userName.push(name);
@@ -284,22 +218,15 @@ export const AddAddress = () => {
 
     toast.done("Address Added Success");
     setCopy(true);
+
+    isOpenAdd(false);
   };
 
   return (
     <>
       <Box
         sx={{
-          // my: 3,
           mx: 2,
-          //   maxWidth: "100%",
-          //   border: "1px solid gray",
-          //   borderRadius: "10px",
-          //   height: "104px",
-          //   p: 2,
-          //   justifyContent: "center",
-          //   textAlign: "center",
-          //   display: "flex",
         }}
       >
         <Button
@@ -313,32 +240,14 @@ export const AddAddress = () => {
 
         <Backdrop open={openAdd}>
           <Box sx={{ background: "white" }} borderRadius={"10px"} padding={3}>
-            <Typography> Enter Address Details:</Typography>
+            <Typography>Add New Address</Typography>
             <Divider />
-            <TextField
-              id="addressName"
-              placeholder="Enter Name"
-              sx={{ marginTop: 2, marginBottom: 1 }}
-            />{" "}
             <br />
-            <TextField
-              id="addressLocation"
-              placeholder="Enter Address"
-              sx={{ margin: 1 }}
-            />{" "}
+            <AddressForm />
             <br />
-            <br />
-            <Box display={"flex"} justifyContent={"space-evenly"}>
-              <Button variant="contained" onClick={submit}>
-                Save
-              </Button>
-              {copy ? DynamicAddress : <></>}
-              {DynamicAddress}
-              <ToastContainer />
-              <Button variant="outlined" onClick={handleCloseAdderss}>
-                close
-              </Button>
-            </Box>
+            <Button variant="outlined" fullWidth onClick={handleCloseAdderss}>
+              Cancle
+            </Button>
           </Box>
         </Backdrop>
       </Box>
@@ -349,13 +258,13 @@ export const AddAddress = () => {
 export default Address;
 
 const DynamicAddress = () => {
-  const [selectedValue, setSelectedValue] = React.useState("a");
-  const [defName, setDefName] = useState([]);
-  const [defAddress, setDefAddress] = useState([]);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState("home");
+  const [addressList, setAddressList] = useState([]);
+  const [selectedValue, setSelectedValue] = React.useState(0);
   const [edit, setEdit] = useState(false);
-
-  const finaluser = localStorage.getItem("userName") || [];
-  const finalAddress = localStorage.getItem("userAddress") || [];
+  const [deleteItem, isDeleteItem] = useState(false);
 
   const handleEdit = () => {
     setEdit(true);
@@ -365,126 +274,250 @@ const DynamicAddress = () => {
     setEdit(false);
   };
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+  const handleDelete = () => {
+    isDeleteItem(true);
   };
 
-  let name = localStorage.getItem("addressName");
-  let address = localStorage.getItem("addressLocation");
+  const handleDeleteClose = () => {
+    isDeleteItem(false);
+  };
 
   const handleUpdate = () => {
     let updatedName = document.getElementById("updateName").value;
     let updatedEmail = document.getElementById("updatedAddress").value;
 
     localStorage.setItem("addressName", updatedName);
-    localStorage.setItem("addressLocation", updatedEmail);
+    localStorage.getItem("addressLocation", updatedEmail);
     setEdit(false);
   };
 
-  return (
-    <Box
-      sx={{
-        my: 3,
-        mx: 2,
-        maxWidth: "100%",
-        border: "1px solid gray",
-        borderRadius: "10px",
-        p: 2,
-      }}
-    >
-      <Grid container alignItems="center">
-        {finaluser((response) => (
-          <>
-            <Grid item xs display={"flex"}>
-              <Typography gutterBottom variant="p" component="div">
-                <Radio
-                  checked={selectedValue === "b"}
-                  onChange={handleChange}
-                  value="b"
-                  name="radio-buttons"
-                  inputProps={{ "aria-label": "B" }}
-                />
-                {name}
-              </Typography>
-              <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  height: "22px",
-                  width: "auto",
-                  ml: 1,
-                  mt: 1,
-                }}
-              >
-                Home
-              </Button>
-            </Grid>
-            <Grid item>
-              <IconButton
-                aria-label="delete"
-                size="small"
-                onClick={handleEdit}
-                sx={{
-                  backgroundColor: "green",
-                  color: "white",
-                  mr: 1,
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "green",
-                  },
-                }}
-              >
-                <EditOutlined sx={{ fontSize: "large" }} />
-              </IconButton>
-              <Backdrop open={edit}>
-                <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
-                  <label>Name:</label>
-                  <br />
-                  <br />
-                  <TextField placeholder={name} id="updateName" fullWidth>
-                  </TextField>{" "}
-                  <br /> <br />
-                  <label>Address:</label>
-                  <br />
-                  <br />
-                  <TextField
-                    placeholder={address}
-                    id="updatedAddress"
-                    fullWidth
-                  ></TextField>{" "}
-                  <br /> <br />
-                  <Button
-                    variant="contained"
-                    color="success"
-                    onClick={handleUpdate}
-                  >
-                    Save
-                  </Button>
-                  <Button onClick={handleEditClose}>Close</Button>
-                </Box>
-              </Backdrop>
 
-              <IconButton
-                aria-label="delete"
-                size="small"
-                sx={{
-                  backgroundColor: "red",
-                  color: "white",
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "red",
-                  },
-                }}
-              >
-                <DeleteOutline sx={{ fontSize: "large" }} />
-              </IconButton>
+  useEffect(() => {
+    const storedAddresses = localStorage.getItem("addresses");
+    if (storedAddresses) {
+      setAddressList(JSON.parse(storedAddresses));
+    }
+  }, []);
+
+  const handleAddAddress = () => {
+    if (name.trim() !== "" && address.trim() !== "") {
+      const newAddress = {
+        name,
+        address,
+        location,
+      };
+      const updatedAddressList = [...addressList, newAddress];
+      setAddressList(updatedAddressList);
+      localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+      setName("");
+      setAddress("");
+      setLocation("home");
+    }
+  };
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  return (
+    <ul>
+      {addressList.map((address, index) => (
+        <Box
+          sx={{
+            my: 3,
+            mx: 2,
+            maxWidth: "100%",
+            border: "1px solid gray",
+            borderRadius: "10px",
+            p: 2,
+          }}
+        >
+          <Box sx={{ display: "flex", textAlign: "center" }} key={index}>
+            <Grid container>
+              <Grid item xs display={"flex"}>
+                <Typography gutterBottom variant="p" component="div">
+                  <Radio
+                    checked={selectedValue === "0"}
+                    onChange={handleChange}
+                    value={0}
+                    name="radio-buttons"
+                    inputProps={{ "aria-label": "A" }}
+                  />
+                  {address.name}
+                </Typography>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    height: "22px",
+                    width: "auto",
+                    ml: 1,
+                    mt: 1,
+                  }}
+                >
+                  {address.location}
+                </Button>
+              </Grid>
+              <Grid item>
+                <IconButton
+                  aria-label="delete"
+                  size="small"
+                  onClick={handleEdit}
+                  sx={{
+                    backgroundColor: "green",
+                    color: "white",
+                    mr: 1,
+                    borderRadius: 2,
+                    "&:hover": {
+                      background: "green",
+                    },
+                  }}
+                >
+                  <EditOutlined sx={{ fontSize: "large" }} />
+                </IconButton>
+                <Backdrop open={edit}>
+                  <Box
+                    sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}
+                  >
+                    <label>Name:</label>
+                    <br />
+                    <br />
+                    <TextField
+                      placeholder={name}
+                      id="updateName"
+                      fullWidth
+                    ></TextField>{" "}
+                    <br /> <br />
+                    <label>Address:</label>
+                    <br />
+                    <br />
+                    <TextField
+                      placeholder={address}
+                      id="updatedAddress"
+                      fullWidth
+                    ></TextField>{" "}
+                    <br /> <br />
+                    <Button
+                      variant="contained"
+                      color="success"
+                      onClick={handleUpdate}
+                    >
+                      Save
+                    </Button>
+                    <Button onClick={handleEditClose}>Close</Button>
+                  </Box>
+                </Backdrop>
+                <IconButton
+                  aria-label="delete"
+                  size="small"
+                  sx={{
+                    backgroundColor: "red",
+                    color: "white",
+                    borderRadius: 2,
+                    "&:hover": {
+                      background: "red",
+                    },
+                  }}
+                  onClick={handleDelete}
+                >
+                  <DeleteOutline sx={{ fontSize: "large" }} />
+                </IconButton>
+                <Backdrop open={deleteItem}>
+                  <Box sx={{ background: "white", p: 4 }}>
+                    <Typography>
+                      Are You Sure You Want to Delete This Address ?
+                    </Typography>
+                    {/* for now we just write to close this box when user click on delete  */}
+                    <Button
+                      variant="contaied"
+                      color="error"
+                      onClick={handleDeleteClose}
+                    >
+                      Delete
+                    </Button>
+                    <Button onClick={handleDeleteClose}>Close</Button>
+                  </Box>
+                </Backdrop>{" "}
+              </Grid>
             </Grid>
-          </>
-        ))}
-      </Grid>
-      <Typography color="text.secondary" variant="body2">
-        {address}
-      </Typography>
-    </Box>
+          </Box>
+          <Typography color="text.secondary" variant="body2">
+            {address.address}
+          </Typography>{" "}
+        </Box>
+      ))}
+    </ul>
   );
 };
+
+const AddressForm = () => {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState("home");
+  const [addressList, setAddressList] = useState([]);
+
+  useEffect(() => {
+    const storedAddresses = localStorage.getItem("addresses");
+    if (storedAddresses) {
+      setAddressList(JSON.parse(storedAddresses));
+    }
+  }, []);
+
+  const handleAddAddress = () => {
+    if (name.trim() !== "" && address.trim() !== "") {
+      const newAddress = {
+        name,
+        address,
+        location,
+      };
+      const updatedAddressList = [...addressList, newAddress];
+      setAddressList(updatedAddressList);
+      localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+      setName("");
+      setAddress("");
+      setLocation("home");
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        style={{ width: "200px", height: "30px" }}
+        onChange={(e) => setName(e.target.value)}
+      />{" "}
+      <br /> <br />
+      <input
+        type="text"
+        style={{ width: "200px", height: "30px" }}
+        placeholder="Address"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+      />{" "}
+      <br /> <br />
+      <select value={location} onChange={(e) => setLocation(e.target.value)}>
+        <option value="home">Home</option>
+        <option value="office">Office</option>
+      </select>{" "}
+      <br /> <br />
+      <Button variant="contained" fullWidth onClick={handleAddAddress}>
+        Add Address
+      </Button>
+      {/* <Button variant="outlined" fullWidth >cancle</Button> */}
+    </div>
+  );
+};
+
+// export default AddressForm;
+
+// <ul>
+// {addressList.map((address, index) => (
+//   <li key={index}>
+//     <p>Name: {address.name}</p>
+//     <p>Address: {address.address}</p>
+//     <p>Location: {address.location}</p>
+//   </li>
+// ))}
+// </ul>

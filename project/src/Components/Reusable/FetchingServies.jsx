@@ -149,6 +149,7 @@ const FetchingServies = () => {
                     <Card
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
+                      onClick={() => navigate("/providers/services/293")}
                     >
                       <img
                         src={response.category_image}
@@ -162,7 +163,6 @@ const FetchingServies = () => {
                           display: "flex",
                         }}
                         // we have to implemenmt provider/service/...
-                        onClick={() => navigate("./categorys/213")}
                       />
                       <Box marginTop={-5} textAlign={"center"}>
                         <Typography
@@ -203,13 +203,15 @@ const FetchingServies = () => {
 
 export default FetchingServies;
 
-// plumbing services fetching -----------------------------------------------------------------------------------------------------------------------
+// laundry services fetching -----------------------------------------------------------------------------------------------------------------------
 
 export const FetchingPlumbing = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [swiper, setSwiper] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const nextSlide = () => {
     swiper.slideNext();
@@ -319,6 +321,7 @@ export const FetchingPlumbing = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
+                    onClick={()=>navigate('/providers/services/303')}
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
@@ -371,13 +374,15 @@ export const FetchingPlumbing = () => {
   );
 };
 
-// Laundry services fetching-------------------------------------------------------------------------------------------------------------------------
+// plumbing services fetching-------------------------------------------------------------------------------------------------------------------------
 
 export const FetchingLaundry = () => {
   const [image, setImage] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [swiper, setSwiper] = React.useState(null);
+
+  const navigate = useNavigate(); 
 
   const nextSlide = () => {
     swiper.slideNext();
@@ -489,6 +494,7 @@ export const FetchingLaundry = () => {
                     <Card
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
+                      onClick={()=>navigate('/providers/services/263')}
                     >
                       <img
                         src={response.category_image}
@@ -546,6 +552,8 @@ export const FetchingCar = () => {
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [swiper, setSwiper] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const nextSlide = () => {
     swiper.slideNext();
@@ -654,6 +662,7 @@ export const FetchingCar = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
+                    onClick={()=>navigate('/providers/services/270')}
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >

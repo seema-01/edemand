@@ -62,6 +62,8 @@ const ProfileNavigation = () => {
     setIsVisible(true);
   };
 
+  const url = "/profile"
+
   const handleLogoutConfirm = () => {
     // Clear the phone number value from local storage
     // localStorage.removeItem("phoneNumber");
@@ -114,9 +116,9 @@ const ProfileNavigation = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   return (
-    <Grid>
-      <Grid item xs={12}>
-        <Box display={"flex"} maxWidth={"100%"}>
+    <Grid container spacing={1} columns={16}>
+      <Grid display={"flex"} maxWidth={"40%"} xs={5}>
+        <Box width={"90%"}>
           <Box
             sx={{
               width: "100%",
@@ -138,12 +140,10 @@ const ProfileNavigation = () => {
                     width: "60px",
                     border: "5px solid white",
                   }}
-                >
-                </Avatar>
+                ></Avatar>
               </ListItemDecorator>
               {isLoggedIn === "" ? (
                 <Skeleton variant="rectangular" />
-
               ) : (
                 <div style={{ marginLeft: 10, color: "white" }}>
                   <Typography fontSize="xl">{name}</Typography>
@@ -243,6 +243,7 @@ const ProfileNavigation = () => {
                           fullWidth
                           variant="outlined"
                           name="email"
+                          type="email"
                           required
                           sx={{ background: "#F2F1F6" }}
                         />
@@ -530,6 +531,13 @@ const ProfileNavigation = () => {
             </List>
           </Box>
         </Box>
+      </Grid>
+      <Grid xs={7} sx={{ marginTop: 3, marginBottom: 3 }}>
+        {url === '/profile' ? ( <Box>
+          <img src={require("../../../Images/profile.jpg")} height="580px" width={"auto"} />
+        </Box>) : (<>
+        </>)}
+       
       </Grid>
     </Grid>
   );

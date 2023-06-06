@@ -3,6 +3,7 @@ import React from "react";
 import ProfileNavigation from "../Components/Reusable/Profile/ProfileNavigation";
 import Heading from "../Components/Reusable/Profile/Heading";
 import { useTheme } from "@emotion/react";
+import Pnavigation from "../Components/Reusable/Profile/Pnavigation";
 
 const Logout = () => {
   const theme = useTheme();
@@ -15,7 +16,7 @@ const Logout = () => {
     <Container>
       <Grid container spacing={3} sx={{ padding: 0 }}>
         <Grid item xs={12} md={4}>
-          <ProfileNavigation />
+          <Pnavigation />
         </Grid>
         <Grid item xs={12} md={8}>
           <Box sx={{ marginTop: 3 }}>

@@ -19,6 +19,7 @@ import {
 } from "@mui/icons-material";
 import Address, { AddAddress } from "./Address";
 import { useTheme } from "@emotion/react";
+import Pnavigation from "./Pnavigation";
 const ProfileAddress = () => {
   const theme = useTheme();
   return (
@@ -26,7 +27,7 @@ const ProfileAddress = () => {
       <Container>
         <Grid container spacing={3} sx={{ padding: 0 }}>
           <Grid item xs={12} md={4}>
-            <ProfileNavigation />
+            <Pnavigation />
           </Grid>
           <Grid item xs={12} md={8}>
             <Box sx={{ mt: 3, bgcolor: theme.palette.background.box, borderRadius: "10px" }}>

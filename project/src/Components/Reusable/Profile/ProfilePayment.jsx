@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Heading from "./Heading";
 import { useTheme } from "@emotion/react";
+import Pnavigation from "./Pnavigation";
 
 function createData( id,method,date, amount,status) {
   return {  id, method, date, amount, status };
@@ -29,7 +30,7 @@ const ProfilePayment = () => {
     <Container>
       <Grid container spacing={3} sx={{ padding: 0 }}>
         <Grid item xs={12} md={4}>
-          <ProfileNavigation />
+          <Pnavigation />
         </Grid>
         <Grid item xs={12} md={8}>
           <Box

@@ -2,6 +2,7 @@ import { Box, Button, Container, Grid } from "@mui/material";
 import React from "react";
 import ProfileNavigation from "../Components/Reusable/Profile/ProfileNavigation";
 import { useTheme } from "@emotion/react";
+import Pnavigation from "../Components/Reusable/Profile/Pnavigation";
 
 const DeleteAccount = () => {
   const theme = useTheme();
@@ -14,7 +15,7 @@ const DeleteAccount = () => {
     <Container>
       <Grid container spacing={3} sx={{ padding: 0 }}>
         <Grid item xs={12} md={4}>
-          <ProfileNavigation />
+          <Pnavigation />
         </Grid>
         <Grid item xs={12} md={8}>
           <Box sx={{ marginTop: 3 }}>
