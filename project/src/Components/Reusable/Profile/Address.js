@@ -229,7 +229,7 @@ export const AddAddress = () => {
       >
         <Button
           variant="outlined"
-          sx={{ marginTop: 3, height: 140 }}
+          sx={{ marginTop: 3, height: 100 }}
           fullWidth
           onClick={handleOpenAddress}
         >
@@ -280,17 +280,6 @@ const DynamicAddress = () => {
     isDeleteItem(false);
   };
 
-  const handleUpdate = () => {
-    let updatedName = document.getElementById("updateName").value;
-    let updatedEmail = document.getElementById("updatedAddress").value;
-
-    localStorage.setItem("addressName", updatedName);
-    localStorage.getItem("addressLocation", updatedEmail);
-    setEdit(false);
-  };
-
- 
-
   useEffect(() => {
     const storedAddresses = localStorage.getItem("addresses");
     if (storedAddresses) {
@@ -319,11 +308,24 @@ const DynamicAddress = () => {
     updatedAddressList.splice(index, 1);
     setAddressList(updatedAddressList);
     localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
-    isDeleteItem(true)
+    isDeleteItem(true);
   };
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
+  };
+
+  const updateAddress = (index) => {
+    const updatedAddressList = [...addressList];
+    updatedAddressList[index].name = document.getElementById(
+      `updateName${index}`
+    ).value;
+    updatedAddressList[index].address = document.getElementById(
+      `updateAddress${index}`
+    ).value;
+    setAddressList(updatedAddressList);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+    setEdit(false);
   };
 
   return (
@@ -390,8 +392,8 @@ const DynamicAddress = () => {
                     <br />
                     <br />
                     <TextField
-                      placeholder={name}
-                      id="updateName"
+                      placeholder={address.name}
+                      id={`updateName${index}`}
                       fullWidth
                     ></TextField>{" "}
                     <br /> <br />
@@ -399,15 +401,15 @@ const DynamicAddress = () => {
                     <br />
                     <br />
                     <TextField
-                      placeholder={address}
-                      id="updatedAddress"
+                      placeholder={address.address}
+                      id={`updateAddress${index}`}
                       fullWidth
                     ></TextField>{" "}
                     <br /> <br />
                     <Button
                       variant="contained"
                       color="success"
-                      onClick={handleUpdate}
+                      onClick={() => updateAddress(index)}
                     >
                       Save
                     </Button>
@@ -516,15 +518,3 @@ const AddressForm = () => {
     </div>
   );
 };
-
-// export default AddressForm;
-
-// <ul>
-// {addressList.map((address, index) => (
-//   <li key={index}>
-//     <p>Name: {address.name}</p>
-//     <p>Address: {address.address}</p>
-//     <p>Location: {address.location}</p>
-//   </li>
-// ))}
-// </ul>

@@ -54,11 +54,11 @@ const Booking = () => {
               >
                 <strong>${response.discounted_price}</strong>
               </Typography>
-              <Button size="small" onClick={handleOpen} variant="contained">
+              {/* <Button size="small" onClick={handleOpen} variant="contained">
                 Rate
-              </Button>
+              </Button> */}
 
-              <Drawer anchor="right" open={open}>
+              {/* <Drawer anchor="right" open={open}>
                 <Box marginLeft={3} marginRight={3}>
                   <Box display={"flex"} width="500px" marginTop={3}>
                     {
@@ -73,7 +73,6 @@ const Booking = () => {
                   </Box>
                   <hr />
 
-                  {/* main */}
                   <Box>
                     <Typography>Head Massage</Typography>
                     <Box display={"flex"} alignItems={"center"}>
@@ -119,7 +118,6 @@ const Booking = () => {
                         5
                       </Button>
                     </Box>
-                    {/*  */}
                     <Box mt={2}>
                       <Typography>Message</Typography>
                       <TextField
@@ -131,7 +129,7 @@ const Booking = () => {
                         placeholder="Write Review"
                       ></TextField>
                     </Box>
-                    {/* upload */}
+
                     <Typography>Other Images of the Product</Typography>
                     <OutlinedInput
                       type="file"
@@ -144,7 +142,6 @@ const Booking = () => {
                       placeholder="hello"
                     />
 
-                    {/* img */}
                     <Grid container mt={2} pl={3} spacing={3}>
                       <Grid xs={3}>
                         <Badge
@@ -189,7 +186,6 @@ const Booking = () => {
                         </Badge>
                       </Grid>
                     </Grid>
-                    {/* Button last */}
                     <Button
                       variant="contained"
                       fullWidth
@@ -200,7 +196,8 @@ const Booking = () => {
                     </Button>
                   </Box>
                 </Box>
-              </Drawer>
+              </Drawer> */}
+              
             </Grid>
           </Grid>
           <br />
