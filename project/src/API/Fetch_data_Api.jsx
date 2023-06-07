@@ -49,7 +49,6 @@ export const get_Api_Category = async () => {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 };
 
@@ -66,7 +65,6 @@ export const get_categories_home = async () => {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 };
 
@@ -83,7 +81,6 @@ async function get_categories_laundry() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -100,7 +97,6 @@ async function get_categories_plumbing() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -117,7 +113,6 @@ async function get_categories_car() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -132,7 +127,6 @@ async function get_providers() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -147,7 +141,6 @@ async function get_home_providers() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -162,7 +155,6 @@ async function get_services() {
     requestOptions
   );
   const result = await response.json();
-  // console.log(result);
   return result;
 }
 
@@ -176,24 +168,9 @@ async function get_settings() {
     requestOptions
   );
   const result = await response.json();
-  console.log(result);
   return result;
 }
 
-// async function allData() {
-//   var requestOptions = {
-//     method: "POST",
-//     body: formdata,
-//     redirect: "follow",
-//   };
-//   const response = await fetch(
-//     "https://edemand.wrteam.me/api/v1",
-//     requestOptions
-//   );
-//   const result = await response.json();
-//   console.log(result);
-//   return result;
-// }
 /*Exporting all Functions for reuseing in differnt components*/
 export default {
   get_categories_home,

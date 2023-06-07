@@ -41,6 +41,8 @@ const ProfileBooking = () => {
   const sub_total = localStorage.getItem("totalPrice");
   const total = parseInt(sub_total) + tax + visiting_charge;
 
+  localStorage.setItem("Pay", total);
+
   return (
     <div>
       <Container>
