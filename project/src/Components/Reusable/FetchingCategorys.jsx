@@ -54,13 +54,16 @@ const FetchingCategorys = () => {
           </Typography>
           {/* <SwiperButton /> */}
           <Box>
-            <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
+            <span
+              className="previous-next-btn"
+              sx={{ marginLeft: "auto", alignItems: "center" }}
+            >
               <IconButton
                 aria-label="delete"
                 color="primary"
                 onClick={() => prevSlide()}
               >
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
+                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink, pl:0.6}} />
               </IconButton>
               <IconButton
                 aria-label="delete"

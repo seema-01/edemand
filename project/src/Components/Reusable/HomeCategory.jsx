@@ -103,8 +103,9 @@ const HomeCategory = () => {
               <>
                 <Typography variant="h4">
                   Our Valuable Service Providers
-                </Typography>
+                </Typography> <br />
                 <hr color="Whitesmoke" />
+                <br />
               </>
               <Box gap={-1} marginTop={2} sx={{  }}>
                 {/* our provider is already created and i juts call that function and set here with some editing  */}

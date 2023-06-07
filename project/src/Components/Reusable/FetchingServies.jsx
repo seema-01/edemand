@@ -25,6 +25,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { FavoriteBorder } from "@mui/icons-material";
 
 const FetchingServies = () => {
   const [image, setImage] = useState([]);
@@ -94,7 +95,9 @@ const FetchingServies = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
+                <ArrowBackIosIcon
+                  sx={{ color: theme.palette.color.navLink, pl: 0.6 }}
+                />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon
@@ -147,6 +150,7 @@ const FetchingServies = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
+                      className="service-card"
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
                       onClick={() => navigate("/providers/services/293")}
@@ -182,6 +186,8 @@ const FetchingServies = () => {
                           </NavLink>
                         </Typography>
                       </Box>
+                      <div className="overlay"></div>
+                      <div className="service-card-rating">4.5</div>
                     </Card>
                   </SwiperSlide>
                 );
@@ -270,7 +276,9 @@ export const FetchingPlumbing = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
+                <ArrowBackIosIcon
+                  sx={{ color: theme.palette.color.navLink, pl: 0.6 }}
+                />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon
@@ -304,7 +312,7 @@ export const FetchingPlumbing = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 3,
+              slidesPerView: 30,
               spaceBetween: 30,
             },
             1024: {
@@ -321,7 +329,8 @@ export const FetchingPlumbing = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
-                    onClick={()=>navigate('/providers/services/303')}
+                      className="service-card"
+                      onClick={() => navigate("/providers/services/303")}
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
@@ -355,6 +364,8 @@ export const FetchingPlumbing = () => {
                           </NavLink>
                         </Typography>
                       </Box>
+                      <div className="overlay"></div>
+                      <div className="service-card-rating"><FavoriteBorder /></div>
                     </Card>
                   </SwiperSlide>
                 );
@@ -382,7 +393,7 @@ export const FetchingLaundry = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [swiper, setSwiper] = React.useState(null);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const nextSlide = () => {
     swiper.slideNext();
@@ -441,7 +452,9 @@ export const FetchingLaundry = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
+                <ArrowBackIosIcon
+                  sx={{ color: theme.palette.color.navLink, pl: 0.6 }}
+                />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon
@@ -492,9 +505,10 @@ export const FetchingLaundry = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
+                      className="service-card"
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
-                      onClick={()=>navigate('/providers/services/263')}
+                      onClick={() => navigate("/providers/services/263")}
                     >
                       <img
                         src={response.category_image}
@@ -526,6 +540,8 @@ export const FetchingLaundry = () => {
                           </NavLink>
                         </Typography>
                       </Box>
+                      <div className="overlay"></div>
+                      <div className="service-card-rating">4.5</div>
                     </Card>
                   </SwiperSlide>
                 );
@@ -611,7 +627,9 @@ export const FetchingCar = () => {
           <Box>
             <span className="previous-next-btn" sx={{ marginLeft: "auto" }}>
               <IconButton aria-label="delete" onClick={prevSlide}>
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink }} />
+                <ArrowBackIosIcon
+                  sx={{ color: theme.palette.color.navLink, pl: 0.6 }}
+                />
               </IconButton>
               <IconButton aria-label="delete" onClick={nextSlide}>
                 <ArrowForwardIosIcon
@@ -662,7 +680,8 @@ export const FetchingCar = () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Card
-                    onClick={()=>navigate('/providers/services/270')}
+                      className="service-card"
+                      onClick={() => navigate("/providers/services/270")}
                       key={response.id}
                       sx={{ width: 260, height: 220, borderRadius: "10px" }}
                     >
@@ -696,6 +715,8 @@ export const FetchingCar = () => {
                           </NavLink>
                         </Typography>
                       </Box>
+                      <div className="overlay"></div>
+                      <div className="service-card-rating">4.5</div>
                     </Card>
                   </SwiperSlide>
                 );

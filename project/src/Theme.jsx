@@ -15,6 +15,7 @@ const lightTheme = createTheme({
       card: "white",
       addressBox: "#Fdfdfd",
       input: "#3d3f48"
+      
     },
     color: {
       navLink: "black",

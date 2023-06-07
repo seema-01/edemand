@@ -1,3 +1,7 @@
+:root{
+  --global-transition:.25s ease;
+}
+
 /* .swiper-container {
     position: relative;
   }
@@ -73,4 +77,40 @@
   font-size: 18px;
   color: #555;
   margin-bottom: 20px;
+}
+
+.overlay {
+
+    position: absolute;
+    left: 2px;
+    top: 0;
+    height: 100%;
+    width: 260px;
+    background: #0000003b;
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgb(2, 0, 36) 0%, rgba(0,212,255,0) 57%);
+    border-radius: inherit;
+}
+
+.service-card-rating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  /* background: #009d3e; */
+  color: white;
+  /* padding: 5px 10px; */
+  border-radius: inherit;
+}
+
+.service-card {
+  transition: var(--global-transition) !important;
+  cursor: pointer;
+}
+
+.service-card:hover{
+  transform: scale(1.05);
+  transition: var(--global-transition) ;
+}
+.swiper-wrapper{
+  padding: 16px;
 }

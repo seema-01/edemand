@@ -84,7 +84,7 @@ const NavigateCategorys = ({ match }) => {
   return (
     <>
       <Container>
-        <Box sx={{ paddingBottom: 1 }}>
+        <Box sx={{ paddingBottom: 1, mt: 3 }}>
           {/* ------------------------------------------------------------------ */}
           {/* Everything should be coming from api  */}
           {isLoading ? (
@@ -143,7 +143,7 @@ const NavigateCategorys = ({ match }) => {
         </Box>
         {/* ------------------------------------------------------------------------ */}
 
-        <Box sx={{ marginTop: 2, marginBottom: 2 }}>
+        <Box sx={{ marginTop: 4, marginBottom: 10 }}>
           <Swiper
             slidesPerView={5}
             freeMode={true}

@@ -34,12 +34,12 @@ const CartItem = ({ item, onDelete }) => {
         <CardContent>
           <Typography>{item.title}</Typography>
           <Typography>${item.discounted_price}</Typography>
-          {/* <Box display="flex" alignItems="center" marginTop={2}>
+          <Box display="flex" alignItems="center" marginTop={2}>
             <Button onClick={handleDecrement}>-</Button>
             <Typography variant="body2">{quantity}</Typography>
             <Button onClick={handleIncrement}>+</Button>
-          </Box> */}
-          {/* <Typography variant="body2">Total: ${totalPrice}</Typography> */}
+          </Box> 
+          <Typography variant="body2">Total: ${totalPrice}</Typography>
           <Button onClick={() => onDelete(item.id)}>Delete</Button>
         </CardContent>
       </Card>
