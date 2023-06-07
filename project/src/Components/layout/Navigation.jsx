@@ -210,7 +210,12 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 {/* Set logo and burger menu in one side */}
                 <div>
                   <Drawer open={open} onClose={() => setOpen(false)}>
-                    <Box display={"block"} width={140} padding={3} marginLeft={3}>
+                    <Box
+                      display={"block"}
+                      width={140}
+                      padding={3}
+                      marginLeft={3}
+                    >
                       <NavLink style={myLink} to="/">
                         Home
                       </NavLink>
@@ -324,13 +329,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 )}
 
                 <IconButton aria-label="cart" onClick={handleOpenCart}>
-                  {islogined === "" ? (
-                    <ShoppingCartOutlinedIcon />
-                  ) : (
-                    <Badge color="primary" variant="dot">
-                      <ShoppingCartOutlinedIcon />
-                    </Badge>
-                  )}
+                  <ShoppingCartOutlinedIcon />
                 </IconButton>
 
                 {islogined === "" ? (
@@ -366,7 +365,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
                     {/* <Cart /> */}
                     <Box sx={{ width: 400 }}>
-                      <Cart/>
+                      <Cart />
                     </Box>
                   </Drawer>
                 )}

@@ -1,4 +1,8 @@
-import { ArrowRightAltOutlined, DoneRounded } from "@mui/icons-material";
+import {
+  ArrowRightAltOutlined,
+  DoneRounded,
+  DeleteOutline,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -8,22 +12,41 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 const Bookmark = () => {
-  const bookData = JSON.parse(localStorage.getItem("bookmark")) || [];
+  const [bookData, setBookData] = useState(() => {
+    const storedBookData = JSON.parse(localStorage.getItem("bookmark"));
+    return storedBookData || [];
+  });
 
   const navigate = useNavigate();
+
+  const handleDelete = (partnerId) => {
+    setBookData((prevBookData) => {
+      const updatedBookData = prevBookData.filter(
+        (item) => item.partner_id !== partnerId
+      );
+      localStorage.setItem("bookmark", JSON.stringify(updatedBookData));
+      return updatedBookData;
+    });
+  };
+
+  // Filter out duplicate providers based on their partner_id
+  const distinctProviders = bookData.filter(
+    (item, index, self) =>
+      index === self.findIndex((t) => t.partner_id === item.partner_id)
+  );
   return (
     <div>
       {/* Empty state  */}
-      {bookData=== '' ? (
+      {/* {bookData=== '' ? (
         <>
           <img src={require('../../../Images/bookmark.jpg')} />
         </>
-      ) : (<>SomeThing </>)}
-      {bookData.map((response) => (
+      ) : (<>SomeThing </>)} */}
+      {distinctProviders.map((response) => (
         <>
           <Card
             sx={{
@@ -94,6 +117,18 @@ const Bookmark = () => {
                 View all Services
               </Button>
               <br />
+            <Box display="flex" justifyContent="flex-end">
+              <Button
+                startIcon={<DeleteOutline />}
+                size="small"
+                variant="outlined"
+                color="error"
+                sx={{marginBottom: 1, marginRight:1}}
+                onClick={() => handleDelete(response.partner_id)}
+              >
+                Delete
+              </Button>
+            </Box>
             </Box>
           </Card>
           <br />
