@@ -125,7 +125,7 @@ const ProfileNavigation = () => {
               bgcolor: theme.palette.background.box,
               borderRadius: "10px",
               p: 0,
-              mt: 3,
+              mt: 5,
               mb: 3,
             }}
           >
@@ -533,9 +533,9 @@ const ProfileNavigation = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid xs={7} sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Grid xs={7} sx={{ marginTop: 5, marginBottom: 3 }}>
         {url === '/profile' ? ( <Box>
-          <img src={require("../../../Images/profile.jpg")} height="580px" width={"auto"} />
+          <img src={require("../../../Images/profile.jpg")} style={{borderRadius: 10}} height="580px" width={"auto"} />
         </Box>) : (<>
         </>)}
        

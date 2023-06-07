@@ -59,127 +59,6 @@ const Address = () => {
   return (
     <div>
       <Box>
-        {/* Default Section */}
-        <Box
-          sx={{
-            my: 3,
-            mx: 2,
-            maxWidth: "100%",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            p: 2,
-          }}
-        >
-          <Grid container alignItems="center">
-            <Grid item xs display={"flex"}>
-              <Typography gutterBottom variant="p" component="div">
-                <Radio
-                  checked={selectedValue === "b"}
-                  onChange={handleChange}
-                  value="b"
-                  name="radio-buttons"
-                  inputProps={{ "aria-label": "B" }}
-                />
-                Your name
-              </Typography>
-              <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  height: "22px",
-                  width: "auto",
-                  ml: 1,
-                  mt: 1,
-                }}
-              >
-                Home
-              </Button>
-            </Grid>
-            <Grid item>
-              <IconButton
-                aria-label="delete"
-                size="small"
-                onClick={handleEdit}
-                sx={{
-                  backgroundColor: "green",
-                  color: "white",
-                  mr: 1,
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "green",
-                  },
-                }}
-              >
-                <EditOutlined sx={{ fontSize: "large" }} />
-              </IconButton>
-              <Backdrop open={edit}>
-                <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
-                  <label>Name:</label>
-                  <br />
-                  <br />
-                  <TextField
-                    placeholder={name}
-                    id="updateName"
-                    fullWidth
-                  ></TextField>{" "}
-                  <br /> <br />
-                  <label>Address:</label>
-                  <br />
-                  <br />
-                  <TextField
-                    placeholder={address}
-                    id="updatedAddress"
-                    fullWidth
-                  ></TextField>{" "}
-                  <br /> <br />
-                  <Button
-                    variant="contained"
-                    color="success"
-                    onClick={handleUpdate}
-                  >
-                    Save
-                  </Button>
-                  <Button onClick={handleEditClose}>Close</Button>
-                </Box>
-              </Backdrop>
-
-              <IconButton
-                aria-label="delete"
-                size="small"
-                sx={{
-                  backgroundColor: "red",
-                  color: "white",
-                  borderRadius: 2,
-                  "&:hover": {
-                    background: "red",
-                  },
-                }}
-                onClick={handleDelete}
-              >
-                <DeleteOutline sx={{ fontSize: "large" }} />
-              </IconButton>
-              <Backdrop open={deleteItem}>
-                <Box sx={{ background: "white", p: 4 }}>
-                  <Typography>
-                    Are You Sure You Want to Delete This Address ?
-                  </Typography>
-                  {/* for now we just write to close this box when user click on delete  */}
-                  <Button
-                    variant="contaied"
-                    color="error"
-                    onClick={handleDeleteClose}
-                  >
-                    Delete
-                  </Button>
-                  <Button onClick={handleDeleteClose}>Close</Button>
-                </Box>
-              </Backdrop>
-            </Grid>
-          </Grid>
-          <Typography color="text.secondary" variant="body2">
-            Your Address
-          </Typography>
-        </Box>
         <DynamicAddress />
       </Box>
     </div>
@@ -212,7 +91,7 @@ export const AddAddress = () => {
     userName.push(name);
     userAdderss.push(location);
     localStorage.setItem("userName", JSON.stringify(userName));
-    localStorage.setItem(" ", JSON.stringify(userAdderss));
+    localStorage.setItem("userAddress", JSON.stringify(userAdderss));
 
     toast.done("Address Added Success");
     setCopy(true);

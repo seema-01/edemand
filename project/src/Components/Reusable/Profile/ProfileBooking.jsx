@@ -36,10 +36,10 @@ const ProfileBooking = () => {
   const tax = 10;
   const visiting_charge = 20;
 
+  // localStorage.setItem("totalPrice", 0);
+
   const sub_total = localStorage.getItem("totalPrice");
   const total = parseInt(sub_total) + tax + visiting_charge;
-
-  localStorage.setItem("totalPrice" , total)
 
   return (
     <div>
@@ -81,7 +81,13 @@ const ProfileBooking = () => {
                       alt=""
                     /> */}
                     <Grid container alignItems="center">
-                      <Grid item xs display={"flex"} justifyContent={"center"} textAlign={"center"}>
+                      <Grid
+                        item
+                        xs
+                        display={"flex"}
+                        justifyContent={"center"}
+                        textAlign={"center"}
+                      >
                         <Typography gutterBottom variant="h4" component="div">
                           Your Booking Info
                         </Typography>

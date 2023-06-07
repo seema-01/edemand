@@ -105,30 +105,34 @@ const Bookmark = () => {
                   {response.ratings}/5
                 </Typography>
               </Box>
-              <Button
-                endIcon={<ArrowRightAltOutlined />}
-                sx={{ mt: 5, mr: "auto" }}
-                variant="outlined"
-                size="small"
-                onClick={() =>
-                  navigate("/providers/services/" + response.partner_id)
-                }
-              >
-                View all Services
-              </Button>
-              <br />
-            <Box display="flex" justifyContent="flex-end">
-              <Button
-                startIcon={<DeleteOutline />}
-                size="small"
-                variant="outlined"
-                color="error"
-                sx={{marginBottom: 1, marginRight:1}}
-                onClick={() => handleDelete(response.partner_id)}
-              >
-                Delete
-              </Button>
-            </Box>
+
+                <Box display={"grid"} gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+                <Box gridColumn={"span 8"}> 
+                  <Button
+                    endIcon={<ArrowRightAltOutlined />}
+                    sx={{ mt: 8, mr: "auto", mb:1 }}
+                    variant="outlined"
+                    size="small"
+                    onClick={() =>
+                      navigate("/providers/services/" + response.partner_id)
+                    }
+                  >
+                    View all Services
+                  </Button>
+                </Box>
+                <Box gridColumn={"span 4"}>
+                  <Button
+                    startIcon={<DeleteOutline />}
+                    size="small"
+                    variant="outlined"
+                    color="error"
+                    sx={{ marginRight: 1, mt: 8, ml:8 }}
+                    onClick={() => handleDelete(response.partner_id)}
+                  >
+                    Delete
+                  </Button>
+                </Box>
+              </Box>
             </Box>
           </Card>
           <br />

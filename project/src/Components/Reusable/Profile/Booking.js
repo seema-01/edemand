@@ -31,6 +31,10 @@ const Booking = () => {
     0
   );
 
+  localStorage.setItem("totalPrice",totalDiscountedPrice)
+
+
+
   return (
     <div>
       {cartData.map((response) => (

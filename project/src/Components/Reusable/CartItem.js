@@ -10,7 +10,6 @@ import {
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-
 const CartItem = ({ item, onDelete }) => {
   const [quantity, setQuantity] = useState(1);
 
@@ -25,7 +24,6 @@ const CartItem = ({ item, onDelete }) => {
   };
 
   const totalPrice = item.discounted_price * quantity;
-  
 
   return (
     <Box>
@@ -50,8 +48,6 @@ const CartItem = ({ item, onDelete }) => {
   );
 };
 
-// Rest of the code...
-
 const Cart = () => {
   const [cartData, setCartData] = useState(() => {
     const storedCartData = JSON.parse(localStorage.getItem("cart"));
@@ -61,13 +57,15 @@ const Cart = () => {
     const storedTotalPrice = JSON.parse(localStorage.getItem("totalPrice"));
     return storedTotalPrice || 0;
   });
-  
+
   const navigate = useNavigate();
 
   // Filter out duplicate items based on their IDs
   const distinctCartData = Array.from(
     new Set(cartData.map((item) => item.id))
   ).map((id) => cartData.find((item) => item.id === id));
+
+  const cartItem = localStorage.getItem("cart") || [];
 
   const handleAddToCart = (item) => {
     setCartData((prevCartData) => {
@@ -91,9 +89,23 @@ const Cart = () => {
         <Typography variant="h4">Cart</Typography>
         <Divider />
         <br />
-        {distinctCartData.map((item) => (
-          <CartItem item={item} key={item.id} onDelete={handleDelete} />
-        ))}
+        {cartItem == null ? (
+          <>
+            <Box sx={{ textAlign: "center" }}>
+              <h3>No Products here!</h3>
+              <br />
+              Your cart is empty. Login & Add products <br /> to that we
+              <h4 style={{ color: "gray" }}>can serve you!</h4>
+            </Box>
+          </>
+        ) : (
+          <>
+            {distinctCartData.map((item) => (
+              <CartItem item={item} key={item.id} onDelete={handleDelete} />
+            ))}
+          </>
+        )}
+
         <Button
           fullWidth
           variant="contained"
