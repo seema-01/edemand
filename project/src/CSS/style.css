@@ -59,8 +59,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 71vh;
   width: 100%;
+  border-radius: 10px;
 }
 
 .logout-title {
