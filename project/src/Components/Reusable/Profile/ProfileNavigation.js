@@ -167,14 +167,14 @@ const ProfileNavigation = () => {
               </Button>
               <Backdrop
                 sx={{
-                  color: "#fff",
+                  color: theme.palette.background.box,
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
                 open={open}
               >
                 <Box
                   sx={{
-                    background: "white",
+                    background: theme.palette.background.box,
                     color: "black",
                     width: "400px",
                     borderRadius: "10px",
@@ -185,10 +185,11 @@ const ProfileNavigation = () => {
                     marginRight={3}
                     marginTop={3}
                     marginBottom={3}
+                    sx={{background: theme.palette.background.box}}
                   >
                     <Box display={"flex"}>
-                      <Typography marginRight={"auto"}>Edit Profile</Typography>
-                      {<ClearIcon onClick={handleClose} />}
+                      <Typography marginRight={"auto"} sx={{color: theme.palette.color.navLink}}>Edit Profile</Typography>
+                      {<ClearIcon onClick={handleClose} sx={{color: theme.palette.color.navLink}} />}
                     </Box>
                     {/* img */}
 
@@ -230,7 +231,7 @@ const ProfileNavigation = () => {
                           variant="outlined"
                           name="name"
                           required
-                          sx={{ background: "#F2F1F6" }}
+                          sx={{ background: theme.palette.background.input }}
                         />
                         <br />
                         <br />
@@ -245,7 +246,7 @@ const ProfileNavigation = () => {
                           name="email"
                           type="email"
                           required
-                          sx={{ background: "#F2F1F6" }}
+                          sx={{ background: theme.palette.background.input }}
                         />
                         <br />
                         <br />
@@ -260,7 +261,7 @@ const ProfileNavigation = () => {
                           disabled
                           value={defnum}
                           variant="outlined"
-                          sx={{ background: "#F2F1F6" }}
+                          sx={{ background: theme.palette.background.input }}
                         />{" "}
                         <br />
                         <br />
