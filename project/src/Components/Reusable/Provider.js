@@ -307,7 +307,7 @@ export const HomeProvider = () => {
   );
 };
 
-const MySkeleton = () => {
+export const MySkeleton = () => {
   return (
     <Skeleton
       sx={{ height: "500px", width: "345px" }}

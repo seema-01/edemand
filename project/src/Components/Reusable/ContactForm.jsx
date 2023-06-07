@@ -146,8 +146,8 @@ const ContactForm = () => {
                     fontWeight={400}
 
                   >
-                    Time Square Empire Time <br /> Square Empire, Bhuj, Gujrat,{" "}
-                    <br /> 370001{" "}
+                    Time Square Empire Time <br /> SH 42 Mirjaper-Highway , Bhuj, Gujrat,
+                    <br /> 370001
                   </Typography>
                 </Box>
               </Box>
@@ -208,7 +208,7 @@ const ContactForm = () => {
                 marginTop={10}
               >
                 <Typography variant="h3" display={{ xs: "block", md: "none" }}>
-                  Contact us{" "}
+                  Contact us
                 </Typography>
                 <Box display={{ xs: "none", md: "flex" }}>
                   <Typography

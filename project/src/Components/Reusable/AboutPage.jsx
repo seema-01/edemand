@@ -4,22 +4,30 @@ import Link from "@mui/material/Link";
 import { AboutList } from "./Aboutparagraph";
 import Layout from "../layout/Layout";
 import { useNavigate } from "react-router";
-import api from '../../API/Fetch_data_Api'
+import api from "../../API/Fetch_data_Api";
 
 function AboutPage() {
-
   const [aboutUs, setAboutUs] = useState([]);
 
   const navigate = useNavigate();
-
   useEffect(() => {
+    var formdata = new FormData();
+    formdata.append("latitude", "23.2507356");
+    formdata.append("longitude", "69.6339007");
+    formdata.append("filter", "discount");
 
-    api.get_settings()
-    .then((response) => console.log(response))
-    .then((response) => setAboutUs(response.data))
-    .catch((error) => console.log(error));
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
 
-  },[])
+    fetch("https://edemand.wrteam.me/api/v1/get_providers", requestOptions)
+      .then((response) => response.json())
+      .then((response) => setAboutUs(response.data))
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }, []);
   return (
     <Container maxWidth="lg">
       <Breadcrumbs
@@ -52,32 +60,13 @@ function AboutPage() {
           />
         </Grid>
         <Grid item xs={12}>
-         
           <Typography variant="h4" gutterBottom>
-            Know About Us
+            Know About Us!
           </Typography>
-         {/* we have to set it dynamic  */}
-          {/* {
-            aboutUs.map((response) => {
-              return(
-                <Box>
-                  <Typography variant="body1" gutterBottom>
-                    {response.about_us}
-                  </Typography>
-                </Box>
-              )
-            })
-          } */}
-          <Typography variant="body1" gutterBottom>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            malesuada, massa eu aliquet convallis, lectus orci accumsan felis,
-            eu lacinia enim arcu non mi. Etiam aliquam, massa vel hendrerit
-            vulputate, enim nibh tincidunt nunc, a pharetra ipsum turpis a
-            lectus. Sed sit amet felis euismod, egestas leo eget, malesuada
-            enim. Integer tempor, nulla at ornare elementum, urna sapien dictum
-            mi, eget fringilla elit elit eu metus.
+          <Typography>
+            Welcome to eDemmand is a professional on-demand service plateform, here we will provide you only service, with a focus on dependability and providing doorstep services. we are working to turn our passion for on demmmand service into a booming our on-demmand service as much as we enjoy offering them. I will keep posting more inportant post on my website for all of you. please give us support and love. Thanks for visiting our site. Have a Nice day !
           </Typography>
-          <Typography variant="body1" gutterBottom>
+          {/* <Typography variant="body1" gutterBottom>
             Vestibulum luctus, massa ac suscipit consequat, sapien neque porta
             dui, at faucibus nisi dolor non ante. Nulla quis libero ac lectus
             accumsan vestibulum. Quisque lobortis eget est quis luctus. Proin
@@ -92,7 +81,7 @@ function AboutPage() {
             id interdum gravida, lorem felis tincidunt erat, eu suscipit felis
             est non nisi. Sed non quam non purus consequat egestas ac vitae
             lorem. Suspendisse potenti. In at neque odio. Suspendisse potenti.
-          </Typography>
+          </Typography> */}
           <AboutList />
         </Grid>
       </Grid>

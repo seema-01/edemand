@@ -166,7 +166,6 @@ async function get_services() {
   return result;
 }
 
-
 async function get_settings() {
   var requestOptions = {
     method: "POST",
@@ -177,10 +176,9 @@ async function get_settings() {
     requestOptions
   );
   const result = await response.json();
+  console.log(result);
   return result;
 }
-
-
 
 // async function allData() {
 //   var requestOptions = {
@@ -206,7 +204,7 @@ export default {
   get_providers,
   get_services,
   get_home_providers,
-  get_settings
+  get_settings,
 };
 
 /** This code is for fetchig datas from api

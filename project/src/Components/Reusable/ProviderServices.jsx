@@ -277,14 +277,14 @@ const ProviderServices = ({ match }) => {
           </Grid>
           <Grid item xs={12} md={5}>
             <Box>
-              <Card sx={{}}>
-                {isLoading ? (
-                  <Box>
-                    {provider.map((response) => {
-                      return (
-                        <>
-                          {response.partner_id === partner_id ? (
-                            <>
+              {isLoading ? (
+                <>
+                  {provider.map((response) => {
+                    return (
+                      <>
+                        {response.partner_id === partner_id ? (
+                          <>
+                            <Card sx={{}}>
                               <CardMedia
                                 sx={{ height: 250 }}
                                 image={response.banner_image}
@@ -390,18 +390,18 @@ const ProviderServices = ({ match }) => {
                                   assumenda aut possimus.
                                 </Typography>
                               </CardContent>
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                        </>
-                      );
-                    })}
-                  </Box>
-                ) : (
-                  <Skeleton variant="rectangular" height={"800px"}/>
-                )}
-              </Card>
+                            </Card>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </>
+                    );
+                  })}
+                </>
+              ) : (
+                <Skeleton variant="rectangular" height={"800px"} />
+              )}
             </Box>
             <Box
               sx={{
