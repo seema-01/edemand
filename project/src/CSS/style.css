@@ -1,5 +1,5 @@
-:root{
-  --global-transition:.25s ease;
+:root {
+  --global-transition: 0.25s ease;
 }
 
 /* .swiper-container {
@@ -38,7 +38,7 @@
 /* input tag width for number in login form  */
 .react-tel-input .form-control {
   width: 350px;
-} 
+}
 
 .nav-link.active {
   text-decoration: underline;
@@ -48,14 +48,13 @@
   padding: 0px;
 }
 
-.css-12vja52-MuiToolbar-root{
+.css-12vja52-MuiToolbar-root {
   padding-left: 0;
   padding-right: 0;
 }
-.css-m1uy8a-MuiPaper-root-MuiCard-root{
+.css-m1uy8a-MuiPaper-root-MuiCard-root {
   box-shadow: 0;
 }
-
 
 /*Logout style*/
 .logout-container {
@@ -80,26 +79,25 @@
 }
 
 .overlay {
-
-    position: absolute;
-    left: 2px;
-    top: 0;
-    height: 100%;
-    width: 260px;
-    background: #0000003b;
-    background: rgb(2,0,36);
-    background: linear-gradient(0deg, rgb(2, 0, 36) 0%, rgba(0,212,255,0) 57%);
-    border-radius: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  background: #0000003b;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(0deg, rgb(2, 0, 36) 0%, rgba(0, 212, 255, 0) 57%);
+  border-radius: inherit;
 }
 
 .service-card-rating {
   position: absolute;
   top: 12px;
   right: 12px;
-  /* background: #009d3e; */
   color: white;
-  /* padding: 5px 10px; */
   border-radius: inherit;
+  /* background: #009d3e; */
+  /* padding: 5px 10px; */
 }
 
 .service-card {
@@ -107,10 +105,17 @@
   cursor: pointer;
 }
 
-.service-card:hover{
+.service-card:hover {
   transform: scale(1.05);
-  transition: var(--global-transition) ;
+  transition: var(--global-transition);
 }
-.swiper-wrapper{
+
+/* add this swiper only to category not main home page section  */
+.swiper-wrapper-padding {
   padding: 16px;
+}
+
+.css-o69gx8-MuiCardMedia-root{
+  width: auto;
+  object-fit: cover;
 }

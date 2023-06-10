@@ -63,8 +63,6 @@ const FetchingServies = () => {
   return (
     <Container>
       <Box sx={{ paddingBottom: 1 }}>
-        {/* ------------------------------------------------------------------ */}
-        {/* Everything should be coming from api  */}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {isLoading ? (
             <Box>
@@ -113,6 +111,7 @@ const FetchingServies = () => {
 
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
+          className="swiper-wrapper-padding"
           slidesPerView={5}
           freeMode={true}
           // navigation={true}
@@ -187,7 +186,7 @@ const FetchingServies = () => {
                         </Typography>
                       </Box>
                       <div className="overlay"></div>
-                      <div className="service-card-rating">4.5</div>
+                      {/* <div className="service-card-rating">4.5</div> */}
                     </Card>
                   </SwiperSlide>
                 );
@@ -292,9 +291,9 @@ export const FetchingPlumbing = () => {
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
+          className="swiper-wrapper-padding"
           slidesPerView={5}
           freeMode={true}
-          // navigation={true}
           onSwiper={(s) => {
             console.log("initialize swiper", s);
             setSwiper(s);
@@ -365,7 +364,9 @@ export const FetchingPlumbing = () => {
                         </Typography>
                       </Box>
                       <div className="overlay"></div>
-                      <div className="service-card-rating"><FavoriteBorder /></div>
+                      {/* <div className="service-card-rating">
+                        <FavoriteBorder />
+                      </div> */}
                     </Card>
                   </SwiperSlide>
                 );
@@ -468,6 +469,7 @@ export const FetchingLaundry = () => {
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
+          className="swiper-wrapper-padding"
           slidesPerView={5}
           freeMode={true}
           // navigation={true}
@@ -541,7 +543,7 @@ export const FetchingLaundry = () => {
                         </Typography>
                       </Box>
                       <div className="overlay"></div>
-                      <div className="service-card-rating">4.5</div>
+                      {/* <div className="service-card-rating">4.5</div> */}
                     </Card>
                   </SwiperSlide>
                 );
@@ -643,9 +645,9 @@ export const FetchingCar = () => {
       </Box>
       <Box sx={{ marginTop: 2, marginBottom: 2 }}>
         <Swiper
+          className="swiper-wrapper-padding"
           slidesPerView={4}
           freeMode={true}
-          // navigation={true}
           onSwiper={(s) => {
             console.log("initialize swiper", s);
             setSwiper(s);
@@ -716,7 +718,7 @@ export const FetchingCar = () => {
                         </Typography>
                       </Box>
                       <div className="overlay"></div>
-                      <div className="service-card-rating">4.5</div>
+                      {/* <div className="service-card-rating">4.5</div> */}
                     </Card>
                   </SwiperSlide>
                 );

@@ -31,7 +31,11 @@ const Booking = () => {
     0
   );
 
-  localStorage.setItem("totalPrice",totalDiscountedPrice)
+  localStorage.setItem("totalPrice", totalDiscountedPrice);
+
+  const itemQuantities = cartData.reduce((quantities, item) => {
+    return { ...quantities, [item.id]: item.quantity };
+  }, {});
 
   return (
     <div>
@@ -43,7 +47,7 @@ const Booking = () => {
                 <strong>{response.title}</strong>
               </Typography>
               <Typography gutterBottom variant="p" fontSize={16}>
-                1 * ${response.discounted_price}
+                {itemQuantities[response.id]} * ${response.discounted_price}
               </Typography>
             </Grid>
             <Grid item>
@@ -54,10 +58,13 @@ const Booking = () => {
                 fontSize={18}
                 color={"blue"}
               >
-                <strong>${response.discounted_price}</strong>
+                <strong>
+                  ${response.discounted_price * itemQuantities[response.id]}
+                </strong>
               </Typography>
             </Grid>
           </Grid>
+          <br />
           <br />
         </>
       ))}

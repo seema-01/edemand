@@ -68,6 +68,9 @@ function App() {
                 changeLight={handleChangeLight}
                 changeDark={handleChangeDark}
               />
+              <br />
+              <br />
+              <br />
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about" element={<About />}></Route>

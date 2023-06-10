@@ -185,9 +185,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   };
 
   return (
-    <Box>
+    <Box zIndex={1000}>
       <AppBar
-        position="sticky"
+        position="fixed"
         style={{
           backgroundColor: theme.palette.background.box,
           boxShadow: "none",
@@ -335,8 +335,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                 {islogined === "" ? (
                   <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
                     <Box sx={{ width: 400 }}>
-                      {/* {/ arrow btn /} */}
-                      {/* <ArrowBackIosIcon /> */}
                       <Box sx={{ textAlign: "center" }}>
                         <img
                           src="https://img.freepik.com/free-vector/corrugated-box-white-background_1308-111117.jpg"
@@ -355,16 +353,12 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         Your cart is empt.y. Login & Add products <br /> to that
                         we
                         <h4 style={{ color: "gray" }}>can serve you!</h4>
-                        {/* <Button variant="contained" sx={{ marginTop: "50px" }}>
-                       ADD NEW
-                     </Button> */}
                       </Box>
                     </Box>
                   </Drawer>
                 ) : (
                   <Drawer anchor="right" open={cart} onClose={handleCloseCart}>
-                    {/* <Cart /> */}
-                    <Box sx={{ width: 400 }}>
+                    <Box sx={{ width: 500 }}>
                       <Cart />
                     </Box>
                   </Drawer>
