@@ -5,24 +5,24 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  TextField,
   Grid,
-  Drawer,
   Divider,
   Skeleton,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import api from "../../API/Fetch_data_Api";
 import { useDispatch, useSelector } from "react-redux";
 import { Transert } from "../../actions/action";
-// import TransferReducer from "../../reducer/TransferReducer";
 import { ToastContainer, toast } from "react-toastify";
+import Pagination from "@mui/material/Pagination";
 
-const ProviderService = (item, { match }) => {
+const ProviderService = ({ match }) => {
   const [open, setOpen] = React.useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const handleClose = () => {
     setOpen(false);
   };
@@ -31,7 +31,7 @@ const ProviderService = (item, { match }) => {
   const islogined = localStorage.getItem("ContactInfo");
 
   const handleOpen = (item) => {
-    // if user is logged in then success otherwiser error 'please login'
+    // if user is logged in then success otherwise error 'please login'
     islogined === ""
       ? toast.error("Please Login...")
       : toast.success("Added Success...");
@@ -44,8 +44,10 @@ const ProviderService = (item, { match }) => {
     localStorage.setItem("cart", JSON.stringify(cartData));
   };
 
-  const [service, setServices] = useState([]);
+  const [services, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
 
   const params = useParams();
   const { partner_id } = params;
@@ -55,6 +57,8 @@ const ProviderService = (item, { match }) => {
     formdata.append("latitude", "23.2507356");
     formdata.append("longitude", "69.6689201");
     formdata.append("partner_id", `${partner_id}`);
+    formdata.append("limit", itemsPerPage);
+    formdata.append("page", `${currentPage}`);
 
     var requestOptions = {
       method: "POST",
@@ -63,9 +67,10 @@ const ProviderService = (item, { match }) => {
     };
 
     const response = await fetch(
-      "https://edemand.wrteam.me/api/v1/get_services",
+      `https://edemand.wrteam.me/api/v1/get_services`,
       requestOptions
     );
+    setTotalPages(Math.ceil(response.headers["x-total-count"] / 5));
     const result = await response.json();
     console.log(result);
     return result;
@@ -73,26 +78,35 @@ const ProviderService = (item, { match }) => {
 
   useEffect(() => {
     api
-    .get_services()
-    .then((response) => setServices(response.data))
-    .then((response) => setIsLoading(true))
-    .catch((error) => console.log(error));
+      .get_services()
+      .then((response) => setServices(response.data))
+      .then((response) => setIsLoading(true))
+      .catch((error) => console.log(error));
 
     allData()
       .then((response) => setServices(response.data))
       .then((response) => setIsLoading(true))
       .then((response) => console.log(response));
-    // dispatch(TransferReducer(item))
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(page);
+  };
+
+  const getPaginatedServices = () => {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return services.slice(startIndex, endIndex);
+  };
 
   return (
     <Box>
       {isLoading ? (
         <Box>
-          {service.map((response) => {
+          {getPaginatedServices().map((response) => {
             if (response.id == `${partner_id}`) {
               return (
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ flexGrow: 1 }} key={response.id}>
                   <Card
                     sx={{
                       display: "flex",
@@ -159,7 +173,7 @@ const ProviderService = (item, { match }) => {
                                 >
                                   Add
                                 </Button>
-                                <ToastContainer autoClose={3000} />
+                                <ToastContainer autoClose={2000} />
                               </Box>
                             </Box>
                           </Box>
@@ -172,6 +186,13 @@ const ProviderService = (item, { match }) => {
               );
             }
           })}
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={handlePageChange}
+            />
+          </Box>
         </Box>
       ) : (
         <Box>

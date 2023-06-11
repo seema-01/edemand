@@ -25,29 +25,27 @@ const Booking = () => {
   const [file, setFile] = React.useState(null);
   const cartData = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Calculate total discounted price
-  const totalDiscountedPrice = cartData.reduce(
-    (total, response) => total + parseFloat(response.discounted_price),
-    0
-  );
+  const itemQuantities = cartData.reduce((quantities, item) => {
+    return { ...quantities, [item.id]: item.quantity || 1 };
+  }, {});
+
+  const totalDiscountedPrice = cartData.reduce((total, item) => {
+    return total + item.discounted_price * itemQuantities[item.id];
+  }, 0);
 
   localStorage.setItem("totalPrice", totalDiscountedPrice);
 
-  const itemQuantities = cartData.reduce((quantities, item) => {
-    return { ...quantities, [item.id]: item.quantity };
-  }, {});
-
   return (
     <div>
-      {cartData.map((response) => (
-        <>
+      {cartData.map((item) => (
+        <React.Fragment key={item.id}>
           <Grid container alignItems="center" sx={{ ml: 1 }}>
             <Grid item xs>
               <Typography gutterBottom variant="h6" fontSize={18}>
-                <strong>{response.title}</strong>
+                <strong>{item.title}</strong>
               </Typography>
               <Typography gutterBottom variant="p" fontSize={16}>
-                {itemQuantities[response.id]} * ${response.discounted_price}
+                {itemQuantities[item.id]} * ${item.discounted_price}
               </Typography>
             </Grid>
             <Grid item>
@@ -59,14 +57,14 @@ const Booking = () => {
                 color={"blue"}
               >
                 <strong>
-                  ${response.discounted_price * itemQuantities[response.id]}
+                  ${item.discounted_price * itemQuantities[item.id]}
                 </strong>
               </Typography>
             </Grid>
           </Grid>
           <br />
           <br />
-        </>
+        </React.Fragment>
       ))}
 
       {/* Display total discounted price */}
@@ -77,7 +75,7 @@ const Booking = () => {
         fontSize={18}
         color={"blue"}
       >
-        <strong>Total: ${totalDiscountedPrice}</strong>
+        <strong>Total: ${totalDiscountedPrice.toFixed(2)}</strong>
       </Typography>
     </div>
   );

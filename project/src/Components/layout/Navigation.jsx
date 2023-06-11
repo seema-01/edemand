@@ -63,6 +63,14 @@ const style = {
   boxShadow: 24,
 };
 
+const activeTabStyle = {
+  "&.Mui-selected": {
+    "& .MuiTab-label": {
+      textDecoration: "underline",
+    },
+  },
+};
+
 const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
@@ -80,6 +88,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const [value, setValue] = useState(0);
   const [cart, setCart] = useState(false);
   const [phoneNo, setPhoneNo] = useState("");
+  const [navValue, setNavValue] = useState(0);
+
+  const handleNavChange = (event, newValue) => {
+    setNavValue(newValue);
+  };
   // First Attempts => set here to second goes from 60 to 0
   // const [counter, setCounter] = React.useState(60);
 
@@ -266,38 +279,38 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   sx={{ marginLeft: "auto" }}
                   indicatorColor="primary"
                   // defaultValue={value}
-                  value={value}
-                  onChange={(e, value) => setValue(value)}
+                  value={navValue}
+                  onChange={handleNavChange}
                 >
                   <Tab
                     value={0}
                     onClick={() => navigate("/")}
-                    sx={{ color: theme.palette.color.navLink }}
+                    sx={activeTabStyle}
                     label="Home"
                   />
                   <Tab
                     value={1}
                     onClick={() => navigate("/about")}
                     label="About Us"
-                    sx={{ color: theme.palette.color.navLink }}
+                    sx={activeTabStyle}
                   />
                   <Tab
                     value={2}
                     onClick={() => navigate("/categorys")}
                     label="Category"
-                    sx={{ color: theme.palette.color.navLink }}
+                    sx={activeTabStyle}
                   />
                   <Tab
                     value={3}
                     onClick={() => navigate("/providers")}
                     label="Providers"
-                    sx={{ color: theme.palette.color.navLink }}
+                    sx={activeTabStyle}
                   />
                   <Tab
                     value={4}
                     onClick={() => navigate("/contact")}
                     label="Contact"
-                    sx={{ color: theme.palette.color.navLink }}
+                    sx={activeTabStyle}
                   />
                 </Tabs>
               </Box>
