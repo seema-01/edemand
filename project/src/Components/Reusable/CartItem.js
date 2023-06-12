@@ -94,10 +94,13 @@ const Cart = () => {
   }, [itemQuantities]);
 
   const handleQuantityChange = (itemId, quantity) => {
-    setItemQuantities((prevItemQuantities) => ({
-      ...prevItemQuantities,
+    const updatedQuantities = {
+      ...itemQuantities,
       [itemId]: quantity,
-    }));
+    };
+
+    setItemQuantities(updatedQuantities);
+    localStorage.setItem("itemQuantities", JSON.stringify(updatedQuantities));
   };
 
   const handleDelete = (itemId) => {
@@ -105,6 +108,16 @@ const Cart = () => {
       const updatedCartData = prevCartData.filter((item) => item.id !== itemId);
       localStorage.setItem("cart", JSON.stringify(updatedCartData));
       return updatedCartData;
+    });
+
+    setItemQuantities((prevItemQuantities) => {
+      const updatedItemQuantities = { ...prevItemQuantities };
+      delete updatedItemQuantities[itemId];
+      localStorage.setItem(
+        "itemQuantities",
+        JSON.stringify(updatedItemQuantities)
+      );
+      return updatedItemQuantities;
     });
   };
 
