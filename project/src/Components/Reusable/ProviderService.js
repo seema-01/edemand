@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
@@ -10,14 +13,10 @@ import {
   Skeleton,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import api from "../../API/Fetch_data_Api";
-import { useDispatch, useSelector } from "react-redux";
-import { Transert } from "../../actions/action";
 import { ToastContainer, toast } from "react-toastify";
 import Pagination from "@mui/material/Pagination";
+import api from "../../API/Fetch_data_Api";
+import { Transert } from "../../actions/action";
 
 const ProviderService = ({ match }) => {
   const [open, setOpen] = React.useState(false);
@@ -42,6 +41,11 @@ const ProviderService = ({ match }) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     cartData.push(item);
     localStorage.setItem("cart", JSON.stringify(cartData));
+
+    // Add item with default quantity 1 to itemQuantities in localStorage
+    const itemQuantities = JSON.parse(localStorage.getItem("itemQuantities")) || {};
+    itemQuantities[item.id] = 1; // Add item with quantity 1
+    localStorage.setItem("itemQuantities", JSON.stringify(itemQuantities));
   };
 
   const [services, setServices] = useState([]);

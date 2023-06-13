@@ -93,8 +93,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const handleNavChange = (event, newValue) => {
     setNavValue(newValue);
   };
-  // First Attempts => set here to second goes from 60 to 0
-  // const [counter, setCounter] = React.useState(60);
 
   const handleOpenSetting = () => {
     setOpenSetting(true);
@@ -121,13 +119,6 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   // mode change toggle
   const [view, setView] = React.useState("list");
-  // tsx file
-  // const handleChange = (
-  //   event: React.MouseEvent<HTMLElement>,
-  //   nextView: string
-  // ) => {
-  //   setView(nextView);
-  // };
   const handleChange = (event, nextView) => {
     setView(nextView);
   };
@@ -173,20 +164,61 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
+  const axios = require("axios").default;
+
   //Function for Otp Verification
   function onOTPVerify() {
+    // setLoading(true);
+    // window.confirmationResult
+    //   .confirm(otp)
+    //   .then(async (res) => {
+    //     console.log(res);
+    //     setUser(res.user);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setLoading(false);
+    //   });
     setLoading(true);
-    window.confirmationResult
-      .confirm(otp)
-      .then(async (res) => {
-        console.log(res);
-        setUser(res.user);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+  window.confirmationResult
+    .confirm(otp)
+    .then(async (res) => {
+      // OTP verification successful
+      console.log(res);
+      setUser(res.user);
+      setLoading(false);
+
+      // Obtain the token
+      const options = {
+        method: "POST",
+        url: "https://{yourDomain}/oauth/token",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        data: new URLSearchParams({
+          grant_type: "client_credentials",
+          client_id: "YOUR_CLIENT_ID",
+          client_secret: "YOUR_CLIENT_SECRET",
+          audience: "YOUR_API_IDENTIFIER",
+        }),
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          const token = response.data.access_token;
+          console.log("Access Token:", token);
+          // Use the token for further API requests or store it securely
+          // Example: sendTokenToBackend(token);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    })
+    .catch((err) => {
+      // OTP verification failed
+      console.log(err);
+      setLoading(false);
+    });
   }
 
   const islogined = localStorage.getItem("isLoggedIn");

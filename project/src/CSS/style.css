@@ -119,3 +119,7 @@
   width: auto;
   object-fit: cover;
 }
+
+hr{
+  color: #dfdfdf;
+}

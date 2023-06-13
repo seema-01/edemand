@@ -163,7 +163,7 @@ const ProfileBooking = () => {
                             fontSize={18}
                             color={"grey"}
                           >
-                            ${sub_total}
+                            ${localStorage.getItem("totalPrice")}
                           </Typography>
                           <Typography
                             gutterBottom

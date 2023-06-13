@@ -75,6 +75,9 @@ const CartItem = ({ item, onDelete, onQuantityChange, itemQuantities }) => {
 };
 
 const Cart = () => {
+
+  // localStorage.removeItem("itemQuantity")
+
   const [cartData, setCartData] = useState(() => {
     const storedCartData = JSON.parse(localStorage.getItem("cart"));
     return storedCartData || [];

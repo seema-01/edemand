@@ -146,88 +146,94 @@ const ProviderServices = ({ match }) => {
                     <Box>
                       {data.map((response) => {
                         return (
-                          <Box sx={{ flexGrow: 1 }}>
-                            <Card
-                              sx={{
-                                display: "flex",
-                                boxShadow: "none",
-                                height: 200,
-                                p: 1,
-                              }}
-                            >
-                              <Grid container display={"flex"} spacing={3}>
-                                <Grid item md={4}>
-                                  <CardMedia
-                                    image={response.image_of_the_service}
-                                    alt="hi"
-                                    sx={{
-                                      height: "180px",
-                                      width: "200px",
-                                      borderRadius: "4px",
-                                    }}
-                                  />
-                                </Grid>
-                                <Grid item md={8}>
-                                  <CardContent sx={{ ml: 2, p: 0 }}>
-                                    <Box
+                          <>
+                            <Box sx={{ flexGrow: 1, borderRadius: "10px" }}>
+                              <Card
+                                sx={{
+                                  display: "flex",
+                                  boxShadow: "none",
+                                  //change 200 from auto so auto adjustment 
+                                  height: "auto",
+                                  p: 1,
+                                }}
+                              >
+                                <Grid container display={"flex"} spacing={3}>
+                                  <Grid item md={4}>
+                                    <CardMedia
+                                      image={response.image_of_the_service}
+                                      alt="hi"
                                       sx={{
-                                        display: "block",
-                                        textAlign: "start",
+                                        height: "180px",
+                                        width: "200px",
+                                        borderRadius: "4px",
                                       }}
-                                    >
-                                      <Box sx={{ display: "flex" }}>
-                                        <Typography
-                                          color={"#2560FC"}
-                                          sx={{ marginRight: "auto" }}
-                                        >
-                                          {response.title}
-                                        </Typography>
-                                        <StarIcon sx={{ color: "gold" }} />
-                                        {response.rating}
-                                        <br />
-                                      </Box>
-                                      <Typography fontSize={14} pt={2}>
-                                        {response.description}
-                                      </Typography>
-                                      <br /> <br />
-                                      <Typography
-                                        color={"gray"}
-                                        fontSize={14}
-                                        sx={{ mt: -4 }}
+                                    />
+                                  </Grid>
+                                  <Grid item md={8}>
+                                    <CardContent sx={{ ml: 2, p: 0 }}>
+                                      <Box
+                                        sx={{
+                                          display: "block",
+                                          textAlign: "start",
+                                        }}
                                       >
-                                        2 Person | 150 min
-                                      </Typography>
-                                      <br />
-                                      <Box sx={{ display: "flex", mt: 3 }}>
-                                        <Typography
-                                          color={"#2560FC"}
-                                          sx={{ marginRight: "auto" }}
-                                        >
-                                          ${response.discounted_price}
-                                          <del style={{ color: "gray" }}>
-                                            ${response.price}
-                                          </del>
-                                        </Typography>
-
-                                        <Box sx={{ float: "right", mt: -1 }}>
-                                          <Button
-                                            variant="outlined"
-                                            onClick={() => handleOpen(response)}
-                                            float="right"
-                                            size="small"
+                                        <Box sx={{ display: "flex" }}>
+                                          <Typography
+                                            color={"#2560FC"}
+                                            sx={{ marginRight: "auto" }}
                                           >
-                                            Add
-                                          </Button>
-                                          <ToastContainer autoClose={3000} />
+                                            {response.title}
+                                          </Typography>
+                                          <StarIcon sx={{ color: "gold" }} />
+                                          {response.rating}
+                                          <br />
+                                        </Box>
+                                        <Typography fontSize={14} pt={2}>
+                                          {response.description}
+                                        </Typography>
+                                        <br /> <br />
+                                        <Typography
+                                          color={"gray"}
+                                          fontSize={14}
+                                          sx={{ mt: -4 }}
+                                        >
+                                          2 Person | 150 min
+                                        </Typography>
+                                        <br />
+                                        <Box sx={{ display: "flex", mt: 3 }}>
+                                          <Typography
+                                            color={"#2560FC"}
+                                            sx={{ marginRight: "auto" }}
+                                          >
+                                            ${response.discounted_price}
+                                            <del style={{ color: "gray" }}>
+                                              ${response.price}
+                                            </del>
+                                          </Typography>
+
+                                          <Box sx={{ float: "right", mt: -1 }}>
+                                            <Button
+                                              variant="outlined"
+                                              onClick={() =>
+                                                handleOpen(response)
+                                              }
+                                              float="right"
+                                              size="small"
+                                            >
+                                              Add
+                                            </Button>
+                                            <ToastContainer autoClose={3000} />
+                                          </Box>
                                         </Box>
                                       </Box>
-                                    </Box>
-                                  </CardContent>
+                                    </CardContent>
+                                  </Grid>
                                 </Grid>
-                              </Grid>
-                            </Card>
-                            <Divider />
-                          </Box>
+                              </Card>
+                              <Divider />
+                            </Box>
+                            <br />
+                          </>
                         );
                       })}
                     </Box>
