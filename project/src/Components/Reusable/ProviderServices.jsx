@@ -55,6 +55,20 @@ const ProviderServices = ({ match }) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     cartData.push(item);
     localStorage.setItem("cart", JSON.stringify(cartData));
+
+    const itemQuantities =
+      JSON.parse(localStorage.getItem("itemQuantities")) || {};
+
+    // Check if the item already exists in itemQuantities
+    if (item.id in itemQuantities) {
+      // Item already exists, increment the quantity by 1
+      itemQuantities[item.id] += 1;
+    } else {
+      // Item doesn't exist, set the quantity to 1
+      itemQuantities[item.id] = 1;
+    }
+
+    localStorage.setItem("itemQuantities", JSON.stringify(itemQuantities));
   };
 
   //dynamic urlN
@@ -152,7 +166,7 @@ const ProviderServices = ({ match }) => {
                                 sx={{
                                   display: "flex",
                                   boxShadow: "none",
-                                  //change 200 from auto so auto adjustment 
+                                  //change 200 from auto so auto adjustment
                                   height: "auto",
                                   p: 1,
                                 }}
@@ -290,7 +304,9 @@ const ProviderServices = ({ match }) => {
                       <>
                         {response.partner_id === partner_id ? (
                           <>
-                            <Card sx={{}}>
+                            <Card
+                              sx={{ background: theme.palette.background.box }}
+                            >
                               <CardMedia
                                 sx={{ height: 250 }}
                                 image={response.banner_image}
@@ -388,12 +404,7 @@ const ProviderServices = ({ match }) => {
                                   variant="body2"
                                   color="text.secondary"
                                 >
-                                  Lorem, ipsum dolor sit amet consectetur
-                                  adipisicing elit. Nemo dolor inventore
-                                  quibusdam quas. Expedita voluptate dolores
-                                  labore, voluptatem iure repudiandae facilis.
-                                  Eum nihil excepturi, ex molestias quas
-                                  assumenda aut possimus.
+                                  {response.about}
                                 </Typography>
                               </CardContent>
                             </Card>

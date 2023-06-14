@@ -1,5 +1,4 @@
-import { DeleteOutline, EditOutlined, PlusOne } from "@mui/icons-material";
-import { Textarea } from "@mui/joy";
+import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import {
   Backdrop,
   Box,
@@ -13,8 +12,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 const Address = () => {
@@ -52,7 +50,7 @@ const Address = () => {
     let updatedEmail = document.getElementById("updatedAddress").value;
 
     localStorage.setItem("addressName", updatedName);
-    localStorage.getItem("addressLocation", updatedEmail);
+    localStorage.setItem("addressLocation", updatedEmail);
     setEdit(false);
   };
 
@@ -87,13 +85,13 @@ export const AddAddress = () => {
     setAddress(location);
 
     const userName = JSON.parse(localStorage.getItem("userName")) || [];
-    const userAdderss = JSON.parse(localStorage.getItem("userAddress")) || [];
+    const userAddress = JSON.parse(localStorage.getItem("userAddress")) || [];
     userName.push(name);
-    userAdderss.push(location);
+    userAddress.push(location);
     localStorage.setItem("userName", JSON.stringify(userName));
-    localStorage.setItem("userAddress", JSON.stringify(userAdderss));
+    localStorage.setItem("userAddress", JSON.stringify(userAddress));
 
-    toast.done("Address Added Success");
+    toast.success("Address Added Success");
     setCopy(true);
 
     isOpenAdd(false);
@@ -123,7 +121,7 @@ export const AddAddress = () => {
             <AddressForm />
             <br />
             <Button variant="outlined" fullWidth onClick={handleCloseAdderss}>
-              Cancle
+              Cancel
             </Button>
           </Box>
         </Backdrop>
@@ -135,29 +133,10 @@ export const AddAddress = () => {
 export default Address;
 
 const DynamicAddress = () => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [location, setLocation] = useState("home");
   const [addressList, setAddressList] = useState([]);
-  const [selectedValue, setSelectedValue] = React.useState(0);
-  const [edit, setEdit] = useState(false);
-  const [deleteItem, isDeleteItem] = useState(false);
-
-  const handleEdit = () => {
-    setEdit(true);
-  };
-
-  const handleEditClose = () => {
-    setEdit(false);
-  };
-
-  const handleDelete = () => {
-    isDeleteItem(true);
-  };
-
-  const handleDeleteClose = () => {
-    isDeleteItem(false);
-  };
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [editIndex, setEditIndex] = useState(null);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   useEffect(() => {
     const storedAddresses = localStorage.getItem("addresses");
@@ -166,51 +145,58 @@ const DynamicAddress = () => {
     }
   }, []);
 
-  const handleAddAddress = () => {
-    if (name.trim() !== "" && address.trim() !== "") {
-      const newAddress = {
-        name,
-        address,
-        location,
-      };
-      const updatedAddressList = [...addressList, newAddress];
-      setAddressList(updatedAddressList);
-      localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
-      setName("");
-      setAddress("");
-      setLocation("home");
+  const handleSelect = (index) => {
+    setSelectedAddress(index);
+  };
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+  };
+
+  const handleEditClose = () => {
+    setEditIndex(null);
+  };
+
+  const handleDelete = (index) => {
+    setDeleteIndex(index);
+  };
+
+  const handleDeleteClose = () => {
+    setDeleteIndex(null);
+  };
+
+  const handleUpdate = (index) => {
+    const updatedAddresses = [...addressList];
+    const nameInput = document.getElementById(`updateName${index}`);
+    const addressInput = document.getElementById(`updateAddress${index}`);
+    const newName = nameInput.value.trim();
+    const newAddress = addressInput.value.trim();
+
+    if (newName === '' || newAddress === '') {
+      toast.error("Name and address cannot be empty");
+      return;
     }
+
+    updatedAddresses[index].name = newName;
+    updatedAddresses[index].address = newAddress;
+    localStorage.setItem("addresses", JSON.stringify(updatedAddresses));
+    setAddressList(updatedAddresses);
+    setEditIndex(null);
   };
 
   const handleDeleteAddress = (index) => {
-    const updatedAddressList = [...addressList];
-    updatedAddressList.splice(index, 1);
-    setAddressList(updatedAddressList);
-    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
-    isDeleteItem(true);
-  };
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
-  const updateAddress = (index) => {
-    const updatedAddressList = [...addressList];
-    updatedAddressList[index].name = document.getElementById(
-      `updateName${index}`
-    ).value;
-    updatedAddressList[index].address = document.getElementById(
-      `updateAddress${index}`
-    ).value;
-    setAddressList(updatedAddressList);
-    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
-    setEdit(false);
+    const updatedAddresses = [...addressList];
+    updatedAddresses.splice(index, 1);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddresses));
+    setAddressList(updatedAddresses);
+    setDeleteIndex(null);
   };
 
   return (
     <>
       {addressList.map((address, index) => (
         <Box
+          key={index}
           sx={{
             my: 3,
             mx: 2,
@@ -220,14 +206,14 @@ const DynamicAddress = () => {
             p: 2,
           }}
         >
-          <Box sx={{ display: "flex", textAlign: "center" }} key={index}>
+          <Box sx={{ display: "flex", textAlign: "center" }}>
             <Grid container>
               <Grid item xs display={"flex"}>
                 <Typography gutterBottom variant="p" component="div">
                   <Radio
-                    checked={selectedValue === "0"}
-                    onChange={handleChange}
-                    value={0}
+                    checked={index === selectedAddress}
+                    onChange={() => handleSelect(index)}
+                    value={index}
                     name="radio-buttons"
                     inputProps={{ "aria-label": "A" }}
                   />
@@ -248,9 +234,9 @@ const DynamicAddress = () => {
               </Grid>
               <Grid item>
                 <IconButton
-                  aria-label="delete"
+                  aria-label="edit"
                   size="small"
-                  onClick={handleEdit}
+                  onClick={() => handleEdit(index)}
                   sx={{
                     backgroundColor: "green",
                     color: "white",
@@ -263,32 +249,32 @@ const DynamicAddress = () => {
                 >
                   <EditOutlined sx={{ fontSize: "large" }} />
                 </IconButton>
-                <Backdrop open={edit}>
-                  <Box
-                    sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}
-                  >
+                <Backdrop open={editIndex === index}>
+                  <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
                     <label>Name:</label>
                     <br />
                     <br />
                     <TextField
-                      placeholder={address.name}
+                      defaultValue={address.name}
                       id={`updateName${index}`}
                       fullWidth
-                    ></TextField>{" "}
-                    <br /> <br />
+                    />
+                    <br />
+                    <br />
                     <label>Address:</label>
                     <br />
                     <br />
                     <TextField
-                      placeholder={address.address}
+                      defaultValue={address.address}
                       id={`updateAddress${index}`}
                       fullWidth
-                    ></TextField>{" "}
-                    <br /> <br />
+                    />
+                    <br />
+                    <br />
                     <Button
                       variant="contained"
                       color="success"
-                      onClick={() => updateAddress(index)}
+                      onClick={() => handleUpdate(index)}
                     >
                       Save
                     </Button>
@@ -306,37 +292,37 @@ const DynamicAddress = () => {
                       background: "red",
                     },
                   }}
-                  onClick={handleDelete}
+                  onClick={() => handleDelete(index)}
                 >
                   <DeleteOutline sx={{ fontSize: "large" }} />
                 </IconButton>
-                <Backdrop open={deleteItem}>
+                <Backdrop open={deleteIndex === index}>
                   <Box sx={{ background: "white", p: 4 }}>
                     <Typography>
-                      Are You Sure You Want to Delete This Address ?
+                      Are You Sure You Want to Delete This Address?
                     </Typography>
-                    {/* for now we just write to close this box when user click on delete  */}
                     <Button
-                      variant="contaied"
+                      variant="contained"
                       color="error"
-                      onClick={handleDeleteAddress}
+                      onClick={() => handleDeleteAddress(index)}
                     >
                       Delete
                     </Button>
                     <Button onClick={handleDeleteClose}>Close</Button>
                   </Box>
-                </Backdrop>{" "}
+                </Backdrop>
               </Grid>
             </Grid>
           </Box>
           <Typography color="text.secondary" variant="body2">
             {address.address}
-          </Typography>{" "}
+          </Typography>
         </Box>
       ))}
     </>
   );
 };
+
 
 const AddressForm = () => {
   const [name, setName] = useState("");
