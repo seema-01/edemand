@@ -86,6 +86,13 @@ export const AddAddress = () => {
 
     const userName = JSON.parse(localStorage.getItem("userName")) || [];
     const userAddress = JSON.parse(localStorage.getItem("userAddress")) || [];
+
+    if (userName.length >= 3) {
+      toast.warning("Address limit reached (maximum 3 addresses allowed).");
+      isOpenAdd(false);
+      return;
+    }
+
     userName.push(name);
     userAddress.push(location);
     localStorage.setItem("userName", JSON.stringify(userName));
@@ -172,7 +179,7 @@ const DynamicAddress = () => {
     const newName = nameInput.value.trim();
     const newAddress = addressInput.value.trim();
 
-    if (newName === '' || newAddress === '') {
+    if (newName === "" || newAddress === "") {
       toast.error("Name and address cannot be empty");
       return;
     }
@@ -250,7 +257,9 @@ const DynamicAddress = () => {
                   <EditOutlined sx={{ fontSize: "large" }} />
                 </IconButton>
                 <Backdrop open={editIndex === index}>
-                  <Box sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}>
+                  <Box
+                    sx={{ background: "white", p: 2, width: 300, zIndex: 1 }}
+                  >
                     <label>Name:</label>
                     <br />
                     <br />
@@ -323,7 +332,6 @@ const DynamicAddress = () => {
   );
 };
 
-
 const AddressForm = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -339,6 +347,11 @@ const AddressForm = () => {
 
   const handleAddAddress = () => {
     if (name.trim() !== "" && address.trim() !== "") {
+      if (addressList.length >= 3) {
+        toast.warning("You can only add up to 3 addresses");
+        return;
+      }
+
       const newAddress = {
         name,
         address,
@@ -353,33 +366,98 @@ const AddressForm = () => {
     }
   };
 
+  const handleEdit = (index) => {
+    const updatedAddressList = [...addressList];
+    const editedAddress = updatedAddressList[index];
+
+    setName(editedAddress.name);
+    setAddress(editedAddress.address);
+    setLocation(editedAddress.location);
+
+    updatedAddressList.splice(index, 1);
+    setAddressList(updatedAddressList);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+  };
+
+  const handleDelete = (index) => {
+    const updatedAddressList = [...addressList];
+    updatedAddressList.splice(index, 1);
+    setAddressList(updatedAddressList);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddressList));
+  };
+
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        style={{ width: "200px", height: "30px" }}
-        onChange={(e) => setName(e.target.value)}
-      />{" "}
-      <br /> <br />
-      <input
-        type="text"
-        style={{ width: "200px", height: "30px" }}
-        placeholder="Address"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-      />{" "}
-      <br /> <br />
-      <select value={location} onChange={(e) => setLocation(e.target.value)}>
-        <option value="home">Home</option>
-        <option value="office">Office</option>
-      </select>{" "}
-      <br /> <br />
-      <Button variant="contained" fullWidth onClick={handleAddAddress}>
-        Add Address
-      </Button>
-      {/* <Button variant="outlined" fullWidth >cancle</Button> */}
-    </div>
+    <Grid container spacing={2}>
+      <Grid item xs={12} sm={6}>
+        <Box>
+          <Typography variant="h6" gutterBottom>
+            Add New Address
+          </Typography>
+          <TextField
+            label="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Location"
+            select
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            fullWidth
+            margin="normal"
+          >
+            <option value="home">Home</option>
+            <option value="office">Office</option>
+          </TextField>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddAddress}
+          >
+            Add Address
+          </Button>
+          <ToastContainer />
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Box>
+          <Typography variant="h6" gutterBottom>
+            Existing Addresses
+          </Typography>
+          {addressList.map((address, index) => (
+            <>
+            <Box key={index} sx={{border: "1px solid #dfdfdf", borderRadius: "10px", padding:1}}>
+              <Typography variant="subtitle1">{address.name}</Typography>
+              <Typography>{address.address}</Typography>
+              <IconButton
+                aria-label="edit"
+                size="small"
+                onClick={() => handleEdit(index)}
+              >
+                <EditOutlined />
+              </IconButton>
+              <IconButton
+                aria-label="delete"
+                size="small"
+                onClick={() => handleDelete(index)}
+              >
+                <DeleteOutline />
+              </IconButton>
+            </Box>
+            <br />
+            </>
+          ))}
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
