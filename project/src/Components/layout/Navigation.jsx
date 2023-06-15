@@ -168,58 +168,81 @@ const Navigation = ({ check, changeLight, changeDark }) => {
 
   //Function for Otp Verification
   function onOTPVerify() {
-    // setLoading(true);
+    setLoading(true);
+    window.confirmationResult
+      .confirm(otp)
+      .then(async (res) => {
+        console.log(res);
+        setUser(res.user);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+    //   setLoading(true);
     // window.confirmationResult
     //   .confirm(otp)
     //   .then(async (res) => {
+    //     // OTP verification successful
     //     console.log(res);
     //     setUser(res.user);
     //     setLoading(false);
+
+    //     // Obtain the token
+    //     const options = {
+    //       method: "POST",
+    //       url: "https://{yourDomain}/oauth/token",
+    //       headers: { "content-type": "application/x-www-form-urlencoded" },
+    //       data: new URLSearchParams({
+    //         grant_type: "client_credentials",
+    //         client_id: "YOUR_CLIENT_ID",
+    //         client_secret: "YOUR_CLIENT_SECRET",
+    //         audience: "YOUR_API_IDENTIFIER",
+    //       }),
+    //     };
+
+    //     axios
+    //       .request(options)
+    //       .then(function (response) {
+    //         const token = response.data.access_token;
+    //         console.log("Access Token:", token);
+    //         // Use the token for further API requests or store it securely
+    //         // Example: sendTokenToBackend(token);
+    //       })
+    //       .catch(function (error) {
+    //         console.error(error);
+    //       });
     //   })
     //   .catch((err) => {
+    //     // OTP verification failed
     //     console.log(err);
     //     setLoading(false);
     //   });
-    setLoading(true);
-  window.confirmationResult
-    .confirm(otp)
-    .then(async (res) => {
-      // OTP verification successful
-      console.log(res);
-      setUser(res.user);
-      setLoading(false);
-
-      // Obtain the token
-      const options = {
-        method: "POST",
-        url: "https://{yourDomain}/oauth/token",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        data: new URLSearchParams({
-          grant_type: "client_credentials",
-          client_id: "YOUR_CLIENT_ID",
-          client_secret: "YOUR_CLIENT_SECRET",
-          audience: "YOUR_API_IDENTIFIER",
-        }),
-      };
-
-      axios
-        .request(options)
-        .then(function (response) {
-          const token = response.data.access_token;
-          console.log("Access Token:", token);
-          // Use the token for further API requests or store it securely
-          // Example: sendTokenToBackend(token);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    })
-    .catch((err) => {
-      // OTP verification failed
-      console.log(err);
-      setLoading(false);
-    });
   }
+
+  useEffect(() => {
+    // Get the currently authenticated user
+    const user = auth.currentUser;
+
+    // Check if the user is signed in
+    if (user) {
+      // Get the ID token
+      user
+        .getIdToken()
+        .then((idToken) => {
+          // Access the ID token
+          localStorage.setItem("Token",idToken);
+          console.log("ID Token:", idToken);
+          // You can use the ID token for further API requests or store it securely
+          // Example: sendTokenToBackend(idToken);
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error("Error getting ID token:", error);
+        });
+    }
+  }, []);
 
   const islogined = localStorage.getItem("isLoggedIn");
   const navigate = useNavigate();

@@ -15,6 +15,8 @@ import {
   LinearProgress,
   Avatar,
   Skeleton,
+  Stack,
+  Pagination,
 } from "@mui/material";
 import api from "../../API/Fetch_data_Api";
 import React, { useEffect, useState } from "react";
@@ -293,6 +295,12 @@ const ProviderServices = ({ match }) => {
                   )}
                 </Box>
               </Box>
+              <Box display={"flex"} justifyContent={"center"}>
+                <Stack spacing={2}>
+                  <Pagination count={3} color="primary" />
+                </Stack>
+              </Box>
+              <br />
             </Box>
           </Grid>
           <Grid item xs={12} md={5}>

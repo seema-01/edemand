@@ -11,6 +11,7 @@ import {
   Grid,
   Divider,
   Skeleton,
+  Stack,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { ToastContainer, toast } from "react-toastify";
@@ -43,7 +44,8 @@ const ProviderService = ({ match }) => {
     localStorage.setItem("cart", JSON.stringify(cartData));
 
     // Add item with default quantity 1 to itemQuantities in localStorage
-    const itemQuantities = JSON.parse(localStorage.getItem("itemQuantities")) || {};
+    const itemQuantities =
+      JSON.parse(localStorage.getItem("itemQuantities")) || {};
     itemQuantities[item.id] = 1; // Add item with quantity 1
     localStorage.setItem("itemQuantities", JSON.stringify(itemQuantities));
   };
@@ -105,6 +107,7 @@ const ProviderService = ({ match }) => {
 
   return (
     <Box>
+      <ToastContainer /> {/* Move ToastContainer outside the loop */}
       {isLoading ? (
         <Box>
           {getPaginatedServices().map((response) => {
@@ -177,7 +180,6 @@ const ProviderService = ({ match }) => {
                                 >
                                   Add
                                 </Button>
-                                <ToastContainer autoClose={2000} />
                               </Box>
                             </Box>
                           </Box>
@@ -191,11 +193,9 @@ const ProviderService = ({ match }) => {
             }
           })}
           <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={handlePageChange}
-            />
+            <Stack spacing={2}>
+              <Pagination count={3} color="primary" />
+            </Stack>
           </Box>
         </Box>
       ) : (

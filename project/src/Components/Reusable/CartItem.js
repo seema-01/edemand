@@ -75,7 +75,6 @@ const CartItem = ({ item, onDelete, onQuantityChange, itemQuantities }) => {
 };
 
 const Cart = () => {
-
   // localStorage.removeItem("itemQuantity")
 
   const [cartData, setCartData] = useState(() => {
@@ -125,7 +124,7 @@ const Cart = () => {
   };
 
   const handleRequest = () => {
-    const apiUrl = "https://edemand-test.thewrteam.in/api/v1/manage_cart";
+    const apiUrl = "https://edemand-test.wrteam.in/api/v1/manage_cart";
     const cartItems = JSON.parse(localStorage.getItem("cart"));
 
     if (!cartItems || cartItems.length === 0) {
@@ -140,12 +139,22 @@ const Cart = () => {
       })),
     };
 
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      `Bearer ${localStorage.getItem("Token")}`
+    );
+
+    var formdata = new FormData();
+    data.items.forEach((item) => {
+      formdata.append("service_id", item.service_id);
+      formdata.append("qty", item.qty);
+    });
+
     fetch(apiUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      headers: myHeaders,
+      body: formdata,
     })
       .then((response) => {
         if (!response.ok) {
