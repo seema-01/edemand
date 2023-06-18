@@ -1,3 +1,4 @@
+import api from "../../API/Fetch_data_Api";
 import React, { useRef } from "react";
 import {
   Box,
@@ -8,13 +9,12 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import api from "../../API/Fetch_data_Api";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
@@ -24,7 +24,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const FetchingCategorys = () => {
   const [image, setImage] = useState([]);
   const [isLoading, SetIsLoading] = useState(false);
-  const [swiper, setSwiper] = React.useState(null);
+  const [swiper, setSwiper] = useState(null);
 
   const nextSlide = () => {
     swiper.slideNext();
@@ -63,7 +63,9 @@ const FetchingCategorys = () => {
                 color="primary"
                 onClick={() => prevSlide()}
               >
-                <ArrowBackIosIcon sx={{ color: theme.palette.color.navLink, pl:0.6}} />
+                <ArrowBackIosIcon
+                  sx={{ color: theme.palette.color.navLink, pl: 0.6 }}
+                />
               </IconButton>
               <IconButton
                 aria-label="delete"
