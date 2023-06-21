@@ -58,6 +58,8 @@ const ProfileNavigation = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [loggedOut, setLoggedOut] = useState(false);
 
+  document.title = "profile | eDemand"
+
   const handleLogout = () => {
     setIsVisible(true);
   };
@@ -302,7 +304,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <Book sx={{ color: "blue" }} />
+                    <Book sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
                   {/* booking address url  */}
                   <Link
@@ -335,7 +337,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <LocationCityOutlined sx={{ color: "blue" }} />
+                    <LocationCityOutlined sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
                   <Link
                     to={"/profile/address"}
@@ -367,7 +369,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <AccountBalanceWalletOutlined sx={{ color: "blue" }} />
+                    <AccountBalanceWalletOutlined sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
                   <Link
                     to={"/profile/payment"}
@@ -399,7 +401,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <FavoriteBorder sx={{ color: "blue" }} />
+                    <FavoriteBorder sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
                   <Link
                     to={"/profile/bookmark"}
@@ -434,7 +436,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <NotificationsOutlined sx={{ color: "blue" }} />
+                    <NotificationsOutlined sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
                   <Link
                     to={"/profile/notifications"}
@@ -470,7 +472,7 @@ const ProfileNavigation = () => {
                   href="/"
                 >
                   <ListItemIcon>
-                    <Logout sx={{ color: "blue" }} />
+                    <Logout sx={{ color: theme.palette.color.logo }} />
                   </ListItemIcon>
 
                   <Link

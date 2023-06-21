@@ -13,6 +13,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import '../../CSS/style.css';
 import { useEffect, useState } from "react";
 import api from "../../API/Fetch_data_Api";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -73,7 +74,7 @@ const FetchingServies = () => {
                       <Typography
                         fontSize={theme.palette.fonts.h1}
                         marginBottom={1}
-                        // fontWeight={400}
+                      // fontWeight={400}
                       >
                         {response.name}
                       </Typography>
@@ -157,6 +158,7 @@ const FetchingServies = () => {
                       <img
                         src={response.category_image}
                         title={response.name}
+                        alt="service_image"
                         style={{
                           height: "100%",
                           width: "100%",
@@ -165,7 +167,7 @@ const FetchingServies = () => {
                           objectFit: "cover",
                           display: "flex",
                         }}
-                        // we have to implemenmt provider/service/...
+                      // we have to implemenmt provider/service/...
                       />
                       <Box marginTop={-5} textAlign={"center"}>
                         <Typography
@@ -311,7 +313,7 @@ export const FetchingPlumbing = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 30,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
@@ -336,6 +338,7 @@ export const FetchingPlumbing = () => {
                       <img
                         src={response.category_image}
                         title={response.name}
+                        alt="service_image"
                         style={{
                           height: "100%",
                           width: "100%",
@@ -514,6 +517,7 @@ export const FetchingLaundry = () => {
                     >
                       <img
                         src={response.category_image}
+                        alt="service_image"
                         title={response.name}
                         style={{
                           height: "100%",
@@ -685,11 +689,12 @@ export const FetchingCar = () => {
                       className="service-card"
                       onClick={() => navigate("/providers/services/270")}
                       key={response.id}
-                      sx={{ width: 260, height: 220, borderRadius: "10px" }}
+                      sx={{ width: 260, height: 220, borderRadius: "10px", cursor: "pointer" }}
                     >
                       <img
                         src={response.category_image}
                         title={response.name}
+                        alt="service_image"
                         style={{
                           height: "100%",
                           width: "100%",

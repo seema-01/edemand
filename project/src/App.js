@@ -85,7 +85,7 @@ function App() {
                   element={<Reviews />}
                 ></Route>
                 <Route
-                  path="/categorys"
+                  path="/categories"
                   element={
                     <div style={{ marginBottom: "100px" }}>
                       <Category />
@@ -95,12 +95,12 @@ function App() {
                 <Route path="/contact" element={<Contact />}></Route>
 
                 <Route
-                  path="/providers/services/:partner_id"
+                  path="/providers/services/:partner_id/:company_name"
                   element={<ProviderServices />}
                 ></Route>
 
                 <Route
-                  path="/categorys/:id"
+                  path="/categorys/:id/:title"
                   element={<NavigateCategorys />}
                 ></Route>
 

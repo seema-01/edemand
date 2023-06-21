@@ -15,6 +15,7 @@ import ProviderBookmark from "./ProviderBookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { Checkbox } from "@mui/material";
+import slugify from "slugify";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -45,6 +46,7 @@ export default function Provider() {
   };
 
   useEffect(() => {
+    document.title = "providers | eDemand"
     ApiProviders();
   }, []);
 
@@ -61,26 +63,26 @@ export default function Provider() {
       {isLoading ? (
         <>
           {provider.map((response) => {
+            const slug = slugify(response.company_name, { lower: true });
             return (
               <>
                 <Card
                   key={response.id}
-                  sx={{ maxWidth: 345, display: "inline-block" }}
-                  onClick={() =>
-                    navigate("/providers/services/" + response.partner_id)
-                  }
+                  sx={{ maxWidth: 345, display: "inline-block", cursor: "pointer" }}
                 >
                   <Box
                     sx={{
-                      mt: 1,
-                      ml: 36,
+                      mt: "1px",
+                      ml: "306px",
                       position: "absolute",
+                      borderRadius: "6px",
+                      background: "black"
                     }}
                   >
                     {/*user should able to Bookmark
                     but i want to remove book mark when user click on next buttom  */}
                     <Checkbox
-                      size="large"
+                      size="small"
                       sx={{ color: "white" }}
                       {...label}
                       icon={<BookmarkBorderIcon />}
@@ -90,11 +92,17 @@ export default function Provider() {
                       onClick={() => handle(response)}
                     />
                   </Box>
+
                   <CardMedia
                     sx={{ height: 240 }}
                     image={response.banner_image}
+                    onClick={() =>
+                      navigate("/providers/services/" + response.partner_id + '/' + slug)}
                   />
                   <CardMedia
+                    onClick={() =>
+                      navigate("/providers/services/" + response.partner_id + '/' + slug)
+                    }
                     sx={{
                       height: 80,
                       width: 80,
@@ -102,11 +110,14 @@ export default function Provider() {
                       borderRadius: "50px",
                       marginTop: "-40px",
                       marginLeft: "35%",
+                      cursor: "pointer",
                     }}
                     image={response.image}
                   />
                   <Box textAlign={"center"}>
-                    <CardContent>
+                    <CardContent onClick={() =>
+                      navigate("/providers/services/" + response.partner_id + '/' + slug)
+                    }>
                       <Typography
                         gutterBottom
                         variant="h5"
@@ -130,7 +141,7 @@ export default function Provider() {
                       </div>
                       <Box>
                         <NavLink
-                          to={"/providers/services/" + response.partner_id}
+                          to={"/providers/services/" + response.partner_id + "/" + slug}
                           style={{
                             textAlign: "center",
                             justifyContent: "center",
@@ -233,6 +244,7 @@ export const HomeProvider = () => {
                       width: 80,
                       border: "5px solid white",
                       borderRadius: "50px",
+                      cursor: "pointer",
                       marginTop: "-40px",
                       marginLeft: "35%",
                     }}

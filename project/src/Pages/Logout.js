@@ -8,6 +8,8 @@ import Pnavigation from "../Components/Reusable/Profile/Pnavigation";
 const Logout = () => {
   const theme = useTheme();
 
+  document.title = "profile - logout | eDemand"
+
   const handleLogout = () => {
     localStorage.setItem("ContactInfo",'');
     localStorage.setItem("isLoggedIn",'');

@@ -23,6 +23,10 @@ import { useNavigate, useParams } from "react-router";
 import Pnavigation from "./Pnavigation";
 
 const ProfileBookmark = () => {
+
+  document.title = "profile - bookmark | eDemand"
+
+
   const theme = useTheme();
 
   const params = useParams();

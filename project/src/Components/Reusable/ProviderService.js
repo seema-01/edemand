@@ -107,7 +107,6 @@ const ProviderService = ({ match }) => {
 
   return (
     <Box>
-      <ToastContainer /> {/* Move ToastContainer outside the loop */}
       {isLoading ? (
         <Box>
           {getPaginatedServices().map((response) => {
@@ -180,6 +179,7 @@ const ProviderService = ({ match }) => {
                                 >
                                   Add
                                 </Button>
+                                <ToastContainer />
                               </Box>
                             </Box>
                           </Box>
@@ -192,11 +192,11 @@ const ProviderService = ({ match }) => {
               );
             }
           })}
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+          {/* <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
             <Stack spacing={2}>
               <Pagination count={3} color="primary" />
             </Stack>
-          </Box>
+          </Box> */}
         </Box>
       ) : (
         <Box>

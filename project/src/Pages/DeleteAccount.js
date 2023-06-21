@@ -7,6 +7,8 @@ import Pnavigation from "../Components/Reusable/Profile/Pnavigation";
 const DeleteAccount = () => {
   const theme = useTheme();
 
+  document.title = "profile - delete account | eDemand"
+
   const handleLogout = () => {
     localStorage.removeItem("ContactInfo");
     localStorage.setItem("isLoggedIn", "");

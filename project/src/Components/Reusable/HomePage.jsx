@@ -115,11 +115,11 @@ const HomePage = () => {
             style={{ maxHeight: "500px" }}
           >
             <SwiperSlide>
-              <img src={demo2} height={"100%"} width={"100%"} alt="" />
+              <img src={"https://edemand.wrteam.me/public/uploads/sliders/006%20Woodwork%20Carpentry-min.jpg"} height={"100%"} width={"100%"} alt="" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src={"https://placeimg.com/640/480/tech"}
+                src={"https://edemand.wrteam.me/public/uploads/sliders/electricians-hands-testing-current-electric-control-panel-min-min.jpg"}
                 height={"auto"}
                 width={"100%"}
                 alt=""
@@ -127,7 +127,7 @@ const HomePage = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src={"https://placeimg.com/640/480/tech"}
+                src={"https://edemand.wrteam.me/public/uploads/sliders/auto-mechanic-checking-car-min-min.jpg"}
                 height={"auto"}
                 width={"100%"}
                 alt=""
@@ -135,12 +135,21 @@ const HomePage = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src={"https://placeimg.com/640/480/tech"}
+                src={"https://edemand.wrteam.me/public/uploads/sliders/1668427500.jpg"}
+                height={"80%"}
+                width={"100%"}
+                style={{marginTop:-5}}
+                alt=""
+              />
+            </SwiperSlide>
+            {/* <SwiperSlide>
+              <img
+                src={"https://edemand.wrteam.me/public/uploads/sliders/1668427620.jpg"}
                 height={"auto"}
                 width={"100%"}
                 alt=""
               />
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </Box>
         <Box

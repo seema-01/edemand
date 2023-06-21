@@ -47,19 +47,40 @@ const ProviderServices = ({ match }) => {
 
   const handleOpen = (item) => {
     // if user is logged in then success otherwiser error 'please login'
-    islogined === ""
-      ? toast.error("Please Login...")
-      : toast.success("Added Success...");
+    // islogined === ""
+    //   ? toast.error("Please Login...")
+    //   : toast.success("Added Success...");
     console.info("clicked", item);
+
+    if (islogined == "") {
+      toast.error("Please Login...")
+    }
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemQuantities = JSON.parse(localStorage.getItem("itemQuantities")) || {};
+
+
+    if (item.id in itemQuantities) {
+      toast.info("Item already in cart");
+      return;
+    }
+
+    toast.success("Added to cart")
 
     dispatch(Transert(item));
 
-    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    // backup 
+    // const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    // cartData.push(item);
+    // localStorage.setItem("cart", JSON.stringify(cartData));
+
+    // const itemQuantities =
+    //   JSON.parse(localStorage.getItem("itemQuantities")) || {};
     cartData.push(item);
     localStorage.setItem("cart", JSON.stringify(cartData));
 
-    const itemQuantities =
-      JSON.parse(localStorage.getItem("itemQuantities")) || {};
+    // Increment the item quantity by 1
+    itemQuantities[item.id] = 1;
+    localStorage.setItem("itemQuantities", JSON.stringify(itemQuantities));
 
     // Check if the item already exists in itemQuantities
     if (item.id in itemQuantities) {
@@ -76,6 +97,7 @@ const ProviderServices = ({ match }) => {
   //dynamic urlN
   const params = useParams();
   const { partner_id } = params;
+  const { company_name } = params;
   console.log("partner_id" + partner_id);
 
   let finalDoc = 0;
@@ -85,6 +107,7 @@ const ProviderServices = ({ match }) => {
     formdata.append("latitude", "23.2507356");
     formdata.append("longitude", "69.6689201");
     formdata.append("partner_id", `${partner_id}`);
+    formdata.append("company_name", `${company_name}`);
 
     var requestOptions = {
       method: "POST",
@@ -104,6 +127,9 @@ const ProviderServices = ({ match }) => {
   }
 
   useEffect(() => {
+
+    document.title = `${company_name} | edemand`
+
     allData()
       .then((response) => setData(response.data))
       .then((response) => setIsLoading(true))
@@ -118,29 +144,44 @@ const ProviderServices = ({ match }) => {
   return (
     <div>
       <Container>
-        <Breadcrumbs
-          aria-label="breadcrumb"
-          sx={{ marginBottom: 1, marginTop: 1 }}
-        >
-          <Link
-            sx={{ cursor: "pointer", textDecoration: "none" }}
-            color="inherit"
-            onClick={() => navigate("/")}
+        <Box marginTop={2}>
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            sx={{ marginBottom: 1, marginTop: 1 }}
           >
-            Home
-          </Link>
-          <Link
-            sx={{ cursor: "pointer", textDecoration: "none" }}
-            color="inherit"
-            onClick={() => navigate("/providers")}
-          >
-            Providers
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-        </Breadcrumbs>
-        <Typography variant="h4" gutterBottom>
-          <strong>Service Providers</strong>
-        </Typography>
+            <Link
+              sx={{ cursor: "pointer", textDecoration: "none" }}
+              color="inherit"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </Link>
+            <Link
+              sx={{ cursor: "pointer", textDecoration: "none" }}
+              color="inherit"
+              onClick={() => navigate("/providers")}
+            >
+              Providers
+            </Link>
+            <Typography color="text.primary">Services</Typography>
+          </Breadcrumbs>
+          {islogined ? (
+            <>
+              {
+                provider.map((response) => {
+                  if (partner_id == response.partner_id)
+                    return (
+                      <Typography variant="h4" gutterBottom>
+                        <strong>{response.company_name}</strong>
+                      </Typography>
+                    )
+                })
+              }
+            </>
+          ) : (
+            <Skeleton />
+          )}
+        </Box>
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={7}>
@@ -238,9 +279,9 @@ const ProviderServices = ({ match }) => {
                                             >
                                               Add
                                             </Button>
-                                            <ToastContainer autoClose={3000} />
                                           </Box>
                                         </Box>
+
                                       </Box>
                                     </CardContent>
                                   </Grid>
@@ -252,6 +293,7 @@ const ProviderServices = ({ match }) => {
                           </>
                         );
                       })}
+                      <ToastContainer />
                     </Box>
                   ) : (
                     <Box>
@@ -295,11 +337,11 @@ const ProviderServices = ({ match }) => {
                   )}
                 </Box>
               </Box>
-              <Box display={"flex"} justifyContent={"center"}>
-                <Stack spacing={2}>
-                  <Pagination count={3} color="primary" />
-                </Stack>
-              </Box>
+              {/* <Box display={"flex"} justifyContent={"center"}>
+                  <Stack spacing={2}>
+                    <Pagination count={3} color="primary" />
+                  </Stack>
+                </Box> */}
               <br />
             </Box>
           </Grid>
@@ -318,7 +360,6 @@ const ProviderServices = ({ match }) => {
                               <CardMedia
                                 sx={{ height: 250 }}
                                 image={response.banner_image}
-                                title="green iguana"
                               />
                               <CardMedia
                                 sx={{
@@ -331,7 +372,6 @@ const ProviderServices = ({ match }) => {
                                   mt: -5,
                                 }}
                                 image={response.image}
-                                title="green iguana"
                               />
                               <CardActions
                                 sx={{ justifyContent: "space-around", mb: 4 }}
@@ -477,7 +517,7 @@ const ProviderServices = ({ match }) => {
 
 export default ProviderServices;
 
-const RatingCard = ({}) => {
+const RatingCard = ({ }) => {
   return (
     <Box
       sx={{

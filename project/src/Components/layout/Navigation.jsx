@@ -6,17 +6,13 @@ import {
   Typography,
   styled,
   IconButton,
-  List,
-  ListItemButton,
   Drawer,
   Container,
   Backdrop,
-  createTheme,
   Avatar,
   Tabs,
   Tab,
-  Badge,
-  Divider,
+
 } from "@mui/material";
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
@@ -24,13 +20,13 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "../../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import ClearIcon from "@mui/icons-material/Clear";
 import "intl-tel-input/build/css/intlTelInput.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useTheme } from "@emotion/react";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import CloseIcon from "@mui/icons-material/Close";
@@ -39,7 +35,6 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 // import CartItem from "../Reusable/CartItem";
 import Cart from "../Reusable/CartItem";
 
@@ -51,17 +46,7 @@ const StyledToolBar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  borderRadius: "10px",
-  boxShadow: 24,
-};
+
 
 const activeTabStyle = {
   "&.Mui-selected": {
@@ -71,11 +56,11 @@ const activeTabStyle = {
   },
 };
 
-const label = { inputProps: { "area-label": "switch demo" } };
+// const label = { inputProps: { "area-label": "switch demo" } };
 
 const Navigation = ({ check, changeLight, changeDark }) => {
-  let id = localStorage.getItem("Data");
-  const input = document.querySelector("#phone");
+  // let id = localStorage.getItem("Data");
+  // const input = document.querySelector("#phone");
 
   const [open, setOpen] = React.useState(false);
   const [login, isLogin] = React.useState(false);
@@ -85,9 +70,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
-  const [value, setValue] = useState(0);
+  // const [value, setValue] = useState(0);
   const [cart, setCart] = useState(false);
-  const [phoneNo, setPhoneNo] = useState("");
+  // const [phoneNo, setPhoneNo] = useState("");
   const [navValue, setNavValue] = useState(0);
 
   const handleNavChange = (event, newValue) => {
@@ -135,7 +120,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
           callback: (response) => {
             onSignup();
           },
-          "expired-callback": () => {},
+          "expired-callback": () => { },
         },
         auth
       );
@@ -164,7 +149,29 @@ const Navigation = ({ check, changeLight, changeDark }) => {
       });
   }
 
-  const axios = require("axios").default;
+  const getToken = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "ci_session=1rpau81dcgsnt6qjrmb2lp6220mdm0d9; csrf_cookie_name=d1132cf349f886dfa9cee4843c0ad493");
+
+    let contactNo = localStorage.getItem("ContactInfo")
+
+    var formdata = new FormData();
+    formdata.append("mobile", contactNo);
+    formdata.append("country_code", "+91");
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow'
+    };
+
+    fetch("https://edemand.wrteam.me/api/v1/manage_user", requestOptions)
+      .then(response => response.text())
+      .then(result => localStorage.setItem("Token", result.token))
+      .then(result => console.log(result.token))
+      .catch(error => console.log('error', error));
+  }
 
   //Function for Otp Verification
   function onOTPVerify() {
@@ -180,69 +187,9 @@ const Navigation = ({ check, changeLight, changeDark }) => {
         console.log(err);
         setLoading(false);
       });
-    //   setLoading(true);
-    // window.confirmationResult
-    //   .confirm(otp)
-    //   .then(async (res) => {
-    //     // OTP verification successful
-    //     console.log(res);
-    //     setUser(res.user);
-    //     setLoading(false);
-
-    //     // Obtain the token
-    //     const options = {
-    //       method: "POST",
-    //       url: "https://{yourDomain}/oauth/token",
-    //       headers: { "content-type": "application/x-www-form-urlencoded" },
-    //       data: new URLSearchParams({
-    //         grant_type: "client_credentials",
-    //         client_id: "YOUR_CLIENT_ID",
-    //         client_secret: "YOUR_CLIENT_SECRET",
-    //         audience: "YOUR_API_IDENTIFIER",
-    //       }),
-    //     };
-
-    //     axios
-    //       .request(options)
-    //       .then(function (response) {
-    //         const token = response.data.access_token;
-    //         console.log("Access Token:", token);
-    //         // Use the token for further API requests or store it securely
-    //         // Example: sendTokenToBackend(token);
-    //       })
-    //       .catch(function (error) {
-    //         console.error(error);
-    //       });
-    //   })
-    //   .catch((err) => {
-    //     // OTP verification failed
-    //     console.log(err);
-    //     setLoading(false);
-    //   });
+    console.log("Token Verification token got from here...")
+    getToken();
   }
-
-  useEffect(() => {
-    // Get the currently authenticated user
-    const user = auth.currentUser;
-
-    // Check if the user is signed in
-    if (user) {
-      // Get the ID token
-      user
-        .getIdToken()
-        .then((idToken) => {
-          // Access the ID token
-          localStorage.setItem("Token",idToken);
-          console.log("ID Token:", idToken);
-          // You can use the ID token for further API requests or store it securely
-          // Example: sendTokenToBackend(idToken);
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error("Error getting ID token:", error);
-        });
-    }
-  }, []);
 
   const islogined = localStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
@@ -294,7 +241,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                       </NavLink>
                       <br />
                       <br />
-                      <NavLink style={myLink} to="/categorys">
+                      <NavLink style={myLink} to="/categories">
                         Categories
                       </NavLink>
                       <br />
@@ -323,7 +270,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     }}
                     to="/"
                   >
-                    eDemmand
+                    eDemand
                   </NavLink>
                 </div>
 
@@ -351,7 +298,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                   />
                   <Tab
                     value={2}
-                    onClick={() => navigate("/categorys")}
+                    onClick={() => navigate("/categories")}
                     label="Category"
                     sx={activeTabStyle}
                   />
@@ -405,6 +352,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                     <Box sx={{ width: 400 }}>
                       <Box sx={{ textAlign: "center" }}>
                         <img
+                          alt="empty"
                           src="https://img.freepik.com/free-vector/corrugated-box-white-background_1308-111117.jpg"
                           style={{
                             width: "220px",
@@ -448,7 +396,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           edge="start"
                           color="inherit"
                           aria-label="menu"
-                          // sx={{ mr: 2 }}
+                        // sx={{ mr: 2 }}
                         >
                           <SettingsOutlinedIcon />
                         </IconButton>
@@ -458,11 +406,11 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                           component="div"
                           sx={{ flexGrow: 1 }}
                         >
-                          eDemmand&nbsp;Setting
+                          eDemand&nbsp;Setting
                         </Typography>
                         <IconButton
                           onClick={handleCloseSetting}
-                          sx={{ color: theme.palette.color.navLink }}
+                          sx={{ color: "white" }}
                         >
                           <CloseIcon />
                         </IconButton>
@@ -538,7 +486,7 @@ const Navigation = ({ check, changeLight, changeDark }) => {
                         {(finalNo = ph)}
                         {
                           (localStorage.setItem("ContactInfo", finalNo),
-                          localStorage.setItem("isLoggedIn", "true"))
+                            localStorage.setItem("isLoggedIn", "true"))
                         }
                       </Box>
                     ) : (

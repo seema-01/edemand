@@ -102,7 +102,7 @@ const HomeCategory = () => {
             <Box sx={{background: theme.palette.background.box}}>
               <>
                 <Typography variant="h4">
-                  Our Valuable Service Providers
+                  Our Valuable Providers services
                 </Typography> <br />
                 <hr color="Whitesmoke" />
                 <br />

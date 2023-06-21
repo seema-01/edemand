@@ -75,7 +75,7 @@ const ContactForm = () => {
                     width: "30px",
                     border: "2px solid",
                     p: 1,
-                    backgroundColor: "blue",
+                    backgroundColor: "#9e9eff",
                     color: "white",
                     borderRadius: "5px",
                   }}
@@ -86,7 +86,7 @@ const ContactForm = () => {
                   </Typography>
                   <Typography
                     variant="h6"
-                    fontSize={18}
+                    fontSize={16}
                     fontWeight={400}
 
                   >
@@ -103,7 +103,7 @@ const ContactForm = () => {
                     width: "30px",
                     border: "2px solid",
                     p: 1,
-                    backgroundColor: "blue",
+                    backgroundColor: "#9e9eff",
                     color: "white",
                     borderRadius: "5px",
                   }}
@@ -114,7 +114,7 @@ const ContactForm = () => {
                   </Typography>
                   <Typography
                     variant="h6"
-                    fontSize={18}
+                    fontSize={16}
                     fontWeight={400}
 
                   >
@@ -131,7 +131,7 @@ const ContactForm = () => {
                     width: "30px",
                     border: "2px solid",
                     p: 1,
-                    backgroundColor: "blue",
+                    backgroundColor: "#9e9eff",
                     color: "white",
                     borderRadius: "5px",
                   }}
@@ -142,7 +142,7 @@ const ContactForm = () => {
                   </Typography>
                   <Typography
                     variant="h6"
-                    fontSize={18}
+                    fontSize={16}
                     fontWeight={400}
 
                   >
@@ -160,7 +160,7 @@ const ContactForm = () => {
                     width: "30px",
                     border: "2px solid",
                     p: 1,
-                    backgroundColor: "blue",
+                    backgroundColor: "#9e9eff",
                     color: "white",
                     borderRadius: "5px",
                   }}
@@ -171,7 +171,7 @@ const ContactForm = () => {
                   </Typography>
                   <Typography
                     variant="h6"
-                    fontSize={18}
+                    fontSize={16}
                     fontWeight={400}
                   >
                     9:00 AM to 7:00 PM

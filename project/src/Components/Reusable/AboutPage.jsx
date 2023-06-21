@@ -82,7 +82,8 @@ function AboutPage() {
             est non nisi. Sed non quam non purus consequat egestas ac vitae
             lorem. Suspendisse potenti. In at neque odio. Suspendisse potenti.
           </Typography> */}
-          <AboutList />
+          {/* <AboutList /> */}
+          <br />
         </Grid>
       </Grid>
     </Container>

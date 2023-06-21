@@ -30,6 +30,9 @@ import { useTheme } from "@emotion/react";
 import Pnavigation from "./Pnavigation";
 
 const ProfileBooking = () => {
+
+  document.title = "profile - booking | eDemand"
+
   const theme = useTheme();
 
   const cartData = JSON.parse(localStorage.getItem("cart")) || [];

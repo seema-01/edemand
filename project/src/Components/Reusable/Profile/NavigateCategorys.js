@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
@@ -12,15 +12,9 @@ import { useTheme } from "@emotion/react";
 import api from "../../../API/Fetch_data_Api";
 import {
   Box,
-  Breadcrumbs,
   Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
-  Grid,
   IconButton,
-  Link,
   Skeleton,
   Typography,
 } from "@mui/material";
@@ -28,6 +22,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const NavigateCategorys = ({ match }) => {
+
+  
   const [data, setData] = useState([]);
   const [title, setTitle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,13 +39,13 @@ const NavigateCategorys = ({ match }) => {
   const params = useParams();
   // add as a object because it is multiple
   const { id } = params;
-  console.log(id);
 
   async function allData() {
     var formdata = new FormData();
     formdata.append("latitude", "23.2507356");
     formdata.append("longitude", "69.6689201");
     formdata.append("category_id", `${id}`);
+    formdata.append("title", `${title}`);
 
     var requestOptions = {
       method: "POST",
@@ -80,17 +76,19 @@ const NavigateCategorys = ({ match }) => {
   }, []);
 
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <>
+    <div style={{background: theme.palette.background.box}}>
       <Container>
-        <Box sx={{ paddingBottom: 1, mt: 3 }}>
+        <Box sx={{ paddingBottom: 1, mt: 10 }}>
           {/* ------------------------------------------------------------------ */}
           {/* Everything should be coming from api  */}
           {isLoading ? (
             <Box>
               {title.map((response) => {
                 if (response.id == `${id}`) {
+                  document.title = `${response.name} | eDemand`
                   return (
                     <Box display={"flex"} justifyContent={"space-between"}>
                       <Box display={"flex"} justifyContent={"space-between"}>
@@ -184,11 +182,14 @@ const NavigateCategorys = ({ match }) => {
                       }}
                     >
                       <Card
-                        sx={{ width: 240, height: 200, borderRadius: "10px" }}
+                        // className="service-card"
+                        sx={{ width: 240, height: 200, borderRadius: "10px", marginBottom: 10 }}
+                        onClick={() => navigate("/providers")}
                       >
                         <img
                           src={response.category_image}
                           title={response.name}
+                          alt={""}
                           style={{
                             height: "100%",
                             width: "100%",
@@ -202,7 +203,7 @@ const NavigateCategorys = ({ match }) => {
                             position={"relative"}
                           >
                             <NavLink
-                              to={"/providers/services"}
+                              to={"/providers"}
                               style={{
                                 color: "white",
                                 textDecoration: "none",
@@ -255,7 +256,7 @@ const NavigateCategorys = ({ match }) => {
           </Swiper>
         </Box>
       </Container>
-    </>
+    </div>
   );
 };
 

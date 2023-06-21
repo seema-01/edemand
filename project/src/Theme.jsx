@@ -14,8 +14,8 @@ const lightTheme = createTheme({
       box: "white",
       card: "white",
       addressBox: "#Fdfdfd",
-      input: "#3d3f48"
-      
+      input: "white",
+      provider: "white"
     },
     color: {
       navLink: "black",
@@ -47,7 +47,8 @@ const darkTheme = createTheme({
       box: "#041C32",
       addressBox: "#343F53",
       card: "#343f53",
-      input: "#3d3f48"
+      input: "#3d3f48",
+      provider: "#1b3145"
     },
     color: {
       navLink: "white",
