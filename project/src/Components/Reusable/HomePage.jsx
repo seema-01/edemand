@@ -136,9 +136,9 @@ const HomePage = () => {
             <SwiperSlide>
               <img
                 src={"https://edemand.wrteam.me/public/uploads/sliders/1668427500.jpg"}
-                height={"80%"}
+                height={"640px"}
                 width={"100%"}
-                style={{marginTop:-5}}
+                style={{marginTop:-5, objectFit: "cover"}}
                 alt=""
               />
             </SwiperSlide>
